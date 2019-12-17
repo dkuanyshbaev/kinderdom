@@ -7,20 +7,9 @@ pub struct Config {
 }
 
 impl Config {
-    // pub fn new(mut vars: std::env::Vars) -> Result<Config, &'static str> {
-    pub fn new(vars: std::env::Vars) -> Result<Config, std::env::VarError> {
-        // let db = env::var("DB")?;
-        // Result<std::string::String, std::env::VarError>
-
-        let db = match env::var("DB") {
-            Ok(db) => db,
-            Err(e) => return Err(e),
-        };
-
-        let secret = match env::var("SECRET") {
-            Ok(secret) => secret,
-            Err(e) => return Err(e),
-        };
+    pub fn new() -> Result<Config, env::VarError> {
+        let db = env::var("DB")?;
+        let secret = env::var("SECRET")?;
 
         Ok(Config { db, secret })
     }
