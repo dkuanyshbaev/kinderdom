@@ -10,7 +10,6 @@ impl Config {
     pub fn new() -> Result<Config, env::VarError> {
         let db = env::var("DB")?;
         let secret = env::var("SECRET")?;
-
         Ok(Config { db, secret })
     }
 }
@@ -18,6 +17,5 @@ impl Config {
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     println!("{}, {}", config.db, config.secret);
     println!("ok");
-
     Ok(())
 }
