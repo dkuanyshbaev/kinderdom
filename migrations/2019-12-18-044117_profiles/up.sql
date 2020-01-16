@@ -7,3 +7,5 @@ create table if not exists profiles (
     published boolean not null default 'F',
     created_at timestamp not null default now()
 );
+
+INSERT INTO profiles (name, photo, video, description) VALUES ('vasyan', 'photo', 'video', 'the vasyans description');

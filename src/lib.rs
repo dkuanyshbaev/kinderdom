@@ -19,6 +19,7 @@ use std::env;
 pub mod db;
 pub mod handlers;
 
+#[database("kinderdom")]
 struct Db(diesel::PgConnection);
 
 pub struct Config {
@@ -41,11 +42,45 @@ pub fn run(config: Config) -> Result<(), String> {
     let error = rocket::ignite()
         // .manage(config)
         .attach(Db::fairing())
-        .mount("/", routes![handlers::index, handlers::about])
+        .mount("/", routes![index, handlers::about])
         .mount("/admin", routes![handlers::profiles, handlers::news])
         .mount("/static", StaticFiles::from("static/"))
         .attach(Template::fairing())
         .register(catchers![handlers::not_found])
         .launch();
     Err(error.to_string())
+}
+
+#[get("/")]
+// pub fn index(config: State<Config>) -> Template {
+fn index(conn: Db) -> Template {
+    // let secret = &config.secret;
+
+    // println!("------->>>>>> {}", secret);
+
+    // -----------------------------------------------------------
+    // let results = posts
+    //     .filter(published.eq(true))
+    //     .limit(5)
+    //     .load::<Post>(&connection)
+    //     .expect("Error loading posts");
+    //
+    // println!("Displaying {} posts", results.len());
+    // for post in results {
+    //     println!("{}", post.title);
+    //     println!("----------\n");
+    //     println!("{}", post.body);
+    // }
+    let ps = db::query_profile(&conn);
+    for p in ps {
+        println!("profile: {:?}", p);
+    }
+    // -----------------------------------------------------------
+
+    let name = "Denis".to_string();
+    let context = handlers::TemplateContext {
+        name,
+        items: vec!["One", "Two", "Three"],
+    };
+    Template::render("index", &context)
 }

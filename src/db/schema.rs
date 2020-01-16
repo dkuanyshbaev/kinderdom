@@ -6,6 +6,6 @@ table! {
         video -> Varchar,
         description -> Text,
         published -> Bool,
-        created_at -> Timestamp,
+        // created_at -> Timestamp,
     }
 }

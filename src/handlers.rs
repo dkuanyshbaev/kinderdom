@@ -8,25 +8,25 @@ use rocket_contrib::templates::Template;
 use std::collections::HashMap;
 
 #[derive(Serialize)]
-struct TemplateContext {
-    name: String,
-    items: Vec<&'static str>,
+pub struct TemplateContext {
+    pub name: String,
+    pub items: Vec<&'static str>,
 }
 
-#[get("/")]
-// pub fn index(config: State<Config>) -> Template {
-pub fn index() -> Template {
-    // let secret = &config.secret;
-
-    // println!("------->>>>>> {}", secret);
-
-    let name = "Denis".to_string();
-    let context = TemplateContext {
-        name,
-        items: vec!["One", "Two", "Three"],
-    };
-    Template::render("index", &context)
-}
+// #[get("/")]
+// // pub fn index(config: State<Config>) -> Template {
+// pub fn index() -> Template {
+//     // let secret = &config.secret;
+//
+//     // println!("------->>>>>> {}", secret);
+//
+//     let name = "Denis".to_string();
+//     let context = TemplateContext {
+//         name,
+//         items: vec!["One", "Two", "Three"],
+//     };
+//     Template::render("index", &context)
+// }
 
 #[get("/about")]
 pub fn about() -> &'static str {

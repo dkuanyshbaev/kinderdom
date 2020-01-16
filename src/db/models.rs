@@ -11,7 +11,7 @@ pub struct NewProfile<'a> {
     pub published: bool,
 }
 
-#[derive(Queryable)]
+#[derive(Queryable, Debug)]
 pub struct Profile {
     pub id: i32,
     pub name: String,
@@ -19,5 +19,5 @@ pub struct Profile {
     pub video: String,
     pub description: String,
     pub published: bool,
-    pub created_at: Timestamp,
+    // pub created_at: Timestamp,
 }

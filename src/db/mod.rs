@@ -19,8 +19,8 @@ pub fn establish_connection(config: Config) -> PgConnection {
 //     println!("create profile");
 // }
 
-// pub fn query_profile(connection: &PgConnection) -> Vec<models::Profiles> {
-//     schema::profiles::table
-//         .load::<models::Profile>(connection)
-//         .expect("Error loading profiles")
-// }
+pub fn query_profile(connection: &PgConnection) -> Vec<models::Profile> {
+    schema::profiles::table
+        .load::<models::Profile>(connection)
+        .expect("Error loading profiles")
+}
