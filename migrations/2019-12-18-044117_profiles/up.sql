@@ -4,8 +4,8 @@ create table if not exists profiles (
     photo varchar not null,
     video varchar not null,
     description text not null,
-    published boolean not null default 'F',
+    published boolean not null default 'f',
     created_at timestamp not null default now()
 );
 
-INSERT INTO profiles (name, photo, video, description) VALUES ('vasyan', 'photo', 'video', 'the vasyans description');
+insert into profiles (name, photo, video, description) values ('vasyan', 'photo', 'video', 'the vasyans description');

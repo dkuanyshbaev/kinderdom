@@ -1,5 +1,5 @@
 use super::schema::profiles;
-use diesel::sql_types::Timestamp;
+// use diesel::sql_types::Timestamp;
 
 #[derive(Insertable)]
 #[table_name = "profiles"]
@@ -10,6 +10,8 @@ pub struct NewProfile<'a> {
     pub description: &'a str,
     pub published: bool,
 }
+
+// why &'a str ^????
 
 #[derive(Queryable, Debug)]
 pub struct Profile {

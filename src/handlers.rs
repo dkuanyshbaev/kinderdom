@@ -1,9 +1,9 @@
 extern crate rocket_contrib;
 extern crate serde_json;
 
-use super::Config;
+// use super::Config;
 use rocket::Request;
-use rocket::State;
+// use rocket::State;
 use rocket_contrib::templates::Template;
 use std::collections::HashMap;
 

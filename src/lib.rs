@@ -9,9 +9,10 @@ extern crate diesel;
 #[macro_use]
 extern crate serde_derive;
 
-use diesel::pg::PgConnection;
-use diesel::prelude::*;
+// use diesel::pg::PgConnection;
+// use diesel::prelude::*;
 // use rocket_contrib::databases::diesel;
+use diesel::PgConnection;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
 use std::env;
@@ -20,7 +21,21 @@ pub mod db;
 pub mod handlers;
 
 #[database("kinderdom")]
-struct Db(diesel::PgConnection);
+struct Db(PgConnection);
+
+// ----------------------------------------------------
+// #[database("my_db")]
+// struct MyDatabase(diesel::SqliteConnection);
+//
+// fn load_from_db(conn: &diesel::SqliteConnection) -> Data {
+//     // Do something with connection, return some data.
+// }
+//
+// #[get("/")]
+// fn my_handler(conn: MyDatabase) -> Data {
+//     load_from_db(&*conn)
+// }
+// ----------------------------------------------------
 
 pub struct Config {
     pub db: String,
