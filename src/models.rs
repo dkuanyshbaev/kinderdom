@@ -1,8 +1,5 @@
-// use super::schema::profiles;
 // use diesel::sql_types::Timestamp;
-// use diesel::{self, prelude::*};
-
-// pub mod schema;
+use diesel::prelude::*;
 
 mod schema {
     table! {
@@ -42,18 +39,6 @@ pub struct Profile {
     pub published: bool,
     // pub created_at: Timestamp,
 }
-
-// use super::Config;
-// use diesel::pg::PgConnection;
-use diesel::pg::PgConnection;
-use diesel::prelude::*;
-
-// pub mod models;
-// pub mod schema;
-
-// pub fn establish_connection(config: Config) -> PgConnection {
-//     PgConnection::establish(&config.db).expect(&format!("Error connecting to {}", config.db))
-// }
 
 // pub fn create_profile<'a>(connection: &PgConnection, name: &'a str) {
 //     // let task = models::NewTask { title };

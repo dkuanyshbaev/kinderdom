@@ -2,7 +2,7 @@
 // extern crate serde_json;
 
 // use super::Config;
-use super::Db;
+use crate::Db;
 use rocket::Request;
 // use rocket::State;
 use rocket_contrib::templates::Template;
@@ -67,6 +67,11 @@ pub fn index(conn: Db) -> Template {
 //     load_from_db(&*conn)
 // }
 // ----------------------------------------------------
+
+#[get("/about")]
+pub fn about() -> &'static str {
+    "about"
+}
 
 #[catch(404)]
 pub fn not_found(req: &Request) -> Template {
