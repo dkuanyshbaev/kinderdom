@@ -10,7 +10,8 @@ use std::collections::HashMap;
 
 // pub mod models;
 // use models::Profile;
-use crate::models::profile::all_profiles;
+// use crate::models::profile::all_profiles;
+use crate::models::profile::Profile;
 
 #[derive(Serialize)]
 pub struct TemplateContext {
@@ -25,7 +26,8 @@ pub fn index(conn: Db) -> Template {
     // println!("------->>>>>> {}", secret);
     // -----------------------------------------------------------
 
-    let ps = all_profiles(&conn);
+    // let ps = all_profiles(&conn);
+    let ps = Profile::all(&conn);
     for p in ps {
         println!("profile: {:?}", p);
     }
