@@ -1,29 +1,29 @@
 use crate::Db;
 
-#[get("/profiles")]
+#[get("/projects")]
 pub fn list(_conn: Db) -> &'static str {
-    "all profiles"
+    "all projects"
 }
 
-#[get("/profiles/<id>")]
+#[get("/projects/<id>")]
 pub fn show(_conn: Db, id: i32) -> &'static str {
     println!("{}", id);
-    "profile details"
+    "project details"
 }
 
-#[post("/profiles")]
+#[post("/projects")]
 pub fn create(_conn: Db) -> &'static str {
-    "create profile"
+    "create project"
 }
 
-#[put("/profiles/<id>")]
+#[put("/projects/<id>")]
 pub fn update(_conn: Db, id: i32) -> &'static str {
     println!("{}", id);
-    "update profile"
+    "update project"
 }
 
-#[delete("/profiles/<id>")]
+#[delete("/projects/<id>")]
 pub fn delete(_conn: Db, id: i32) -> &'static str {
     println!("{}", id);
-    "delete profile"
+    "delete project"
 }

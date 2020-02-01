@@ -37,7 +37,25 @@ fn rocket(_config: Config) -> Rocket {
         .attach(Template::fairing())
         .mount("/static", StaticFiles::from("static/"))
         .mount("/", routes![views::site::index, views::site::about])
-        .mount("/admin", routes![views::admin::profiles::profiles])
+        .mount(
+            "/admin",
+            routes![
+                // profiles
+                views::admin::profiles::list,
+                views::admin::profiles::show,
+                views::admin::profiles::create,
+                views::admin::profiles::update,
+                views::admin::profiles::delete,
+                // projects
+                views::admin::projects::list,
+                views::admin::projects::show,
+                views::admin::projects::create,
+                views::admin::projects::update,
+                views::admin::projects::delete,
+                // articles
+                // events
+            ],
+        )
         .register(catchers![views::site::not_found])
 }
 
