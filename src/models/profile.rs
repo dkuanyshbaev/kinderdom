@@ -1,12 +1,7 @@
 // use diesel::sql_types::Timestamp;
-// use self::schema::profiles;
 use crate::models::schema::profiles;
-use diesel::prelude::*;
-
-// use self::schema::tasks;
 use crate::models::schema::profiles::dsl::profiles as all_profiles;
-
-// ------------------------------------------------
+use diesel::prelude::*;
 
 #[table_name = "profiles"]
 #[derive(Queryable, Insertable, FromForm, Debug, Clone)]
