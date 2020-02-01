@@ -13,6 +13,7 @@ use diesel::PgConnection;
 use rocket::Rocket;
 use rocket_contrib::{serve::StaticFiles, templates::Template};
 use std::{env, process};
+use views::{admin, pages};
 
 pub mod models;
 pub mod views;
@@ -39,43 +40,43 @@ fn rocket(_config: Config) -> Rocket {
         .mount(
             "/",
             routes![
-                views::site::index,
-                views::site::profiles,
-                views::site::projects,
-                views::site::events,
-                views::site::about,
+                pages::index,
+                pages::profiles,
+                pages::projects,
+                pages::events,
+                pages::about,
             ],
         )
         .mount(
             "/admin",
             routes![
                 // profiles
-                views::admin::profiles::list,
-                views::admin::profiles::show,
-                views::admin::profiles::create,
-                views::admin::profiles::update,
-                views::admin::profiles::delete,
+                admin::profiles::list,
+                admin::profiles::show,
+                admin::profiles::create,
+                admin::profiles::update,
+                admin::profiles::delete,
                 // projects
-                views::admin::projects::list,
-                views::admin::projects::show,
-                views::admin::projects::create,
-                views::admin::projects::update,
-                views::admin::projects::delete,
+                admin::projects::list,
+                admin::projects::show,
+                admin::projects::create,
+                admin::projects::update,
+                admin::projects::delete,
                 // articles
-                views::admin::articles::list,
-                views::admin::articles::show,
-                views::admin::articles::create,
-                views::admin::articles::update,
-                views::admin::articles::delete,
+                admin::articles::list,
+                admin::articles::show,
+                admin::articles::create,
+                admin::articles::update,
+                admin::articles::delete,
                 // events
-                views::admin::events::list,
-                views::admin::events::show,
-                views::admin::events::create,
-                views::admin::events::update,
-                views::admin::events::delete,
+                admin::events::list,
+                admin::events::show,
+                admin::events::create,
+                admin::events::update,
+                admin::events::delete,
             ],
         )
-        .register(catchers![views::site::not_found])
+        .register(catchers![pages::not_found])
 }
 
 fn main() {
