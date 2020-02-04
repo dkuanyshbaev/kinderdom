@@ -1,4 +1,4 @@
-{% extends "base" %}
+{% extends "pages/base" %}
 
 {% block content %}
 "vol here"

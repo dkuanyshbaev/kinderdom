@@ -30,7 +30,7 @@ pub fn index(connection: Db) -> Template {
         name,
         items: vec!["One", "Two", "Three"],
     };
-    Template::render("index", &context)
+    Template::render("pages/index", &context)
 }
 
 #[get("/articles")]
@@ -39,7 +39,7 @@ pub fn articles() -> Template {
         name: "".to_string(),
         items: vec![],
     };
-    Template::render("articles", &context)
+    Template::render("pages/articles", &context)
 }
 
 #[get("/profiles")]
@@ -48,7 +48,7 @@ pub fn profiles() -> Template {
         name: "".to_string(),
         items: vec![],
     };
-    Template::render("profiles", &context)
+    Template::render("pages/profiles", &context)
 }
 
 #[get("/projects")]
@@ -57,7 +57,7 @@ pub fn projects() -> Template {
         name: "".to_string(),
         items: vec![],
     };
-    Template::render("projects", &context)
+    Template::render("pages/projects", &context)
 }
 
 #[get("/events")]
@@ -66,7 +66,7 @@ pub fn events() -> Template {
         name: "".to_string(),
         items: vec![],
     };
-    Template::render("events", &context)
+    Template::render("pages/events", &context)
 }
 
 #[get("/about")]
@@ -75,7 +75,7 @@ pub fn about() -> Template {
         name: "".to_string(),
         items: vec![],
     };
-    Template::render("about", &context)
+    Template::render("pages/about", &context)
 }
 
 #[get("/docs")]
@@ -84,7 +84,7 @@ pub fn docs() -> Template {
         name: "".to_string(),
         items: vec![],
     };
-    Template::render("docs", &context)
+    Template::render("pages/docs", &context)
 }
 
 #[get("/help")]
@@ -93,12 +93,12 @@ pub fn help() -> Template {
         name: "Name".to_string(),
         items: vec!["one", "two"],
     };
-    Template::render("help", &context)
+    Template::render("pages/help", &context)
 }
 
 #[catch(404)]
 pub fn not_found(req: &Request) -> Template {
     let mut map = HashMap::new();
     map.insert("path", req.uri().path());
-    Template::render("404", &map)
+    Template::render("error/404", &map)
 }

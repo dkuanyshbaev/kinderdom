@@ -1,5 +1,5 @@
-{% extends "base" %}
+{% extends "admin/base" %}
 
 {% block content %}
-"profiles here"
+login page
 {% endblock content %}

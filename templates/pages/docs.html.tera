@@ -1,0 +1,5 @@
+{% extends "pages/base" %}
+
+{% block content %}
+"отчеты here"
+{% endblock content %}

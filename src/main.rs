@@ -53,6 +53,9 @@ fn rocket(_config: Config) -> Rocket {
         .mount(
             "/admin",
             routes![
+                // common
+                admin::main,
+                admin::login,
                 // profiles
                 admin::profiles::list,
                 admin::profiles::show,

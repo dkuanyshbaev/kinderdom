@@ -1,5 +1,5 @@
-{% extends "base" %}
+{% extends "pages/base" %}
 
 {% block content %}
-"events here"
+"articles here"
 {% endblock content %}

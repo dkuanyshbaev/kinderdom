@@ -1,5 +1,5 @@
-this is admin page:
+{% extends "admin/base" %}
 
-<hr>
-
-{% block content %}{% endblock content %}
+{% block content %}
+main admin page
+{% endblock content %}

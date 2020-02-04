@@ -1,4 +1,4 @@
-{% extends "admin/main" %}
+{% extends "admin/base" %}
 
 {% block content %}
 profiles admin list
