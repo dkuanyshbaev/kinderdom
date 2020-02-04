@@ -1,5 +1,48 @@
 {% extends "admin/base" %}
 
 {% block content %}
-main admin page
+<section>
+    <div class="block remove-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="shelter-donations-boxes">
+                        <div class="row">
+                            <div class="col">
+                                <div class="donation-box">
+                                    <img src="http://placehold.it/380x238" alt="" />
+                                    <div class="box-text">
+                                        <h4>GIVE DONATION</h4>
+                                        <p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+                                        <a class="btn style2 small" href="#" title="">Donate Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="donation-box">
+                                    <img src="http://placehold.it/380x238" alt="" />
+                                    <div class="box-text">
+                                        <h4>BECOME A VOLUNTEER</h4>
+                                        <p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+                                        <a class="btn style2 small" href="#" title="">Become Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="donation-box">
+                                    <img src="http://placehold.it/380x238" alt="" />
+                                    <div class="box-text">
+                                        <h4>GIVE SCHOLARSHIP</h4>
+                                        <p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+                                        <a class="btn style2 small" href="#" title="">GIVE IMMEDIATELY</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Shelter Donation Boxes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}

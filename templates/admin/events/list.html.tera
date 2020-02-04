@@ -1,5 +1,40 @@
 {% extends "admin/base" %}
 
 {% block content %}
-events admin list
+<section>
+    <div class="block remove-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h4>Акции</h4>
+                </div>
+
+                <div class="col-6">
+                    <a href="/admin" class="btn btn-primary float-right" title="">Добавить</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">one</a>
+                        <a href="#" class="list-group-item list-group-item-action">two</a>
+                    </div>
+
+                    <div class="shelter-pagination">
+                        <ul class="pagination">
+                            <li> <a href="#" title=""> Previous </a> </li>
+                            <li><a class="current" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li> <a href="#" title=""> Next</a> </li>
+                        </ul>
+                    </div><!-- Shelter Pagination -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
