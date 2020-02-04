@@ -1,15 +1,627 @@
 {% extends "base" %}
 
 {% block content %}
-    <h1>Hi {{name}}</h1>
-    <h3>Here are your items:</h3>
-    <ul>
-        {% for s in items %}
-            <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
+<header>
+    <div class="topbar dark">
+        <div class="container">
+            <div class="social-btns">
+                <a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
+                <a class="twitter" href="#" title=""><i class="fa fa-twitter"></i></a>
+                <a class="pinterest" href="#" title=""><i class="fa fa-pinterest"></i></a>
+            </div>
+            <a class="top-btn open-popup" href="#" title="">Donate Now</a>
+            <ul>
+                <li><a href="#" title="">Join Now</a></li>
+                <li><a href="#" title="">Careers</a></li>
+                <li><a href="#" title="">Login</a></li>
+            </ul>
+        </div>
+    </div><!-- Topbar -->
+    <div class="menubar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-3"><div class="logo"><a href="#" title=""><img src="static/images/logo.png" alt="" /></a></div></div>
+                <div class="col-9">
+                    <div class="header-contact">
+                        <div class="info">
+                            <i class="ion-ios-email-outline"></i>
+                            <strong>Email
+                                <span><a href="mailto:youremail@gmail.com">youremail@gmail.com</a></span>
+                            </strong>
+                        </div><!-- Info -->
+                        <div class="info">
+                            <i class="ion-ios-telephone-outline"></i>
+                            <strong>Phone Number
+                                <span><a href="tel:+89-993-993">+89-993-993</a></span>
+                            </strong>
+                        </div><!-- Info -->
+                    </div>
+                </div>
 
-    <p>Try going to <a href="/hello/YourName">/hello/YourName</a></p>
-    <img src="static/avia.png">
+            </div>
+        </div>
+    </div><!-- Menu Bar -->
+    <div class="menu-strip">
+        <div class="container">
+            <div class="shelter-search">
+                <a href="#" title=""><i class="fa fa-search"></i></a>
+                <form>
+                    <input type="search" placeholder="Enter Your Search keywords" />
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" title="">Home</a>
+                        <ul>
+                            <li><a href="index.html" title="">Homepage 1</a></li>
+                            <li><a href="index2.html" title="">Homepage 2</a></li>
+                            <li><a href="index3.html" title="">Homepage 3</a></li>
+                            <li><a href="index4.html" title="">Homepage 4</a></li>
+                            <li><a href="index5.html" title="">Homepage 5</a></li>
+                            <li><a href="index-revolution.html" title="">Revolution Slider Demos</a>
+                                <ul>
+                                    <li><a href="index-revolution.html" title="">Revolution Demo 1</a>
+                                        <li><a href="index-revolution2.html" title="">Revolution Demo 2</a>
+                                </ul>
+                                        </li>
+                        </ul>
+                                    </li>
+                                    <li><a href="#" title="">Pages</a>
+                                        <ul>
+                                            <li><a href="about.html" title="">Who We Are</a></li>
+                                            <li><a href="team.html" title="">Team</a>
+                                                <ul>
+                                                    <li><a href="team.html" title="">Team Style 1</a></li>
+                                                    <li><a href="team2.html" title="">Team Style 2</a></li>
+                                                    <li><a href="team-detail.html" title="">Team Detail</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="faqs.html" title="">FAQ'S</a></li>
+                                            <li><a href="become-volunteer.html" title="">Become a Volunteer</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" title="">Our News</a>
+                                        <ul>
+                                            <li><a href="blog.html" title="">Blog</a></li>
+                                            <li><a href="blog-detail.html" title="">Blog Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" title="">Events</a>
+                                        <ul>
+                                            <li><a href="events.html">Event Style 1</a></li>
+                                            <li><a href="events2.html">Event Style 2</a></li>
+                                            <li><a href="event-detail.html">Event Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="causes.html" title="">Causes</a>
+                                        <ul>
+                                            <li><a href="causes.html">Causes List</a></li>
+                                            <li><a href="cause-detail.html">Cause Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" title="">Contact</a>
+                                        <ul>
+                                            <li><a href="contact.html" title="">Contact Style 1</a></li>
+                                            <li><a href="contact2.html" title="">Contact Style 2</a></li>
+                                        </ul>
+                                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header><!-- Header -->
+
+<div class="responsive-header">
+    <div class="topbar">
+        <a class="top-btn open-popup" href="#" title="">Donate Now</a>
+        <ul>
+            <li><a href="become-volunteer.html" title="">Join Now</a></li>
+            <li><a href="#" title="">Careers</a></li>
+            <li><a href="#" title="">Login</a></li>
+        </ul>
+    </div><!-- Topbar -->
+    <div class="responsive-menubar">
+        <div class="logo"><a href="#" title=""><img src="static/images/logo.png" alt="" /></a></div>
+
+        <a class="responsive-menu-btn" href="#" title=""><i class="ion-navicon"></i></a>
+        <div class="shelter-search">
+            <a href="#" title=""><i class="fa fa-search"></i></a>
+            <form>
+                <input type="search" placeholder="Enter Your Search keywords" />
+                <button><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div><!-- Responsive Menubar -->
+
+
+    <div class="sideheader">
+        <a class="menu-btn close" href="javascript:void(0)" title=""><i class="icon-cancel"></i></a>
+        <div class="sidemenu scrollbar">
+            <ul>
+                <li><a href="index.html" title="">Home</a>
+                    <ul>
+                        <li><a href="index.html" title="">Homepage 1</a></li>
+                        <li><a href="index2.html" title="">Homepage 2</a></li>
+                        <li><a href="index3.html" title="">Homepage 3</a></li>
+                        <li><a href="index4.html" title="">Homepage 4</a></li>
+                        <li><a href="index5.html" title="">Homepage 5</a></li>
+                        <li><a href="index-revolution.html" title="">Revolution Slider Demos</a>
+                            <ul>
+                                <li><a href="index-revolution.html" title="">Revolution Demo 1</a>
+                                    <li><a href="index-revolution2.html" title="">Revolution Demo 2</a>
+                            </ul>
+                                    </li>
+                    </ul>
+                                </li>
+                                <li><a href="#" title="">Pages</a>
+                                    <ul>
+                                        <li><a href="about.html" title="">Who We Are</a></li>
+                                        <li><a href="team.html" title="">Team</a>
+                                            <ul>
+                                                <li><a href="team.html" title="">Team Style 1</a></li>
+                                                <li><a href="team2.html" title="">Team Style 2</a></li>
+                                                <li><a href="team-detail.html" title="">Team Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="faqs.html" title="">FAQ'S</a></li>
+                                        <li><a href="become-volunteer.html" title="">Become a Volunteer</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Our News</a>
+                                    <ul>
+                                        <li><a href="blog.html" title="">Blog</a></li>
+                                        <li><a href="blog-detail.html" title="">Blog Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Events</a>
+                                    <ul>
+                                        <li><a href="events.html">Event Style 1</a></li>
+                                        <li><a href="events2.html">Event Style 2</a></li>
+                                        <li><a href="event-detail.html">Event Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="causes.html" title="">Causes</a>
+                                    <ul>
+                                        <li><a href="causes.html">Causes List</a></li>
+                                        <li><a href="cause-detail.html">Cause Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Contact</a>
+                                    <ul>
+                                        <li><a href="contact.html" title="">Contact Style 1</a></li>
+                                        <li><a href="contact2.html" title="">Contact Style 2</a></li>
+                                    </ul>
+                                </li>
+            </ul>
+        </div>
+    </div><!-- Sideheader -->
+</div><!-- Responsive Header -->
+
+<section>
+    <div class="block blackish">
+        <div class="fixed-bg bg3 stop"></div>
+        <div class="container">
+            <div class="row align-items-center  justify-content-center">
+                <div class="col-lg-10 col-md-12">
+                    <div class="shelter-text-carousel">
+                        <div class="text-carousel">
+                            <div class="text-slide">
+                                <i>SHELTER - SAVING LIVES</i>
+                                <h3>No One Has Become Poor From Giving</h3>
+                                <a class="btn style2" href="#" title="">Join Our Compaign</a>
+                            </div>
+                            <div class="text-slide">
+                                <i>SHELTER - HELPING PEOPLE</i>
+                                <h3>Help Us So that We Can Help Others</h3>
+                                <a class="btn style2" href="#" title="">Donate Now</a>
+                            </div>
+                            <div class="text-slide">
+                                <i>SHELTER - SAVING LIVES</i>
+                                <h3>Let’s Make The World Better Place Together</h3>
+                                <a class="btn style2" href="#" title="">Join Our Compaign</a>
+                            </div>
+                        </div>
+                    </div><!-- Shelter Text Carousel -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block remove-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="shelter-donations">
+                        <span>In South Africa</span>
+                        <h3>We've Reached <span>So Far</span></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet na aliquam erat volutpat Ut wisi enim euismod  </p>
+                        <div class="donations-bottom">
+                            <div class="shelter-skills">
+                                <div class="skillbar">
+                                    <span>$350 of $1,000 raised </span>
+                                    <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                </div>
+                            </div>
+                            <a class="btn open-popup" href="#" title="">Donate Now</a>
+                        </div>
+                    </div><!-- Shelter Donations -->
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="shelter-join-box overlap">
+                        <span>We need you! and your help</span>
+                        <h3>Sponsor a <strong>Child</strong> Today</h3>
+                        <p>Lorem ipsum dolor sit ame consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet na aliquam erat volutpat Ut wisi enim euismod  </p>
+                        <a class="btn style3" href="#" title="">Join Us Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block remove-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Help The Homeless People</span>
+                        <h2><i>SHELTER</i> RECENT CAUSES</h2>
+                    </div>
+
+                    <div class="creative-causes">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="creative-cause">
+                                    <div class="cre-cause-img">
+                                        <img src="http://placehold.it/370x319" alt="" />
+                                        <span><i>$653</i> Raised of $60,524 Goal</span>
+                                        <div class="skillbar">
+                                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                        </div>
+                                        <a class="btn open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                    <div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
+                                    <h3><a href="#" title="">The story behind the Hope Bracelet by Patricia Heaton</a></h3>
+                                </div><!-- Creative Cause -->
+                            </div>
+                            <div class="col-4">
+                                <div class="creative-cause">
+                                    <div class="cre-cause-img">
+                                        <img src="http://placehold.it/370x319" alt="" />
+                                        <span><i>$653</i> Raised of $60,524 Goal</span>
+                                        <div class="skillbar">
+                                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                        </div>
+                                        <a class="btn open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                    <div class="cause-loc"><span>Charitable Giving</span> <span>India</span></div>
+                                    <h3><a href="#" title="">World Vision donations double through Thirty-One Gifts</a></h3>
+                                </div><!-- Creative Cause -->
+                            </div>
+                            <div class="col-4">
+                                <div class="creative-cause">
+                                    <div class="cre-cause-img">
+                                        <img src="http://placehold.it/370x319" alt="" />
+                                        <span><i>$653</i> Raised of $60,524 Goal</span>
+                                        <div class="skillbar">
+                                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                        </div>
+                                        <a class="btn open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                    <div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
+                                    <h3><a href="#" title="">Child sponsorship and animals change lives in Bangladesh</a></h3>
+                                </div><!-- Creative Cause -->
+                            </div>
+                        </div>
+                    </div><!-- Creative Causes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="block no-padding dark">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="shelter-video">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="video-text">
+                                <span>Promote and Monitor Human Rights</span>
+                                <h3>Helath Is Essential For <br><strong>BETTER FUTURE</strong></h3>
+                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim ipsam voluptatem.</p>
+                                <a class="btn" href="#" title="">Explore Now</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="video-img"><img src="http://placehold.it/793x585" alt="" /></div>
+                        </div>
+                    </div>
+                    <a class="round-icon-btn" href="#" title=""><i class="ion-ios-play-outline"></i></a>
+                </div><!-- Shelter Video -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Give Your Hand To Help</span>
+                        <h2><i>SHELTER</i> UPCOMING EVENT</h2>
+                    </div>
+
+                    <div class="shelter-fancy-events">
+                        <div class="custom-row">
+                            <div class="masonary">
+                                <div class="custom-grid2">
+                                    <div class="fancy-event">
+                                        <img src="http://placehold.it/485x548.jpg" alt="" />
+                                        <span>Oct 12, 2016 3:53 am</span>
+                                        <div class="fancy-event-details">
+                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+                                            <i> 90012 South Street, Sanford, FL South Africa </i>
+                                        </div>
+                                    </div><!-- Fancy Event -->
+                                </div>
+                                <div class="custom-grid1">
+                                    <div class="fancy-event">
+                                        <img src="http://placehold.it/676x249" alt="" />
+                                        <span>Oct 12, 2016 3:53 am</span>
+                                        <div class="fancy-event-details">
+                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+                                            <i> 90012 South Street, Sanford, FL South Africa </i>
+                                        </div>
+                                    </div><!-- Fancy Event -->
+                                </div>
+                                <div class="custom-grid1">
+                                    <div class="fancy-event">
+                                        <img src="http://placehold.it/676x249" alt="" />
+                                        <span>Oct 12, 2016 3:53 am</span>
+                                        <div class="fancy-event-details">
+                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+                                            <i> 90012 South Street, Sanford, FL South Africa </i>
+                                        </div>
+                                    </div><!-- Fancy Event -->
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Shelter Fancy Event -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block remove-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>OUR PEOPLE HELPING</span>
+                        <h2><i>SHELTER</i> HELPING TEAM</h2>
+                    </div>
+
+                    <div class="shelter-team">
+                        <div class="row">
+                            <div class="col">
+                                <div class="member">
+                                    <img src="http://placehold.it/370x410" alt="" />
+                                    <div class="member-name">
+                                        <h4>Mona Cristina</h4>
+                                        <span>
+                                            <i>Social Worker</i>
+                                            <a href="team-detail.html" title="">Read More</a>
+                                        </span>
+                                    </div>
+                                </div><!-- Member -->
+                            </div>
+                            <div class="col">
+                                <div class="member">
+                                    <img src="http://placehold.it/370x410" alt="" />
+                                    <div class="member-name">
+                                        <h4>John Carley</h4>
+                                        <span>
+                                            <i>Market Analyst </i>
+                                            <a href="team-detail.html" title="">Read More</a>
+                                        </span>
+                                    </div>
+                                </div><!-- Member -->
+                            </div>
+                            <div class="col">
+                                <div class="member">
+                                    <img src="http://placehold.it/370x410" alt="" />
+                                    <div class="member-name">
+                                        <h4>Wasley Steven</h4>
+                                        <span>
+                                            <i>Scoail Worker</i>
+                                            <a href="team-detail.html" title="">Read More</a>
+                                        </span>
+                                    </div>
+                                </div><!-- Member -->
+                            </div>
+                        </div>
+                    </div><!-- Octa Team -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block less-space coloured-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bold-text">
+                        <h3>Shelter <strong>saves lives and improves</strong> health for people affected by poverty or disaster so they can reach their <strong>full potential.</strong> </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="title left">
+                        <span>OUR REVIEWS</span>
+                        <h2><i>SHELTER</i> TESTIMONIALS</h2>
+                    </div>
+
+                    <div class="shelter-testimonials">
+                        <div class="review">
+                            <div class="review-img"><img src="http://placehold.it/118x118" alt="" /></div>
+                            <div class="review-text">
+                                <h4>Tan Kamany <i>(Profex User)</i></h4>
+                                <p>Sed lacinia, nibh sit vestibulum, enim risus condimentum erat, quis  vestib lum mi ligula a nulla. Nulla vitae pharetra tellus.Aenean ac tincidunt augu.</p>
+                            </div>
+                        </div>
+                        <div class="review">
+                            <div class="review-img"><img src="http://placehold.it/118x118" alt="" /></div>
+                            <div class="review-text">
+                                <h4>Angleina Crize <i>(Administrator)</i></h4>
+                                <p>Sed lacinia, nibh sit vestibulum, enim risus condimentum erat, quis  vestib lum mi ligula a nulla. Nulla vitae pharetra tellus.Aenean ac tincidunt augu.</p>
+                            </div>
+                        </div>
+                    </div><!-- Bio Testimonials -->
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="title left">
+                        <span>OUR REVIEWS</span>
+                        <h2><i>SHELTER</i> TESTIMONIALS</h2>
+                    </div>
+
+                    <div class="achivement-awards awards-carousel">
+                        <div class="awards-slide">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="shelter-award">
+                                        <img src="http://placehold.it/191x50" alt="" />
+                                        <strong>Lifetime Achievments</strong>
+                                        <span><i>January 2009</i> , Karachi, Pakistan</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="shelter-award">
+                                        <img src="http://placehold.it/191x50" alt="" />
+                                        <strong>Best Teacher Award</strong>
+                                        <span><i>March 2010</i> , Toronto, Canada</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="awards-slide">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="shelter-award">
+                                        <img src="http://placehold.it/191x50" alt="" />
+                                        <strong>Lifetime Achievments</strong>
+                                        <span><i>May 2012</i> , Shanghai, China</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="shelter-award">
+                                        <img src="http://placehold.it/191x50" alt="" />
+                                        <strong>Best Teacher Award</strong>
+                                        <span><i>January 2009</i> , Karachi, Pakistan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Achievement Box -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block remove-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="shelter-donations-boxes">
+                        <div class="row">
+                            <div class="col">
+                                <div class="donation-box">
+                                    <img src="http://placehold.it/380x238" alt="" />
+                                    <div class="box-text">
+                                        <h4>GIVE DONATION</h4>
+                                        <p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+                                        <a class="btn style2 small" href="#" title="">Donate Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="donation-box">
+                                    <img src="http://placehold.it/380x238" alt="" />
+                                    <div class="box-text">
+                                        <h4>BECOME A VOLUNTEER</h4>
+                                        <p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+                                        <a class="btn style2 small" href="#" title="">Become Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="donation-box">
+                                    <img src="http://placehold.it/380x238" alt="" />
+                                    <div class="box-text">
+                                        <h4>GIVE SCHOLARSHIP</h4>
+                                        <p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+                                        <a class="btn style2 small" href="#" title="">GIVE IMMEDIATELY</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Shelter Donation Boxes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="block less-space gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="shelter-logos">
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                    </ul><!-- Trace Logos -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock content %}
 

@@ -1,10 +1,155 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Kinderdom</title>
-  </head>
-  <body>
-    {% block content %}{% endblock content %}
-  </body>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Kinderdom - Мы и дети</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Мы помогаем детям, которые оказались в сложных жизненных ситуациях. Мы это делаем потому что нам не всё равно." />
+        <meta name="keywords" content="" />
+        <meta charset="utf-8" />
+
+
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/responsive.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/color.css" />
+    </head>
+    <body>
+        {% block content %}{% endblock content %}
+
+        <footer>
+            <div class="block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget">
+                                <div class="about-widget">
+                                    <div class="logo"><a href="#" title=""><img src="static/images/logo2.png" alt="" /></a></div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dolor amet glavrida tellus, quis lorem ipsum tooltip luctus ligula. </p>
+                                    <form class="newsletter-form">
+                                        <input type="text" placeholder="Enter Your E-mail" />
+                                        <button><i class="fa fa-paper-plane-o"></i></button>
+                                    </form>
+                                </div><!-- About Widget -->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget">
+                                <h3 class="widget-title">Useful Links</h3>
+                                <ul>
+                                    <li><a href="#" title="">Home</a></li>
+                                    <li><a href="#" title="">About Us</a></li>
+                                    <li><a href="#" title="">Provicy Policy</a></li>
+                                    <li><a href="#" title="">Terms & Conditions</a></li>
+                                    <li><a href="#" title="">Blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget">
+                                <h3 class="widget-title">Connects</h3>
+                                <ul>
+                                    <li>2005 Stokes Isle Apt. 896, Venaville 10010, USA</li>
+                                    <li>info@yourdomain.com</li>
+                                    <li>(+68) 120034509</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget">
+                                <h3 class="widget-title">PHOTO GALLERY</h3>
+                                <div class="shelter-gallery">
+                                    <div class="row">
+                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+
+
+        <div class="bottombar">
+            <div class="container">
+                <p>© 2017 SHELTER is Powered by <a href="#" title="">Stillidea</a> </p>
+                <div class="socials">
+                    <a href="#" title="">Facebook</a>
+                    <a href="#" title="">Twitter</a>
+                    <a href="#" title="">Behance</a>
+                    <a href="#" title="">Linkedin</a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+        <div class="popup">
+            <div class="popup-box">
+                <div class="popup-title"> <h3>Donation Form</h3> <a class="close-popup" href="#" title=""><i class="ion-close-round"></i></a> </div><!-- Popup Title -->
+                <div class="popup-content">
+                    <p>You can transform a world of povertyt to sustainability. Over 70% of infant deaths occur within the first year of life.</p>
+                    <div class="select-cause">
+                        <label>Select Cause</label>
+                        <select class="select">
+                            <option>Cause 1</option>
+                            <option>Cause 2</option>
+                            <option>Cause 3</option>
+                            <option>Cause 4</option>
+                        </select>
+                    </div>
+
+                    <div class="shelter-skills">
+                        <div class="skillbar">
+                            <span>$350 of $1,000 raised </span>
+                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                        </div>
+                    </div>
+
+                    <div class="your-donation">
+                        <strong>YOUR DONATION</strong>
+                        <ul class="donation-figures">
+                            <li><a class="wpdonation-button" href="#" title="">$ 10.00</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">$ 50.00</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">$ 100.00</a></li>
+                            <li><a class="wpdonation-button active" href="#" title="">$ 500.00</a></li>
+                            <li><a href="#" title="">Other Amount</a></li>
+                        </ul>
+                        <div class="donation-amount"><textarea placeholder="Enter The Amount You Want">$ 500.00</textarea></div>
+                    </div>
+
+
+                    <form>
+                        <input type="text" placeholder="First Name" />
+                        <input type="text" placeholder="Last Name" />
+                        <input type="email" placeholder="Email" />
+                        <input type="text" placeholder="Phone Number" />
+                        <input type="text" placeholder="Address" />
+                    </form>
+                </div><!-- Popup Content -->
+                <div class="popup-footer">
+                    <a class="btn" href="#" title="">Proceed</a>
+                </div><!-- Popup Footer -->
+            </div>
+        </div><!-- Popup -->
+
+
+
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/js/slick.min.js"></script>
+        <script src="static/js/isotope.js"></script>
+        <script src="static/js/simpleLightbox.min.js"></script>
+        <script src="static/js/script.js"></script>
+    </body>
 </html>
