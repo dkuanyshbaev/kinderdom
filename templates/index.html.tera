@@ -6,14 +6,12 @@
         <div class="container">
             <div class="social-btns">
                 <a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
-                <a class="twitter" href="#" title=""><i class="fa fa-twitter"></i></a>
-                <a class="pinterest" href="#" title=""><i class="fa fa-pinterest"></i></a>
+                <a class="instagram" href="#" title=""><i class="fa fa-instagram"></i></a>
+                <a class="pinterest" href="#" title=""><i class="fa fa-youtube-play"></i></a>
             </div>
-            <a class="top-btn open-popup" href="#" title="">Donate Now</a>
+            <a class="top-btn open-popup" href="#" title="">Я хочу помочь</a>
             <ul>
-                <li><a href="#" title="">Join Now</a></li>
-                <li><a href="#" title="">Careers</a></li>
-                <li><a href="#" title="">Login</a></li>
+                <li><a href="#" title="">Стать волонтёром</a></li>
             </ul>
         </div>
     </div><!-- Topbar -->
@@ -52,7 +50,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" title="">Home</a>
+                    <li><a href="index.html" title="">Главная</a>
                         <ul>
                             <li><a href="index.html" title="">Homepage 1</a></li>
                             <li><a href="index2.html" title="">Homepage 2</a></li>
