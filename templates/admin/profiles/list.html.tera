@@ -1,5 +1,5 @@
 {% extends "admin/base" %}
 
 {% block content %}
-profiles admin list
+profiles list
 {% endblock content %}

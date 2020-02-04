@@ -1,5 +1,81 @@
-this is admin page:
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Kinderdom - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta charset="utf-8" />
 
-<hr>
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="static/css/icons.css">
+        <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/responsive.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/color.css" />
+    </head>
+    <body>
+        <header>
+            <div class="topbar">
+                <a class="top-btn open-popup" href="/admin" title="">Выход</a>
+                <ul>
+                    <li><a href="/" title="" target="_blank">На сайт</a></li>
+                </ul>
+            </div><!-- Topbar -->
+            <div class="menubar fancy">
+                <div class="row align-items-center">
+                    <div class="col-3"><div class="logo"><a href="/admin" title=""><img src="images/logo.png" alt="" /></a></div></div>
+                    <div class="col-9">
+                        <nav>
+                            <ul>
+                                <li><a href="/admin/articles" title="">Новости</a></li>
+                                <li><a href="/admin/profiles" title="">Анкеты</a></li>
+                                <li><a href="/admin/projects" title="">Проекты</a></li>
+                                <li><a href="/admin/events" title="">Акции</a></li>
+                                <li><a href="/admin" title="">Отчеты</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-{% block content %}{% endblock content %}
+        <div class="responsive-header">
+            <div class="topbar">
+                <!-- <a class="top&#45;btn open&#45;popup" href="/admin" title="">Выход</a> -->
+                <ul>
+                    <li><a href="/" title="" target="_blank">На сайт</a></li>
+                    <li><a href="/admin" title="">Выход</a></li>
+                </ul>
+            </div><!-- Topbar -->
+            <div class="responsive-menubar">
+                <!-- <div class="logo"><a href="#" title=""><img src="images/logo.png" alt="" /></a></div> -->
+                <a class="responsive-menu-btn" href="#" title=""><i class="ion-navicon"></i></a>
+            </div><!-- Responsive Menubar -->
+
+            <div class="sideheader">
+                <a class="menu-btn close" href="javascript:void(0)" title=""><i class="icon-cancel"></i></a>
+                <div class="sidemenu scrollbar">
+                    <ul>
+                        <li><a href="/admin/articles" title="">Новости</a></li>
+                        <li><a href="/admin/profiles" title="">Анкеты</a></li>
+                        <li><a href="/admin/projects" title="">Проекты</a></li>
+                        <li><a href="/admin/events" title="">Акции</a></li>
+                        <li><a href="/admin" title="">Отчеты</a></li>
+                    </ul>
+                </div>
+            </div><!-- Sideheader -->
+        </div><!-- Responsive Header -->
+
+        {% block content %}{% endblock content %}
+
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/js/slick.min.js"></script>
+        <script src="static/js/isotope.js"></script>
+        <script src="static/js/simpleLightbox.min.js"></script>
+        <script src="static/js/select2.min.js"></script>
+        <script src="static/js/script.js"></script>
+    </body>
+</html>
+

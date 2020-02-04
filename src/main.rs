@@ -37,6 +37,7 @@ fn rocket(_config: Config) -> Rocket {
         .attach(Db::fairing())
         .attach(Template::fairing())
         .mount("/static", StaticFiles::from("static/"))
+        .mount("/admin/static", StaticFiles::from("static/"))
         .mount(
             "/",
             routes![
