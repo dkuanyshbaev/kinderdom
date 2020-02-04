@@ -33,6 +33,11 @@ pub fn index(connection: Db) -> Template {
     Template::render("index", &context)
 }
 
+#[get("/articles")]
+pub fn articles() -> &'static str {
+    "articles"
+}
+
 #[get("/profiles")]
 pub fn profiles() -> &'static str {
     "profiles"
@@ -51,6 +56,16 @@ pub fn events() -> &'static str {
 #[get("/about")]
 pub fn about() -> &'static str {
     "about"
+}
+
+#[get("/docs")]
+pub fn docs() -> &'static str {
+    "docs"
+}
+
+#[get("/help")]
+pub fn help() -> &'static str {
+    "help"
 }
 
 #[catch(404)]

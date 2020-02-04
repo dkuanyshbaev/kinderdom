@@ -27,14 +27,14 @@
                     </div>
                     <a class="top-btn open-popup" href="#" title="">Я хочу помочь</a>
                     <ul>
-                        <li><a href="#" title="">Стать волонтёром</a></li>
+                        <li><a href="/help" title="">Стать волонтёром</a></li>
                     </ul>
                 </div>
             </div><!-- Topbar -->
             <div class="menubar">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-3"><div class="logo"><a href="#" title=""><img src="static/images/logo.png" alt="" /></a></div></div>
+                        <div class="col-3"><div class="logo"><a href="/" title=""><img src="static/images/logo.png" alt="" /></a></div></div>
                         <div class="col-9">
                             <div class="header-contact">
                                 <div class="info">
@@ -70,23 +70,25 @@
                         <ul>
                             <li><a href="/" title="">Главная</a></li>
 
-                            <li><a href="/" title="">Новости</a></li>
+                            <li><a href="/articles" title="">Новости</a></li>
 
-                            <li><a href="/" title="">Проекты</a>
+                            <li><a href="/profiles" title="">Анкеты</a></li>
+
+                            <li><a href="/projects" title="">Проекты</a>
                                 <ul>
                                     <li><a href="/" title="">menu</a></li>
                                     <li><a href="/" title="">menu</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="/" title="">Акции</a>
+                            <li><a href="/events" title="">Акции</a>
                                 <ul>
                                     <li><a href="/">menu</a></li>
                                     <li><a href="/">menu</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="/" title="">О фонде</a></li>
+                            <li><a href="/about" title="">О фонде</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -97,11 +99,11 @@
             <div class="topbar">
                 <a class="top-btn open-popup" href="/" title="">Я хочу помочь</a>
                 <ul>
-                    <li><a href="/" title="">Стать волонтёром</a></li>
+                    <li><a href="/help" title="">Стать волонтёром</a></li>
                 </ul>
             </div><!-- Topbar -->
             <div class="responsive-menubar">
-                <div class="logo"><a href="#" title=""><img src="static/images/logo.png" alt="" /></a></div>
+                <div class="logo"><a href="/" title=""><img src="static/images/logo.png" alt="" /></a></div>
 
                 <a class="responsive-menu-btn" href="#" title=""><i class="ion-navicon"></i></a>
                 <!-- <div class="shelter&#45;search"> -->
@@ -120,23 +122,25 @@
                     <ul>
                         <li><a href="/" title="">Главная</a></li>
 
-                        <li><a href="/" title="">Новости</a></li>
+                        <li><a href="/articles" title="">Новости</a></li>
 
-                        <li><a href="/" title="">Проекты</a>
+                        <li><a href="/profiles" title="">Анкеты</a></li>
+
+                        <li><a href="/projects" title="">Проекты</a>
                             <ul>
                                 <li><a href="/">menu</a></li>
                                 <li><a href="/">menu</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="/" title="">Акции</a>
+                        <li><a href="/events" title="">Акции</a>
                             <ul>
                                 <li><a href="/">menu</a></li>
                                 <li><a href="/">menu</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="/" title="">О фонде</a></li>
+                        <li><a href="/about" title="">О фонде</a></li>
                     </ul>
                 </div>
             </div><!-- Sideheader -->
@@ -161,10 +165,10 @@
                                 <h3 class="widget-title">Фонд</h3>
                                 <ul>
                                     <li><a href="/" title="">Главная</a></li>
-                                    <li><a href="/" title="">Новости</a></li>
-                                    <li><a href="/" title="">О фонде</a></li>
-                                    <li><a href="/" title="">Отчеты</a></li>
-                                    <li><a href="/" title="">Стать волонтёром</a></li>
+                                    <li><a href="/articles" title="">Новости</a></li>
+                                    <li><a href="/about" title="">О фонде</a></li>
+                                    <li><a href="/docs" title="">Отчеты</a></li>
+                                    <li><a href="/help" title="">Стать волонтёром</a></li>
                                 </ul>
                             </div>
                         </div>

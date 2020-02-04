@@ -41,10 +41,13 @@ fn rocket(_config: Config) -> Rocket {
             "/",
             routes![
                 pages::index,
+                pages::articles,
                 pages::profiles,
                 pages::projects,
                 pages::events,
                 pages::about,
+                pages::docs,
+                pages::help,
             ],
         )
         .mount(
