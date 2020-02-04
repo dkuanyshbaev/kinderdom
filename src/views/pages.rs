@@ -90,8 +90,8 @@ pub fn docs() -> Template {
 #[get("/help")]
 pub fn help() -> Template {
     let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
+        name: "Name".to_string(),
+        items: vec!["one", "two"],
     };
     Template::render("help", &context)
 }
@@ -100,5 +100,5 @@ pub fn help() -> Template {
 pub fn not_found(req: &Request) -> Template {
     let mut map = HashMap::new();
     map.insert("path", req.uri().path());
-    Template::render("error/404", &map)
+    Template::render("404", &map)
 }
