@@ -1,0 +1,5 @@
+{% extends "admin/main" %}
+
+{% block content %}
+artiles admin list
+{% endblock content %}

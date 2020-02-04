@@ -6,7 +6,7 @@ use rocket_contrib::templates::Template;
 use std::collections::HashMap;
 
 #[derive(Serialize)]
-pub struct TemplateContext {
+struct TemplateContext {
     pub name: String,
     pub items: Vec<&'static str>,
 }

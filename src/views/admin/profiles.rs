@@ -1,8 +1,19 @@
 use crate::Db;
+use rocket_contrib::templates::Template;
+
+#[derive(Serialize)]
+struct TemplateContext {
+    pub name: String,
+    pub items: Vec<&'static str>,
+}
 
 #[get("/profiles")]
-pub fn list(_conn: Db) -> &'static str {
-    "all profiles"
+pub fn list(_conn: Db) -> Template {
+    let context = TemplateContext {
+        name: "profiles list".to_string(),
+        items: vec!["one", "two"],
+    };
+    Template::render("admin/profiles/list", &context)
 }
 
 #[get("/profiles/<id>")]

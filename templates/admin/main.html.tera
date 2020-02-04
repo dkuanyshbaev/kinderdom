@@ -1,1 +1,5 @@
-the main admin page
+this is admin page:
+
+<hr>
+
+{% block content %}{% endblock content %}
