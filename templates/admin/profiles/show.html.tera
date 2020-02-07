@@ -1,0 +1,5 @@
+{% extends "admin/base" %}
+
+{% block content %}
+<h4>{{ name }} details</h4>
+{% endblock content %}

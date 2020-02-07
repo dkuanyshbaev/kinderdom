@@ -4,7 +4,7 @@ use crate::models::schema::profiles::dsl::profiles as all_profiles;
 use diesel::prelude::*;
 
 #[table_name = "profiles"]
-#[derive(Queryable, Insertable, FromForm, Debug, Clone)]
+#[derive(Serialize, Queryable, Insertable, FromForm, Debug, Clone)]
 pub struct Profile {
     pub id: Option<i32>,
     pub name: String,
@@ -15,6 +15,11 @@ pub struct Profile {
     // pub created_at: Timestamp,
 }
 
+#[derive(Serialize)]
+pub struct Profiles {
+    pub profiles: Vec<Profile>,
+}
+
 impl Profile {
     pub fn all(connection: &PgConnection) -> Vec<Profile> {
         all_profiles
@@ -22,6 +27,13 @@ impl Profile {
             .limit(5)
             .order(profiles::id.desc())
             .load::<Profile>(connection)
+            .unwrap()
+    }
+
+    pub fn get(connection: &PgConnection, id: i32) -> Profile {
+        all_profiles
+            .find(id)
+            .get_result::<Profile>(connection)
             .unwrap()
     }
 

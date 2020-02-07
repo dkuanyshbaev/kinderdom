@@ -1,25 +1,29 @@
+use crate::models::profile::{Profile, Profiles};
 use crate::Db;
 use rocket_contrib::templates::Template;
 
-#[derive(Serialize)]
-struct TemplateContext {
-    pub name: String,
-    pub items: Vec<&'static str>,
-}
-
 #[get("/profiles")]
-pub fn list(_conn: Db) -> Template {
-    let context = TemplateContext {
-        name: "profiles list".to_string(),
-        items: vec!["one", "two"],
-    };
-    Template::render("admin/profiles/list", &context)
+pub fn list(connection: Db) -> Template {
+    // let profiles = Profile::all(&connection);
+    // let context = Profiles { profiles: profiles };
+
+    // let context = Profiles {
+    //     profiles: Profile::all(&connection),
+    // };
+    // Template::render("admin/profiles/list", &context)
+    Template::render(
+        "admin/profiles/list",
+        Profiles {
+            profiles: Profile::all(&connection),
+        },
+    )
 }
 
 #[get("/profiles/<id>")]
-pub fn show(_conn: Db, id: i32) -> &'static str {
-    println!("{}", id);
-    "profile details"
+pub fn show(connection: Db, id: i32) -> Template {
+    let profile = Profile::get(&connection, id);
+
+    Template::render("admin/profiles/show", profile)
 }
 
 #[post("/profiles")]
