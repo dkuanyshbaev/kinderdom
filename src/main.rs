@@ -15,9 +15,6 @@ use rocket_contrib::{serve::StaticFiles, templates::Template};
 use std::{env, process};
 use views::{admin, pages};
 
-#[cfg(test)]
-mod tests;
-
 pub mod models;
 pub mod views;
 
@@ -97,4 +94,25 @@ fn main() {
 
     let error = rocket(config).launch();
     println!("Launch failed: {}", error);
+}
+
+#[cfg(test)]
+mod test {
+    use super::{rocket, Config};
+    use rocket::http::Status;
+    use rocket::local::Client;
+
+    #[test]
+    fn test_main() {
+        let test_config = Config {
+            secret: "thesecret".to_string(),
+        };
+        let client = Client::new(rocket(test_config)).unwrap();
+
+        let mut response = client.get("/").dispatch();
+        assert_eq!(response.status(), Status::Ok);
+
+        let body = response.body_string().unwrap();
+        assert!(body.contains("kinderdom@mail.ru"));
+    }
 }
