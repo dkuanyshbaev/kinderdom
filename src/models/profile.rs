@@ -79,10 +79,10 @@ impl Profile {
 // use std::io::Cursor;
 //
 // use rocket::http::ContentType;
-use rocket::request::Request;
+// use rocket::request::Request;
 // use rocket::response::{self, Responder, Response};
-use rocket::response::{self, Responder};
-use rocket_contrib::templates::Template;
+// use rocket::response::{self, Responder};
+// use rocket_contrib::templates::Template;
 
 // impl<'r> Responder<'r> for Profile {
 //     fn respond_to(self, _: &Request) -> response::Result<'r> {

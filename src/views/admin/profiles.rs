@@ -1,5 +1,4 @@
-// use crate::errors::Error as ApiError;
-use crate::errors::Error;
+use crate::errors::KinderError;
 use crate::models::profile::{Profile, Profiles};
 use crate::Db;
 use rocket::response::Redirect;
@@ -26,15 +25,6 @@ pub fn list(connection: Db) -> Template {
 
 //----------------------------------------------------------------------------
 
-// use rocket::response::status::NotFound;
-//
-// #[get("/notes/<id>", format = "application/json")]
-// fn note_get(db: DB, id: i32) -> Result<JSON<Note>, ApiError> {
-//     let note = get_note(db.conn(), id)?;
-//         Ok(JSON(note))
-//         }
-// }
-
 // #[get("/notes/<id>", format = "application/json")]
 // fn note_get(db: DB, id: i32) -> Result<JSON<Note>, diesel::result::Error> {
 //     let note = get_note(db.conn(), id);
@@ -44,10 +34,8 @@ pub fn list(connection: Db) -> Template {
 //     }
 // }
 
-// pub fn show(connection: Db, id: i32) -> Result<Template, diesel::result::Error> {
-
 #[get("/profiles/<id>")]
-pub fn show(connection: Db, id: i32) -> Result<Template, Error> {
+pub fn show(connection: Db, id: i32) -> Result<Template, KinderError> {
     let profile = Profile::get(&connection, id)?;
 
     Ok(Template::render("admin/profiles/show", profile))
