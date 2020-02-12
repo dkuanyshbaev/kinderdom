@@ -1,0 +1,6 @@
+{% extends "admin/base" %}
+
+{% block content %}
+<h4>the form here</h4>
+<h4>{{ id }}</h4>
+{% endblock content %}

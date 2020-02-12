@@ -24,7 +24,7 @@ impl Profile {
     pub fn all(connection: &PgConnection) -> Vec<Profile> {
         all_profiles
             .filter(profiles::published.eq(false))
-            .limit(5)
+            .limit(8)
             .order(profiles::id.desc())
             .load::<Profile>(connection)
             .unwrap()
@@ -37,17 +37,29 @@ impl Profile {
             .unwrap()
     }
 
-    // pub fn insert(todo: Todo, conn: &SqliteConnection) -> bool {
-    //     let t = Task {
-    //         id: None,
-    //         description: todo.description,
-    //         completed: false,
-    //     };
-    //     diesel::insert_into(tasks::table)
-    //         .values(&t)
-    //         .execute(conn)
-    //         .is_ok()
-    // }
+    pub fn new(connection: &PgConnection) -> Profile {
+        let empty_profile = Profile {
+            id: None,
+            name: "".to_string(),
+            photo: "".to_string(),
+            video: "".to_string(),
+            description: "".to_string(),
+            published: false,
+        };
+
+        diesel::insert_into(profiles::table)
+            .values(empty_profile)
+            .get_result(connection)
+            .expect("Error saving new profile")
+        // .execute(connection)
+        // .is_ok()
+    }
+
+    pub fn delete(connection: &PgConnection, id: i32) -> bool {
+        diesel::delete(all_profiles.find(id))
+            .execute(connection)
+            .is_ok()
+    }
 
     // pub fn toggle_with_id(id: i32, conn: &SqliteConnection) -> bool {
     //     let task = all_tasks.find(id).get_result::<Task>(conn);
@@ -61,15 +73,6 @@ impl Profile {
     //         .set(task_completed.eq(new_status))
     //         .execute(conn)
     //         .is_ok()
-    // }
-
-    // pub fn delete_with_id(id: i32, conn: &SqliteConnection) -> bool {
-    //     diesel::delete(all_tasks.find(id)).execute(conn).is_ok()
-    // }
-
-    // #[cfg(test)]
-    // pub fn delete_all(conn: &SqliteConnection) -> bool {
-    //     diesel::delete(all_tasks).execute(conn).is_ok()
     // }
 }
 

@@ -1,5 +1,6 @@
 use crate::models::profile::{Profile, Profiles};
 use crate::Db;
+use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
 
 #[get("/profiles")]
@@ -11,6 +12,7 @@ pub fn list(connection: Db) -> Template {
     //     profiles: Profile::all(&connection),
     // };
     // Template::render("admin/profiles/list", &context)
+
     Template::render(
         "admin/profiles/list",
         Profiles {
@@ -26,9 +28,16 @@ pub fn show(connection: Db, id: i32) -> Template {
     Template::render("admin/profiles/show", profile)
 }
 
+#[get("/profiles/add")]
+pub fn add(connection: Db) -> Template {
+    let new_profile = Profile::new(&connection);
+
+    Template::render("admin/profiles/form", new_profile)
+}
+
 #[post("/profiles")]
 pub fn create(_conn: Db) -> &'static str {
-    "create profile"
+    "post create profile"
 }
 
 #[put("/profiles/<id>")]
@@ -38,9 +47,10 @@ pub fn update(_conn: Db, id: i32) -> &'static str {
 }
 
 #[delete("/profiles/<id>")]
-pub fn delete(_conn: Db, id: i32) -> &'static str {
-    println!("{}", id);
-    "delete profile"
+pub fn delete(connection: Db, id: i32) -> Redirect {
+    let _ok = Profile::delete(&connection, id);
+
+    Redirect::to("/admin/profiles")
 }
 
 //--------------------------------------------------------------------------

@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="col-6">
-                    <a href="/admin" class="btn btn-primary float-right" title="">Добавить</a>
+                    <a href="/admin/profiles/add" class="btn btn-primary float-right" title="">Добавить</a>
                 </div>
             </div>
 

@@ -60,6 +60,7 @@ fn rocket(_config: Config) -> Rocket {
                 // profiles
                 admin::profiles::list,
                 admin::profiles::show,
+                admin::profiles::add,
                 admin::profiles::create,
                 admin::profiles::update,
                 admin::profiles::delete,
