@@ -1,6 +1,7 @@
 // use diesel::sql_types::Timestamp;
-use crate::models::schema::profiles;
-use crate::models::schema::profiles::dsl::profiles as all_profiles;
+// use crate::models::schema::profiles;
+// use crate::models::schema::profiles::dsl::profiles as all_profiles;
+use super::schema::profiles;
 use diesel::prelude::*;
 
 #[table_name = "profiles"]
@@ -22,7 +23,8 @@ pub struct Profiles {
 
 impl Profile {
     pub fn all(connection: &PgConnection) -> Vec<Profile> {
-        all_profiles
+        // all_profiles
+        profiles::table
             .filter(profiles::published.eq(false))
             .limit(8)
             .order(profiles::id.desc())
@@ -30,11 +32,8 @@ impl Profile {
             .unwrap()
     }
 
-    pub fn get(connection: &PgConnection, id: i32) -> Profile {
-        all_profiles
-            .find(id)
-            .get_result::<Profile>(connection)
-            .unwrap()
+    pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
+        profiles::table.find(id).get_result::<Profile>(connection)
     }
 
     pub fn new(connection: &PgConnection) -> Profile {
@@ -56,7 +55,8 @@ impl Profile {
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> bool {
-        diesel::delete(all_profiles.find(id))
+        // diesel::delete(all_profiles.find(id))
+        diesel::delete(profiles::table.find(id))
             .execute(connection)
             .is_ok()
     }
@@ -75,6 +75,45 @@ impl Profile {
     //         .is_ok()
     // }
 }
+
+// use std::io::Cursor;
+//
+// use rocket::http::ContentType;
+use rocket::request::Request;
+// use rocket::response::{self, Responder, Response};
+use rocket::response::{self, Responder};
+use rocket_contrib::templates::Template;
+
+// impl<'r> Responder<'r> for Profile {
+//     fn respond_to(self, _: &Request) -> response::Result<'r> {
+//         // match self {
+//         //     Some(profile) => println!("!!!!!!!!!!!!!!"),
+//         //     None => println!("&&&&&&&&&&&&&&&&&&"),
+//         // }
+//         Ok(Template::render("admin/profiles/show", self))
+//
+//         // match self {
+//         //     Err(_) => Err(status::NotFound),
+//         //     Ok(profile) => Ok(Template::render("admin/profiles/show", profile)),
+//         // }
+//
+//         // Response::build()
+//         //     .sized_body(Cursor::new(format!("{}:{}", self.name, self.age)))
+//         //     .raw_header("X-Person-Name", self.name)
+//         //     .raw_header("X-Person-Age", self.age.to_string())
+//         //     .header(ContentType::new("application", "x-person"))
+//         //     .ok()
+//     }
+// }
+
+// impl<'r> Responder<'r> for Error {
+//     fn respond(self) -> Result<Response<'r>, Status> {
+//         match self {
+//             Error::NotFound => Err(Status::NotFound),
+//             _ => Err(Status::InternalServerError),
+//         }
+//     }
+// }
 
 // #[table_name = "profiles"]
 // #[derive(Insertable)]

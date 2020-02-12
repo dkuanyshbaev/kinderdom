@@ -15,6 +15,7 @@ use rocket_contrib::{serve::StaticFiles, templates::Template};
 use std::{env, process};
 use views::{admin, pages};
 
+pub mod errors;
 pub mod models;
 pub mod views;
 

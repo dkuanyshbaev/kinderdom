@@ -1,7 +1,9 @@
+use crate::errors::Error as ApiError;
 use crate::models::profile::{Profile, Profiles};
 use crate::Db;
 use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
+// use rocket::response::status::{Created, NoContent};
 
 #[get("/profiles")]
 pub fn list(connection: Db) -> Template {
@@ -21,12 +23,36 @@ pub fn list(connection: Db) -> Template {
     )
 }
 
-#[get("/profiles/<id>")]
-pub fn show(connection: Db, id: i32) -> Template {
-    let profile = Profile::get(&connection, id);
+//----------------------------------------------------------------------------
 
-    Template::render("admin/profiles/show", profile)
+// use rocket::response::status::NotFound;
+//
+// #[get("/notes/<id>", format = "application/json")]
+// fn note_get(db: DB, id: i32) -> Result<JSON<Note>, ApiError> {
+//     let note = get_note(db.conn(), id)?;
+//         Ok(JSON(note))
+//         }
+// }
+
+// #[get("/notes/<id>", format = "application/json")]
+// fn note_get(db: DB, id: i32) -> Result<JSON<Note>, diesel::result::Error> {
+//     let note = get_note(db.conn(), id);
+//     match note {
+//         Ok(note) => Ok(JSON(note)),
+//         Err(err) => Err(err),
+//     }
+// }
+
+// pub fn show(connection: Db, id: i32) -> Result<Template, diesel::result::Error> {
+
+#[get("/profiles/<id>")]
+pub fn show(connection: Db, id: i32) -> Result<Template, ApiError> {
+    let profile = Profile::get(&connection, id)?;
+
+    Ok(Template::render("admin/profiles/show", profile))
 }
+
+//----------------------------------------------------------------------------
 
 #[get("/profiles/add")]
 pub fn add(connection: Db) -> Template {
@@ -38,6 +64,7 @@ pub fn add(connection: Db) -> Template {
 #[post("/profiles")]
 pub fn create(_conn: Db) -> &'static str {
     "post create profile"
+    // Ok(Created(url, Some(JSON(note))))
 }
 
 #[put("/profiles/<id>")]
@@ -46,11 +73,14 @@ pub fn update(_conn: Db, id: i32) -> &'static str {
     "update profile"
 }
 
+// te_delete(db: DB, id: i32) -> Result<NoContent, ApiError> {}
 #[delete("/profiles/<id>")]
 pub fn delete(connection: Db, id: i32) -> Redirect {
     let _ok = Profile::delete(&connection, id);
 
+    // Redirect::to(uri!(get: name = "Unknown"))
     Redirect::to("/admin/profiles")
+    // Ok(NoContent)
 }
 
 //--------------------------------------------------------------------------

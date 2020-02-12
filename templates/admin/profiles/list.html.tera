@@ -24,15 +24,15 @@
 
                     <div class="shelter-pagination">
                         <ul class="pagination">
-                            <li> <a href="#" title=""> Previous </a> </li>
+                            <li> <a href="#" title="">Назад</a> </li>
                             <li><a class="current" href="#">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li> <a href="#" title=""> Next</a> </li>
+                            <li> <a href="#" title="">Вперед</a> </li>
                         </ul>
                     </div><!-- Shelter Pagination -->
+
                 </div>
             </div>
         </div>

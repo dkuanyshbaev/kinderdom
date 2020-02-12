@@ -1,6 +1,7 @@
 {% extends "admin/base" %}
 
 {% block content %}
+
 <h4>{{ name }} details</h4>
 <h4>{{ id }}</h4>
 
