@@ -1,4 +1,5 @@
-use crate::errors::Error as ApiError;
+// use crate::errors::Error as ApiError;
+use crate::errors::Error;
 use crate::models::profile::{Profile, Profiles};
 use crate::Db;
 use rocket::response::Redirect;
@@ -46,7 +47,7 @@ pub fn list(connection: Db) -> Template {
 // pub fn show(connection: Db, id: i32) -> Result<Template, diesel::result::Error> {
 
 #[get("/profiles/<id>")]
-pub fn show(connection: Db, id: i32) -> Result<Template, ApiError> {
+pub fn show(connection: Db, id: i32) -> Result<Template, Error> {
     let profile = Profile::get(&connection, id)?;
 
     Ok(Template::render("admin/profiles/show", profile))

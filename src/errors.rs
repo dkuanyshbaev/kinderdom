@@ -40,8 +40,7 @@ impl From<DieselError> for Error {
 }
 
 impl<'r> Responder<'r> for Error {
-    // fn respond_to(self, _: &Request) -> response::Result<'r> {
-    fn respond_to(self, _: &Request) -> Result<Response<'r>, Status> {
+    fn respond_to(self, _: &Request) -> rocket::response::Result<'r> {
         match self {
             Error::NotFound => Err(Status::NotFound),
             _ => Err(Status::InternalServerError),
