@@ -1,20 +1,18 @@
 use crate::errors::KinderError;
 use crate::models::profile::{Profile, Profiles};
 use crate::Db;
+use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
 // use rocket::response::status::{Created, NoContent};
 
+#[derive(Serialize)]
+struct TemplateContext {
+    name: String,
+}
+
 #[get("/profiles")]
 pub fn list(connection: Db) -> Template {
-    // let profiles = Profile::all(&connection);
-    // let context = Profiles { profiles: profiles };
-
-    // let context = Profiles {
-    //     profiles: Profile::all(&connection),
-    // };
-    // Template::render("admin/profiles/list", &context)
-
     Template::render(
         "admin/profiles/list",
         Profiles {
@@ -23,17 +21,6 @@ pub fn list(connection: Db) -> Template {
     )
 }
 
-//----------------------------------------------------------------------------
-
-// #[get("/notes/<id>", format = "application/json")]
-// fn note_get(db: DB, id: i32) -> Result<JSON<Note>, diesel::result::Error> {
-//     let note = get_note(db.conn(), id);
-//     match note {
-//         Ok(note) => Ok(JSON(note)),
-//         Err(err) => Err(err),
-//     }
-// }
-
 #[get("/profiles/<id>")]
 pub fn show(connection: Db, id: i32) -> Result<Template, KinderError> {
     let profile = Profile::get(&connection, id)?;
@@ -41,20 +28,29 @@ pub fn show(connection: Db, id: i32) -> Result<Template, KinderError> {
     Ok(Template::render("admin/profiles/show", profile))
 }
 
-//----------------------------------------------------------------------------
-
 #[get("/profiles/add")]
-pub fn add(connection: Db) -> Template {
-    let new_profile = Profile::new(&connection);
-
-    Template::render("admin/profiles/form", new_profile)
+pub fn add() -> Template {
+    Template::render(
+        "admin/profiles/form",
+        TemplateContext {
+            // TODO: real context
+            name: "Анкеты".to_string(),
+        },
+    )
 }
 
-#[post("/profiles")]
-pub fn create(_conn: Db) -> &'static str {
-    "post create profile"
-    // Ok(Created(url, Some(JSON(note))))
+#[post("/profiles", data = "<profile>")]
+pub fn create(connection: Db, profile: Form<Profile>) -> Result<Redirect, KinderError> {
+    let profile = Profile::insert(&connection, profile.into_inner())?;
+
+    if let Some(id) = profile.id {
+        Ok(Redirect::to(format!("/admin/profiles/{}", id)))
+    } else {
+        Err(KinderError::InternalServerError)
+    }
 }
+
+//----------------------------------------------------------------------------
 
 #[put("/profiles/<id>")]
 pub fn update(_conn: Db, id: i32) -> &'static str {
@@ -62,14 +58,11 @@ pub fn update(_conn: Db, id: i32) -> &'static str {
     "update profile"
 }
 
-// te_delete(db: DB, id: i32) -> Result<NoContent, ApiError> {}
 #[delete("/profiles/<id>")]
 pub fn delete(connection: Db, id: i32) -> Redirect {
     let _ok = Profile::delete(&connection, id);
 
-    // Redirect::to(uri!(get: name = "Unknown"))
     Redirect::to("/admin/profiles")
-    // Ok(NoContent)
 }
 
 //--------------------------------------------------------------------------
