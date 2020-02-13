@@ -19,6 +19,8 @@ pub mod errors;
 pub mod models;
 pub mod views;
 
+type KinderResult<T> = Result<T, errors::KinderError>;
+
 #[database("kinderdom")]
 pub struct Db(PgConnection);
 
@@ -60,9 +62,9 @@ fn rocket(_config: Config) -> Rocket {
                 admin::login,
                 // profiles
                 admin::profiles::list,
-                admin::profiles::show,
                 admin::profiles::add,
                 admin::profiles::create,
+                admin::profiles::edit,
                 admin::profiles::update,
                 admin::profiles::delete,
                 // projects

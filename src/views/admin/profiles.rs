@@ -1,11 +1,10 @@
 use crate::errors::KinderError;
 use crate::models::profile::{Profile, Profiles};
 use crate::Db;
+use crate::KinderResult;
 use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
-
-type KinderResult<T> = Result<T, KinderError>;
 
 #[derive(Serialize)]
 struct TemplateContext {
@@ -22,19 +21,12 @@ pub fn list(connection: Db) -> KinderResult<Template> {
     ))
 }
 
-#[get("/profiles/<id>")]
-pub fn show(connection: Db, id: i32) -> KinderResult<Template> {
-    let profile = Profile::get(&connection, id)?;
-
-    Ok(Template::render("admin/profiles/show", profile))
-}
-
 #[get("/profiles/add")]
 pub fn add() -> Template {
     // TODO: real context
     let name = "Анкеты".to_string();
 
-    Template::render("admin/profiles/form", TemplateContext { name })
+    Template::render("admin/profiles/add", TemplateContext { name })
 }
 
 #[post("/profiles", data = "<profile>")]
@@ -48,10 +40,22 @@ pub fn create(connection: Db, profile: Form<Profile>) -> KinderResult<Redirect> 
     }
 }
 
-#[put("/profiles/<id>")]
-pub fn update(_conn: Db, id: i32) -> &'static str {
-    println!("{}", id);
-    "update profile"
+#[get("/profiles/<id>")]
+pub fn edit(connection: Db, id: i32) -> KinderResult<Template> {
+    let profile = Profile::get(&connection, id)?;
+
+    Ok(Template::render("admin/profiles/edit", profile))
+}
+
+#[put("/profiles/<id>", data = "<profile>")]
+pub fn update(connection: Db, profile: Form<Profile>, id: i32) -> KinderResult<Redirect> {
+    let profile = Profile::update(&connection, profile.into_inner(), id)?;
+
+    if let Some(id) = profile.id {
+        Ok(Redirect::to(format!("/admin/profiles/{}", id)))
+    } else {
+        Err(KinderError::InternalServerError)
+    }
 }
 
 #[delete("/profiles/<id>")]

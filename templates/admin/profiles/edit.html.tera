@@ -1,0 +1,24 @@
+{% extends "admin/base" %}
+
+{% block content %}
+<form action="/admin/profiles/{{ id }}" method="post">
+    <input type="hidden" name="_method" value="put" />
+    <input type="text" name="name" value="{{ name }}"><br>
+    <input type="text" name="photo" value="{{ photo }}"><br>
+    <input type="text" name="video" value="{{ video }}"><br>
+    <textarea rows="10" cols="45" name="description">{{ description }}</textarea><br>
+    {% if published %}
+        <input type="checkbox" name="published" checked>published<br>
+    {% else %}
+        <input type="checkbox" name="published">published<br>
+    {% endif %}
+    <button class="link" type="submit">Сохранить</button>
+</form>
+
+<form action="/admin/profiles/{{ id }}" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <button class="link" type="submit" onclick="return confirm('Вы уверены, что хотите удалить элемент?');">Удалить</button>
+</form>
+
+<a class="button" href="/admin/profiles" >Отмена</a>
+{% endblock content %}

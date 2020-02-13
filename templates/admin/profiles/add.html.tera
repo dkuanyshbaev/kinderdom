@@ -1,0 +1,15 @@
+{% extends "admin/base" %}
+
+{% block content %}
+<form action="/admin/profiles" method="post">
+    <input type="hidden" name="_method" value="post" />
+    <input type="text" name="name" value=""><br>
+    <input type="text" name="photo" value=""><br>
+    <input type="text" name="video" value=""><br>
+    <textarea rows="10" cols="45" name="description"></textarea><br>
+    <input type="checkbox" name="published">published<br>
+    <button class="link" type="submit">Сохранить</button>
+</form>
+
+<a class="button" href="/admin/profiles" >Отмена</a>
+{% endblock content %}
