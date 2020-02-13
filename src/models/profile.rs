@@ -20,19 +20,25 @@ pub struct Profiles {
 }
 
 impl Profile {
-    pub fn all(connection: &PgConnection) -> Vec<Profile> {
+    pub fn all(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
         profiles::table
-            // .filter(profiles::published.eq(false))
-            // .limit(8)
             .order(profiles::id.desc())
             .load::<Profile>(connection)
-            .unwrap()
+    }
+
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
+        profiles::table
+            .filter(profiles::published.eq(true))
+            .limit(4)
+            .order(profiles::id.desc())
+            .load::<Profile>(connection)
     }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
         profiles::table.find(id).get_result::<Profile>(connection)
     }
 
+    // --------------------------------------------------------------
     pub fn new(connection: &PgConnection) -> Profile {
         let empty_profile = Profile {
             id: None,
@@ -51,19 +57,6 @@ impl Profile {
         // .is_ok()
     }
 
-    pub fn insert(connection: &PgConnection, profile: Profile) -> QueryResult<Profile> {
-        diesel::insert_into(profiles::table)
-            .values(profile)
-            .get_result(connection)
-        // .is_ok()
-    }
-
-    pub fn delete(connection: &PgConnection, id: i32) -> bool {
-        diesel::delete(profiles::table.find(id))
-            .execute(connection)
-            .is_ok() //?
-    }
-
     // pub fn toggle_with_id(id: i32, conn: &SqliteConnection) -> bool {
     //     let task = all_tasks.find(id).get_result::<Task>(conn);
     //     if task.is_err() {
@@ -77,4 +70,15 @@ impl Profile {
     //         .execute(conn)
     //         .is_ok()
     // }
+    // --------------------------------------------------------------
+
+    pub fn insert(connection: &PgConnection, profile: Profile) -> QueryResult<Profile> {
+        diesel::insert_into(profiles::table)
+            .values(profile)
+            .get_result(connection)
+    }
+
+    pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
+        diesel::delete(profiles::table.find(id)).get_result(connection)
+    }
 }

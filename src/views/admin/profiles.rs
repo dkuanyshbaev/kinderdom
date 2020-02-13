@@ -4,7 +4,8 @@ use crate::Db;
 use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
-// use rocket::response::status::{Created, NoContent};
+
+type KinderResult<T> = Result<T, KinderError>;
 
 #[derive(Serialize)]
 struct TemplateContext {
@@ -12,17 +13,17 @@ struct TemplateContext {
 }
 
 #[get("/profiles")]
-pub fn list(connection: Db) -> Template {
-    Template::render(
+pub fn list(connection: Db) -> KinderResult<Template> {
+    let profiles = Profile::all(&connection)?;
+
+    Ok(Template::render(
         "admin/profiles/list",
-        Profiles {
-            profiles: Profile::all(&connection),
-        },
-    )
+        Profiles { profiles },
+    ))
 }
 
 #[get("/profiles/<id>")]
-pub fn show(connection: Db, id: i32) -> Result<Template, KinderError> {
+pub fn show(connection: Db, id: i32) -> KinderResult<Template> {
     let profile = Profile::get(&connection, id)?;
 
     Ok(Template::render("admin/profiles/show", profile))
@@ -30,17 +31,14 @@ pub fn show(connection: Db, id: i32) -> Result<Template, KinderError> {
 
 #[get("/profiles/add")]
 pub fn add() -> Template {
-    Template::render(
-        "admin/profiles/form",
-        TemplateContext {
-            // TODO: real context
-            name: "Анкеты".to_string(),
-        },
-    )
+    // TODO: real context
+    let name = "Анкеты".to_string();
+
+    Template::render("admin/profiles/form", TemplateContext { name })
 }
 
 #[post("/profiles", data = "<profile>")]
-pub fn create(connection: Db, profile: Form<Profile>) -> Result<Redirect, KinderError> {
+pub fn create(connection: Db, profile: Form<Profile>) -> KinderResult<Redirect> {
     let profile = Profile::insert(&connection, profile.into_inner())?;
 
     if let Some(id) = profile.id {
@@ -50,8 +48,6 @@ pub fn create(connection: Db, profile: Form<Profile>) -> Result<Redirect, Kinder
     }
 }
 
-//----------------------------------------------------------------------------
-
 #[put("/profiles/<id>")]
 pub fn update(_conn: Db, id: i32) -> &'static str {
     println!("{}", id);
@@ -59,10 +55,10 @@ pub fn update(_conn: Db, id: i32) -> &'static str {
 }
 
 #[delete("/profiles/<id>")]
-pub fn delete(connection: Db, id: i32) -> Redirect {
-    let _ok = Profile::delete(&connection, id);
+pub fn delete(connection: Db, id: i32) -> KinderResult<Redirect> {
+    let _profile = Profile::delete(&connection, id)?;
 
-    Redirect::to("/admin/profiles")
+    Ok(Redirect::to("/admin/profiles"))
 }
 
 //--------------------------------------------------------------------------
