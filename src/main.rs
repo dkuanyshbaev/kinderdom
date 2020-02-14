@@ -16,6 +16,7 @@ use rocket_contrib::{serve::StaticFiles, templates::Template};
 use std::{env, process};
 use views::{admin, pages};
 
+pub mod auth;
 pub mod errors;
 pub mod models;
 pub mod views;
@@ -36,10 +37,11 @@ impl Config {
     }
 }
 
-fn rocket(_config: Config) -> Rocket {
+fn rocket(config: Config) -> Rocket {
     rocket::ignite()
         .attach(Db::fairing())
         .attach(Template::fairing())
+        .manage(config)
         .mount("/static", StaticFiles::from("static/"))
         .mount("/admin/static", StaticFiles::from("static/"))
         .mount(
