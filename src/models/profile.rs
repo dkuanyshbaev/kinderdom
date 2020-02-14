@@ -1,17 +1,26 @@
-// use diesel::sql_types::Timestamp;
 use super::schema::profiles;
+use chrono::NaiveDateTime;
 use diesel::prelude::*;
 
+#[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "profiles"]
-#[derive(Serialize, Queryable, Insertable, FromForm, AsChangeset, Debug, Clone)]
-pub struct Profile {
-    pub id: Option<i32>,
+pub struct NewProfile {
     pub name: String,
     pub photo: String,
     pub video: String,
     pub description: String,
     pub published: bool,
-    // pub created_at: Timestamp,
+}
+
+#[derive(Serialize, Queryable, Debug)]
+pub struct Profile {
+    pub id: i32,
+    pub name: String,
+    pub photo: String,
+    pub video: String,
+    pub description: String,
+    pub published: bool,
+    pub created_at: NaiveDateTime,
 }
 
 #[derive(Serialize)]
@@ -36,13 +45,13 @@ impl Profile {
         profiles::table.find(id).get_result(connection)
     }
 
-    pub fn insert(connection: &PgConnection, profile: Profile) -> QueryResult<Profile> {
+    pub fn insert(connection: &PgConnection, profile: NewProfile) -> QueryResult<Profile> {
         diesel::insert_into(profiles::table)
             .values(profile)
             .get_result(connection)
     }
 
-    pub fn update(connection: &PgConnection, profile: Profile, id: i32) -> QueryResult<Profile> {
+    pub fn update(connection: &PgConnection, profile: NewProfile, id: i32) -> QueryResult<Profile> {
         diesel::update(profiles::table.find(id))
             .set(profile)
             .get_result(connection)

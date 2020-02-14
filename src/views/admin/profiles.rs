@@ -1,7 +1,5 @@
-use crate::errors::KinderError;
-use crate::models::profile::{Profile, Profiles};
-use crate::Db;
-use crate::KinderResult;
+use crate::models::profile::{NewProfile, Profile, Profiles};
+use crate::{Db, KinderResult};
 use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
@@ -29,15 +27,11 @@ pub fn add() -> Template {
     Template::render("admin/profiles/add", TemplateContext { name })
 }
 
-#[post("/profiles", data = "<profile>")]
-pub fn create(connection: Db, profile: Form<Profile>) -> KinderResult<Redirect> {
-    let profile = Profile::insert(&connection, profile.into_inner())?;
+#[post("/profiles", data = "<new_profile>")]
+pub fn create(connection: Db, new_profile: Form<NewProfile>) -> KinderResult<Redirect> {
+    let profile = Profile::insert(&connection, new_profile.into_inner())?;
 
-    if let Some(id) = profile.id {
-        Ok(Redirect::to(format!("/admin/profiles/{}", id)))
-    } else {
-        Err(KinderError::InternalServerError)
-    }
+    Ok(Redirect::to(format!("/admin/profiles/{}", profile.id)))
 }
 
 #[get("/profiles/<id>")]
@@ -47,15 +41,11 @@ pub fn edit(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render("admin/profiles/edit", profile))
 }
 
-#[put("/profiles/<id>", data = "<profile>")]
-pub fn update(connection: Db, profile: Form<Profile>, id: i32) -> KinderResult<Redirect> {
-    let profile = Profile::update(&connection, profile.into_inner(), id)?;
+#[put("/profiles/<id>", data = "<new_profile>")]
+pub fn update(connection: Db, new_profile: Form<NewProfile>, id: i32) -> KinderResult<Redirect> {
+    let profile = Profile::update(&connection, new_profile.into_inner(), id)?;
 
-    if let Some(id) = profile.id {
-        Ok(Redirect::to(format!("/admin/profiles/{}", id)))
-    } else {
-        Err(KinderError::InternalServerError)
-    }
+    Ok(Redirect::to(format!("/admin/profiles/{}", profile.id)))
 }
 
 #[delete("/profiles/<id>")]
