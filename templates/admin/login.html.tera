@@ -1,5 +1,10 @@
 {% extends "admin/base" %}
 
 {% block content %}
-login page
+<form action="/admin/login" method="post" accept-charset="utf-8">
+    <input type="hidden" name="_method" value="post" />
+    <label for="password">Пароль</label>
+    <input type="password" name="password" id="password" value="" />
+    <p><input type="submit" value="Вход"></p>
+</form>
 {% endblock content %}

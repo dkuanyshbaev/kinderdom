@@ -1,4 +1,4 @@
-#![feature(proc_macro_hygiene, decl_macro)]
+#![feature(proc_macro_hygiene, decl_macro, never_type)]
 
 #[macro_use]
 extern crate rocket;
@@ -62,7 +62,9 @@ fn rocket(config: Config) -> Rocket {
             routes![
                 // common
                 admin::main,
+                admin::login_page,
                 admin::login,
+                admin::logout,
                 // profiles
                 admin::profiles::list,
                 admin::profiles::add,

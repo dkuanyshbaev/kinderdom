@@ -1,5 +1,45 @@
+use crate::rocket::outcome::IntoOutcome;
+use rocket::request::{self, FromRequest, Request};
+
+// #[derive(Debug)]
+// pub struct Admin(String);
+//
+// impl<'a, 'r> FromRequest<'a, 'r> for Admin {
+//     type Error = ();
+//
+//     fn from_request(request: &'a Request<'r>) -> request::Outcome<Admin, ()> {
+//         // This will unconditionally query the database!
+//         // let user = request.guard::<User>()?;
+//
+//         if user.is_admin {
+//             Outcome::Success(Admin { "test".to_string() })
+//         } else {
+//             Outcome::Forward(())
+//         }
+//     }
+// }
+
+#[derive(FromForm)]
+pub struct LoginForm {
+    // username: String,
+    pub password: String,
+}
+
 #[derive(Debug)]
-pub struct Admin(String);
+pub struct Admin(usize);
+
+impl<'a, 'r> FromRequest<'a, 'r> for Admin {
+    type Error = !;
+
+    fn from_request(request: &'a Request<'r>) -> request::Outcome<Admin, !> {
+        request
+            .cookies()
+            .get_private("admin_id")
+            .and_then(|cookie| cookie.value().parse().ok())
+            .map(|id| Admin(id))
+            .or_forward(())
+    }
+}
 
 // impl<'a, 'r> FromRequest<'a, 'r> for HeaderCount {
 //     type Error = !;

@@ -12,8 +12,7 @@ struct TemplateContext {
 }
 
 #[get("/profiles")]
-// pub fn list(admin: Admin, connection: Db) -> KinderResult<Template> {
-pub fn list(config: State<Config>, connection: Db) -> KinderResult<Template> {
+pub fn list(config: State<Config>, _admin: Admin, connection: Db) -> KinderResult<Template> {
     let profiles = Profile::all(&connection)?;
 
     println!("--------{}", config.secret);

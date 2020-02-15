@@ -38,6 +38,9 @@
         <header>
             <div class="topbar">
                 <a class="top-btn open-popup" href="/admin" title="">Выход</a>
+                <!-- <form action="/logout" method="post"> -->
+                <!--     <input class="top&#45;btn" type="submit" name="logout" value="Выход" /> -->
+                <!-- </form> -->
                 <ul>
                     <li><a href="/" title="" target="_blank">На сайт</a></li>
                 </ul>
@@ -65,7 +68,9 @@
                 <!-- <a class="top&#45;btn open&#45;popup" href="/admin" title="">Выход</a> -->
                 <ul>
                     <li><a href="/" title="" target="_blank">На сайт</a></li>
-                    <li><a href="/admin" title="">Выход</a></li>
+                    <form action="/logout" method="post" accept-charset="utf-8">
+                        <input type="submit" name="logout" id="logout" value="Выход" />
+                    </form>
                 </ul>
             </div><!-- Topbar -->
             <div class="responsive-menubar">
