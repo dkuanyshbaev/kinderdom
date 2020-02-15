@@ -4,54 +4,43 @@ pub mod profiles;
 pub mod projects;
 
 use crate::auth::LoginForm;
-use crate::Db;
-use crate::KinderResult;
+use crate::{Config, KinderResult};
 use rocket::http::{Cookie, Cookies};
 use rocket::request::Form;
 use rocket::response::Redirect;
+use rocket::State;
 use rocket_contrib::templates::Template;
 
 #[derive(Serialize)]
 struct TemplateContext {
-    pub name: String,
-    pub items: Vec<&'static str>,
+    name: String,
 }
 
 #[get("/")]
-pub fn main(_conn: Db) -> Template {
-    let context = TemplateContext {
-        name: "main admin page".to_string(),
-        items: vec!["one", "two"],
-    };
-    Template::render("admin/main", &context)
+pub fn main() -> Template {
+    let name = "Dashboard".to_string();
+
+    Template::render("admin/main", TemplateContext { name })
 }
 
-//--------------------------------------------------------------------------
-
 #[get("/login")]
-pub fn login_page(_conn: Db) -> Template {
-    let context = TemplateContext {
-        name: "login page".to_string(),
-        items: vec!["one", "two"],
-    };
-    Template::render("admin/login", &context)
+pub fn login_page() -> Template {
+    let name = "Login".to_string();
+
+    Template::render("admin/login", TemplateContext { name })
 }
 
 #[post("/login", data = "<login_form>")]
-// fn login(mut cookies: Cookies, login_form: Form<LoginForm>) -> Result<Redirect, Flash<Redirect>> {
-pub fn login(mut cookies: Cookies, login_form: Form<LoginForm>) -> KinderResult<Redirect> {
-    // if login.username == "Sergio" && login.password == "password" {
-    if login_form.password == "assword" {
+pub fn login(
+    mut cookies: Cookies,
+    config: State<Config>,
+    login_form: Form<LoginForm>,
+) -> KinderResult<Redirect> {
+    if login_form.password == config.secret {
         cookies.add_private(Cookie::new("admin_id", 1.to_string()));
-        // Ok(Redirect::to(uri!(index)))
         Ok(Redirect::to("/admin"))
     } else {
-        // Redirect::to(uri!(login_page))
         Ok(Redirect::to("/admin/login"))
-        // Err(Flash::error(
-        //     Redirect::to(uri!(login_page)),
-        //     "Invalid username/password.",
-        // ))
     }
 }
 

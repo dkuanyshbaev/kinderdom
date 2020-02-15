@@ -1,9 +1,7 @@
 use crate::models::profile::{NewProfile, Profile, Profiles};
-use crate::Config;
 use crate::{auth::Admin, Db, KinderResult};
 use rocket::request::Form;
 use rocket::response::Redirect;
-use rocket::State;
 use rocket_contrib::templates::Template;
 
 #[derive(Serialize)]
@@ -12,10 +10,8 @@ struct TemplateContext {
 }
 
 #[get("/profiles")]
-pub fn list(config: State<Config>, _admin: Admin, connection: Db) -> KinderResult<Template> {
+pub fn list(_admin: Admin, connection: Db) -> KinderResult<Template> {
     let profiles = Profile::all(&connection)?;
-
-    println!("--------{}", config.secret);
 
     Ok(Template::render(
         "admin/profiles/list",
