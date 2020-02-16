@@ -65,6 +65,12 @@ fn rocket(config: Config) -> Rocket {
                 admin::login_page,
                 admin::login,
                 admin::logout,
+                // articles
+                admin::articles::list,
+                // admin::articles::show,
+                // admin::articles::create,
+                // admin::articles::update,
+                // admin::articles::delete,
                 // profiles
                 admin::profiles::list,
                 admin::profiles::add,
@@ -78,12 +84,6 @@ fn rocket(config: Config) -> Rocket {
                 admin::projects::create,
                 admin::projects::update,
                 admin::projects::delete,
-                // articles
-                admin::articles::list,
-                admin::articles::show,
-                admin::articles::create,
-                admin::articles::update,
-                admin::articles::delete,
                 // events
                 admin::events::list,
                 admin::events::show,

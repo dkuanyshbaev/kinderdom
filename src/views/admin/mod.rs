@@ -17,10 +17,8 @@ struct TemplateContext {
 }
 
 #[get("/")]
-pub fn main() -> Template {
-    let name = "Dashboard".to_string();
-
-    Template::render("admin/main", TemplateContext { name })
+pub fn main() -> Redirect {
+    Redirect::to("/admin/articles")
 }
 
 #[get("/login")]

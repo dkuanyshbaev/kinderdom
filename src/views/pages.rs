@@ -33,7 +33,7 @@ pub fn index(connection: Db) -> Template {
     Template::render("pages/index", &context)
 }
 
-#[get("/articles")]
+#[get("/articles1")]
 pub fn articles() -> Template {
     let context = TemplateContext {
         name: "".to_string(),
