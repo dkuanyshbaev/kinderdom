@@ -37,6 +37,7 @@
             </div>
         </nav>
 
+        <br>
         {% block content %}{% endblock content %}
 
         <!-- Optional JavaScript -->

@@ -1,5 +1,18 @@
 {% extends "admin/layout" %}
 
 {% block content %}
-articles here
+<div class="container">
+    <a class="btn btn-outline-info" href="#">Добавить новость</a>
+    <br>
+    <br>
+    <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+                <td>Title</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock content %}

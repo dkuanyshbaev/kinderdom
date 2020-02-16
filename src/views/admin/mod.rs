@@ -42,7 +42,7 @@ pub fn login(
     }
 }
 
-#[post("/logout")]
+#[get("/logout")]
 pub fn logout(mut cookies: Cookies) -> Redirect {
     cookies.remove_private(Cookie::named("admin_id"));
 
