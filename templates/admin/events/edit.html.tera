@@ -1,0 +1,5 @@
+{% extends "admin/layout" %}
+
+{% block content %}
+edit
+{% endblock content %}

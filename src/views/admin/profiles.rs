@@ -10,7 +10,8 @@ struct TemplateContext {
 }
 
 #[get("/profiles")]
-pub fn list(_admin: Admin, connection: Db) -> KinderResult<Template> {
+// pub fn list(_admin: Admin, connection: Db) -> KinderResult<Template> {
+pub fn list(connection: Db) -> KinderResult<Template> {
     let profiles = Profile::all(&connection)?;
 
     Ok(Template::render(

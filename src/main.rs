@@ -43,7 +43,6 @@ fn rocket(config: Config) -> Rocket {
         .attach(Template::fairing())
         .manage(config)
         .mount("/static", StaticFiles::from("static/"))
-        .mount("/admin/static", StaticFiles::from("static/"))
         .mount(
             "/",
             routes![
@@ -80,16 +79,16 @@ fn rocket(config: Config) -> Rocket {
                 admin::profiles::delete,
                 // projects
                 admin::projects::list,
-                admin::projects::show,
-                admin::projects::create,
-                admin::projects::update,
-                admin::projects::delete,
+                // admin::projects::show,
+                // admin::projects::create,
+                // admin::projects::update,
+                // admin::projects::delete,
                 // events
                 admin::events::list,
-                admin::events::show,
-                admin::events::create,
-                admin::events::update,
-                admin::events::delete,
+                // admin::events::show,
+                // admin::events::create,
+                // admin::events::update,
+                // admin::events::delete,
             ],
         )
         .register(catchers![pages::not_found])
