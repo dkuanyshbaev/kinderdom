@@ -1,13 +1,8 @@
 use crate::models::profile::{NewProfile, Profile, Profiles};
-use crate::{auth::Admin, Db, KinderResult};
+use crate::{auth::Admin, views::NoContext, Db, KinderResult};
 use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket_contrib::templates::Template;
-
-#[derive(Serialize)]
-struct TemplateContext {
-    name: String,
-}
 
 #[get("/profiles")]
 // pub fn list(_admin: Admin, connection: Db) -> KinderResult<Template> {
@@ -22,9 +17,7 @@ pub fn list(connection: Db) -> KinderResult<Template> {
 
 #[get("/profiles/add")]
 pub fn add() -> Template {
-    let name = "Анкеты".to_string();
-
-    Template::render("admin/profiles/add", TemplateContext { name })
+    Template::render("admin/profiles/add", NoContext {})
 }
 
 #[post("/profiles", data = "<new_profile>")]

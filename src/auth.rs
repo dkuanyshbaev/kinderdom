@@ -15,7 +15,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for Admin {
     fn from_request(request: &'a Request<'r>) -> request::Outcome<Admin, !> {
         request
             .cookies()
-            .get_private("admin_id")
+            .get_private("admin")
             .and_then(|cookie| cookie.value().parse().ok())
             .map(|id| Admin(id))
             .or_forward(())
