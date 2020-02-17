@@ -29,9 +29,10 @@ pub fn add() -> Template {
 
 #[post("/profiles", data = "<new_profile>")]
 pub fn create(connection: Db, new_profile: Form<NewProfile>) -> KinderResult<Redirect> {
-    let profile = Profile::insert(&connection, new_profile.into_inner())?;
+    let _profile = Profile::insert(&connection, new_profile.into_inner())?;
 
-    Ok(Redirect::to(format!("/admin/profiles/{}", profile.id)))
+    // Ok(Redirect::to(format!("/admin/profiles/{}", profile.id)))
+    Ok(Redirect::to("/admin/profiles"))
 }
 
 #[get("/profiles/<id>")]
