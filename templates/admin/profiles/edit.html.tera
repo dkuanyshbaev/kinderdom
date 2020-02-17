@@ -27,6 +27,11 @@
             <textarea class="form-control" id="description" name="description" rows="10">{{ description }}</textarea>
         </div>
 
+        <div class="form-group">
+            <label for="donation">Собрано</label>
+            <input type="range" class="form-control-range" id="donation" value="0">
+        </div>
+
         <div class="form-group form-check">
             {% if published %}
                 <input type="checkbox" class="form-check-input" id="published" name="published" checked>
