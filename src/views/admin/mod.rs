@@ -23,9 +23,12 @@ pub fn main() -> Redirect {
 
 #[get("/login")]
 pub fn login_page() -> Template {
-    let name = "Login".to_string();
-
-    Template::render("admin/login", TemplateContext { name })
+    Template::render(
+        "admin/login",
+        TemplateContext {
+            name: "".to_string(),
+        },
+    )
 }
 
 #[post("/login", data = "<login_form>")]
@@ -35,7 +38,7 @@ pub fn login(
     login_form: Form<LoginForm>,
 ) -> KinderResult<Redirect> {
     if login_form.password == config.secret {
-        cookies.add_private(Cookie::new("admin_id", 1.to_string()));
+        cookies.add_private(Cookie::new("admin", 1.to_string()));
         Ok(Redirect::to("/admin"))
     } else {
         Ok(Redirect::to("/admin/login"))
@@ -44,7 +47,7 @@ pub fn login(
 
 #[get("/logout")]
 pub fn logout(mut cookies: Cookies) -> Redirect {
-    cookies.remove_private(Cookie::named("admin_id"));
+    cookies.remove_private(Cookie::named("admin"));
 
     Redirect::to("/admin/login")
 }
