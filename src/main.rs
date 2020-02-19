@@ -61,12 +61,12 @@ fn rocket(config: Config) -> Rocket {
         .mount(
             "/admin/articles",
             routes![
-                // admin::articles::list,
-                // admin::articles::add,
-                // admin::articles::create,
-                // admin::articles::edit,
-                // admin::articles::update,
-                // admin::articles::delete,
+                admin::articles::list,
+                admin::articles::add,
+                admin::articles::create,
+                admin::articles::edit,
+                admin::articles::update,
+                admin::articles::delete,
             ],
         )
         .mount(
@@ -83,23 +83,23 @@ fn rocket(config: Config) -> Rocket {
         .mount(
             "/admin/projects",
             routes![
-                // admin::projects::list,
-                // admin::projects::add,
-                // admin::projects::create,
-                // admin::projects::edit,
-                // admin::projects::update,
-                // admin::projects::delete,
+                admin::projects::list,
+                admin::projects::add,
+                admin::projects::create,
+                admin::projects::edit,
+                admin::projects::update,
+                admin::projects::delete,
             ],
         )
         .mount(
             "/admin/events",
             routes![
-                // admin::events::list,
-                // admin::events::add,
-                // admin::events::create,
-                // admin::events::edit,
-                // admin::events::update,
-                // admin::events::delete,
+                admin::events::list,
+                admin::events::add,
+                admin::events::create,
+                admin::events::edit,
+                admin::events::update,
+                admin::events::delete,
             ],
         )
         .register(catchers![pages::not_found])

@@ -79,9 +79,24 @@ macro_rules! handle {
     };
 }
 
+pub mod articles {
+    use crate::models::article::{Article, NewArticle};
+    handle!(Article, NewArticle, "admin/articles");
+}
+
 pub mod profiles {
     trace_macros!(true);
     use crate::models::profile::{NewProfile, Profile};
     handle!(Profile, NewProfile, "admin/profiles");
     trace_macros!(false);
+}
+
+pub mod projects {
+    use crate::models::project::{NewProject, Project};
+    handle!(Project, NewProject, "admin/projects");
+}
+
+pub mod events {
+    use crate::models::event::{Event, NewEvent};
+    handle!(Event, NewEvent, "admin/events");
 }
