@@ -81,10 +81,7 @@ macro_rules! handle {
 
 pub mod profiles {
     trace_macros!(true);
-    handle!(
-        crate::models::profile::Profile,
-        crate::models::profile::NewProfile,
-        "admin/profiles"
-    );
+    use crate::models::profile::{NewProfile, Profile};
+    handle!(Profile, NewProfile, "admin/profiles");
     trace_macros!(false);
 }

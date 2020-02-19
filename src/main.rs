@@ -1,5 +1,6 @@
 #![feature(proc_macro_hygiene, decl_macro, never_type)]
 #![feature(trace_macros)]
+#![feature(concat_idents)]
 
 #[macro_use]
 extern crate rocket;
@@ -11,13 +12,15 @@ extern crate diesel;
 extern crate serde_derive;
 extern crate chrono;
 
+use config::Config;
 use diesel::PgConnection;
 use rocket::Rocket;
 use rocket_contrib::{serve::StaticFiles, templates::Template};
-use std::{env, process};
+use std::process;
 use views::{admin, common, pages};
 
 pub mod auth;
+pub mod config;
 pub mod errors;
 pub mod models;
 pub mod views;
@@ -26,17 +29,6 @@ type KinderResult<T> = Result<T, errors::KinderError>;
 
 #[database("kinderdom")]
 pub struct Db(PgConnection);
-
-pub struct Config {
-    pub secret: String,
-}
-
-impl Config {
-    pub fn new() -> Result<Config, env::VarError> {
-        let secret = env::var("SECRET")?;
-        Ok(Config { secret })
-    }
-}
 
 fn rocket(config: Config) -> Rocket {
     rocket::ignite()
@@ -58,6 +50,26 @@ fn rocket(config: Config) -> Rocket {
             ],
         )
         .mount(
+            "/admin",
+            routes![
+                common::main,
+                common::login_page,
+                common::login,
+                common::logout,
+            ],
+        )
+        .mount(
+            "/admin/articles",
+            routes![
+                // admin::articles::list,
+                // admin::articles::add,
+                // admin::articles::create,
+                // admin::articles::edit,
+                // admin::articles::update,
+                // admin::articles::delete,
+            ],
+        )
+        .mount(
             "/admin/profiles",
             routes![
                 admin::profiles::list,
@@ -69,36 +81,23 @@ fn rocket(config: Config) -> Rocket {
             ],
         )
         .mount(
-            "/admin",
+            "/admin/projects",
             routes![
-                // common
-                common::main,
-                common::login_page,
-                common::login,
-                common::logout,
-                // articles
-                // admin::articles::list,
-                // admin::articles::show,
-                // admin::articles::create,
-                // admin::articles::update,
-                // admin::articles::delete,
-                // profiles
-                // admin::profiles::list,
-                // admin::profiles::add,
-                // admin::profiles::create,
-                // admin::profiles::edit,
-                // admin::profiles::update,
-                // admin::profiles::delete,
-                // projects
                 // admin::projects::list,
-                // admin::projects::show,
+                // admin::projects::add,
                 // admin::projects::create,
+                // admin::projects::edit,
                 // admin::projects::update,
                 // admin::projects::delete,
-                // events
+            ],
+        )
+        .mount(
+            "/admin/events",
+            routes![
                 // admin::events::list,
-                // admin::events::show,
+                // admin::events::add,
                 // admin::events::create,
+                // admin::events::edit,
                 // admin::events::update,
                 // admin::events::delete,
             ],
