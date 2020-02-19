@@ -1,4 +1,5 @@
 #![feature(proc_macro_hygiene, decl_macro, never_type)]
+#![feature(trace_macros)]
 
 #[macro_use]
 extern crate rocket;
@@ -14,7 +15,7 @@ use diesel::PgConnection;
 use rocket::Rocket;
 use rocket_contrib::{serve::StaticFiles, templates::Template};
 use std::{env, process};
-use views::{admin, pages};
+use views::{admin, common, pages};
 
 pub mod auth;
 pub mod errors;
@@ -57,34 +58,45 @@ fn rocket(config: Config) -> Rocket {
             ],
         )
         .mount(
+            "/admin/profiles",
+            routes![
+                admin::profiles::list,
+                admin::profiles::add,
+                admin::profiles::create,
+                // admin::profiles::edit,
+                // admin::profiles::update,
+                // admin::profiles::delete,
+            ],
+        )
+        .mount(
             "/admin",
             routes![
                 // common
-                admin::main,
-                admin::login_page,
-                admin::login,
-                admin::logout,
+                common::main,
+                common::login_page,
+                common::login,
+                common::logout,
                 // articles
-                admin::articles::list,
+                // admin::articles::list,
                 // admin::articles::show,
                 // admin::articles::create,
                 // admin::articles::update,
                 // admin::articles::delete,
                 // profiles
-                admin::profiles::list,
-                admin::profiles::add,
-                admin::profiles::create,
-                admin::profiles::edit,
-                admin::profiles::update,
-                admin::profiles::delete,
+                // admin::profiles::list,
+                // admin::profiles::add,
+                // admin::profiles::create,
+                // admin::profiles::edit,
+                // admin::profiles::update,
+                // admin::profiles::delete,
                 // projects
-                admin::projects::list,
+                // admin::projects::list,
                 // admin::projects::show,
                 // admin::projects::create,
                 // admin::projects::update,
                 // admin::projects::delete,
                 // events
-                admin::events::list,
+                // admin::events::list,
                 // admin::events::show,
                 // admin::events::create,
                 // admin::events::update,
