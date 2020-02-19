@@ -1,7 +1,6 @@
+use crate::models::profile::Profile;
 use crate::Db;
 use rocket::Request;
-// use rocket::State;
-use crate::models::profile::Profile;
 use rocket_contrib::templates::Template;
 use std::collections::HashMap;
 
@@ -12,18 +11,11 @@ struct TemplateContext {
 }
 
 #[get("/")]
-// pub fn index(config: State<Config>) -> Template {
 pub fn index(connection: Db) -> Template {
-    // let secret = &config.secret;
-    // println!("{}", secret);
-    // -----------------------------------------------------------
-
     let ps = Profile::all(&connection);
     for p in ps {
         println!("profile: {:?}", p);
     }
-
-    // -----------------------------------------------------------
 
     let name = "Denis".to_string();
     let context = TemplateContext {
@@ -33,7 +25,7 @@ pub fn index(connection: Db) -> Template {
     Template::render("pages/index", &context)
 }
 
-#[get("/articles1")]
+#[get("/articles")]
 pub fn articles() -> Template {
     let context = TemplateContext {
         name: "".to_string(),

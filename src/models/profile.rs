@@ -23,11 +23,6 @@ pub struct Profile {
     pub created_at: NaiveDateTime,
 }
 
-#[derive(Serialize)]
-pub struct Profiles {
-    pub profiles: Vec<Profile>,
-}
-
 impl Profile {
     pub fn all(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
         profiles::table.order(profiles::id.desc()).load(connection)
