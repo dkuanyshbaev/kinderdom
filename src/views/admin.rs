@@ -41,8 +41,41 @@ macro_rules! handle {
         }
 
         // show edit form
+        #[get("/<id>")]
+        pub fn edit(
+            connection: crate::Db,
+            id: i32,
+        ) -> crate::KinderResult<rocket_contrib::templates::Template> {
+            let item = <$t>::get(&connection, id)?;
+
+            Ok(rocket_contrib::templates::Template::render(
+                format!("{}/edit", $tp),
+                item,
+            ))
+        }
+
         // update item
+        #[put("/<id>", data = "<new_item>")]
+        pub fn update(
+            connection: crate::Db,
+            new_item: rocket::request::Form<$nt>,
+            id: i32,
+        ) -> crate::KinderResult<rocket::response::Redirect> {
+            let _item = <$t>::update(&connection, new_item.into_inner(), id)?;
+
+            Ok(rocket::response::Redirect::to(format!("/{}/{}", $tp, id)))
+        }
+
         // delete item
+        #[delete("/<id>")]
+        pub fn delete(
+            connection: crate::Db,
+            id: i32,
+        ) -> crate::KinderResult<rocket::response::Redirect> {
+            let _item = <$t>::delete(&connection, id)?;
+
+            Ok(rocket::response::Redirect::to(format!("/{}", $tp)))
+        }
     };
 }
 

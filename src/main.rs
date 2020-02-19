@@ -63,9 +63,9 @@ fn rocket(config: Config) -> Rocket {
                 admin::profiles::list,
                 admin::profiles::add,
                 admin::profiles::create,
-                // admin::profiles::edit,
-                // admin::profiles::update,
-                // admin::profiles::delete,
+                admin::profiles::edit,
+                admin::profiles::update,
+                admin::profiles::delete,
             ],
         )
         .mount(
