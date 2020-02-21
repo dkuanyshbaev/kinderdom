@@ -1,5 +1,40 @@
 {% extends "admin/layout" %}
 
 {% block content %}
-edit
+<div class="container">
+    <form action="/admin/articles/{{ id }}" method="post">
+        <input type="hidden" name="_method" value="put" />
+
+        <div class="form-group">
+            <label for="name">Заголовок</label>
+            <input type="text" class="form-control" id="name" name="title" value="{{ title }}">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Обложка</label>
+            <input type="text" class="form-control" id="image" name="image" aria-describedby="image_help" value="{{ image }}">
+            <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
+        </div>
+
+        <div class="form-group">
+            <label for="summernote">Содержание</label>
+            <textarea class="form-control" id="summernote" name="content" rows="10">{{ content }}</textarea>
+        </div>
+
+        <div class="form-group form-check">
+            {% if published %}
+                <input type="checkbox" class="form-check-input" id="published" name="published" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="published" name="published">
+            {% endif %}
+            <label class="form-check-label" for="published">Опубликовано</label>
+        </div>
+
+        <button type="submit" class="btn btn-info">Сохранить</button>
+
+        <a href="/admin/articles" class="btn btn-dark">Отмена</a>
+    </form>
+    <br>
+    <br>
+</div>
 {% endblock content %}

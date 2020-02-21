@@ -85,10 +85,8 @@ pub mod articles {
 }
 
 pub mod profiles {
-    trace_macros!(true);
     use crate::models::profile::{NewProfile, Profile};
     handle!(Profile, NewProfile, "admin/profiles");
-    trace_macros!(false);
 }
 
 pub mod projects {

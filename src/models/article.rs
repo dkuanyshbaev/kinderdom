@@ -1,12 +1,14 @@
 use super::schema::articles;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
+use rocket::http::RawStr;
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "articles"]
 pub struct NewArticle {
     pub title: String,
     pub image: String,
+    // pub content: RawStr,
     pub content: String,
     pub published: bool,
 }
