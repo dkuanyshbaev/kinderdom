@@ -82,6 +82,19 @@ macro_rules! handle {
 pub mod articles {
     use crate::models::article::{Article, NewArticle};
     handle!(Article, NewArticle, "admin/articles");
+
+    // for test's sake -------------------------
+    use rocket::request::LenientForm;
+    use rocket::response::Redirect;
+
+    #[post("/test", data = "<new_article>")]
+    pub fn test(new_article: LenientForm<NewArticle>) -> Redirect {
+        println!("-------------------------------------------");
+        println!("{:?}", new_article.image);
+        println!("{:?}", new_article.content);
+        println!("-------------------------------------------");
+        Redirect::to("/admin/articles/add")
+    }
 }
 
 pub mod profiles {

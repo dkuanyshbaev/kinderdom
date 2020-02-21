@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <form action="/admin/articles" method="post">
+    <form action="/admin/articles/test" method="post">
         <input type="hidden" name="_method" value="post" />
 
         <div class="form-group">
