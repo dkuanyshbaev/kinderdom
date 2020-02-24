@@ -28,13 +28,13 @@ impl Profile {
         profiles::table.order(profiles::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
-        profiles::table
-            .filter(profiles::published.eq(true))
-            .limit(4)
-            .order(profiles::id.desc())
-            .load(connection)
-    }
+    // pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
+    //     profiles::table
+    //         .filter(profiles::published.eq(true))
+    //         .limit(4)
+    //         .order(profiles::id.desc())
+    //         .load(connection)
+    // }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
         profiles::table.find(id).get_result(connection)

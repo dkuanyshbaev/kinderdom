@@ -26,13 +26,13 @@ impl Article {
         articles::table.order(articles::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Article>> {
-        articles::table
-            .filter(articles::published.eq(true))
-            .limit(4)
-            .order(articles::id.desc())
-            .load(connection)
-    }
+    // pub fn published(connection: &PgConnection) -> QueryResult<Vec<Article>> {
+    //     articles::table
+    //         .filter(articles::published.eq(true))
+    //         .limit(4)
+    //         .order(articles::id.desc())
+    //         .load(connection)
+    // }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Article> {
         articles::table.find(id).get_result(connection)

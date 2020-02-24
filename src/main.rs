@@ -9,6 +9,8 @@ extern crate diesel;
 #[macro_use]
 extern crate serde_derive;
 extern crate chrono;
+extern crate rocket_multipart_form_data;
+extern crate rocket_raw_response;
 
 use config::Config;
 use diesel::PgConnection;
@@ -17,11 +19,11 @@ use rocket_contrib::{serve::StaticFiles, templates::Template};
 use std::process;
 use views::{admin, common, pages};
 
-pub mod auth;
-pub mod config;
-pub mod errors;
-pub mod models;
-pub mod views;
+mod auth;
+mod config;
+mod errors;
+mod models;
+mod views;
 
 type KinderResult<T> = Result<T, errors::KinderError>;
 
