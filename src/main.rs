@@ -67,7 +67,9 @@ fn rocket(config: Config) -> Rocket {
                 admin::articles::edit,
                 admin::articles::update,
                 admin::articles::delete,
+                // for test's sake -----------------
                 admin::articles::test,
+                admin::articles::upload,
             ],
         )
         .mount(

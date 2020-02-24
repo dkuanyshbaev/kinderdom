@@ -243,6 +243,21 @@ pub mod articles {
 
         Redirect::to("/admin/articles/add")
     }
+
+    use crate::models::article::MultipartError;
+    type Result<T> = std::result::Result<T, MultipartError>;
+
+    #[post("/upload", data = "<multipart>")]
+    pub fn upload(multipart: Result<NewArticle>) -> String {
+        println!("---------------------------------------------- we are here!!!!!");
+        match multipart {
+            Ok(m) => format!(
+                "title: {}, content: {}, published: {}",
+                m.title, m.content, m.published
+            ),
+            Err(e) => format!("Error: {}", e.reason),
+        }
+    }
 }
 
 pub mod profiles {
