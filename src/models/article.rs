@@ -6,13 +6,7 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    mime,
-    FileField,
-    MultipartFormData,
-    MultipartFormDataField,
-    MultipartFormDataOptions,
-    TextField,
-    // MultipartFormDataError,
+    mime, FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
 };
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
