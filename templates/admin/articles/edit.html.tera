@@ -2,18 +2,20 @@
 
 {% block content %}
 <div class="container">
+    <img src="/static/upload/{{ image }}" class="img-thumbnail" alt="Обложка"><br><br>
+
     <form action="/admin/articles/{{ id }}" method="post">
         <input type="hidden" name="_method" value="put" />
 
         <div class="form-group">
-            <label for="name">Заголовок</label>
-            <input type="text" class="form-control" id="name" name="title" value="{{ title }}">
+            <label for="image">Обложка</label>
+            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
+            <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
         </div>
 
         <div class="form-group">
-            <label for="image">Обложка</label>
-            <input type="text" class="form-control" id="image" name="image" aria-describedby="image_help" value="{{ image }}">
-            <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
+            <label for="name">Заголовок</label>
+            <input type="text" class="form-control" id="name" name="title" value="{{ title }}">
         </div>
 
         <div class="form-group">

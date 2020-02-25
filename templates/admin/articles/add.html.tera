@@ -6,14 +6,14 @@
         <input type="hidden" name="_method" value="post" />
 
         <div class="form-group">
-            <label for="name">Заголовок</label>
-            <input type="text" class="form-control" id="name" name="title">
-        </div>
-
-        <div class="form-group">
             <label for="image">Обложка</label>
             <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
             <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Заголовок</label>
+            <input type="text" class="form-control" id="name" name="title">
         </div>
 
         <div class="form-group">

@@ -106,137 +106,43 @@ impl FromDataSimple for NewArticle {
             }
         };
 
-        // let title = multipart_form.texts.get("title");
-        if let Some(title) = multipart_form.texts.get("title") {
-            match title {
-                TextField::Single(text) => {
-                    let _content_type = &text.content_type;
-                    let _file_name = &text.file_name;
-                    let _text = &text.text;
-                    // You can now deal with the raw data.
-                    println!("-------- title: {:?}", title)
-                }
-                TextField::Multiple(_texts) => {
-                    // Because we only put one "text" field to the allowed_fields, this arm will not be matched.
-                    return Failure((
-                        Status::BadRequest,
-                        // MultipartError::new(format!("Extra text fields supplied")),
-                        KinderError::InternalServerError,
-                    ));
-                }
-            }
+        let mut new_title = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
+            new_title = &text.text;
         }
 
-        let image = multipart_form.files.get("image");
-        if let Some(image) = image {
-            match image {
-                FileField::Single(file) => {
-                    let _content_type = &file.content_type;
-                    let file_name = &file.file_name;
-                    let path = &file.path;
-                    // You can now deal with the uploaded file.
-                    // The file will be deleted automatically when the MultipartFormData instance is dropped.
-                    // If you want to handle that file by your own, instead of killing it,
-                    // just remove it out from the MultipartFormData instance.
-                    // let image = multipart_form_data.files.remove("image");
-                    println!("-------- we are here - can save image. {:?}", image);
+        let mut new_image = "";
+        if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
+            let file_name = &file.file_name;
+            let path = &file.path;
 
-                    // std::fs::copy("foo.txt", "bar.txt")?;
-                    if let Some(file_path) = file_name {
-                        match std::fs::copy(path, format!("static/upload/{}", file_path)) {
-                            Ok(_) => (),
-                            Err(e) => println!("{:?}", e),
-                        }
+            if let Some(file_path) = file_name {
+                match std::fs::copy(path, format!("static/upload/{}", file_path)) {
+                    Ok(_) => {
+                        new_image = file_path;
                     }
-                }
-                FileField::Multiple(_files) => {
-                    // Because we only put one "photo" field to the allowed_fields, this arm will not be matched.
+                    Err(e) => println!("{:?}", e),
                 }
             }
         }
 
-        let content = multipart_form.texts.get("content");
-        if let Some(content) = content {
-            match content {
-                TextField::Single(text) => {
-                    let _content_type = &text.content_type;
-                    let _file_name = &text.file_name;
-                    let _text = &text.text;
-                    // You can now deal with the raw data.
-                    println!("-------- content: {:?}", content)
-                }
-                TextField::Multiple(_texts) => {
-                    // Because we only put one "text" field to the allowed_fields, this arm will not be matched.
-                }
-            }
+        let mut new_content = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("content") {
+            new_content = &text.text;
         }
 
-        let published = multipart_form.texts.get("published");
-        if let Some(published) = published {
-            match published {
-                TextField::Single(text) => {
-                    let _content_type = &text.content_type;
-                    let _file_name = &text.file_name;
-                    let _text = &text.text;
-                    // You can now deal with the raw data.
-                    println!("-------- published: {:?}", published)
-                }
-                TextField::Multiple(_bytes) => {
-                    // Because we only put one "fingerprint" field to the allowed_fields, this arm will not be matched.
-                }
+        let mut new_published = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
+            if &text.text == "on" {
+                new_published = true;
             }
         }
-
-        // check if the form has the avatar image
-        // let image_part: &RawField = match multipart_form.raw.get("avatar") {
-        //     Some(image_part) => image_part,
-        //     _ => {
-        //         return Failure((
-        //             Status::BadRequest,
-        //             MultipartError::new(format!("Missing field 'avatar'")),
-        //         ))
-        //     }
-        // };
-
-        // verify only the data we want is being passed, one text field and one binary
-        // match post_json_part {
-        //     TextField::Single(text) => {
-        //         let json_string = &text.text.replace('\'', "\"");
-        //         post_obj = match serde_json::from_str::<User>(json_string) {
-        //             Ok(insert) => insert,
-        //             Err(e) => {
-        //                 return Failure((
-        //                     Status::BadRequest,
-        //                     MultipartError::new(format!("{:?}", e)),
-        //                 ))
-        //             }
-        //         };
-        //     }
-        //     TextField::Multiple(_text) => {
-        //         return Failure((
-        //             Status::BadRequest,
-        //             MultipartError::new(format!("Extra text fields supplied")),
-        //         ))
-        //     }
-        // };
-
-        // match image_part {
-        //     RawField::Single(raw) => {
-        //         image_bytes = raw.raw.clone();
-        //     }
-        //     RawField::Multiple(_raw) => {
-        //         return Failure((
-        //             Status::BadRequest,
-        //             MultipartError::new(format!("Extra image fields supplied")),
-        //         ))
-        //     }
-        // };
 
         Success(NewArticle {
-            title: "".to_string(),
-            image: "".to_string(),
-            content: "".to_string(),
-            published: false,
+            title: new_title.to_string(),
+            image: new_image.to_string(),
+            content: new_content.to_string(),
+            published: new_published,
         })
     }
 }
