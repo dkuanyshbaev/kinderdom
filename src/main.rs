@@ -10,7 +10,6 @@ extern crate diesel;
 extern crate serde_derive;
 extern crate chrono;
 extern crate rocket_multipart_form_data;
-extern crate rocket_raw_response;
 
 use config::Config;
 use diesel::PgConnection;
@@ -67,44 +66,41 @@ fn rocket(config: Config) -> Rocket {
                 admin::articles::edit,
                 admin::articles::update,
                 admin::articles::delete,
-                // for test's sake -----------------
-                admin::articles::test,
-                admin::articles::upload,
             ],
         )
-        .mount(
-            "/admin/profiles",
-            routes![
-                admin::profiles::list,
-                admin::profiles::add,
-                admin::profiles::create,
-                admin::profiles::edit,
-                admin::profiles::update,
-                admin::profiles::delete,
-            ],
-        )
-        .mount(
-            "/admin/projects",
-            routes![
-                admin::projects::list,
-                admin::projects::add,
-                admin::projects::create,
-                admin::projects::edit,
-                admin::projects::update,
-                admin::projects::delete,
-            ],
-        )
-        .mount(
-            "/admin/events",
-            routes![
-                admin::events::list,
-                admin::events::add,
-                admin::events::create,
-                admin::events::edit,
-                admin::events::update,
-                admin::events::delete,
-            ],
-        )
+        // .mount(
+        //     "/admin/profiles",
+        //     routes![
+        //         admin::profiles::list,
+        //         admin::profiles::add,
+        //         admin::profiles::create,
+        //         admin::profiles::edit,
+        //         admin::profiles::update,
+        //         admin::profiles::delete,
+        //     ],
+        // )
+        // .mount(
+        //     "/admin/projects",
+        //     routes![
+        //         admin::projects::list,
+        //         admin::projects::add,
+        //         admin::projects::create,
+        //         admin::projects::edit,
+        //         admin::projects::update,
+        //         admin::projects::delete,
+        //     ],
+        // )
+        // .mount(
+        //     "/admin/events",
+        //     routes![
+        //         admin::events::list,
+        //         admin::events::add,
+        //         admin::events::create,
+        //         admin::events::edit,
+        //         admin::events::update,
+        //         admin::events::delete,
+        //     ],
+        // )
         .register(catchers![pages::not_found])
 }
 

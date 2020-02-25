@@ -33,11 +33,22 @@ macro_rules! handle {
         #[post("/", data = "<new_item>")]
         pub fn create(
             connection: crate::Db,
-            new_item: rocket::request::Form<$nt>,
+            new_item: Result<$nt>,
+            // new_item: rocket::request::Form<$nt>,
         ) -> crate::KinderResult<rocket::response::Redirect> {
-            let _item = <$t>::insert(&connection, new_item.into_inner())?;
+            // let _item = <$t>::insert(&connection, new_item.into_inner())?;
+            // Ok(rocket::response::Redirect::to(format!("/{}", $tp)))
+            match new_item {
+                Ok(item) => {
+                    let _item = <$t>::insert(&connection, item)?;
+                    Ok(rocket::response::Redirect::to(format!("/{}", $tp)))
+                }
 
-            Ok(rocket::response::Redirect::to(format!("/{}", $tp)))
+                Err(err) => {
+                    println!("Error: {}", err.reason);
+                    Ok(rocket::response::Redirect::to(format!("/{}/add", $tp)))
+                }
+            }
         }
 
         // show edit form
@@ -93,9 +104,8 @@ pub mod articles {
     use rocket_multipart_form_data::mime;
     use rocket_multipart_form_data::{
         FileField, MultipartFormData, MultipartFormDataError, MultipartFormDataField,
-        MultipartFormDataOptions, RawField, TextField,
+        MultipartFormDataOptions, TextField,
     };
-    use rocket_raw_response::RawResponse;
 
     // #[post("/upload", data = "<data>")]
     // fn upload(content_type: &ContentType, data: Data) -> Result<RawResponse, &'static str> {
@@ -260,17 +270,17 @@ pub mod articles {
     }
 }
 
-pub mod profiles {
-    use crate::models::profile::{NewProfile, Profile};
-    handle!(Profile, NewProfile, "admin/profiles");
-}
-
-pub mod projects {
-    use crate::models::project::{NewProject, Project};
-    handle!(Project, NewProject, "admin/projects");
-}
-
-pub mod events {
-    use crate::models::event::{Event, NewEvent};
-    handle!(Event, NewEvent, "admin/events");
-}
+// pub mod profiles {
+//     use crate::models::profile::{NewProfile, Profile};
+//     handle!(Profile, NewProfile, "admin/profiles");
+// }
+//
+// pub mod projects {
+//     use crate::models::project::{NewProject, Project};
+//     handle!(Project, NewProject, "admin/projects");
+// }
+//
+// pub mod events {
+//     use crate::models::event::{Event, NewEvent};
+//     handle!(Event, NewEvent, "admin/events");
+// }

@@ -61,8 +61,8 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    mime, FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, RawField,
-    TextField,
+    mime, FileField, MultipartFormData, MultipartFormDataError, MultipartFormDataField,
+    MultipartFormDataOptions, TextField,
 };
 // use serde::{Deserialize, Serialize};
 
@@ -87,7 +87,9 @@ impl std::fmt::Display for MultipartError {
 
 impl FromDataSimple for NewArticle {
     type Error = MultipartError;
+    // type Error = MultipartFormDataError;
 
+    // pub fn test(content_type: &ContentType, data: Data) -> Redirect {
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
         let mut options = MultipartFormDataOptions::new();
 
@@ -104,6 +106,8 @@ impl FromDataSimple for NewArticle {
         //     .allowed_fields
         //     .push(MultipartFormDataField::text("data").content_type(Some(mime::STAR_STAR)));
         // -----
+
+        println!("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         options
             .allowed_fields
