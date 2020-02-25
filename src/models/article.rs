@@ -1,6 +1,19 @@
 use super::schema::articles;
+use crate::errors::KinderError;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
+use rocket::data::{FromDataSimple, Outcome};
+use rocket::http::Status;
+use rocket::{Data, Outcome::*, Request};
+use rocket_multipart_form_data::{
+    mime,
+    FileField,
+    MultipartFormData,
+    MultipartFormDataField,
+    MultipartFormDataOptions,
+    TextField,
+    // MultipartFormDataError,
+};
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "articles"]
@@ -26,13 +39,13 @@ impl Article {
         articles::table.order(articles::id.desc()).load(connection)
     }
 
-    // pub fn published(connection: &PgConnection) -> QueryResult<Vec<Article>> {
-    //     articles::table
-    //         .filter(articles::published.eq(true))
-    //         .limit(4)
-    //         .order(articles::id.desc())
-    //         .load(connection)
-    // }
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Article>> {
+        articles::table
+            .filter(articles::published.eq(true))
+            .limit(4)
+            .order(articles::id.desc())
+            .load(connection)
+    }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Article> {
         articles::table.find(id).get_result(connection)
@@ -55,124 +68,52 @@ impl Article {
     }
 }
 
-// ----------------------------------------------------------------
-
-use rocket::data::{FromDataSimple, Outcome};
-use rocket::http::Status;
-use rocket::{Data, Outcome::*, Request};
-use rocket_multipart_form_data::{
-    mime, FileField, MultipartFormData, MultipartFormDataError, MultipartFormDataField,
-    MultipartFormDataOptions, TextField,
-};
-// use serde::{Deserialize, Serialize};
-
-// first we need to create a custom error type, as the FromDataSimple guard
-// needs to return one
-#[derive(Debug, Clone)]
-pub struct MultipartError {
-    pub reason: String,
-}
-
-impl MultipartError {
-    fn new(reason: String) -> MultipartError {
-        MultipartError { reason }
-    }
-}
-
-impl std::fmt::Display for MultipartError {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, "{}", self.reason)
-    }
-}
-
 impl FromDataSimple for NewArticle {
-    type Error = MultipartError;
-    // type Error = MultipartFormDataError;
+    type Error = KinderError;
 
-    // pub fn test(content_type: &ContentType, data: Data) -> Redirect {
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
         let mut options = MultipartFormDataOptions::new();
 
-        // setup the multipart parser, this creates a parser
-        // that checks for two fields: an image of any mime type
-        // and a data field containining json representing a User
-        // options.allowed_fields.push(
-        //     MultipartFormDataField::raw("avatar")
-        //         .size_limit(8 * 1024 * 1024) // 8 MB
-        //         .content_type_by_string(Some(mime::IMAGE_STAR))
-        //         .unwrap(),
-        // );
-        // options
-        //     .allowed_fields
-        //     .push(MultipartFormDataField::text("data").content_type(Some(mime::STAR_STAR)));
-        // -----
-
-        println!("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("title"));
+        options.allowed_fields.push(
+            MultipartFormDataField::text("title")
+                .content_type_by_string(Some(mime::STAR_STAR))
+                .unwrap(),
+        );
         options.allowed_fields.push(
             MultipartFormDataField::file("image")
                 // .size_limit(32 * 1024 * 1024)
                 .content_type_by_string(Some(mime::IMAGE_STAR))
                 .unwrap(),
         );
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("content"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("published"));
+        options.allowed_fields.push(
+            MultipartFormDataField::text("content")
+                .content_type_by_string(Some(mime::STAR_STAR))
+                .unwrap(),
+        );
+        options.allowed_fields.push(
+            MultipartFormDataField::text("published")
+                .content_type_by_string(Some(mime::STAR_STAR))
+                .unwrap(),
+        );
 
         // check if the content type is set properly
-        let ct = match request.content_type() {
-            Some(ct) => ct,
+        let content_type = match request.content_type() {
+            Some(content_type) => content_type,
             _ => {
-                return Failure((
-                    Status::BadRequest,
-                    MultipartError::new(format!(
-                        "Incorrect contentType, should be 'multipart/form-data"
-                    )),
-                ))
+                return Failure((Status::BadRequest, KinderError::InternalServerError));
             }
         };
 
         // do the form parsing and return on error
-        let multipart_form = match MultipartFormData::parse(&ct, data, options) {
+        let multipart_form = match MultipartFormData::parse(&content_type, data, options) {
             Ok(m) => m,
-            Err(e) => {
-                return Failure((Status::BadRequest, MultipartError::new(format!("{:?}", e))))
+            Err(_) => {
+                return Failure((Status::BadRequest, KinderError::InternalServerError));
             }
         };
 
-        let title = multipart_form.texts.get("title");
-        let image = multipart_form.files.get("image");
-        let content = multipart_form.texts.get("content");
-        let published = multipart_form.texts.get("published");
-
-        // check if the form has the json field `data`
-        // let post_json_part = match multipart_form.texts.get("data") {
-        //     Some(post_json_part) => post_json_part,
-        //     _ => {
-        //         return Failure((
-        //             Status::BadRequest,
-        //             MultipartError::new(format!("Missing field 'data'")),
-        //         ))
-        //     }
-        // };
-        // check if the form has the avatar image
-        // let image_part: &RawField = match multipart_form.raw.get("avatar") {
-        //     Some(image_part) => image_part,
-        //     _ => {
-        //         return Failure((
-        //             Status::BadRequest,
-        //             MultipartError::new(format!("Missing field 'avatar'")),
-        //         ))
-        //     }
-        // };
-
-        if let Some(title) = title {
+        // let title = multipart_form.texts.get("title");
+        if let Some(title) = multipart_form.texts.get("title") {
             match title {
                 TextField::Single(text) => {
                     let _content_type = &text.content_type;
@@ -185,12 +126,14 @@ impl FromDataSimple for NewArticle {
                     // Because we only put one "text" field to the allowed_fields, this arm will not be matched.
                     return Failure((
                         Status::BadRequest,
-                        MultipartError::new(format!("Extra text fields supplied")),
+                        // MultipartError::new(format!("Extra text fields supplied")),
+                        KinderError::InternalServerError,
                     ));
                 }
             }
         }
 
+        let image = multipart_form.files.get("image");
         if let Some(image) = image {
             match image {
                 FileField::Single(file) => {
@@ -218,6 +161,7 @@ impl FromDataSimple for NewArticle {
             }
         }
 
+        let content = multipart_form.texts.get("content");
         if let Some(content) = content {
             match content {
                 TextField::Single(text) => {
@@ -233,6 +177,7 @@ impl FromDataSimple for NewArticle {
             }
         }
 
+        let published = multipart_form.texts.get("published");
         if let Some(published) = published {
             match published {
                 TextField::Single(text) => {
@@ -247,6 +192,17 @@ impl FromDataSimple for NewArticle {
                 }
             }
         }
+
+        // check if the form has the avatar image
+        // let image_part: &RawField = match multipart_form.raw.get("avatar") {
+        //     Some(image_part) => image_part,
+        //     _ => {
+        //         return Failure((
+        //             Status::BadRequest,
+        //             MultipartError::new(format!("Missing field 'avatar'")),
+        //         ))
+        //     }
+        // };
 
         // verify only the data we want is being passed, one text field and one binary
         // match post_json_part {

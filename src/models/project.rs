@@ -20,13 +20,13 @@ impl Project {
         projects::table.order(projects::id.desc()).load(connection)
     }
 
-    // pub fn published(connection: &PgConnection) -> QueryResult<Vec<Project>> {
-    //     projects::table
-    //         .filter(projects::published.eq(true))
-    //         .limit(4)
-    //         .order(projects::id.desc())
-    //         .load(connection)
-    // }
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Project>> {
+        projects::table
+            .filter(projects::published.eq(true))
+            .limit(4)
+            .order(projects::id.desc())
+            .load(connection)
+    }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Project> {
         projects::table.find(id).get_result(connection)
