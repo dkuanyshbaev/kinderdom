@@ -62,7 +62,8 @@ macro_rules! handle {
         }
 
         // update item
-        #[put("/<id>", data = "<new_item>")]
+        // post here instead of put - because of multipart
+        #[post("/<id>", data = "<new_item>")]
         pub fn update(
             connection: crate::Db,
             // new_item: rocket::request::Form<$nt>,
@@ -71,7 +72,11 @@ macro_rules! handle {
         ) -> crate::KinderResult<rocket::response::Redirect> {
             match new_item {
                 Ok(item) => {
-                    let _item = <$t>::update(&connection, item, id)?;
+                    let item = <$t>::update(&connection, item, id)?;
+                    println!(">>>>>>> {:?}", item.title);
+                    println!(">>>>>>> {:?}", item.content);
+                    println!(">>>>>>> {:?}", item.published);
+                    println!(">>>>>>> {:?}", item.image);
                 }
                 Err(error) => {
                     println!("Error: {}", error);

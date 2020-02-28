@@ -9,6 +9,7 @@ use std::{error, fmt};
 pub enum KinderError {
     NotFound,
     InternalServerError,
+    BadRequest,
 }
 
 impl fmt::Display for KinderError {
@@ -16,6 +17,7 @@ impl fmt::Display for KinderError {
         match *self {
             KinderError::NotFound => write!(f, "NotFound"),
             KinderError::InternalServerError => write!(f, "InternalServerError"),
+            KinderError::BadRequest => write!(f, "BadRequest"),
         }
     }
 }
@@ -25,6 +27,7 @@ impl error::Error for KinderError {
         match *self {
             KinderError::NotFound => "Record not found",
             KinderError::InternalServerError => "Internal server error",
+            KinderError::BadRequest => "Bad Request",
         }
     }
 }

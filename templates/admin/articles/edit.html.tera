@@ -4,12 +4,12 @@
 <div class="container">
     <img src="/static/upload/{{ image }}" class="img-thumbnail" alt="Обложка"><br><br>
 
-    <form action="/admin/articles/{{ id }}" method="post">
+    <form action="/admin/articles/{{ id }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="put" />
 
         <div class="form-group">
             <label for="image">Обложка</label>
-            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
+            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" filename="{{ image }}" aria-describedby="image_help">
             <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
         </div>
 

@@ -66,6 +66,8 @@ impl FromDataSimple for NewArticle {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
+        println!("))))))))))))))))))))))))))))))))))))))");
+
         let mut options = MultipartFormDataOptions::new();
 
         options.allowed_fields.push(
@@ -94,7 +96,7 @@ impl FromDataSimple for NewArticle {
         let content_type = match request.content_type() {
             Some(content_type) => content_type,
             _ => {
-                return Failure((Status::BadRequest, KinderError::InternalServerError));
+                return Failure((Status::BadRequest, KinderError::BadRequest));
             }
         };
 
@@ -102,7 +104,7 @@ impl FromDataSimple for NewArticle {
         let multipart_form = match MultipartFormData::parse(&content_type, data, options) {
             Ok(m) => m,
             Err(_) => {
-                return Failure((Status::BadRequest, KinderError::InternalServerError));
+                return Failure((Status::BadRequest, KinderError::BadRequest));
             }
         };
 
