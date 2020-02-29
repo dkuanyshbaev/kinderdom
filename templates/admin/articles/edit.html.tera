@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label for="image">Обложка</label>
-            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" filename="{{ image }}" aria-describedby="image_help">
+            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
             <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
         </div>
 

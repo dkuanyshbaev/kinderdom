@@ -6,7 +6,7 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    mime, FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
+    FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
 };
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
@@ -45,15 +45,25 @@ impl Article {
         articles::table.find(id).get_result(connection)
     }
 
-    pub fn insert(connection: &PgConnection, article: NewArticle) -> QueryResult<Article> {
+    pub fn insert(connection: &PgConnection, new_article: NewArticle) -> QueryResult<Article> {
         diesel::insert_into(articles::table)
-            .values(article)
+            .values(new_article)
             .get_result(connection)
     }
 
-    pub fn update(connection: &PgConnection, article: NewArticle, id: i32) -> QueryResult<Article> {
+    pub fn update(
+        connection: &PgConnection,
+        mut new_article: NewArticle,
+        id: i32,
+    ) -> QueryResult<Article> {
+        // we need to keep old image name in case of update without image
+        if new_article.image == "".to_string() {
+            let old_article: Article = articles::table.find(id).get_result(connection)?;
+            new_article.image = old_article.image;
+        }
+
         diesel::update(articles::table.find(id))
-            .set(article)
+            .set(new_article)
             .get_result(connection)
     }
 
@@ -66,31 +76,20 @@ impl FromDataSimple for NewArticle {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
-        println!("))))))))))))))))))))))))))))))))))))))");
-
         let mut options = MultipartFormDataOptions::new();
 
-        options.allowed_fields.push(
-            MultipartFormDataField::text("title")
-                .content_type_by_string(Some(mime::STAR_STAR))
-                .unwrap(),
-        );
-        options.allowed_fields.push(
-            MultipartFormDataField::file("image")
-                // .size_limit(32 * 1024 * 1024)
-                .content_type_by_string(Some(mime::IMAGE_STAR))
-                .unwrap(),
-        );
-        options.allowed_fields.push(
-            MultipartFormDataField::text("content")
-                .content_type_by_string(Some(mime::STAR_STAR))
-                .unwrap(),
-        );
-        options.allowed_fields.push(
-            MultipartFormDataField::text("published")
-                .content_type_by_string(Some(mime::STAR_STAR))
-                .unwrap(),
-        );
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::file("image"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("title"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("content"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -102,8 +101,9 @@ impl FromDataSimple for NewArticle {
 
         // do the form parsing and return on error
         let multipart_form = match MultipartFormData::parse(&content_type, data, options) {
-            Ok(m) => m,
-            Err(_) => {
+            Ok(multipart) => multipart,
+            Err(error) => {
+                println!("Multipart form parsing error: {:?}", error);
                 return Failure((Status::BadRequest, KinderError::BadRequest));
             }
         };
@@ -123,7 +123,7 @@ impl FromDataSimple for NewArticle {
                     Ok(_) => {
                         new_image = file_path;
                     }
-                    Err(e) => println!("{:?}", e),
+                    Err(e) => println!("File error: {:?}", e),
                 }
             }
         }
@@ -133,10 +133,10 @@ impl FromDataSimple for NewArticle {
             new_content = &text.text;
         }
 
-        let mut new_published = false;
+        let mut new_published_value = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
-                new_published = true;
+                new_published_value = true;
             }
         }
 
@@ -144,7 +144,7 @@ impl FromDataSimple for NewArticle {
             title: new_title.to_string(),
             image: new_image.to_string(),
             content: new_content.to_string(),
-            published: new_published,
+            published: new_published_value,
         })
     }
 }

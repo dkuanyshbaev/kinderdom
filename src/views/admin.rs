@@ -66,17 +66,12 @@ macro_rules! handle {
         #[post("/<id>", data = "<new_item>")]
         pub fn update(
             connection: crate::Db,
-            // new_item: rocket::request::Form<$nt>,
             new_item: crate::KinderResult<$nt>,
             id: i32,
         ) -> crate::KinderResult<rocket::response::Redirect> {
             match new_item {
                 Ok(item) => {
                     let item = <$t>::update(&connection, item, id)?;
-                    println!(">>>>>>> {:?}", item.title);
-                    println!(">>>>>>> {:?}", item.content);
-                    println!(">>>>>>> {:?}", item.published);
-                    println!(">>>>>>> {:?}", item.image);
                 }
                 Err(error) => {
                     println!("Error: {}", error);
