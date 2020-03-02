@@ -57,11 +57,11 @@ impl Article {
         id: i32,
     ) -> QueryResult<Article> {
         let old_article: Article = articles::table.find(id).get_result(connection)?;
-
-        // we need to keep old image name in case of update without image
         if new_article.image == "".to_string() {
+            // we need to keep old image name in case of update without image
             new_article.image = old_article.image;
         } else {
+            // remove old image in case of update with image
             if let Err(error) = std::fs::remove_file(format!("static/upload/{}", old_article.image))
             {
                 println!("File error: {}", error);

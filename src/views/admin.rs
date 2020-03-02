@@ -77,6 +77,7 @@ macro_rules! handle {
                     println!("Error: {}", error);
                 }
             }
+
             Ok(rocket::response::Redirect::to(format!("/{}/{}", $tp, id)))
         }
 
