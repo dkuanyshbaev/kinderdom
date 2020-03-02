@@ -86,7 +86,8 @@ macro_rules! handle {
             connection: crate::Db,
             id: i32,
         ) -> crate::KinderResult<rocket::response::Redirect> {
-            let _item = <$t>::delete(&connection, id)?;
+            let item = <$t>::delete(&connection, id)?;
+            std::fs::remove_file(format!("static/upload/{}", item.image))?;
 
             Ok(rocket::response::Redirect::to(format!("/{}", $tp)))
         }

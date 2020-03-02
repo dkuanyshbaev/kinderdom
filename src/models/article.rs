@@ -119,16 +119,19 @@ impl FromDataSimple for NewArticle {
             let path = &file.path;
 
             if let Some(file_path) = file_name {
+                // check if it's update or create?
                 if file_path != "" {
+                    // build "unique" filename with current date prefix
                     let now = Utc::now();
                     let (is_common_era, year) = now.year_ce();
                     let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
 
+                    // copy file from tmp with new filename
                     match std::fs::copy(path, format!("static/upload/{}", file_name)) {
                         Ok(_) => {
                             new_image = file_name;
                         }
-                        Err(e) => println!("File error : {:?}", e),
+                        Err(e) => println!("File error: {:?}", e),
                     }
                 }
             }
