@@ -1,6 +1,6 @@
 use super::schema::articles;
 use crate::errors::KinderError;
-use chrono::NaiveDateTime;
+use chrono::{Datelike, NaiveDateTime, Timelike, Utc};
 use diesel::prelude::*;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
@@ -113,17 +113,21 @@ impl FromDataSimple for NewArticle {
             new_title = &text.text;
         }
 
-        let mut new_image = "";
+        let mut new_image = "".to_string();
         if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
             let file_name = &file.file_name;
             let path = &file.path;
 
             if let Some(file_path) = file_name {
-                match std::fs::copy(path, format!("static/upload/{}", file_path)) {
+                let now = Utc::now();
+                let (is_common_era, year) = now.year_ce();
+                let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
+
+                match std::fs::copy(path, format!("static/upload/{}", file_name)) {
                     Ok(_) => {
-                        new_image = file_path;
+                        new_image = file_name;
                     }
-                    Err(e) => println!("File error: {:?}", e),
+                    Err(e) => println!("File error : {:?}", e),
                 }
             }
         }
@@ -142,7 +146,7 @@ impl FromDataSimple for NewArticle {
 
         Success(NewArticle {
             title: new_title.to_string(),
-            image: new_image.to_string(),
+            image: new_image,
             content: new_content.to_string(),
             published: new_published_value,
         })
