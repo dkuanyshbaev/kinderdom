@@ -1,6 +1,6 @@
 use super::schema::articles;
 use crate::errors::KinderError;
-use chrono::{Datelike, NaiveDateTime, Timelike, Utc};
+use chrono::{Datelike, NaiveDateTime, Utc};
 use diesel::prelude::*;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
@@ -56,10 +56,16 @@ impl Article {
         mut new_article: NewArticle,
         id: i32,
     ) -> QueryResult<Article> {
+        let old_article: Article = articles::table.find(id).get_result(connection)?;
+
         // we need to keep old image name in case of update without image
         if new_article.image == "".to_string() {
-            let old_article: Article = articles::table.find(id).get_result(connection)?;
             new_article.image = old_article.image;
+        } else {
+            if let Err(error) = std::fs::remove_file(format!("static/upload/{}", old_article.image))
+            {
+                println!("File error: {}", error);
+            }
         }
 
         diesel::update(articles::table.find(id))
@@ -68,6 +74,11 @@ impl Article {
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Article> {
+        let article: Article = articles::table.find(id).get_result(connection)?;
+        if let Err(error) = std::fs::remove_file(format!("static/upload/{}", article.image)) {
+            println!("File error: {}", error);
+        }
+
         diesel::delete(articles::table.find(id)).get_result(connection)
     }
 }
@@ -123,7 +134,7 @@ impl FromDataSimple for NewArticle {
                 if file_path != "" {
                     // build "unique" filename with current date prefix
                     let now = Utc::now();
-                    let (is_common_era, year) = now.year_ce();
+                    let (_, year) = now.year_ce();
                     let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
 
                     // copy file from tmp with new filename

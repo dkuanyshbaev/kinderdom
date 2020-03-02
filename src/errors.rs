@@ -3,7 +3,7 @@ use rocket::http::Status;
 use rocket::request::Request;
 use rocket::response::Responder;
 use std::convert::From;
-use std::{error, fmt, io};
+use std::{error, fmt};
 
 #[derive(Debug)]
 pub enum KinderError {
@@ -28,14 +28,6 @@ impl error::Error for KinderError {
             KinderError::NotFound => "Record not found",
             KinderError::InternalServerError => "Internal server error",
             KinderError::BadRequest => "Bad Request",
-        }
-    }
-}
-
-impl From<io::Error> for KinderError {
-    fn from(error: io::Error) -> Self {
-        match error {
-            _ => KinderError::InternalServerError,
         }
     }
 }

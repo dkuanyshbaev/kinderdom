@@ -71,7 +71,7 @@ macro_rules! handle {
         ) -> crate::KinderResult<rocket::response::Redirect> {
             match new_item {
                 Ok(item) => {
-                    let item = <$t>::update(&connection, item, id)?;
+                    let _ = <$t>::update(&connection, item, id)?;
                 }
                 Err(error) => {
                     println!("Error: {}", error);
@@ -86,8 +86,7 @@ macro_rules! handle {
             connection: crate::Db,
             id: i32,
         ) -> crate::KinderResult<rocket::response::Redirect> {
-            let item = <$t>::delete(&connection, id)?;
-            std::fs::remove_file(format!("static/upload/{}", item.image))?;
+            let _ = <$t>::delete(&connection, id)?;
 
             Ok(rocket::response::Redirect::to(format!("/{}", $tp)))
         }
