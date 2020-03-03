@@ -74,6 +74,7 @@ impl Article {
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Article> {
+        // remove image
         let article: Article = articles::table.find(id).get_result(connection)?;
         if let Err(error) = std::fs::remove_file(format!("static/upload/{}", article.image)) {
             println!("File error: {}", error);
@@ -83,6 +84,7 @@ impl Article {
     }
 }
 
+// we need this custom impl for multipart form
 impl FromDataSimple for NewArticle {
     type Error = KinderError;
 
