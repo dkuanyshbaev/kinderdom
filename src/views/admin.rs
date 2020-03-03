@@ -99,17 +99,17 @@ pub mod articles {
     handle!(Article, NewArticle, "admin/articles");
 }
 
-// pub mod profiles {
-//     use crate::models::profile::{NewProfile, Profile};
-//     handle!(Profile, NewProfile, "admin/profiles");
-// }
-//
-// pub mod projects {
-//     use crate::models::project::{NewProject, Project};
-//     handle!(Project, NewProject, "admin/projects");
-// }
-//
-// pub mod events {
-//     use crate::models::event::{Event, NewEvent};
-//     handle!(Event, NewEvent, "admin/events");
-// }
+pub mod profiles {
+    use crate::models::profile::{NewProfile, Profile};
+    handle!(Profile, NewProfile, "admin/profiles");
+}
+
+pub mod projects {
+    use crate::models::project::{NewProject, Project};
+    handle!(Project, NewProject, "admin/projects");
+}
+
+pub mod events {
+    use crate::models::event::{Event, NewEvent};
+    handle!(Event, NewEvent, "admin/events");
+}

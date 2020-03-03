@@ -12,6 +12,9 @@ table! {
 table! {
     events (id) {
         id -> Int4,
+        name -> Varchar,
+        image -> Varchar,
+        description -> Text,
         published -> Bool,
         created_at -> Timestamp,
     }
@@ -32,6 +35,9 @@ table! {
 table! {
     projects (id) {
         id -> Int4,
+        name -> Varchar,
+        image -> Varchar,
+        description -> Text,
         published -> Bool,
         created_at -> Timestamp,
     }

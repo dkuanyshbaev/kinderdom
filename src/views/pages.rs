@@ -1,4 +1,4 @@
-use crate::models::profile::Profile;
+use crate::models::{article::Article, event::Event, profile::Profile, project::Project};
 use crate::Db;
 use rocket::Request;
 use rocket_contrib::templates::Template;
@@ -12,10 +12,10 @@ struct TemplateContext {
 
 #[get("/")]
 pub fn index(connection: Db) -> Template {
-    let ps = Profile::all(&connection);
-    for p in ps {
-        println!("profile: {:?}", p);
-    }
+    let _ = Article::published(&connection);
+    let _ = Profile::published(&connection);
+    let _ = Project::published(&connection);
+    let _ = Event::published(&connection);
 
     let name = "Denis".to_string();
     let context = TemplateContext {

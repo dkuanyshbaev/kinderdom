@@ -68,39 +68,39 @@ fn rocket(config: Config) -> Rocket {
                 admin::articles::delete,
             ],
         )
-        // .mount(
-        //     "/admin/profiles",
-        //     routes![
-        //         admin::profiles::list,
-        //         admin::profiles::add,
-        //         admin::profiles::create,
-        //         admin::profiles::edit,
-        //         admin::profiles::update,
-        //         admin::profiles::delete,
-        //     ],
-        // )
-        // .mount(
-        //     "/admin/projects",
-        //     routes![
-        //         admin::projects::list,
-        //         admin::projects::add,
-        //         admin::projects::create,
-        //         admin::projects::edit,
-        //         admin::projects::update,
-        //         admin::projects::delete,
-        //     ],
-        // )
-        // .mount(
-        //     "/admin/events",
-        //     routes![
-        //         admin::events::list,
-        //         admin::events::add,
-        //         admin::events::create,
-        //         admin::events::edit,
-        //         admin::events::update,
-        //         admin::events::delete,
-        //     ],
-        // )
+        .mount(
+            "/admin/profiles",
+            routes![
+                admin::profiles::list,
+                admin::profiles::add,
+                admin::profiles::create,
+                admin::profiles::edit,
+                admin::profiles::update,
+                admin::profiles::delete,
+            ],
+        )
+        .mount(
+            "/admin/projects",
+            routes![
+                admin::projects::list,
+                admin::projects::add,
+                admin::projects::create,
+                admin::projects::edit,
+                admin::projects::update,
+                admin::projects::delete,
+            ],
+        )
+        .mount(
+            "/admin/events",
+            routes![
+                admin::events::list,
+                admin::events::add,
+                admin::events::create,
+                admin::events::edit,
+                admin::events::update,
+                admin::events::delete,
+            ],
+        )
         .register(catchers![pages::not_found])
 }
 
