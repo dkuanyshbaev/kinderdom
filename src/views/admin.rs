@@ -113,3 +113,18 @@ pub mod events {
     use crate::models::event::{Event, NewEvent};
     handle!(Event, NewEvent, "admin/events");
 }
+
+pub mod docs {
+    use crate::models::doc::{Doc, NewDoc};
+    handle!(Doc, NewDoc, "admin/docs");
+}
+
+pub mod donors {
+    use crate::models::donor::{Donor, NewDonor};
+    handle!(Donor, NewDonor, "admin/donors");
+}
+
+pub mod orgs {
+    use crate::models::org::{NewOrg, Org};
+    handle!(Org, NewOrg, "admin/orgs");
+}

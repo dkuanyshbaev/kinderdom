@@ -101,6 +101,39 @@ fn rocket(config: Config) -> Rocket {
                 admin::events::delete,
             ],
         )
+        .mount(
+            "/admin/docs",
+            routes![
+                admin::docs::list,
+                admin::docs::add,
+                admin::docs::create,
+                admin::docs::edit,
+                admin::docs::update,
+                admin::docs::delete,
+            ],
+        )
+        .mount(
+            "/admin/donors",
+            routes![
+                admin::donors::list,
+                admin::donors::add,
+                admin::donors::create,
+                admin::donors::edit,
+                admin::donors::update,
+                admin::donors::delete,
+            ],
+        )
+        .mount(
+            "/admin/orgs",
+            routes![
+                admin::orgs::list,
+                admin::orgs::add,
+                admin::orgs::create,
+                admin::orgs::edit,
+                admin::orgs::update,
+                admin::orgs::delete,
+            ],
+        )
         .register(catchers![pages::not_found])
 }
 
