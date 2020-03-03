@@ -1,4 +1,5 @@
 use super::schema::articles;
+use super::utils::{copy_file, delete_file};
 use crate::errors::KinderError;
 use chrono::{Datelike, NaiveDateTime, Utc};
 use diesel::prelude::*;
@@ -19,7 +20,7 @@ pub struct NewArticle {
     pub published: bool,
 }
 
-#[derive(Serialize, Queryable, Debug)]
+#[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Article {
     pub id: i32,
     pub title: String,
@@ -58,31 +59,25 @@ impl Article {
         mut new_article: NewArticle,
         id: i32,
     ) -> QueryResult<Article> {
-        let old_article: Article = articles::table.find(id).get_result(connection)?;
+        let old_article: Article = Self::get(connection, id)?;
         if new_article.image == "".to_string() {
-            // we need to keep old image name in case of update without image
+            // keep old image name in case of update without image
             new_article.image = old_article.image;
         } else {
-            // remove old image in case of update with image
-            if let Err(error) = std::fs::remove_file(format!("static/upload/{}", old_article.image))
-            {
-                println!("File error: {}", error);
-            }
+            delete_file(old_article.image);
         }
 
-        diesel::update(articles::table.find(id))
+        diesel::update(&old_article)
             .set(new_article)
             .get_result(connection)
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Article> {
-        // remove image
-        let article: Article = articles::table.find(id).get_result(connection)?;
-        if let Err(error) = std::fs::remove_file(format!("static/upload/{}", article.image)) {
-            println!("File error: {}", error);
-        }
+        // remove related image
+        let article: Article = Self::get(connection, id)?;
+        delete_file(article.image);
 
-        diesel::delete(articles::table.find(id)).get_result(connection)
+        diesel::delete(&article).get_result(connection)
     }
 }
 
@@ -126,12 +121,12 @@ impl FromDataSimple for NewArticle {
             }
         };
 
-        let mut new_title = "";
+        let mut title = "".to_string();
         if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
-            new_title = &text.text;
+            title = text.text;
         }
 
-        let mut new_image = "".to_string();
+        let mut image = "".to_string();
         if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
             let file_name = &file.file_name;
             let path = &file.path;
@@ -142,22 +137,17 @@ impl FromDataSimple for NewArticle {
                     // build "unique" filename with current date prefix
                     let now = Utc::now();
                     let (_, year) = now.year_ce();
-                    let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
+                    let image = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
 
-                    // copy file from tmp with new filename
-                    match std::fs::copy(path, format!("static/upload/{}", file_name)) {
-                        Ok(_) => {
-                            new_image = file_name;
-                        }
-                        Err(e) => println!("File error: {:?}", e),
-                    }
+                    // copy file from /tmp with new filename
+                    copy_file(path, image);
                 }
             }
         }
 
-        let mut new_content = "";
+        let mut content = "".to_string();
         if let Some(TextField::Single(text)) = multipart_form.texts.get("content") {
-            new_content = &text.text;
+            content = text.text;
         }
 
         let mut welfare = false;
@@ -167,19 +157,19 @@ impl FromDataSimple for NewArticle {
             }
         }
 
-        let mut new_published_value = false;
+        let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
-                new_published_value = true;
+                published = true;
             }
         }
 
         Success(NewArticle {
-            title: new_title.to_string(),
-            image: new_image,
-            content: new_content.to_string(),
-            welfare: welfare,
-            published: new_published_value,
+            title,
+            image,
+            content,
+            welfare,
+            published,
         })
     }
 }
