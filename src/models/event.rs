@@ -14,7 +14,10 @@ use rocket_multipart_form_data::{
 pub struct NewEvent {
     pub name: String,
     pub image: String,
+    pub needed: i32,
+    pub collected: i32,
     pub description: String,
+    pub is_vital: bool,
     pub published: bool,
 }
 
@@ -23,7 +26,10 @@ pub struct Event {
     pub id: i32,
     pub name: String,
     pub image: String,
+    pub needed: i32,
+    pub collected: i32,
     pub description: String,
+    pub is_vital: bool,
     pub published: bool,
     pub created_at: NaiveDateTime,
 }
@@ -98,7 +104,16 @@ impl FromDataSimple for NewEvent {
             .push(MultipartFormDataField::text("name"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("needed"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("collected"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("description"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("is_vital"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("published"));
@@ -149,9 +164,26 @@ impl FromDataSimple for NewEvent {
             }
         }
 
+        let mut new_needed = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("needed") {
+            new_needed = &text.text;
+        }
+
+        let mut new_collected = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("collected") {
+            new_collected = &text.text;
+        }
+
         let mut new_description = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
             new_description = &text.text;
+        }
+
+        let mut is_vital = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("is_vital") {
+            if &text.text == "on" {
+                is_vital = true;
+            }
         }
 
         let mut new_published_value = false;
@@ -164,7 +196,10 @@ impl FromDataSimple for NewEvent {
         Success(NewEvent {
             name: new_name.to_string(),
             image: new_image,
+            needed: new_needed,
+            collected: new_collected,
             description: new_description.to_string(),
+            is_vital: is_vital,
             published: new_published_value,
         })
     }

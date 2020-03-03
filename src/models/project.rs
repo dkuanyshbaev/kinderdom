@@ -14,6 +14,8 @@ use rocket_multipart_form_data::{
 pub struct NewProject {
     pub name: String,
     pub image: String,
+    pub needed: i32,
+    pub collected: i32,
     pub description: String,
     pub published: bool,
 }
@@ -23,6 +25,8 @@ pub struct Project {
     pub id: i32,
     pub name: String,
     pub image: String,
+    pub needed: i32,
+    pub collected: i32,
     pub description: String,
     pub published: bool,
     pub created_at: NaiveDateTime,

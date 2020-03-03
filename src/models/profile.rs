@@ -15,6 +15,8 @@ pub struct NewProfile {
     pub name: String,
     pub photo: String,
     pub video: String,
+    pub needed: i32,
+    pub collected: i32,
     pub description: String,
     pub published: bool,
 }
@@ -25,6 +27,8 @@ pub struct Profile {
     pub name: String,
     pub photo: String,
     pub video: String,
+    pub needed: i32,
+    pub collected: i32,
     pub description: String,
     pub published: bool,
     pub created_at: NaiveDateTime,

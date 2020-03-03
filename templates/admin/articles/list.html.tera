@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <a class="btn btn-outline-info" href="/admin/articles/add">Добавить новость</a>
+    <a class="btn btn-outline-info" href="/admin/articles/add">Добавить статью</a>
     <br>
     <br>
     <table class="table table-bordered">

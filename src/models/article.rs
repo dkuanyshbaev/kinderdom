@@ -15,6 +15,7 @@ pub struct NewArticle {
     pub title: String,
     pub image: String,
     pub content: String,
+    pub welfare: bool,
     pub published: bool,
 }
 
@@ -24,6 +25,7 @@ pub struct Article {
     pub title: String,
     pub image: String,
     pub content: String,
+    pub welfare: bool,
     pub published: bool,
     pub created_at: NaiveDateTime,
 }
@@ -102,6 +104,9 @@ impl FromDataSimple for NewArticle {
             .push(MultipartFormDataField::text("content"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("welfare"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
@@ -155,6 +160,13 @@ impl FromDataSimple for NewArticle {
             new_content = &text.text;
         }
 
+        let mut welfare = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("welfare") {
+            if &text.text == "on" {
+                welfare = true;
+            }
+        }
+
         let mut new_published_value = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
@@ -166,6 +178,7 @@ impl FromDataSimple for NewArticle {
             title: new_title.to_string(),
             image: new_image,
             content: new_content.to_string(),
+            welfare: welfare,
             published: new_published_value,
         })
     }
