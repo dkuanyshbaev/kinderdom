@@ -13,7 +13,7 @@ table! {
 table! {
     docs (id) {
         id -> Int4,
-        file_name -> Varchar,
+        pdf -> Varchar,
         description -> Text,
         published -> Bool,
         created_at -> Timestamp,
