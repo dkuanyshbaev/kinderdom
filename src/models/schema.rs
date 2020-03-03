@@ -39,7 +39,7 @@ table! {
         needed -> Int4,
         collected -> Int4,
         description -> Text,
-        is_vital -> Bool,
+        vital -> Bool,
         published -> Bool,
         created_at -> Timestamp,
     }

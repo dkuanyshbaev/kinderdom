@@ -1,7 +1,7 @@
 use super::schema::articles;
-use super::utils::{copy_file, delete_file};
+use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
-use chrono::{Datelike, NaiveDateTime, Utc};
+use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
@@ -62,9 +62,9 @@ impl Article {
         let old_article: Article = Self::get(connection, id)?;
         if new_article.image == "".to_string() {
             // keep old image name in case of update without image
-            new_article.image = old_article.image;
+            new_article.image = old_article.image.clone();
         } else {
-            delete_file(old_article.image);
+            delete_file(&old_article.image);
         }
 
         diesel::update(&old_article)
@@ -75,7 +75,7 @@ impl Article {
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Article> {
         // remove related image
         let article: Article = Self::get(connection, id)?;
-        delete_file(article.image);
+        delete_file(&article.image);
 
         diesel::delete(&article).get_result(connection)
     }
@@ -121,11 +121,6 @@ impl FromDataSimple for NewArticle {
             }
         };
 
-        let mut title = "".to_string();
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
-            title = text.text;
-        }
-
         let mut image = "".to_string();
         if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
             let file_name = &file.file_name;
@@ -134,20 +129,20 @@ impl FromDataSimple for NewArticle {
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    // build "unique" filename with current date prefix
-                    let now = Utc::now();
-                    let (_, year) = now.year_ce();
-                    let image = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
-
-                    // copy file from /tmp with new filename
-                    copy_file(path, image);
+                    image = file_name_with_prefix(file_path);
+                    save_file(path, &image);
                 }
             }
         }
 
-        let mut content = "".to_string();
+        let mut title = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
+            title = &text.text;
+        }
+
+        let mut content = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("content") {
-            content = text.text;
+            content = &text.text;
         }
 
         let mut welfare = false;
@@ -165,9 +160,9 @@ impl FromDataSimple for NewArticle {
         }
 
         Success(NewArticle {
-            title,
+            title: title.to_string(),
             image,
-            content,
+            content: content.to_string(),
             welfare,
             published,
         })

@@ -1,6 +1,7 @@
 use super::schema::profiles;
+use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
-use chrono::{Datelike, NaiveDateTime, Utc};
+use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
@@ -21,7 +22,7 @@ pub struct NewProfile {
     pub published: bool,
 }
 
-#[derive(Serialize, Queryable, Debug)]
+#[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Profile {
     pub id: i32,
     pub name: String,
@@ -62,31 +63,25 @@ impl Profile {
         mut new_profile: NewProfile,
         id: i32,
     ) -> QueryResult<Profile> {
-        let old_profile: Profile = profiles::table.find(id).get_result(connection)?;
+        let old_profile: Profile = Self::get(connection, id)?;
         if new_profile.photo == "".to_string() {
-            // we need to keep old photo name in case of update without photo
-            new_profile.photo = old_profile.photo;
+            // keep old image name in case of update without image
+            new_profile.photo = old_profile.photo.clone();
         } else {
-            // remove old photo in case of update with photo
-            if let Err(error) = std::fs::remove_file(format!("static/upload/{}", old_profile.photo))
-            {
-                println!("File error: {}", error);
-            }
+            delete_file(&old_profile.photo);
         }
 
-        diesel::update(profiles::table.find(id))
+        diesel::update(&old_profile)
             .set(new_profile)
             .get_result(connection)
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
         // remove photo
-        let profile: Profile = profiles::table.find(id).get_result(connection)?;
-        if let Err(error) = std::fs::remove_file(format!("static/upload/{}", profile.photo)) {
-            println!("File error: {}", error);
-        }
+        let profile: Profile = Self::get(connection, id)?;
+        delete_file(&profile.photo);
 
-        diesel::delete(profiles::table.find(id)).get_result(connection)
+        diesel::delete(&profile).get_result(connection)
     }
 }
 
@@ -106,6 +101,12 @@ impl FromDataSimple for NewProfile {
         options
             .allowed_fields
             .push(MultipartFormDataField::text("video"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("needed"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("collected"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
@@ -130,12 +131,7 @@ impl FromDataSimple for NewProfile {
             }
         };
 
-        let mut new_name = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
-            new_name = &text.text;
-        }
-
-        let mut new_photo = "".to_string();
+        let mut photo = "".to_string();
         if let Some(FileField::Single(file)) = multipart_form.files.get("photo") {
             let file_name = &file.file_name;
             let path = &file.path;
@@ -143,45 +139,54 @@ impl FromDataSimple for NewProfile {
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    // build "unique" filename with current date prefix
-                    let now = Utc::now();
-                    let (_, year) = now.year_ce();
-                    let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
-
-                    // copy file from tmp with new filename
-                    match std::fs::copy(path, format!("static/upload/{}", file_name)) {
-                        Ok(_) => {
-                            new_photo = file_name;
-                        }
-                        Err(e) => println!("File error: {:?}", e),
-                    }
+                    photo = file_name_with_prefix(file_path);
+                    save_file(path, &photo);
                 }
             }
         }
 
-        let mut new_video = "";
+        let mut name = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
+            name = &text.text;
+        }
+
+        let mut video = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("video") {
-            new_video = &text.text;
+            video = &text.text;
         }
 
-        let mut new_description = "";
+        let mut needed = 0;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("needed") {
+            let amount = &text.text;
+            needed = amount.parse().unwrap();
+        }
+
+        let mut collected = 0;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("collected") {
+            let amount = &text.text;
+            collected = amount.parse().unwrap();
+        }
+
+        let mut description = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
-            new_description = &text.text;
+            description = &text.text;
         }
 
-        let mut new_published_value = false;
+        let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
-                new_published_value = true;
+                published = true;
             }
         }
 
         Success(NewProfile {
-            name: new_name.to_string(),
-            photo: new_photo,
-            video: new_video.to_string(),
-            description: new_description.to_string(),
-            published: new_published_value,
+            name: name.to_string(),
+            photo,
+            video: video.to_string(),
+            needed,
+            collected,
+            description: description.to_string(),
+            published,
         })
     }
 }

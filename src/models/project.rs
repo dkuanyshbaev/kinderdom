@@ -1,6 +1,7 @@
 use super::schema::projects;
+use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
-use chrono::{Datelike, NaiveDateTime, Utc};
+use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
@@ -20,7 +21,7 @@ pub struct NewProject {
     pub published: bool,
 }
 
-#[derive(Serialize, Queryable, Debug)]
+#[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Project {
     pub id: i32,
     pub name: String,
@@ -60,31 +61,25 @@ impl Project {
         mut new_project: NewProject,
         id: i32,
     ) -> QueryResult<Project> {
-        let old_project: Project = projects::table.find(id).get_result(connection)?;
+        let old_project: Project = Self::get(connection, id)?;
         if new_project.image == "".to_string() {
-            // we need to keep old image name in case of update without image
-            new_project.image = old_project.image;
+            // keep old image name in case of update without image
+            new_project.image = old_project.image.clone();
         } else {
-            // remove old image in case of update with image
-            if let Err(error) = std::fs::remove_file(format!("static/upload/{}", old_project.image))
-            {
-                println!("File error: {}", error);
-            }
+            delete_file(&old_project.image);
         }
 
-        diesel::update(projects::table.find(id))
+        diesel::update(&old_project)
             .set(new_project)
             .get_result(connection)
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Project> {
         // remove image
-        let project: Project = projects::table.find(id).get_result(connection)?;
-        if let Err(error) = std::fs::remove_file(format!("static/upload/{}", project.image)) {
-            println!("File error: {}", error);
-        }
+        let project: Project = Self::get(connection, id)?;
+        delete_file(&project.image);
 
-        diesel::delete(projects::table.find(id)).get_result(connection)
+        diesel::delete(&project).get_result(connection)
     }
 }
 
@@ -101,6 +96,12 @@ impl FromDataSimple for NewProject {
         options
             .allowed_fields
             .push(MultipartFormDataField::text("name"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("needed"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("collected"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
@@ -125,12 +126,7 @@ impl FromDataSimple for NewProject {
             }
         };
 
-        let mut new_name = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
-            new_name = &text.text;
-        }
-
-        let mut new_image = "".to_string();
+        let mut image = "".to_string();
         if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
             let file_name = &file.file_name;
             let path = &file.path;
@@ -138,39 +134,48 @@ impl FromDataSimple for NewProject {
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    // build "unique" filename with current date prefix
-                    let now = Utc::now();
-                    let (_, year) = now.year_ce();
-                    let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
-
-                    // copy file from tmp with new filename
-                    match std::fs::copy(path, format!("static/upload/{}", file_name)) {
-                        Ok(_) => {
-                            new_image = file_name;
-                        }
-                        Err(e) => println!("File error: {:?}", e),
-                    }
+                    image = file_name_with_prefix(file_path);
+                    save_file(path, &image);
                 }
             }
         }
 
-        let mut new_description = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
-            new_description = &text.text;
+        let mut name = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
+            name = &text.text;
         }
 
-        let mut new_published_value = false;
+        let mut needed = 0;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("needed") {
+            let amount = &text.text;
+            needed = amount.parse().unwrap();
+        }
+
+        let mut collected = 0;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("collected") {
+            let amount = &text.text;
+            collected = amount.parse().unwrap();
+        }
+
+        let mut description = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
+            description = &text.text;
+        }
+
+        let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
-                new_published_value = true;
+                published = true;
             }
         }
 
         Success(NewProject {
-            name: new_name.to_string(),
-            image: new_image,
-            description: new_description.to_string(),
-            published: new_published_value,
+            name: name.to_string(),
+            image,
+            needed,
+            collected,
+            description: description.to_string(),
+            published,
         })
     }
 }

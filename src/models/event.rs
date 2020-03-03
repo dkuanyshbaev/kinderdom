@@ -1,6 +1,7 @@
 use super::schema::events;
+use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
-use chrono::{Datelike, NaiveDateTime, Utc};
+use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
@@ -17,11 +18,11 @@ pub struct NewEvent {
     pub needed: i32,
     pub collected: i32,
     pub description: String,
-    pub is_vital: bool,
+    pub vital: bool,
     pub published: bool,
 }
 
-#[derive(Serialize, Queryable, Debug)]
+#[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Event {
     pub id: i32,
     pub name: String,
@@ -29,7 +30,7 @@ pub struct Event {
     pub needed: i32,
     pub collected: i32,
     pub description: String,
-    pub is_vital: bool,
+    pub vital: bool,
     pub published: bool,
     pub created_at: NaiveDateTime,
 }
@@ -62,30 +63,25 @@ impl Event {
         mut new_event: NewEvent,
         id: i32,
     ) -> QueryResult<Event> {
-        let old_event: Event = events::table.find(id).get_result(connection)?;
+        let old_event: Event = Self::get(connection, id)?;
         if new_event.image == "".to_string() {
-            // we need to keep old image name in case of update without image
-            new_event.image = old_event.image;
+            // keep old image name in case of update without image
+            new_event.image = old_event.image.clone();
         } else {
-            // remove old image in case of update with image
-            if let Err(error) = std::fs::remove_file(format!("static/upload/{}", old_event.image)) {
-                println!("File error: {}", error);
-            }
+            delete_file(&old_event.image);
         }
 
-        diesel::update(events::table.find(id))
+        diesel::update(&old_event)
             .set(new_event)
             .get_result(connection)
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Event> {
         // remove image
-        let event: Event = events::table.find(id).get_result(connection)?;
-        if let Err(error) = std::fs::remove_file(format!("static/upload/{}", event.image)) {
-            println!("File error: {}", error);
-        }
+        let event: Event = Self::get(connection, id)?;
+        delete_file(&event.image);
 
-        diesel::delete(events::table.find(id)).get_result(connection)
+        diesel::delete(&event).get_result(connection)
     }
 }
 
@@ -113,7 +109,7 @@ impl FromDataSimple for NewEvent {
             .push(MultipartFormDataField::text("description"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("is_vital"));
+            .push(MultipartFormDataField::text("vital"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("published"));
@@ -135,12 +131,7 @@ impl FromDataSimple for NewEvent {
             }
         };
 
-        let mut new_name = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
-            new_name = &text.text;
-        }
-
-        let mut new_image = "".to_string();
+        let mut image = "".to_string();
         if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
             let file_name = &file.file_name;
             let path = &file.path;
@@ -148,59 +139,56 @@ impl FromDataSimple for NewEvent {
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    // build "unique" filename with current date prefix
-                    let now = Utc::now();
-                    let (_, year) = now.year_ce();
-                    let file_name = format!("{}_{}_{}_{}", year, now.month(), now.day(), file_path);
-
-                    // copy file from tmp with new filename
-                    match std::fs::copy(path, format!("static/upload/{}", file_name)) {
-                        Ok(_) => {
-                            new_image = file_name;
-                        }
-                        Err(e) => println!("File error: {:?}", e),
-                    }
+                    image = file_name_with_prefix(file_path);
+                    save_file(path, &image);
                 }
             }
         }
 
-        let mut new_needed = "";
+        let mut name = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
+            name = &text.text;
+        }
+
+        let mut needed = 0;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("needed") {
-            new_needed = &text.text;
+            let amount = &text.text;
+            needed = amount.parse().unwrap();
         }
 
-        let mut new_collected = "";
+        let mut collected = 0;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("collected") {
-            new_collected = &text.text;
+            let amount = &text.text;
+            collected = amount.parse().unwrap();
         }
 
-        let mut new_description = "";
+        let mut description = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
-            new_description = &text.text;
+            description = &text.text;
         }
 
-        let mut is_vital = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("is_vital") {
+        let mut vital = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("vital") {
             if &text.text == "on" {
-                is_vital = true;
+                vital = true;
             }
         }
 
-        let mut new_published_value = false;
+        let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
-                new_published_value = true;
+                published = true;
             }
         }
 
         Success(NewEvent {
-            name: new_name.to_string(),
-            image: new_image,
-            needed: new_needed,
-            collected: new_collected,
-            description: new_description.to_string(),
-            is_vital: is_vital,
-            published: new_published_value,
+            name: name.to_string(),
+            image,
+            needed,
+            collected,
+            description: description.to_string(),
+            vital,
+            published,
         })
     }
 }
