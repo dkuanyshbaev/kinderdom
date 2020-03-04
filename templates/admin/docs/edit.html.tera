@@ -1,0 +1,39 @@
+{% extends "admin/layout" %}
+
+{% block content %}
+<div class="container">
+    <div class="alert alert-info" role="alert">
+        Текущий файл: {{ pdf }}
+    </div>
+
+    <form action="/admin/docs/{{ id }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="put" />
+
+        <div class="form-group">
+            <label for="pdf">Файл отчета</label>
+            <input type="file" accept=".pdf" class="form-control-file" id="pdf" name="pdf" aria-describedby="pdf_help">
+            <small id="pdf_help" class="form-text text-muted">Выберите документ в формате pdf</small>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Описание</label>
+            <textarea class="form-control" id="summernote" name="description" rows="10">{{ description }}</textarea>
+        </div>
+
+        <div class="form-group form-check">
+            {% if published %}
+                <input type="checkbox" class="form-check-input" id="published" name="published" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="published" name="published">
+            {% endif %}
+            <label class="form-check-label" for="published">Опубликовано</label>
+        </div>
+
+        <button type="submit" class="btn btn-info">Сохранить</button>
+
+        <a href="/admin/docs" class="btn btn-dark">Отмена</a>
+    </form>
+    <br>
+    <br>
+</div>
+{% endblock content %}
