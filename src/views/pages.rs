@@ -1,8 +1,6 @@
 use crate::models::{article::Article, event::Event, profile::Profile, project::Project};
 use crate::Db;
-use rocket::Request;
 use rocket_contrib::templates::Template;
-use std::collections::HashMap;
 
 #[derive(Serialize)]
 struct TemplateContext {
@@ -86,11 +84,4 @@ pub fn help() -> Template {
         items: vec!["one", "two"],
     };
     Template::render("pages/help", &context)
-}
-
-#[catch(404)]
-pub fn not_found(req: &Request) -> Template {
-    let mut map = HashMap::new();
-    map.insert("path", req.uri().path());
-    Template::render("error/404", &map)
 }

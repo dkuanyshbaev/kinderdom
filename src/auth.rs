@@ -1,5 +1,7 @@
-use crate::rocket::outcome::IntoOutcome;
+use crate::errors::KinderError;
+use rocket::http::Status;
 use rocket::request::{self, FromRequest, Request};
+use rocket::Outcome;
 
 #[derive(FromForm)]
 pub struct LoginForm {
@@ -10,14 +12,17 @@ pub struct LoginForm {
 pub struct Admin(usize);
 
 impl<'a, 'r> FromRequest<'a, 'r> for Admin {
-    type Error = !;
+    type Error = KinderError;
 
-    fn from_request(request: &'a Request<'r>) -> request::Outcome<Admin, !> {
-        request
+    fn from_request(request: &'a Request<'r>) -> request::Outcome<Admin, KinderError> {
+        match request
             .cookies()
             .get_private("admin")
             .and_then(|cookie| cookie.value().parse().ok())
             .map(|id| Admin(id))
-            .or_forward(())
+        {
+            Some(id) => Outcome::Success(id),
+            None => Outcome::Failure((Status::Unauthorized, KinderError::Unauthorized)),
+        }
     }
 }

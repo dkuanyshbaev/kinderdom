@@ -134,7 +134,7 @@ fn rocket(config: Config) -> Rocket {
                 admin::orgs::delete,
             ],
         )
-        .register(catchers![pages::not_found])
+        .register(catchers![common::not_found, common::unauthorized])
 }
 
 fn main() {

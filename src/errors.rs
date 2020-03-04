@@ -10,6 +10,7 @@ pub enum KinderError {
     NotFound,
     InternalServerError,
     BadRequest,
+    Unauthorized,
 }
 
 impl fmt::Display for KinderError {
@@ -18,6 +19,7 @@ impl fmt::Display for KinderError {
             KinderError::NotFound => write!(f, "NotFound"),
             KinderError::InternalServerError => write!(f, "InternalServerError"),
             KinderError::BadRequest => write!(f, "BadRequest"),
+            KinderError::Unauthorized => write!(f, "Unauthorized"),
         }
     }
 }
@@ -28,6 +30,7 @@ impl error::Error for KinderError {
             KinderError::NotFound => "Record not found",
             KinderError::InternalServerError => "Internal server error",
             KinderError::BadRequest => "Bad Request",
+            KinderError::Unauthorized => "Unauthorized",
         }
     }
 }
@@ -45,6 +48,8 @@ impl<'r> Responder<'r> for KinderError {
     fn respond_to(self, _: &Request) -> rocket::response::Result<'r> {
         match self {
             KinderError::NotFound => Err(Status::NotFound),
+            KinderError::BadRequest => Err(Status::BadRequest),
+            KinderError::Unauthorized => Err(Status::Unauthorized),
             _ => Err(Status::InternalServerError),
         }
     }
