@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="image">Обложка</label>
             <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
-            <small id="image_help" class="form-text text-muted">Ссылка на изображение</small>
+            <small id="image_help" class="form-text text-muted">Выберите изображение в формате jpg или png</small>
         </div>
 
         <div class="form-group">
@@ -19,6 +19,11 @@
         <div class="form-group">
             <label for="content">Содержание</label>
             <textarea class="form-control" id="summernote" name="content" rows="10"></textarea>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="welfare" name="welfare">
+            <label class="form-check-label" for="welfare">История успеха</label>
         </div>
 
         <div class="form-group form-check">

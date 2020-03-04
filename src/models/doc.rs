@@ -72,7 +72,7 @@ impl FromDataSimple for NewDoc {
 
         options
             .allowed_fields
-            .push(MultipartFormDataField::file("file_name"));
+            .push(MultipartFormDataField::file("pdf"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
@@ -98,7 +98,7 @@ impl FromDataSimple for NewDoc {
         };
 
         let mut pdf = "".to_string();
-        if let Some(FileField::Single(file)) = multipart_form.files.get("file_name") {
+        if let Some(FileField::Single(file)) = multipart_form.files.get("pdf") {
             let file_name = &file.file_name;
             let path = &file.path;
 
