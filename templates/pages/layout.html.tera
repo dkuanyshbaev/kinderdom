@@ -33,6 +33,7 @@
         <link rel="stylesheet" type="text/css" href="static/css/style.css" />
         <link rel="stylesheet" type="text/css" href="static/css/responsive.css" />
         <link rel="stylesheet" type="text/css" href="static/css/color.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/custom.css" />
     </head>
     <body>
         <header>
@@ -87,25 +88,21 @@
                     <nav>
                         <ul>
                             <li><a href="/" title="">Главная</a></li>
-
                             <li><a href="/articles" title="">Новости</a></li>
-
                             <li><a href="/profiles" title="">Анкеты</a></li>
-
                             <li><a href="/projects" title="">Проекты</a>
                                 <ul>
                                     <li><a href="/" title="">menu</a></li>
                                     <li><a href="/" title="">menu</a></li>
                                 </ul>
                             </li>
-
                             <li><a href="/events" title="">Акции</a>
                                 <ul>
                                     <li><a href="/">menu</a></li>
                                     <li><a href="/">menu</a></li>
                                 </ul>
                             </li>
-
+                            <li><a href="/docs" title="">Отчёты</a></li>
                             <li><a href="/about" title="">О фонде</a></li>
                         </ul>
                     </nav>
@@ -139,25 +136,21 @@
                 <div class="sidemenu scrollbar">
                     <ul>
                         <li><a href="/" title="">Главная</a></li>
-
                         <li><a href="/articles" title="">Новости</a></li>
-
                         <li><a href="/profiles" title="">Анкеты</a></li>
-
                         <li><a href="/projects" title="">Проекты</a>
                             <ul>
                                 <li><a href="/">menu</a></li>
                                 <li><a href="/">menu</a></li>
                             </ul>
                         </li>
-
                         <li><a href="/events" title="">Акции</a>
                             <ul>
                                 <li><a href="/">menu</a></li>
                                 <li><a href="/">menu</a></li>
                             </ul>
                         </li>
-
+                        <li><a href="/docs" title="">Отчёты</a></li>
                         <li><a href="/about" title="">О фонде</a></li>
                     </ul>
                 </div>

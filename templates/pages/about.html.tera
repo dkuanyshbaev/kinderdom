@@ -1,5 +1,200 @@
-{% extends "pages/base" %}
+{% extends "pages/layout" %}
 
 {% block content %}
-"about here"
+		<div class="pagetop">
+			<div class="container">
+				<h1><i>ABOUT</i> PAGE</h1>
+				<ul class="breadcrumbs">
+					<li><a href="#" title="">Home</a></li>
+					<li>ABOUT</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<section>
+			<div class="block">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-4 col-md-12">
+							<h2 class="col-title"><strong>Founded in 1981</strong> by <strong>Daniel Whitaker</strong>, aims to address the many needs of the <strong>world's growing refugees.</strong></h2>
+						</div>
+						<div class="col-lg-4 col-md-12">
+							<div class="frame-img"><img src="http://placehold.it/311x366" alt="" /></div>
+						</div>
+						<div class="col-lg-4 col-md-12">
+							<div class="simple-text">
+								<h3>Making someone smile is the most beautiful thing,</h3>
+								<p>Over 8,000 people have died (with death toll rising), thousands more are injured, and countless more have been displaced. Many homes, temples, and public monuments have been destroyed throughout the affected areas.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur elit. Sequi tempora veritatis nemo aut ea iustoqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<span>DANEIL WHITAKER</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section>
+			<div class="block less-space coloured-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="bold-text">
+								<h3>Shelter <strong>saves lives and improves</strong> health for people affected by poverty or disaster so they can reach their <strong>full potential.</strong> </h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	<section>
+		<div class="block">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<div class="title left">
+							<span>OUR REVIEWS</span>
+							<h2><i>SHELTER</i> TESTIMONIALS</h2>
+						</div>
+
+						<div class="shelter-testimonials">
+							<div class="review">
+								<div class="review-img"><img src="http://placehold.it/118x118" alt="" /></div>
+								<div class="review-text">
+									<h4>Tan Kamany <i>(Profex User)</i></h4>
+									<p>Sed lacinia, nibh sit vestibulum, enim risus condimentum erat, quis  vestib lum mi ligula a nulla. Nulla vitae pharetra tellus.Aenean ac tincidunt augu.</p>
+								</div>
+							</div>
+							<div class="review">
+								<div class="review-img"><img src="http://placehold.it/118x118" alt="" /></div>
+								<div class="review-text">
+									<h4>Angleina Crize <i>(Administrator)</i></h4>
+									<p>Sed lacinia, nibh sit vestibulum, enim risus condimentum erat, quis  vestib lum mi ligula a nulla. Nulla vitae pharetra tellus.Aenean ac tincidunt augu.</p>
+								</div>
+							</div>
+						</div><!-- Bio Testimonials -->
+					</div>
+
+					<div class="col-lg-6 col-md-12">
+						<div class="title left">
+							<span>OUR REVIEWS</span>
+							<h2><i>SHELTER</i> TESTIMONIALS</h2>
+						</div>
+
+						<div class="achivement-awards awards-carousel">
+							<div class="awards-slide">
+								<div class="row">
+									<div class="col-lg-6 col-md-12">
+										<div class="shelter-award">
+											<img src="http://placehold.it/191x50" alt="" />
+											<strong>Lifetime Achievments</strong>
+											<span><i>January 2009</i> , Karachi, Pakistan</span>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-12">
+										<div class="shelter-award">
+											<img src="http://placehold.it/191x50" alt="" />
+											<strong>Best Teacher Award</strong>
+											<span><i>March 2010</i> , Toronto, Canada</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="awards-slide">
+								<div class="row">
+									<div class="col-lg-6 col-md-12">
+										<div class="shelter-award">
+											<img src="http://placehold.it/191x50" alt="" />
+											<strong>Lifetime Achievments</strong>
+											<span><i>May 2012</i> , Shanghai, China</span>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-12">
+										<div class="shelter-award">
+											<img src="http://placehold.it/191x50" alt="" />
+											<strong>Best Teacher Award</strong>
+											<span><i>January 2009</i> , Karachi, Pakistan</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!-- Achievement Box -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+		<section>
+			<div class="block remove-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="shelter-donations-boxes">
+								<div class="row">
+									<div class="col">
+										<div class="donation-box">
+											<img src="http://placehold.it/380x238" alt="" />
+											<div class="box-text">
+												<h4>GIVE DONATION</h4>
+												<p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+												<a class="btn style2 small" href="#" title="">Donate Now</a>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="donation-box">
+											<img src="http://placehold.it/380x238" alt="" />
+											<div class="box-text">
+												<h4>BECOME A VOLUNTEER</h4>
+												<p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+												<a class="btn style2 small" href="#" title="">Become Now</a>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="donation-box">
+											<img src="http://placehold.it/380x238" alt="" />
+											<div class="box-text">
+												<h4>GIVE SCHOLARSHIP</h4>
+												<p>Pellentesque eu malsuada nisi has ellus eget et condmen tumg.</p>
+												<a class="btn style2 small" href="#" title="">GIVE IMMEDIATELY</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!-- Shelter Donation Boxes -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section>
+			<div class="block less-space gray">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="shelter-logos">
+								<li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+								<li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+								<li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+								<li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+							</ul><!-- Trace Logos -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 {% endblock content %}

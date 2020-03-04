@@ -1,5 +1,189 @@
-{% extends "pages/base" %}
+{% extends "pages/layout" %}
 
 {% block content %}
-"projects here"
+		<div class="pagetop">
+			<div class="container">
+				<h1><i>Events</i> Page</h1>
+				<ul class="breadcrumbs">
+					<li><a href="#" title="">Home</a></li>
+					<li>Events</li>
+				</ul>
+			</div>
+		</div>
+
+	<section>
+		<div class="block">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12">
+						<div class="upcoming-event">
+							<div class="event-text">
+								<i>Oct 12, 2016 3:53 am</i>
+								<h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+								<span> 90012 South Street, Sanford, FL South Africa </span>
+							</div>
+							<div class="event-count">
+								<ul class="countdown">
+									<li>
+										<div class="time-box"><span class="days">00</span> <p class="days_ref">DAYS</p></div>
+									</li>
+									<li>
+										<div class="time-box"> <span class="hours">00</span><p class="hours_ref">HOURS</p></div>
+									</li>
+									<li>
+										<div class="time-box"> <span class="minutes">00</span><p class="minutes_ref">MINS</p></div>
+									</li>
+									<li>
+										<div class="time-box"> <span class="seconds">00</span><p class="seconds_ref">SECS</p></div>
+									</li>
+								</ul><!-- Event Countdown -->
+							</div>
+						</div><!-- Upcoming Event -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+		<section>
+			<div class="block remove-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="shelter-events">
+								<div class="row">
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Seminar For Children To Learn About The Future</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Make Life Easier For Ebola & Alzheimer</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Climate Change: Vital Signs Of The Planet</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Seminar For Children To Learn About The Future</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Make Life Easier For Ebola & Alzheimer</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Climate Change: Vital Signs Of The Planet</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+									<div class="col-3">
+										<div class="shelter-event">
+											<div class="event-inner">
+												<h4><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h4>
+												<span>Dec 25 - 2017        05:00 pm</span>
+											</div>
+											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
+											<div class="social-links">
+												<a href="#" title=""><i class="fa fa-facebook"></i></a>
+												<a href="#" title=""><i class="fa fa-twitter"></i></a>
+												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
+											</div>
+										</div><!-- Shelter Event -->
+									</div>
+								</div>
+							</div><!-- Shelter Events -->
+
+
+							<div class="shelter-pagination">
+								<ul class="pagination">
+									<li> <a href="#" title=""> Previous </a> </li>
+									<li><a class="current" href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li> <a href="#" title=""> Next</a> </li>
+								</ul>
+							</div><!-- Shelter Pagination -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 {% endblock content %}

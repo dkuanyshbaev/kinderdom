@@ -1,11 +1,49 @@
-{% extends "pages/base" %}
+{% extends "pages/layout" %}
 
 {% block content %}
-"vol here"
-<h1>Hi {{name}}</h1>
-<ul>
-    {% for s in items %}
-    <li>{{ s }}</li>
-    {% endfor %}
-</ul>
+		<div class="pagetop">
+			<div class="container">
+				<h1><i>VOLUNTEERS</i> PAGE</h1>
+				<ul class="breadcrumbs">
+					<li><a href="#" title="">Home</a></li>
+					<li>Volunteers</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<section>
+			<div class="block">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="become-volunteer">
+								<div class="row">
+									<div class="col-lg-6 col-md-12">
+										<div class="volunteer-thumb">
+											<img src="http://placehold.it/587x678" alt=" ">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-12">
+										<div class="title left">
+											<span>Shine Bright the world needs you</span>
+											<h2><i>BECOME A</i> VOLUNTEER</h2>
+										</div>
+										<p>Quis autem velum iure reprehe nderit. Lorem ipsum dolor sit dum in sagittis. Nulla or narjusto laoreet onse ctetur adipisci adipiscing elitliquam vitae fring.</p>
+										<form>
+											<input name="name" type="text" placeholder="First Name *">
+											<input name="name" type="text" placeholder="Last Name *">
+											<input name="email" type="text" placeholder="Email Address *">
+											<input name="name" type="text" placeholder="Phone Number *">
+											<textarea name="comments" placeholder="About Your Self *"></textarea>
+											<button class="btn submit" type="submit" id="submit3">Become Now</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 {% endblock content %}

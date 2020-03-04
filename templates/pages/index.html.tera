@@ -1,4 +1,4 @@
-{% extends "pages/base" %}
+{% extends "pages/layout" %}
 
 {% block content %}
 <section>
@@ -32,44 +32,8 @@
     </div>
 </section>
 
-
 <section>
-    <div class="block remove-gap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-12">
-                    <div class="shelter-donations">
-                        <span>In South Africa</span>
-                        <h3>We've Reached <span>So Far</span></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet na aliquam erat volutpat Ut wisi enim euismod  </p>
-                        <div class="donations-bottom">
-                            <div class="shelter-skills">
-                                <div class="skillbar">
-                                    <span>$350 of $1,000 raised </span>
-                                    <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-                                </div>
-                            </div>
-                            <a class="btn open-popup" href="#" title="">Donate Now</a>
-                        </div>
-                    </div><!-- Shelter Donations -->
-                </div>
-
-                <div class="col-lg-4 col-md-12">
-                    <div class="shelter-join-box overlap">
-                        <span>We need you! and your help</span>
-                        <h3>Sponsor a <strong>Child</strong> Today</h3>
-                        <p>Lorem ipsum dolor sit ame consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet na aliquam erat volutpat Ut wisi enim euismod  </p>
-                        <a class="btn style3" href="#" title="">Join Us Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section>
-    <div class="block remove-gap">
+    <div class="block">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -124,6 +88,56 @@
                             </div>
                         </div>
                     </div><!-- Creative Causes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block no-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="shelter-donations style2">
+                        <span>In South Africa</span>
+                        <h3>We've Reached <span>So Far</span></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet na aliquam erat volutpat Ut wisi enim euismod  </p>
+                        <div class="donations-bottom">
+                            <div class="shelter-skills">
+                                <div class="skillbar">
+                                    <span>$350 of $1,000 raised </span>
+                                    <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                </div>
+                            </div>
+                            <a class="btn open-popup" href="#" title="">Donate Now</a>
+                        </div>
+                    </div><!-- Shelter Donations -->
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="title left">
+                        <span>For Causes</span>
+                        <h2><i>SEARCH &</i> DONATE</h2>
+                    </div>
+                    <div class="find-shelter style2">
+                        <h3>Nearly 1,800 Local Shelter Homes Around the World. Find yours Here</h3>
+                        <div class="find-form">
+                            <label>Search By Zip Code</label>
+                            <form class="zip-find">
+                                <input type="text" placeholder="Zip Code" />
+                                <button class="btn small" type="submit">Submit Code</button>
+                            </form>
+                            <label>Search By Country</label>
+                            <select>
+                                <option>Africa</option>
+                                <option>Namibia</option>
+                                <option>Uganda</option>
+                                <option>Bangladesh</option>
+                            </select>
+                        </div>
+                    </div><!-- Find Shleter -->
                 </div>
             </div>
         </div>
@@ -209,72 +223,67 @@
     </div>
 </section>
 
-
 <section>
-    <div class="block remove-gap">
+    <div class="block">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="title">
-                        <span>OUR PEOPLE HELPING</span>
-                        <h2><i>SHELTER</i> HELPING TEAM</h2>
+                <div class="col-lg-6 col-md-12">
+                    <div class="shelter-text">
+                        <span>Promote and Monitor Human Rights</span>
+                        <h3>WELFARE Stories of <span>SHELTER</span></h3>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit autugit, sed cons equuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed consequuntur magni.</p>
+                        <ul>
+                            <li>Reliable and secure platform</li>
+                            <li>Everything is perfectly organized for future</li>
+                            <li>Attach large files easily</li>
+                            <li>Forwarding email accounts for free</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="shelter-team">
-                        <div class="row">
-                            <div class="col">
-                                <div class="member">
-                                    <img src="http://placehold.it/370x410" alt="" />
-                                    <div class="member-name">
-                                        <h4>Mona Cristina</h4>
-                                        <span>
-                                            <i>Social Worker</i>
-                                            <a href="team-detail.html" title="">Read More</a>
-                                        </span>
-                                    </div>
-                                </div><!-- Member -->
-                            </div>
-                            <div class="col">
-                                <div class="member">
-                                    <img src="http://placehold.it/370x410" alt="" />
-                                    <div class="member-name">
-                                        <h4>John Carley</h4>
-                                        <span>
-                                            <i>Market Analyst </i>
-                                            <a href="team-detail.html" title="">Read More</a>
-                                        </span>
-                                    </div>
-                                </div><!-- Member -->
-                            </div>
-                            <div class="col">
-                                <div class="member">
-                                    <img src="http://placehold.it/370x410" alt="" />
-                                    <div class="member-name">
-                                        <h4>Wasley Steven</h4>
-                                        <span>
-                                            <i>Scoail Worker</i>
-                                            <a href="team-detail.html" title="">Read More</a>
-                                        </span>
-                                    </div>
-                                </div><!-- Member -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="stories-carousel">
+                        <div class="story-slide">
+                            <div class="story">
+                                <img src="http://placehold.it/277x429" alt="" />
+                                <h3><a href="#" title="">Climate Change: Vital Signs Of The Planet</a></h3>
                             </div>
                         </div>
-                    </div><!-- Octa Team -->
-
+                        <div class="story-slide">
+                            <div class="story">
+                                <img src="http://placehold.it/277x429" alt="" />
+                                <h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
+                            </div>
+                        </div>
+                        <div class="story-slide">
+                            <div class="story">
+                                <img src="http://placehold.it/277x429" alt="" />
+                                <h3><a href="#" title="">Climate Change: Vital Signs Of The Planet</a></h3>
+                            </div>
+                        </div>
+                        <div class="story-slide">
+                            <div class="story">
+                                <img src="http://placehold.it/277x429" alt="" />
+                                <h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
+                            </div>
+                        </div>
+                    </div><!-- Stories Carousel -->
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
 <section>
-    <div class="block less-space coloured-bg">
+    <div class="block blackish">
+    <div class="fixed-bg bg2"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="bold-text">
-                        <h3>Shelter <strong>saves lives and improves</strong> health for people affected by poverty or disaster so they can reach their <strong>full potential.</strong> </h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12">
+                    <div class="simple-parallax">
+                        <h3>Let’s Make The World Better Place Together</h3>
+                        <p>Charity fundraising ideas, and fundraise or crowdfund for an Australian charity close to your heart. With over 1500 Australian charities to choose from raising money for your cause is easy.</p>
+                        <a class="btn" href="#" title="">Join Our Compaign</a>
                     </div>
                 </div>
             </div>
@@ -287,74 +296,59 @@
     <div class="block">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="title left">
-                        <span>OUR REVIEWS</span>
-                        <h2><i>SHELTER</i> TESTIMONIALS</h2>
+                <div class="col-12">
+                    <div class="title">
+                        <span>Give Your Hand To Help</span>
+                        <h2><i>SHELTER</i> RECENT NEWS</h2>
                     </div>
 
-                    <div class="shelter-testimonials">
-                        <div class="review">
-                            <div class="review-img"><img src="http://placehold.it/118x118" alt="" /></div>
-                            <div class="review-text">
-                                <h4>Tan Kamany <i>(Profex User)</i></h4>
-                                <p>Sed lacinia, nibh sit vestibulum, enim risus condimentum erat, quis  vestib lum mi ligula a nulla. Nulla vitae pharetra tellus.Aenean ac tincidunt augu.</p>
-                            </div>
-                        </div>
-                        <div class="review">
-                            <div class="review-img"><img src="http://placehold.it/118x118" alt="" /></div>
-                            <div class="review-text">
-                                <h4>Angleina Crize <i>(Administrator)</i></h4>
-                                <p>Sed lacinia, nibh sit vestibulum, enim risus condimentum erat, quis  vestib lum mi ligula a nulla. Nulla vitae pharetra tellus.Aenean ac tincidunt augu.</p>
-                            </div>
-                        </div>
-                    </div><!-- Bio Testimonials -->
-                </div>
 
-                <div class="col-lg-6 col-md-12">
-                    <div class="title left">
-                        <span>OUR REVIEWS</span>
-                        <h2><i>SHELTER</i> TESTIMONIALS</h2>
+                    <div class="shelter-blog">
+                        <div class="row">
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
+                                            <li>October, 30, 2017</li>
+                                        </ul>
+                                        <h3><a href="#" title="">Clean Water is a Changes Absolutely Help Everything</a></h3>
+                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+                                        <a class="readmore" href="#" title="">Read More</a>
+                                    </div>
+                                </div><!-- Simple Post -->
+                            </div>
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
+                                            <li>October, 30, 2017</li>
+                                        </ul>
+                                        <h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
+                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+                                        <a class="readmore" href="#" title="">Read More</a>
+                                    </div>
+                                </div><!-- Simple Post -->
+                            </div>
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
+                                            <li>October, 30, 2017</li>
+                                        </ul>
+                                        <h3><a href="#" title="">Primary Schools, Secondary Schools & Adult's Literacy</a></h3>
+                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+                                        <a class="readmore" href="#" title="">Read More</a>
+                                    </div>
+                                </div><!-- Simple Post -->
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="achivement-awards awards-carousel">
-                        <div class="awards-slide">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="shelter-award">
-                                        <img src="http://placehold.it/191x50" alt="" />
-                                        <strong>Lifetime Achievments</strong>
-                                        <span><i>January 2009</i> , Karachi, Pakistan</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="shelter-award">
-                                        <img src="http://placehold.it/191x50" alt="" />
-                                        <strong>Best Teacher Award</strong>
-                                        <span><i>March 2010</i> , Toronto, Canada</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="awards-slide">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="shelter-award">
-                                        <img src="http://placehold.it/191x50" alt="" />
-                                        <strong>Lifetime Achievments</strong>
-                                        <span><i>May 2012</i> , Shanghai, China</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="shelter-award">
-                                        <img src="http://placehold.it/191x50" alt="" />
-                                        <strong>Best Teacher Award</strong>
-                                        <span><i>January 2009</i> , Karachi, Pakistan</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- Achievement Box -->
 
                 </div>
             </div>
@@ -363,8 +357,9 @@
 </section>
 
 
+
 <section>
-    <div class="block remove-gap">
+    <div class="block">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -402,23 +397,6 @@
                             </div>
                         </div>
                     </div><!-- Shelter Donation Boxes -->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="block less-space gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="shelter-logos">
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                    </ul><!-- Trace Logos -->
                 </div>
             </div>
         </div>
