@@ -2,34 +2,25 @@
 
 {% block content %}
 <div class="container">
-    <img src="/static/upload/{{ image }}" class="img-thumbnail" alt="Обложка"><br><br>
+    <img src="/static/upload/{{ logo }}" class="img-thumbnail" alt="Лого"><br><br>
 
-    <form action="/admin/articles/{{ id }}" method="post" enctype="multipart/form-data">
+    <form action="/admin/orgs/{{ id }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="put" />
 
         <div class="form-group">
-            <label for="image">Обложка</label>
-            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
-            <small id="image_help" class="form-text text-muted">Выберите изображение в формате jpg или png</small>
+            <label for="logo">Лого</label>
+            <input type="file" accept=".jpg,.png" class="form-control-file" id="logo" name="logo" aria-describedby="logo_help">
+            <small id="logo_help" class="form-text text-muted">Выберите изображение в формате jpg или png</small>
         </div>
 
         <div class="form-group">
-            <label for="name">Заголовок</label>
-            <input type="text" class="form-control" id="name" name="title" value="{{ title }}">
+            <label for="name">Название</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ name }}">
         </div>
 
         <div class="form-group">
-            <label for="summernote">Содержание</label>
-            <textarea class="form-control" id="summernote" name="content" rows="10">{{ content }}</textarea>
-        </div>
-
-        <div class="form-group form-check">
-            {% if welfare %}
-                <input type="checkbox" class="form-check-input" id="welfare" name="welfare" checked>
-            {% else %}
-                <input type="checkbox" class="form-check-input" id="welfare" name="welfare">
-            {% endif %}
-            <label class="form-check-label" for="welfare">История успеха</label>
+            <label for="summernote">Описание</label>
+            <textarea class="form-control" id="summernote" name="description" rows="10">{{ description }}</textarea>
         </div>
 
         <div class="form-group form-check">
@@ -43,7 +34,7 @@
 
         <button type="submit" class="btn btn-info">Сохранить</button>
 
-        <a href="/admin/articles" class="btn btn-dark">Отмена</a>
+        <a href="/admin/orgs" class="btn btn-dark">Отмена</a>
     </form>
     <br>
     <br>
