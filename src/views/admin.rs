@@ -8,6 +8,7 @@ macro_rules! handle {
         // list of items
         #[get("/")]
         pub fn list(
+            _admin: crate::auth::Admin,
             connection: crate::Db,
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
             let items = <$t>::all(&connection)?;
@@ -22,7 +23,7 @@ macro_rules! handle {
 
         // show add form
         #[get("/add")]
-        pub fn add() -> rocket_contrib::templates::Template {
+        pub fn add(_admin: crate::auth::Admin) -> rocket_contrib::templates::Template {
             rocket_contrib::templates::Template::render(
                 format!("{}/add", $tp),
                 crate::views::NoContext {},
@@ -32,6 +33,7 @@ macro_rules! handle {
         // create item
         #[post("/", data = "<new_item>")]
         pub fn create(
+            _admin: crate::auth::Admin,
             connection: crate::Db,
             new_item: crate::KinderResult<$nt>,
         ) -> crate::KinderResult<rocket::response::Redirect> {
@@ -50,6 +52,7 @@ macro_rules! handle {
         // show edit form
         #[get("/<id>")]
         pub fn edit(
+            _admin: crate::auth::Admin,
             connection: crate::Db,
             id: i32,
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
@@ -65,6 +68,7 @@ macro_rules! handle {
         // post here instead of put - because of multipart
         #[post("/<id>", data = "<new_item>")]
         pub fn update(
+            _admin: crate::auth::Admin,
             connection: crate::Db,
             new_item: crate::KinderResult<$nt>,
             id: i32,
@@ -84,6 +88,7 @@ macro_rules! handle {
         // delete item
         #[delete("/<id>")]
         pub fn delete(
+            _admin: crate::auth::Admin,
             connection: crate::Db,
             id: i32,
         ) -> crate::KinderResult<rocket::response::Redirect> {
