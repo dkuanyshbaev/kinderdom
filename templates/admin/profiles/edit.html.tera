@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <img src="/static/upload/{{ photo }}" class="img-thumbnail" alt="Обложка"><br><br>
+    <img src="/static/upload/{{ photo }}" class="img-thumbnail" alt="Фото"><br><br>
 
     <form action="/admin/profiles/{{ id }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="put" />

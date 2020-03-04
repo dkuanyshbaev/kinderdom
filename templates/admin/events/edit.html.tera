@@ -1,5 +1,64 @@
 {% extends "admin/layout" %}
 
 {% block content %}
-edit
+<div class="container">
+    <img src="/static/upload/{{ image }}" class="img-thumbnail" alt="Обложка"><br><br>
+
+    <form action="/admin/events/{{ id }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="put" />
+
+        <div class="form-group">
+            <label for="image">Обложка</label>
+            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
+            <small id="image_help" class="form-text text-muted">Выберите изображение в формате jpg или png</small>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Название</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ name }}">
+        </div>
+
+        <div class="form-group form-row">
+            <div class="col">
+                <label for="needed">Необходимо</label>
+                <input type="number" name="needed" id="needed" class="form-control" value="{{ needed }}">
+                <small id="needed" class="form-text text-muted">Сумма в рублях</small>
+            </div>
+            <div class="col">
+                <label for="collected">Собрано</label>
+                <input type="number" name="collected" id="collected" class="form-control" value="{{ collected }}">
+                <small id="collected" class="form-text text-muted">Сумма в рублях</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Описание</label>
+            <textarea class="form-control" id="summernote" name="description" rows="10">{{ description }}</textarea>
+        </div>
+
+        <div class="form-group form-check">
+            {% if vital %}
+                <input type="checkbox" class="form-check-input" id="vital" name="vital" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="vital" name="vital">
+            {% endif %}
+            <label class="form-check-label" for="vital">Важно</label>
+        </div>
+
+        <div class="form-group form-check">
+            {% if published %}
+                <input type="checkbox" class="form-check-input" id="published" name="published" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="published" name="published">
+            {% endif %}
+            <label class="form-check-label" for="published">Опубликовано</label>
+        </div>
+
+        <button type="submit" class="btn btn-info">Сохранить</button>
+
+        <a href="/admin/events" class="btn btn-dark">Отмена</a>
+    </form>
+    <br>
+    <br>
+</div>
 {% endblock content %}
