@@ -218,28 +218,11 @@ section{
     box-shadow:0 0 7px rgba(0,0,0,0.2) inset;
 }
 .fixed-bg.stop{background-attachment:scroll!important}
-.bg1{background-image:url(../images/slide1.jpg)}
-.bg2{background-image:url(../images/slide1.jpg)}
-.bg3{background-image:url(../images/slide1.jpg)}
-.bg4{background-image:url(../images/slide1.jpg)}
-.bg5{background-image:url(../images/slide1.jpg)}
-.bg6{background-image:url(../images/slide1.jpg)}
-.bg7{background-image:url(../images/slide1.jpg)}background-position:bottom}
-.bg8{background-image:url(../images/slide1.jpg)}
-.bg9{background-image:url(../images/slide1.jpg)}
-.bg10{background-image:url(../images/slide1.jpg)}
-.bg11{background-image:url(../images/slide1.jpg)}
-.bg12{background-image:url(../images/slide1.jpg)}
-.bg13{background-image:url(../images/slide1.jpg)}
-.bg14{background-image:url(../images/slide1.jpg)}
-.bg15{background-image:url(../images/slide1.jpg)}
-.bg16{background-image:url(../images/slide1.jpg)}
-.bg17{background-image:url(../images/slide1.jpg)}
-.bg18{background-image:url(../images/slide1.jpg)}
-.bg19{background-image:url(../images/slide1.jpg)}
-.bg20{background-image:url(../images/slide1.jpg)}
-.bg21{background-image:url(../images/slide1.jpg)}
-.bg22{background-image:url(../images/slide1.jpg)}
+.bg1{background-image:url(../images/V/1600x900_03.jpg)}
+.bg2{background-image:url(../images/V/1600x900_02.jpg)}
+.bg3{background-image:url(../images/V/1600x900_01.jpg)}
+.bg4{background-image:url(../images/V/1600x900_04.jpg)}
+.bg5{background-image:url(../images/V/1600x900_05.jpg)}background-position:bottom}
 .pattern{background-image:url(../images/pattern.jpg)}
 .blackish:before, .whitish:before, .half-gray:before,
 .coloured:before{

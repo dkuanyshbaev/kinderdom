@@ -224,7 +224,7 @@
 </section>
 
 <section>
-    <div class="block">
+    <div class="block no-top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
@@ -359,7 +359,7 @@
 
 
 <section>
-    <div class="block">
+    <div class="block no-top">
         <div class="container">
             <div class="row">
                 <div class="col">
