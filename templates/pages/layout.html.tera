@@ -36,122 +36,56 @@
         <link rel="stylesheet" type="text/css" href="static/css/custom.css" />
     </head>
     <body>
-        <header>
-            <div class="topbar dark">
-                <div class="container">
+        <header class="transparent">
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <div class="logo">
+                        <a href="/" title=""><img src="static/images/logo.png" alt="Kinderdom" /></a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <nav>
+                        <ul>
+                            <li><a href="/" title="">Главная</a></li>
+                            <li><a href="/events" title="">События</a></li>
+                            <li><a href="/causes" title="">Цели</a></li>
+                            <li><a href="/reports" title="">Отчёты</a></li>
+                            <li><a href="/about" title="">О фонде</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-3">
+                    <div class="lang">
+                        <a href="/" title=""><img src="static/images/uk.png" alt="ENG" /></a>
+                    </div>
+
                     <div class="social-btns">
                         <a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
                         <a class="instagram" href="#" title=""><i class="fa fa-instagram"></i></a>
                         <a class="pinterest" href="#" title=""><i class="fa fa-youtube-play"></i></a>
                     </div>
-                    <a class="top-btn open-popup" href="#" title="">Я хочу помочь</a>
-                    <ul>
-                        <li><a href="/help" title="">Стать волонтёром</a></li>
-                    </ul>
-                </div>
-            </div><!-- Topbar -->
-            <div class="menubar">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-3"><div class="logo"><a href="/" title=""><img src="static/images/logo.png" alt="" /></a></div></div>
-                        <div class="col-9">
-                            <div class="header-contact">
-                                <div class="info">
-                                    <i class="ion-ios-email-outline"></i>
-                                    <strong>Почта
-                                        <span><a href="mailto:kinderdom@mail.ru">kinderdom@mail.ru</a></span>
-                                    </strong>
-                                </div><!-- Info -->
-                                <div class="info">
-                                    <i class="ion-ios-telephone-outline"></i>
-                                    <strong>Телефон
-                                        <span><a href="tel:+79147030121">+7 914 703-01-21</a></span>
-                                    </strong>
-                                </div><!-- Info -->
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div><!-- Menu Bar -->
-            <div class="menu-strip">
-                <div class="container">
-                    <!--
-                        <div class="shelter-search">
-                        <a href="#" title=""><i class="fa fa-search"></i></a>
-                        <form>
-                        <input type="search" placeholder="Enter Your Search keywords" />
-                        <button><i class="fa fa-search"></i></button>
-                        </form>
-                        </div>
-                    -->
-                    <nav>
-                        <ul>
-                            <li><a href="/" title="">Главная</a></li>
-                            <li><a href="/articles" title="">Новости</a></li>
-                            <li><a href="/profiles" title="">Анкеты</a></li>
-                            <li><a href="/projects" title="">Проекты</a>
-                                <ul>
-                                    <li><a href="/" title="">menu</a></li>
-                                    <li><a href="/" title="">menu</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/events" title="">Акции</a>
-                                <ul>
-                                    <li><a href="/">menu</a></li>
-                                    <li><a href="/">menu</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/docs" title="">Отчёты</a></li>
-                            <li><a href="/about" title="">О фонде</a></li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </header><!-- Header -->
 
         <div class="responsive-header">
-            <div class="topbar">
-                <a class="top-btn open-popup" href="/" title="">Я хочу помочь</a>
-                <ul>
-                    <li><a href="/help" title="">Стать волонтёром</a></li>
-                </ul>
-            </div><!-- Topbar -->
             <div class="responsive-menubar">
-                <div class="logo"><a href="/" title=""><img src="static/images/logo.png" alt="" /></a></div>
-
+                <div class="logo"><a href="/" title=""><img src="static/images/logo3.png" alt="" /></a></div>
                 <a class="responsive-menu-btn" href="#" title=""><i class="ion-navicon"></i></a>
-                <!-- <div class="shelter&#45;search"> -->
-                <!--     <a href="#" title=""><i class="fa fa&#45;search"></i></a> -->
-                <!--     <form> -->
-                <!--         <input type="search" placeholder="Enter Your Search keywords" /> -->
-                <!--         <button><i class="fa fa&#45;search"></i></button> -->
-                <!--     </form> -->
-                <!-- </div> -->
             </div><!-- Responsive Menubar -->
-
 
             <div class="sideheader">
                 <a class="menu-btn close" href="javascript:void(0)" title=""><i class="icon-cancel"></i></a>
                 <div class="sidemenu scrollbar">
                     <ul>
                         <li><a href="/" title="">Главная</a></li>
-                        <li><a href="/articles" title="">Новости</a></li>
-                        <li><a href="/profiles" title="">Анкеты</a></li>
-                        <li><a href="/projects" title="">Проекты</a>
-                            <ul>
-                                <li><a href="/">menu</a></li>
-                                <li><a href="/">menu</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/events" title="">Акции</a>
-                            <ul>
-                                <li><a href="/">menu</a></li>
-                                <li><a href="/">menu</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/docs" title="">Отчёты</a></li>
+                        <li><a href="/events" title="">События</a></li>
+                        <li><a href="/causes" title="">Цели</a></li>
+                        <li><a href="/reports" title="">Отчёты</a></li>
                         <li><a href="/about" title="">О фонде</a></li>
+                        <li class="lang_mobi">
+                            <a href="/" title=""><img src="static/images/uk.png" alt="ENG" /></a>
+                        </li>
                     </ul>
                 </div>
             </div><!-- Sideheader -->
@@ -163,7 +97,7 @@
             <div class="block">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="widget">
                                 <div class="about-widget">
                                     <div class="logo"><a href="/" title=""><img src="static/images/logo2.png" alt="" /></a></div>
@@ -171,15 +105,15 @@
                                 </div><!-- About Widget -->
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-2 col-md-6">
                             <div class="widget">
                                 <h3 class="widget-title">Фонд</h3>
                                 <ul>
                                     <li><a href="/" title="">Главная</a></li>
-                                    <li><a href="/articles" title="">Новости</a></li>
+                                    <li><a href="/reports" title="">Отчеты</a></li>
                                     <li><a href="/about" title="">О фонде</a></li>
-                                    <li><a href="/docs" title="">Отчеты</a></li>
                                     <li><a href="/help" title="">Стать волонтёром</a></li>
+                                    <li><a href="/events" title="">События</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -189,11 +123,10 @@
                                 <ul>
                                     <li>690069, г. Владивосток,<br>ул. Давыдова, д. 18</li>
                                     <li>kinderdom@mail.ru</li>
-                                    <li>+7 914 703-01-21</li>
+                                    <li>+7 (914) 703-01-21</li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-md-6">
                             <div class="widget">
                                 <h3 class="widget-title">Мы в instagram</h3>
@@ -210,11 +143,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </footer>
-
 
         <div class="popup">
             <div class="popup-box">
@@ -265,11 +196,9 @@
             </div>
         </div><!-- Popup -->
 
-
-
         <script src="static/js/jquery.min.js"></script>
         <script src="static/js/slick.min.js"></script>
-        <script src="static/js/isotope.js"></script>
+        <script src="static/js/downcount.js"></script>
         <script src="static/js/simpleLightbox.min.js"></script>
         <script src="static/js/script.js"></script>
     </body>

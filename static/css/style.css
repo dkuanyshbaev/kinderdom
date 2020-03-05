@@ -218,10 +218,7 @@ section{
     box-shadow:0 0 7px rgba(0,0,0,0.2) inset;
 }
 .fixed-bg.stop{background-attachment:scroll!important}
-.bg1{background-image:url(../images/V/1600x900_03.jpg)}
-.bg2{background-image:url(../images/V/1600x900_02.jpg)}
-.bg3{background-image:url(../images/V/1600x900_01.jpg)}
-.bg4{background-image:url(../images/V/1600x900_04.jpg)}
+.bg6{background-image:url(../images/parallax6.jpg)}
 .bg5{background-image:url(../images/V/1600x900_05.jpg)}background-position:bottom}
 .pattern{background-image:url(../images/pattern.jpg)}
 .blackish:before, .whitish:before, .half-gray:before,
