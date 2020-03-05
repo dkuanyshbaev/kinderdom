@@ -1,292 +1,329 @@
 {% extends "pages/layout" %}
 
 {% block content %}
-	<section>
-		<div class="block full-height">
-		<div class="fixed-bg bg6"></div>
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-5 col-md-12">
-						<div class="big-text style2">
-							<span>Donate Now To Support</span>
-							<h3>Let your life be an <strong> Inspiration</strong></h3>
-							<p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta, et malesuada erat bibendum. Cras sed nunc massa. </p>
-
-							<a class="btn" href="#" title="">Start With A Little</a>
-						</div><!-- Big Text -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+<section>
+    <div class="block full-height">
+        <div class="fixed-bg bg6"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12">
+                    <div class="big-text style2">
+                        <span>Donate Now To Support</span>
+                        <h3>Let your life be an <strong> Inspiration</strong></h3>
+                        <p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta, et malesuada erat bibendum. Cras sed nunc massa. </p>
+                        <a class="btn" href="#" title="">Я хочу помочь</a>
+                    </div><!-- Big Text -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
+<section>
+    <div class="block coloured-bg no-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="shelter-bar">
+                        <h4>LET'S START DOING <strong>YOUR BIT FOR THE WORLD</strong>. JOIN US AS A VOLUNTEER</h4>
+
+                        <a class="btn style3" href="/help" title="">Стать волонтёром</a>
+                    </div><!-- Shelter Bar -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-	<section>
-		<div class="block coloured-bg no-padding">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="shelter-bar">
-							<h4>LET'S START DOING <strong>YOUR BIT FOR THE WORLD</strong>. JOIN US AS A VOLUNTEER</h4>
-
-							<a class="btn style3" href="#" title="">Become A Volunteer</a>
-						</div><!-- Shelter Bar -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-	<section>
-		<div class="block">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-4 col-md-12">
-						<h2 class="col-title"><strong>Founded in 1981</strong> by <strong>Daniel Whitaker</strong>, aims to address the many needs of the <strong>world's growing refugees.</strong></h2>
-					</div>
-					<div class="col-lg-4 col-md-12">
-						<div class="frame-img"><img src="http://placehold.it/311x366" alt="" /></div>
-					</div>
-					<div class="col-lg-4 col-md-12">
-						<div class="simple-text">
-							<h3>Making someone smile is the most beautiful thing,</h3>
-							<p>Over 8,000 people have died (with death toll rising), thousands more are injured, and countless more have been displaced. Many homes, temples, and public monuments have been destroyed throughout the affected areas.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur elit. Sequi tempora veritatis nemo aut ea iustoqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-							<span>DANEIL WHITAKER</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-12">
+                    <h2 class="col-title"><strong>Founded in 1981</strong> by <strong>Daniel Whitaker</strong>, aims to address the many needs of the <strong>world's growing refugees.</strong></h2>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="frame-img"><img src="http://placehold.it/311x366" alt="" /></div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="simple-text">
+                        <h3>Making someone smile is the most beautiful thing,</h3>
+                        <p>Over 8,000 people have died (with death toll rising), thousands more are injured, and countless more have been displaced. Many homes, temples, and public monuments have been destroyed throughout the affected areas.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur elit. Sequi tempora veritatis nemo aut ea iustoqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <span>DANEIL WHITAKER</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-	<section>
-		<div class="block gray">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="title">
-							<span>Community Foundation</span>
-							<h2><i>SHELTER</i> RECENT CAUSES</h2>
-						</div>
+<section>
+    <div class="block gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Help The Homeless People</span>
+                        <h2><i>SHELTER</i> RECENT CAUSES</h2>
+                    </div>
 
-						<div class="modern-causes">
-							<div class="row">
-								<div class="col">
-									<div class="modern-cause">
-										<div class="modern-cause-img">
-											<img src="http://placehold.it/270x249" alt="" />
-										</div>
-										<h4><a href="#" title="">Education To Every Child</a></h4>
-										<span>Donation Goal:   <i>$9978.00</i></span>
-										<a class="btn round open-popup" href="#" title="">Donate Now</a>
-									</div><!-- Recent Cause -->
-								</div>
-								<div class="col">
-									<div class="modern-cause">
-										<div class="modern-cause-img">
-											<img src="http://placehold.it/270x249" alt="" />
-										</div>
-										<h4><a href="#" title="">Make Life Easier For Them</a></h4>
-										<span>Donation Goal:   <i>$9978.00</i></span>
-										<a class="btn round open-popup" href="#" title="">Donate Now</a>
-									</div><!-- Recent Cause -->
-								</div>
-								<div class="col">
-									<div class="modern-cause">
-										<div class="modern-cause-img">
-											<img src="http://placehold.it/270x249" alt="" />
-										</div>
-										<h4><a href="#" title="">Dedicated To Helping kids</a></h4>
-										<span>Donation Goal:   <i>$9978.00</i></span>
-										<a class="btn round open-popup" href="#" title="">Donate Now</a>
-									</div><!-- Recent Cause -->
-								</div>
-								<div class="col">
-									<div class="modern-cause">
-										<div class="modern-cause-img">
-											<img src="http://placehold.it/270x249" alt="" />
-										</div>
-										<h4><a href="#" title="">Clean Water For People</a></h4>
-										<span>Donation Goal:   <i>$9978.00</i></span>
-										<a class="btn round open-popup" href="#" title="">Donate Now</a>
-									</div><!-- Recent Cause -->
-								</div>
-							</div>
-						</div><!-- Recent Cause -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<section>
-		<div class="block">
-			<div class="row justify-content-center">
-				<div class="col-lg-5 col-md-12">
-					<div class="title style2">
-						<span>Promote and Monitor Human Rights</span>
-						<h2><i>adopt a child & </i>SAVE LIVES</h2>
-						<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst. Nemo enim ipsam voluptatem quia volupta.</p>
-						<div class="button-set">
-							<a class="btn" href="#" title="">ADOPT A CHILD</a>
-							<a class="btn style3" href="#" title="">JOIN OUR COMPAIGN</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-12">
-					<div class="child-portfolio center-dots">
-						<div class="child-img">
-							<img src="http://placehold.it/400x508" alt="" />
-							<div class="child-name">
-								<h3>Kendy Binarshow</h3>
-								<span>08 Years Old</span>
-							</div>
-						</div>
-						<div class="child-img">
-							<img src="http://placehold.it/400x508" alt="" />
-							<div class="child-name">
-								<h3>Binny Varlet</h3>
-								<span>08 Years Old</span>
-							</div>
-						</div>
-						<div class="child-img">
-							<img src="http://placehold.it/400x508" alt="" />
-							<div class="child-name">
-								<h3>Steven Philips Kevin</h3>
-								<span>08 Years Old</span>
-							</div>
-						</div>
-						<div class="child-img">
-							<img src="http://placehold.it/400x508" alt="" />
-							<div class="child-name">
-								<h3>Carlos Bindera</h3>
-								<span>08 Years Old</span>
-							</div>
-						</div>
-						<div class="child-img">
-							<img src="http://placehold.it/400x508" alt="" />
-							<div class="child-name">
-								<h3>Binny Varlet</h3>
-								<span>08 Years Old</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                    <div class="creative-causes">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="creative-cause">
+                                    <div class="cre-cause-img">
+                                        <img src="http://placehold.it/370x319" alt="" />
+                                        <span><i>$653</i> Raised of $60,524 Goal</span>
+                                        <div class="skillbar">
+                                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                        </div>
+                                        <a class="btn open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                    <div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
+                                    <h3><a href="#" title="">The story behind the Hope Bracelet by Patricia Heaton</a></h3>
+                                </div><!-- Creative Cause -->
+                            </div>
+                            <div class="col-4">
+                                <div class="creative-cause">
+                                    <div class="cre-cause-img">
+                                        <img src="http://placehold.it/370x319" alt="" />
+                                        <span><i>$653</i> Raised of $60,524 Goal</span>
+                                        <div class="skillbar">
+                                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                        </div>
+                                        <a class="btn open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                    <div class="cause-loc"><span>Charitable Giving</span> <span>India</span></div>
+                                    <h3><a href="#" title="">World Vision donations double through Thirty-One Gifts</a></h3>
+                                </div><!-- Creative Cause -->
+                            </div>
+                            <div class="col-4">
+                                <div class="creative-cause">
+                                    <div class="cre-cause-img">
+                                        <img src="http://placehold.it/370x319" alt="" />
+                                        <span><i>$653</i> Raised of $60,524 Goal</span>
+                                        <div class="skillbar">
+                                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
+                                        </div>
+                                        <a class="btn open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                    <div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
+                                    <h3><a href="#" title="">Child sponsorship and animals change lives in Bangladesh</a></h3>
+                                </div><!-- Creative Cause -->
+                            </div>
+                        </div>
+                    </div><!-- Creative Causes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-
-	<section>
-		<div class="block remove-gap">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="title">
-							<span>Shine Bright the world needs you</span>
-							<h2><i>SHELTER</i> UPCOMING EVENT</h2>
-						</div>
-
-						<div class="shelter-fancy-events">
-							<div class="custom-row">
-								<div class="masonary">
-									<div class="custom-grid2">
-										<div class="fancy-event">
-											<img src="http://placehold.it/676x249" alt="" />
-											<span>Oct 12, 2016 3:53 am</span>
-											<div class="fancy-event-details">
-												<h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-												<i> 90012 South Street, Sanford, FL South Africa </i>
-											</div>
-										</div><!-- Fancy Event -->
-									</div>
-									<div class="custom-grid1">
-										<div class="fancy-event">
-											<img src="http://placehold.it/676x249" alt="" />
-											<span>Oct 12, 2016 3:53 am</span>
-											<div class="fancy-event-details">
-												<h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-												<i> 90012 South Street, Sanford, FL South Africa </i>
-											</div>
-										</div><!-- Fancy Event -->
-									</div>
-									<div class="custom-grid1">
-										<div class="fancy-event">
-											<img src="http://placehold.it/676x249" alt="" />
-											<span>Oct 12, 2016 3:53 am</span>
-											<div class="fancy-event-details">
-												<h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-												<i> 90012 South Street, Sanford, FL South Africa </i>
-											</div>
-										</div><!-- Fancy Event -->
-									</div>
-								</div>
-							</div>
-						</div><!-- Shelter Fancy Event -->
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section>
-		<div class="block full-height">
-		<div class="fixed-bg bg7 stop"></div>
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-8 col-md-12">
-						<div class="video-overlay">
-							<span>JOIN OUR CAUSE.</span>
-							<h3>Your Donation <strong>Brings Us Closer</strong> To A Cure</h3>
-							<a class="round-icon-btn" href="#" title=""><i class="ion-ios-play-outline"></i></a>
-						</div><!-- Video Overlay -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<section>
+    <div class="block no-padding dark">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="shelter-video">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="video-text">
+                                <span>Promote and Monitor Human Rights</span>
+                                <h3>Helath Is Essential For <br><strong>BETTER FUTURE</strong></h3>
+                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim ipsam voluptatem.</p>
+                                <a class="btn" href="#" title="">Explore Now</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="video-img"><img src="http://placehold.it/793x585" alt="" /></div>
+                        </div>
+                    </div>
+                    <a class="round-icon-btn" href="#" title=""><i class="ion-ios-play-outline"></i></a>
+                </div><!-- Shelter Video -->
+            </div>
+        </div>
+    </div>
+</section>
 
 
+<section>
+    <div class="block ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Give Your Hand To Help</span>
+                        <h2><i>SHELTER</i> UPCOMING EVENT</h2>
+                    </div>
 
-		<section>
-			<div class="block">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8 col-md-12">
-							<div class="shelter-reviews center-dots">
-								<div class="client-review">
-									<img src="http://placehold.it/103x102" alt="" />
-									<h5>John Brown</h5>
-									<span>(Photographer)</span>
-									<p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
-								</div>
-								<div class="client-review">
-									<img src="http://placehold.it/103x102" alt="" />
-									<h5>John Carley</h5>
-									<span>(Developer)</span>
-									<p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
-								</div>
-								<div class="client-review">
-									<img src="http://placehold.it/103x102" alt="" />
-									<h5>Wasley Steven</h5>
-									<span>(Designer)</span>
-									<p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
-								</div>
-							</div><!-- Shelter Testimonials -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                    <div class="shelter-fancy-events">
+                        <div class="custom-row">
+                            <div class="masonary">
+                                <div class="custom-grid2">
+                                    <div class="fancy-event">
+                                        <img src="http://placehold.it/485x548.jpg" alt="" />
+                                        <span>Oct 12, 2016 3:53 am</span>
+                                        <div class="fancy-event-details">
+                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+                                            <i> 90012 South Street, Sanford, FL South Africa </i>
+                                        </div>
+                                    </div><!-- Fancy Event -->
+                                </div>
+                                <div class="custom-grid1">
+                                    <div class="fancy-event">
+                                        <img src="http://placehold.it/676x249" alt="" />
+                                        <span>Oct 12, 2016 3:53 am</span>
+                                        <div class="fancy-event-details">
+                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+                                            <i> 90012 South Street, Sanford, FL South Africa </i>
+                                        </div>
+                                    </div><!-- Fancy Event -->
+                                </div>
+                                <div class="custom-grid1">
+                                    <div class="fancy-event">
+                                        <img src="http://placehold.it/676x249" alt="" />
+                                        <span>Oct 12, 2016 3:53 am</span>
+                                        <div class="fancy-event-details">
+                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
+                                            <i> 90012 South Street, Sanford, FL South Africa </i>
+                                        </div>
+                                    </div><!-- Fancy Event -->
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Shelter Fancy Event -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block blackish">
+        <div class="fixed-bg bg2"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12">
+                    <div class="simple-parallax">
+                        <h3>Let’s Make The World Better Place Together</h3>
+                        <p>Charity fundraising ideas, and fundraise or crowdfund for an Australian charity close to your heart. With over 1500 Australian charities to choose from raising money for your cause is easy.</p>
+                        <a class="btn" href="#" title="">Join Our Compaign</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Give Your Hand To Help</span>
+                        <h2><i>SHELTER</i> RECENT NEWS</h2>
+                    </div>
+
+                    <div class="shelter-blog">
+                        <div class="row">
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
+                                            <li>October, 30, 2017</li>
+                                        </ul>
+                                        <h3><a href="#" title="">Clean Water is a Changes Absolutely Help Everything</a></h3>
+                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+                                        <a class="readmore" href="#" title="">Read More</a>
+                                    </div>
+                                </div><!-- Simple Post -->
+                            </div>
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
+                                            <li>October, 30, 2017</li>
+                                        </ul>
+                                        <h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
+                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+                                        <a class="readmore" href="#" title="">Read More</a>
+                                    </div>
+                                </div><!-- Simple Post -->
+                            </div>
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
+                                            <li>October, 30, 2017</li>
+                                        </ul>
+                                        <h3><a href="#" title="">Primary Schools, Secondary Schools & Adult's Literacy</a></h3>
+                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+                                        <a class="readmore" href="#" title="">Read More</a>
+                                    </div>
+                                </div><!-- Simple Post -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12">
+                    <div class="shelter-reviews center-dots">
+                        <div class="client-review">
+                            <img src="http://placehold.it/103x102" alt="" />
+                            <h5>John Brown</h5>
+                            <span>(Photographer)</span>
+                            <p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
+                        </div>
+                        <div class="client-review">
+                            <img src="http://placehold.it/103x102" alt="" />
+                            <h5>John Carley</h5>
+                            <span>(Developer)</span>
+                            <p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
+                        </div>
+                        <div class="client-review">
+                            <img src="http://placehold.it/103x102" alt="" />
+                            <h5>Wasley Steven</h5>
+                            <span>(Designer)</span>
+                            <p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
+                        </div>
+                    </div><!-- Shelter Testimonials -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
