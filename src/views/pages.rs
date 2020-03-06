@@ -23,33 +23,6 @@ pub fn index(connection: Db) -> Template {
     Template::render("pages/index", &context)
 }
 
-#[get("/articles")]
-pub fn articles() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/articles", &context)
-}
-
-#[get("/profiles")]
-pub fn profiles() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/profiles", &context)
-}
-
-#[get("/projects")]
-pub fn projects() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/projects", &context)
-}
-
 #[get("/events")]
 pub fn events() -> Template {
     let context = TemplateContext {
@@ -57,6 +30,24 @@ pub fn events() -> Template {
         items: vec![],
     };
     Template::render("pages/events", &context)
+}
+
+#[get("/causes")]
+pub fn causes() -> Template {
+    let context = TemplateContext {
+        name: "".to_string(),
+        items: vec![],
+    };
+    Template::render("pages/causes", &context)
+}
+
+#[get("/reports")]
+pub fn reports() -> Template {
+    let context = TemplateContext {
+        name: "".to_string(),
+        items: vec![],
+    };
+    Template::render("pages/reports", &context)
 }
 
 #[get("/about")]
@@ -68,20 +59,11 @@ pub fn about() -> Template {
     Template::render("pages/about", &context)
 }
 
-#[get("/docs")]
-pub fn docs() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/docs", &context)
-}
-
 #[get("/help")]
 pub fn help() -> Template {
     let context = TemplateContext {
-        name: "Name".to_string(),
-        items: vec!["one", "two"],
+        name: "".to_string(),
+        items: vec![],
     };
     Template::render("pages/help", &context)
 }

@@ -3,10 +3,10 @@
 {% block content %}
 		<div class="pagetop">
 			<div class="container">
-				<h1><i>Causes</i> Page</h1>
+				<h1><i>Events</i> Page</h1>
 				<ul class="breadcrumbs">
 					<li><a href="#" title="">Home</a></li>
-					<li>Causes</li>
+					<li>Blog</li>
 				</ul>
 			</div>
 		</div>
@@ -17,94 +17,95 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
-							<div class="creative-causes">
+							<div class="shelter-blog">
 								<div class="row">
 									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
+										<div class="simple-post">
+											<div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+											<div class="simple-post-detail">
+												<ul class="meta">
+													<li>By <a href="#" title="">Wesley Stevon</a></li>
+													<li>October, 30, 2017</li>
+												</ul>
+												<h3><a href="#" title="">Clean Water is a Changes Absolutely Help Everything</a></h3>
+												<p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+												<a class="readmore" href="#" title="">Read More</a>
 											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">The story behind the Hope Bracelet by Patricia Heaton</a></h3>
-										</div><!-- Creative Cause -->
+										</div><!-- Simple Post -->
 									</div>
 									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
+										<div class="simple-post">
+											<div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+											<div class="simple-post-detail">
+												<ul class="meta">
+													<li>By <a href="#" title="">Wesley Stevon</a></li>
+													<li>October, 30, 2017</li>
+												</ul>
+												<h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
+												<p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+												<a class="readmore" href="#" title="">Read More</a>
 											</div>
-											<div class="cause-loc"><span>Charitable Giving</span> <span>India</span></div>
-											<h3><a href="#" title="">World Vision donations double through Thirty-One Gifts</a></h3>
-										</div><!-- Creative Cause -->
+										</div><!-- Simple Post -->
 									</div>
 									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
+										<div class="simple-post">
+											<div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+											<div class="simple-post-detail">
+												<ul class="meta">
+													<li>By <a href="#" title="">Wesley Stevon</a></li>
+													<li>October, 30, 2017</li>
+												</ul>
+												<h3><a href="#" title="">Primary Schools, Secondary Schools & Adult's Literacy</a></h3>
+												<p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+												<a class="readmore" href="#" title="">Read More</a>
 											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">Child sponsorship and animals change lives in Bangladesh</a></h3>
-										</div><!-- Creative Cause -->
+										</div><!-- Simple Post -->
 									</div>
 									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
+										<div class="simple-post">
+											<div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+											<div class="simple-post-detail">
+												<ul class="meta">
+													<li>By <a href="#" title="">Wesley Stevon</a></li>
+													<li>October, 30, 2017</li>
+												</ul>
+												<h3><a href="#" title="">Clean Water is a Changes Absolutely Help Everything</a></h3>
+												<p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+												<a class="readmore" href="#" title="">Read More</a>
 											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">The story behind the Hope Bracelet by Patricia Heaton</a></h3>
-										</div><!-- Creative Cause -->
+										</div><!-- Simple Post -->
 									</div>
 									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
+										<div class="simple-post">
+											<div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+											<div class="simple-post-detail">
+												<ul class="meta">
+													<li>By <a href="#" title="">Wesley Stevon</a></li>
+													<li>October, 30, 2017</li>
+												</ul>
+												<h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
+												<p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+												<a class="readmore" href="#" title="">Read More</a>
 											</div>
-											<div class="cause-loc"><span>Charitable Giving</span> <span>India</span></div>
-											<h3><a href="#" title="">World Vision donations double through Thirty-One Gifts</a></h3>
-										</div><!-- Creative Cause -->
+										</div><!-- Simple Post -->
 									</div>
 									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
+										<div class="simple-post">
+											<div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
+											<div class="simple-post-detail">
+												<ul class="meta">
+													<li>By <a href="#" title="">Wesley Stevon</a></li>
+													<li>October, 30, 2017</li>
+												</ul>
+												<h3><a href="#" title="">Primary Schools, Secondary Schools & Adult's Literacy</a></h3>
+												<p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
+												<a class="readmore" href="#" title="">Read More</a>
 											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">Child sponsorship and animals change lives in Bangladesh</a></h3>
-										</div><!-- Creative Cause -->
+										</div><!-- Simple Post -->
 									</div>
 								</div>
-							</div><!-- Creative Causes -->
+							</div>
+
 
 
 							<div class="shelter-pagination">
