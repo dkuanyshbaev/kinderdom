@@ -222,62 +222,74 @@
 </section>
 
 
+
 <section>
     <div class="block">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>Give Your Hand To Help</span>
-                        <h2><i>SHELTER</i> RECENT NEWS</h2>
+                        <span>Help The Homeless People</span>
+                        <h2><i>SHELTER</i> RECENT CAUSES</h2>
                     </div>
 
-                    <div class="shelter-blog">
-                        <div class="row">
-                            <div class="col">
-                                <div class="simple-post">
-                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
-                                    <div class="simple-post-detail">
-                                        <ul class="meta">
-                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
-                                            <li>October, 30, 2017</li>
-                                        </ul>
-                                        <h3><a href="#" title="">Clean Water is a Changes Absolutely Help Everything</a></h3>
-                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
-                                        <a class="readmore" href="#" title="">Read More</a>
+
+                    <div class="recent-causes">
+                        <div class="causes-carousel">
+                            <div class="cause-img">
+                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
+                                <div class="cause-inner">
+                                    <img src="http://placehold.it/484x336" alt="" />
+                                    <div class="cause-text">
+                                        <span>UREGENTLY NEEDED DONATION</span>
+                                        <h4>Education To <i>Every Child</i></h4>
+                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
+                                        <a class="btn small open-popup" href="#" title="">Donate Now</a>
                                     </div>
-                                </div><!-- Simple Post -->
+                                </div>
                             </div>
-                            <div class="col">
-                                <div class="simple-post">
-                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
-                                    <div class="simple-post-detail">
-                                        <ul class="meta">
-                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
-                                            <li>October, 30, 2017</li>
-                                        </ul>
-                                        <h3><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h3>
-                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
-                                        <a class="readmore" href="#" title="">Read More</a>
+                            <div class="cause-img">
+                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
+                                <div class="cause-inner">
+                                    <img src="http://placehold.it/484x336" alt="" />
+                                    <div class="cause-text">
+                                        <span>UREGENTLY NEEDED DONATION</span>
+                                        <h4>Home To <i>Homeless</i></h4>
+                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
+                                        <a class="btn small open-popup" href="#" title="">Donate Now</a>
                                     </div>
-                                </div><!-- Simple Post -->
+                                </div>
                             </div>
-                            <div class="col">
-                                <div class="simple-post">
-                                    <div class="simple-post-img"><img src="http://placehold.it/370x270" alt="" /></div>
-                                    <div class="simple-post-detail">
-                                        <ul class="meta">
-                                            <li>By <a href="#" title="">Wesley Stevon</a></li>
-                                            <li>October, 30, 2017</li>
-                                        </ul>
-                                        <h3><a href="#" title="">Primary Schools, Secondary Schools & Adult's Literacy</a></h3>
-                                        <p>Nemo enim ipsam voluptatem quia voluptas siaspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim.</p>
-                                        <a class="readmore" href="#" title="">Read More</a>
+                            <div class="cause-img">
+                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
+                                <div class="cause-inner">
+                                    <img src="http://placehold.it/484x336" alt="" />
+                                    <div class="cause-text">
+                                        <span>UREGENTLY NEEDED DONATION</span>
+                                        <h4>Food For <i>Hungry</i></h4>
+                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
+                                        <a class="btn small" href="#" title="">Donate Now</a>
                                     </div>
-                                </div><!-- Simple Post -->
+                                </div>
+                            </div>
+                            <div class="cause-img">
+                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
+                                <div class="cause-inner">
+                                    <img src="http://placehold.it/484x336" alt="" />
+                                    <div class="cause-text">
+                                        <span>UREGENTLY NEEDED DONATION</span>
+                                        <h4>Education To <i>Every Child</i></h4>
+                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
+                                        <a class="btn small open-popup" href="#" title="">Donate Now</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="creative-navs">
+                            <span class="slick-current">01</span><span>02</span><span>03</span>
+                            <span>04</span>
+                        </div>
+                    </div><!-- Creative Portfolio -->
 
                 </div>
             </div>
@@ -286,18 +298,8 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
 <section>
-    <div class="block">
+    <div class="block remove-gap">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-12">
