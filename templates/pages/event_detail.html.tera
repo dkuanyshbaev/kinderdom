@@ -75,54 +75,6 @@
 									<p>Lorem Ipsn gravida nibh vel velit auctor aliquet sit. Aenean sollicitudin, lorem quis bibendum auci elit consequat ipsutis sem nibsed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsanpsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
 								</div>
 							</div><!-- Shelter Author -->
-
-							<div class="shelter-comments">
-								<h3 class="subtitle"><i>03</i> Comments</h3>
-								<ul>
-									<li>
-										<div class="comment">
-											<img src="http://placehold.it/100x100" alt="" />
-											<div class="comment-inner">
-												<div class="comm-name"><h5>Julie Foster</h5> <i class="date"> 2 weeks ago</i></div>
-												<p>Lorem Ipsn gravida nibh vel velit auctor aliquet sit. Aenean sollicitudin, lorem quis bibendum auci elit consequat ipsutis sem nibsed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsanpsum velit.</p>
-												<a class="reply" href="#" title="">Reply</a>
-											</div>
-										</div><!-- Comment -->
-										<ul>
-											<li>
-												<div class="comment">
-													<img src="http://placehold.it/100x100" alt="" />
-													<div class="comment-inner">
-														<div class="comm-name"><h5>Chelsea Michael</h5> <i class="date"> 2 weeks ago</i></div>
-														<p>Aenean sollicitudin, lorem quis bibendum auci elit consequat ipsutis sem nibsed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsanpsum velit. Na ornare odio. velit auctor aliquet sit.</p>
-														<a class="reply" href="#" title="">Reply</a>
-													</div>
-												</div><!-- Comment -->
-											</li>
-										</ul>
-									</li>
-									<li>
-										<div class="comment">
-											<img src="http://placehold.it/100x100" alt="" />
-											<div class="comment-inner">
-												<div class="comm-name"><h5>Neal Adams</h5> <i class="date"> 2 weeks ago</i></div>
-												<p>Lorem Ipsn gravida nibh vel velit auctor aliquet sit. Aenean sollicitudin, lorem quis bibendum auci elit consequat ipsutis sem nibsed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsanpsum velit.</p>
-												<a class="reply" href="#" title="">Reply</a>
-											</div>
-										</div><!-- Comment -->
-									</li>
-								</ul>
-							</div><!-- Shelter Comments -->
-
-							<div class="shelter-form">
-								<h3 class="subtitle"><i>Leave</i> A Comment</h3>
-								<form>
-									<input type="text" placeholder="Full Name" />
-									<input type="email" placeholder="Email" />
-									<textarea placeholder="Message"></textarea>
-									<button class="btn style3 round" type="submit">SUBMIT COMMENT</button>
-								</form>
-							</div><!-- Shelter Form -->
 						</div>
 
 						<aside class="col-lg-3  col-md-12 sidebar">
