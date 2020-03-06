@@ -32,6 +32,16 @@ pub fn events() -> Template {
     Template::render("pages/events", &context)
 }
 
+#[get("/events/<id>")]
+pub fn event_detail(id: i32) -> Template {
+    println!("id: {}", id);
+    let context = TemplateContext {
+        name: "".to_string(),
+        items: vec![],
+    };
+    Template::render("pages/event_detail", &context)
+}
+
 #[get("/causes")]
 pub fn causes() -> Template {
     let context = TemplateContext {
@@ -39,6 +49,16 @@ pub fn causes() -> Template {
         items: vec![],
     };
     Template::render("pages/causes", &context)
+}
+
+#[get("/causes/<id>")]
+pub fn cause_detail(id: i32) -> Template {
+    println!("id: {}", id);
+    let context = TemplateContext {
+        name: "".to_string(),
+        items: vec![],
+    };
+    Template::render("pages/cause_detail", &context)
 }
 
 #[get("/reports")]

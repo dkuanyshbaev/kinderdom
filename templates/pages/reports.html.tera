@@ -11,44 +11,11 @@
 			</div>
 		</div>
 
-	<section>
-		<div class="block">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-12">
-						<div class="upcoming-event">
-							<div class="event-text">
-								<i>Oct 12, 2016 3:53 am</i>
-								<h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-								<span> 90012 South Street, Sanford, FL South Africa </span>
-							</div>
-							<div class="event-count">
-								<ul class="countdown">
-									<li>
-										<div class="time-box"><span class="days">00</span> <p class="days_ref">DAYS</p></div>
-									</li>
-									<li>
-										<div class="time-box"> <span class="hours">00</span><p class="hours_ref">HOURS</p></div>
-									</li>
-									<li>
-										<div class="time-box"> <span class="minutes">00</span><p class="minutes_ref">MINS</p></div>
-									</li>
-									<li>
-										<div class="time-box"> <span class="seconds">00</span><p class="seconds_ref">SECS</p></div>
-									</li>
-								</ul><!-- Event Countdown -->
-							</div>
-						</div><!-- Upcoming Event -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 
 
 		<section>
-			<div class="block remove-gap">
+			<div class="block">
 				<div class="container">
 					<div class="row">
 						<div class="col-12">

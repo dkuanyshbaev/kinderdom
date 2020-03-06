@@ -40,7 +40,9 @@ fn rocket(config: Config) -> Rocket {
             routes![
                 pages::index,
                 pages::events,
+                pages::event_detail,
                 pages::causes,
+                pages::cause_detail,
                 pages::reports,
                 pages::about,
                 pages::help,
