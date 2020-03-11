@@ -60,9 +60,9 @@
                     </div>
 
                     <div class="social-btns">
-                        <a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
-                        <a class="instagram" href="#" title=""><i class="fa fa-instagram"></i></a>
-                        <a class="pinterest" href="#" title=""><i class="fa fa-youtube-play"></i></a>
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/kinderdom777" title=""><i class="fa fa-facebook"></i></a>
+                        <a class="instagram" target="_blank" href="https://www.instagram.com/bf_mi_i_deti" title=""><i class="fa fa-instagram"></i></a>
+                        <a class="pinterest" target="_blank" href="https://www.youtube.com/channel/UCJZFYjS5stQIGQQQdmACEcg" title=""><i class="fa fa-youtube-play"></i></a>
                     </div>
                 </div>
             </div>
