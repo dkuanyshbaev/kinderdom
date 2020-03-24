@@ -3,9 +3,8 @@ use crate::{views::NoContext, Config, KinderResult};
 use rocket::http::{Cookie, Cookies};
 use rocket::request::Form;
 use rocket::response::Redirect;
-use rocket::{Request, State};
+use rocket::State;
 use rocket_contrib::templates::Template;
-use std::collections::HashMap;
 
 #[get("/")]
 pub fn main(_admin: Admin) -> Redirect {
@@ -40,10 +39,8 @@ pub fn logout(mut cookies: Cookies) -> Redirect {
 }
 
 #[catch(404)]
-pub fn not_found(req: &Request) -> Template {
-    let mut map = HashMap::new();
-    map.insert("path", req.uri().path());
-    Template::render("error/404", &map)
+pub fn not_found() -> Template {
+    Template::render("error/404", NoContext {})
 }
 
 #[catch(401)]

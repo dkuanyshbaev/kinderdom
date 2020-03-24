@@ -1,86 +1,68 @@
+use crate::models::cause::Cause;
 use crate::models::event::Event;
-use crate::Db;
+use crate::models::report::Report;
+use crate::views::{NoContext, TemplateContext};
+use crate::{Db, KinderResult};
 use rocket_contrib::templates::Template;
 
-#[derive(Serialize)]
-struct TemplateContext {
-    pub name: String,
-    pub items: Vec<&'static str>,
-}
-
 #[get("/")]
-pub fn index(connection: Db) -> Template {
-    let _ = Event::published(&connection);
-
-    let name = "Denis".to_string();
-    let context = TemplateContext {
-        name,
-        items: vec!["One", "Two", "Three"],
-    };
-    Template::render("pages/index", &context)
+pub fn index(_connection: Db) -> KinderResult<Template> {
+    // TODO: get all
+    Ok(Template::render("pages/index", NoContext {}))
 }
 
 #[get("/events")]
-pub fn events() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/events", &context)
+pub fn events(connection: Db) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/events",
+        TemplateContext {
+            items: Event::published(&connection)?,
+        },
+    ))
 }
 
 #[get("/events/<id>")]
-pub fn event_detail(id: i32) -> Template {
-    println!("id: {}", id);
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/event_detail", &context)
+pub fn event_detail(connection: Db, id: i32) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/event_detail",
+        Event::get(&connection, id)?,
+    ))
 }
 
 #[get("/causes")]
-pub fn causes() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/causes", &context)
+pub fn causes(connection: Db) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/causes",
+        TemplateContext {
+            items: Cause::published(&connection)?,
+        },
+    ))
 }
 
 #[get("/causes/<id>")]
-pub fn cause_detail(id: i32) -> Template {
-    println!("id: {}", id);
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/cause_detail", &context)
+pub fn cause_detail(connection: Db, id: i32) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/cause_detail",
+        Cause::get(&connection, id)?,
+    ))
 }
 
 #[get("/reports")]
-pub fn reports() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/reports", &context)
+pub fn reports(connection: Db) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/reports",
+        TemplateContext {
+            items: Report::all(&connection)?,
+        },
+    ))
 }
 
 #[get("/about")]
 pub fn about() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/about", &context)
+    Template::render("pages/about", NoContext {})
 }
 
 #[get("/help")]
 pub fn help() -> Template {
-    let context = TemplateContext {
-        name: "".to_string(),
-        items: vec![],
-    };
-    Template::render("pages/help", &context)
+    Template::render("pages/help", NoContext {})
 }

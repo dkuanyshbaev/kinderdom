@@ -1,8 +1,3 @@
-#[derive(Serialize)]
-pub struct TemplateContext<T> {
-    items: Vec<T>,
-}
-
 macro_rules! handle {
     ($t:ty, $nt:ty, $tp:expr) => {
         // list of items
@@ -12,8 +7,8 @@ macro_rules! handle {
             connection: crate::Db,
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
             let items = <$t>::all(&connection)?;
-            let context: crate::views::admin::TemplateContext<$t> =
-                crate::views::admin::TemplateContext { items };
+            let context: crate::views::TemplateContext<$t> =
+                crate::views::TemplateContext { items };
 
             Ok(rocket_contrib::templates::Template::render(
                 format!("{}/list", $tp),
