@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <form action="/admin/docs" method="post" enctype="multipart/form-data">
+    <form action="/admin/reports" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="post" />
 
         <div class="form-group">
@@ -12,18 +12,13 @@
         </div>
 
         <div class="form-group">
-            <label for="content">Описание</label>
-            <textarea class="form-control" id="summernote" name="description" rows="10"></textarea>
-        </div>
-
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="published" name="published">
-            <label class="form-check-label" for="published">Опубликовано</label>
+            <label for="description">Описание</label>
+            <input type="text" class="form-control" id="description" name="description">
         </div>
 
         <button type="submit" class="btn btn-info">Сохранить</button>
 
-        <a href="/admin/articles" class="btn btn-dark">Отмена</a>
+        <a href="/admin/reports" class="btn btn-dark">Отмена</a>
     </form>
     <br>
     <br>

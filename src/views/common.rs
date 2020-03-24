@@ -9,7 +9,7 @@ use std::collections::HashMap;
 
 #[get("/")]
 pub fn main(_admin: Admin) -> Redirect {
-    Redirect::to("/admin/articles")
+    Redirect::to("/admin/events")
 }
 
 #[get("/login")]

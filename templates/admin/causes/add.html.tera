@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="container">
-    <form action="/admin/projects" method="post" enctype="multipart/form-data">
+    <form action="/admin/causes" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="post" />
 
         <div class="form-group">
-            <label for="image">Обложка</label>
+            <label for="image">Изображение</label>
             <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
             <small id="image_help" class="form-text text-muted">Выберите изображение в формате jpg или png</small>
         </div>
@@ -14,6 +14,12 @@
         <div class="form-group">
             <label for="name">Название</label>
             <input type="text" class="form-control" id="name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="video">Видео</label>
+            <input type="text" class="form-control" id="video" name="video" aria-describedby="video_help">
+            <small id="video_help" class="form-text text-muted">Ссылка на youtube видео</small>
         </div>
 
         <div class="form-group form-row">
@@ -30,7 +36,7 @@
         </div>
 
         <div class="form-group">
-            <label for="content">Описание</label>
+            <label for="description">Описание</label>
             <textarea class="form-control" id="summernote" name="description" rows="10"></textarea>
         </div>
 
@@ -41,7 +47,7 @@
 
         <button type="submit" class="btn btn-info">Сохранить</button>
 
-        <a href="/admin/projects" class="btn btn-dark">Отмена</a>
+        <a href="/admin/causes" class="btn btn-dark">Отмена</a>
     </form>
     <br>
     <br>
