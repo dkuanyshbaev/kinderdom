@@ -1,7 +1,7 @@
 use crate::models::cause::Cause;
 use crate::models::event::Event;
 use crate::models::report::Report;
-use crate::views::{NoContext, TemplateContext};
+use crate::views::{ListContext, NoContext};
 use crate::{Db, KinderResult};
 use rocket_contrib::templates::Template;
 
@@ -15,7 +15,7 @@ pub fn index(_connection: Db) -> KinderResult<Template> {
 pub fn events(connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/events",
-        TemplateContext {
+        ListContext {
             items: Event::published(&connection)?,
         },
     ))
@@ -33,7 +33,7 @@ pub fn event_detail(connection: Db, id: i32) -> KinderResult<Template> {
 pub fn causes(connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/causes",
-        TemplateContext {
+        ListContext {
             items: Cause::published(&connection)?,
         },
     ))
@@ -51,7 +51,7 @@ pub fn cause_detail(connection: Db, id: i32) -> KinderResult<Template> {
 pub fn reports(connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/reports",
-        TemplateContext {
+        ListContext {
             items: Report::all(&connection)?,
         },
     ))

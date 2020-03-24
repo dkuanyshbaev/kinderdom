@@ -6,6 +6,6 @@ pub mod pages;
 pub struct NoContext {}
 
 #[derive(Serialize)]
-pub struct TemplateContext<T> {
+pub struct ListContext<T> {
     items: Vec<T>,
 }
