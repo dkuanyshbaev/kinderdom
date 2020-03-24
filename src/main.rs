@@ -12,10 +12,8 @@ extern crate chrono;
 extern crate rocket_multipart_form_data;
 
 use config::Config;
-use diesel::PgConnection;
-use rocket::Rocket;
-use rocket_contrib::{serve::StaticFiles, templates::Template};
-use std::process;
+use rocket_contrib::serve::StaticFiles;
+use rocket_contrib::templates::Template;
 use views::{admin, common, pages};
 
 mod auth;
@@ -27,9 +25,9 @@ mod views;
 type KinderResult<T> = Result<T, errors::KinderError>;
 
 #[database("kinderdom")]
-pub struct Db(PgConnection);
+pub struct Db(diesel::PgConnection);
 
-fn rocket(config: Config) -> Rocket {
+fn rocket(config: Config) -> rocket::Rocket {
     rocket::ignite()
         .attach(Db::fairing())
         .attach(Template::fairing())
@@ -58,39 +56,6 @@ fn rocket(config: Config) -> Rocket {
             ],
         )
         .mount(
-            "/admin/articles",
-            routes![
-                admin::articles::list,
-                admin::articles::add,
-                admin::articles::create,
-                admin::articles::edit,
-                admin::articles::update,
-                admin::articles::delete,
-            ],
-        )
-        .mount(
-            "/admin/profiles",
-            routes![
-                admin::profiles::list,
-                admin::profiles::add,
-                admin::profiles::create,
-                admin::profiles::edit,
-                admin::profiles::update,
-                admin::profiles::delete,
-            ],
-        )
-        .mount(
-            "/admin/projects",
-            routes![
-                admin::projects::list,
-                admin::projects::add,
-                admin::projects::create,
-                admin::projects::edit,
-                admin::projects::update,
-                admin::projects::delete,
-            ],
-        )
-        .mount(
             "/admin/events",
             routes![
                 admin::events::list,
@@ -102,14 +67,25 @@ fn rocket(config: Config) -> Rocket {
             ],
         )
         .mount(
-            "/admin/docs",
+            "/admin/causes",
             routes![
-                admin::docs::list,
-                admin::docs::add,
-                admin::docs::create,
-                admin::docs::edit,
-                admin::docs::update,
-                admin::docs::delete,
+                admin::causes::list,
+                admin::causes::add,
+                admin::causes::create,
+                admin::causes::edit,
+                admin::causes::update,
+                admin::causes::delete,
+            ],
+        )
+        .mount(
+            "/admin/reports",
+            routes![
+                admin::reports::list,
+                admin::reports::add,
+                admin::reports::create,
+                admin::reports::edit,
+                admin::reports::update,
+                admin::reports::delete,
             ],
         )
         .mount(
@@ -123,30 +99,20 @@ fn rocket(config: Config) -> Rocket {
                 admin::donors::delete,
             ],
         )
-        .mount(
-            "/admin/orgs",
-            routes![
-                admin::orgs::list,
-                admin::orgs::add,
-                admin::orgs::create,
-                admin::orgs::edit,
-                admin::orgs::update,
-                admin::orgs::delete,
-            ],
-        )
         .register(catchers![common::not_found, common::unauthorized])
 }
 
 fn main() {
     let config = Config::new().unwrap_or_else(|err| {
         println!("Problem parsing config: {}", err);
-        process::exit(1);
+        std::process::exit(1);
     });
 
     let error = rocket(config).launch();
     println!("Launch failed: {}", error);
 }
 
+// TODO: write the actual tests
 #[cfg(test)]
 mod test {
     use super::{rocket, Config};

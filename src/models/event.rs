@@ -13,24 +13,20 @@ use rocket_multipart_form_data::{
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "events"]
 pub struct NewEvent {
-    pub name: String,
-    pub image: String,
-    pub needed: i32,
-    pub collected: i32,
-    pub description: String,
-    pub vital: bool,
+    pub title: String,
+    pub lead: String,
+    pub cover: String,
+    pub content: String,
     pub published: bool,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Event {
     pub id: i32,
-    pub name: String,
-    pub image: String,
-    pub needed: i32,
-    pub collected: i32,
-    pub description: String,
-    pub vital: bool,
+    pub title: String,
+    pub lead: String,
+    pub cover: String,
+    pub content: String,
     pub published: bool,
     pub created_at: NaiveDateTime,
 }
@@ -64,11 +60,11 @@ impl Event {
         id: i32,
     ) -> QueryResult<Event> {
         let old_event: Event = Self::get(connection, id)?;
-        if new_event.image == "".to_string() {
-            // keep old image name in case of update without image
-            new_event.image = old_event.image.clone();
+        if new_event.cover == "".to_string() {
+            // keep old cover name in case of update without cover
+            new_event.cover = old_event.cover.clone();
         } else {
-            delete_file(&old_event.image);
+            delete_file(&old_event.cover);
         }
 
         diesel::update(&old_event)
@@ -77,9 +73,9 @@ impl Event {
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Event> {
-        // remove image
+        // remove cover
         let event: Event = Self::get(connection, id)?;
-        delete_file(&event.image);
+        delete_file(&event.cover);
 
         diesel::delete(&event).get_result(connection)
     }
@@ -94,22 +90,16 @@ impl FromDataSimple for NewEvent {
 
         options
             .allowed_fields
-            .push(MultipartFormDataField::file("image"));
+            .push(MultipartFormDataField::file("cover"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("name"));
+            .push(MultipartFormDataField::text("title"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("needed"));
+            .push(MultipartFormDataField::text("lead"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("collected"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("description"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("vital"));
+            .push(MultipartFormDataField::text("content"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("published"));
@@ -131,47 +121,33 @@ impl FromDataSimple for NewEvent {
             }
         };
 
-        let mut image = "".to_string();
-        if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
+        let mut cover = "".to_string();
+        if let Some(FileField::Single(file)) = multipart_form.files.get("cover") {
             let file_name = &file.file_name;
             let path = &file.path;
 
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    image = file_name_with_prefix(file_path);
-                    save_file(path, &image);
+                    cover = file_name_with_prefix(file_path);
+                    save_file(path, &cover);
                 }
             }
         }
 
-        let mut name = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
-            name = &text.text;
+        let mut title = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
+            title = &text.text;
         }
 
-        let mut needed = 0;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("needed") {
-            let amount = &text.text;
-            needed = amount.parse().unwrap();
+        let mut lead = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("lead") {
+            lead = &text.text;
         }
 
-        let mut collected = 0;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("collected") {
-            let amount = &text.text;
-            collected = amount.parse().unwrap();
-        }
-
-        let mut description = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
-            description = &text.text;
-        }
-
-        let mut vital = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("vital") {
-            if &text.text == "on" {
-                vital = true;
-            }
+        let mut content = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("content") {
+            content = &text.text;
         }
 
         let mut published = false;
@@ -182,12 +158,10 @@ impl FromDataSimple for NewEvent {
         }
 
         Success(NewEvent {
-            name: name.to_string(),
-            image,
-            needed,
-            collected,
-            description: description.to_string(),
-            vital,
+            title: title.to_string(),
+            lead: lead.to_string(),
+            cover,
+            content: content.to_string(),
             published,
         })
     }

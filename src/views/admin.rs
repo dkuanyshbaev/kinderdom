@@ -99,37 +99,22 @@ macro_rules! handle {
     };
 }
 
-pub mod articles {
-    use crate::models::article::{Article, NewArticle};
-    handle!(Article, NewArticle, "admin/articles");
-}
-
-pub mod profiles {
-    use crate::models::profile::{NewProfile, Profile};
-    handle!(Profile, NewProfile, "admin/profiles");
-}
-
-pub mod projects {
-    use crate::models::project::{NewProject, Project};
-    handle!(Project, NewProject, "admin/projects");
-}
-
 pub mod events {
     use crate::models::event::{Event, NewEvent};
     handle!(Event, NewEvent, "admin/events");
 }
 
-pub mod docs {
-    use crate::models::doc::{Doc, NewDoc};
-    handle!(Doc, NewDoc, "admin/docs");
+pub mod causes {
+    use crate::models::cause::{Cause, NewCause};
+    handle!(Cause, NewCause, "admin/causes");
+}
+
+pub mod reports {
+    use crate::models::report::{NewReport, Report};
+    handle!(Report, NewReport, "admin/reports");
 }
 
 pub mod donors {
     use crate::models::donor::{Donor, NewDonor};
     handle!(Donor, NewDonor, "admin/donors");
-}
-
-pub mod orgs {
-    use crate::models::org::{NewOrg, Org};
-    handle!(Org, NewOrg, "admin/orgs");
 }

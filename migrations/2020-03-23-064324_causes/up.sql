@@ -1,7 +1,7 @@
-create table if not exists profiles (
+create table if not exists causes (
     id serial primary key,
     name varchar not null,
-    photo varchar not null,
+    image varchar not null,
     video varchar not null,
     needed int not null,
     collected int not null,

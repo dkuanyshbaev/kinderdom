@@ -1,4 +1,4 @@
-use super::schema::docs;
+use super::schema::reports;
 use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
 use chrono::NaiveDateTime;
@@ -11,60 +11,64 @@ use rocket_multipart_form_data::{
 };
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
-#[table_name = "docs"]
-pub struct NewDoc {
+#[table_name = "reports"]
+pub struct NewReport {
     pub pdf: String,
     pub description: String,
-    pub published: bool,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
-pub struct Doc {
+pub struct Report {
     pub id: i32,
     pub pdf: String,
     pub description: String,
-    pub published: bool,
     pub created_at: NaiveDateTime,
 }
 
-impl Doc {
-    pub fn all(connection: &PgConnection) -> QueryResult<Vec<Doc>> {
-        docs::table.order(docs::id.desc()).load(connection)
+impl Report {
+    pub fn all(connection: &PgConnection) -> QueryResult<Vec<Report>> {
+        reports::table.order(reports::id.desc()).load(connection)
     }
 
-    pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Doc> {
-        docs::table.find(id).get_result(connection)
+    pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Report> {
+        reports::table.find(id).get_result(connection)
     }
 
-    pub fn insert(connection: &PgConnection, new_doc: NewDoc) -> QueryResult<Doc> {
-        diesel::insert_into(docs::table)
-            .values(new_doc)
+    pub fn insert(connection: &PgConnection, new_report: NewReport) -> QueryResult<Report> {
+        diesel::insert_into(reports::table)
+            .values(new_report)
             .get_result(connection)
     }
 
-    pub fn update(connection: &PgConnection, mut new_doc: NewDoc, id: i32) -> QueryResult<Doc> {
-        let old_doc: Doc = Self::get(connection, id)?;
-        if new_doc.pdf == "".to_string() {
+    pub fn update(
+        connection: &PgConnection,
+        mut new_report: NewReport,
+        id: i32,
+    ) -> QueryResult<Report> {
+        let old_report: Report = Self::get(connection, id)?;
+        if new_report.pdf == "".to_string() {
             // keep old file in case of update without file
-            new_doc.pdf = old_doc.pdf.clone();
+            new_report.pdf = old_report.pdf.clone();
         } else {
-            delete_file(&old_doc.pdf);
+            delete_file(&old_report.pdf);
         }
 
-        diesel::update(&old_doc).set(new_doc).get_result(connection)
+        diesel::update(&old_report)
+            .set(new_report)
+            .get_result(connection)
     }
 
-    pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Doc> {
+    pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Report> {
         // remove related file
-        let doc: Doc = Self::get(connection, id)?;
-        delete_file(&doc.pdf);
+        let report: Report = Self::get(connection, id)?;
+        delete_file(&report.pdf);
 
-        diesel::delete(&doc).get_result(connection)
+        diesel::delete(&report).get_result(connection)
     }
 }
 
 // we need this custom impl for multipart form
-impl FromDataSimple for NewDoc {
+impl FromDataSimple for NewReport {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
@@ -76,9 +80,6 @@ impl FromDataSimple for NewDoc {
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -116,17 +117,9 @@ impl FromDataSimple for NewDoc {
             description = &text.text;
         }
 
-        let mut published = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
-            if &text.text == "on" {
-                published = true;
-            }
-        }
-
-        Success(NewDoc {
+        Success(NewReport {
             pdf,
             description: description.to_string(),
-            published,
         })
     }
 }

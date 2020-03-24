@@ -1,19 +1,11 @@
 table! {
-    articles (id) {
+    causes (id) {
         id -> Int4,
-        title -> Varchar,
+        name -> Varchar,
         image -> Varchar,
-        content -> Text,
-        welfare -> Bool,
-        published -> Bool,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
-    docs (id) {
-        id -> Int4,
-        pdf -> Varchar,
+        video -> Varchar,
+        needed -> Int4,
+        collected -> Int4,
         description -> Text,
         published -> Bool,
         created_at -> Timestamp,
@@ -25,8 +17,8 @@ table! {
         id -> Int4,
         name -> Varchar,
         photo -> Varchar,
-        description -> Text,
-        published -> Bool,
+        position -> Varchar,
+        quote -> Text,
         created_at -> Timestamp,
     }
 }
@@ -34,61 +26,27 @@ table! {
 table! {
     events (id) {
         id -> Int4,
-        name -> Varchar,
-        image -> Varchar,
-        needed -> Int4,
-        collected -> Int4,
-        description -> Text,
-        vital -> Bool,
+        title -> Varchar,
+        lead -> Varchar,
+        cover -> Varchar,
+        content -> Text,
         published -> Bool,
         created_at -> Timestamp,
     }
 }
 
 table! {
-    orgs (id) {
+    reports (id) {
         id -> Int4,
-        name -> Varchar,
-        logo -> Varchar,
-        description -> Text,
-        published -> Bool,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
-    profiles (id) {
-        id -> Int4,
-        name -> Varchar,
-        photo -> Varchar,
-        video -> Varchar,
-        needed -> Int4,
-        collected -> Int4,
-        description -> Text,
-        published -> Bool,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
-    projects (id) {
-        id -> Int4,
-        name -> Varchar,
-        image -> Varchar,
-        needed -> Int4,
-        collected -> Int4,
-        description -> Text,
-        published -> Bool,
+        pdf -> Varchar,
+        description -> Varchar,
         created_at -> Timestamp,
     }
 }
 
 allow_tables_to_appear_in_same_query!(
-    articles,
-    docs,
+    causes,
     donors,
     events,
-    orgs,
-    profiles,
-    projects,
+    reports,
 );

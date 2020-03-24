@@ -15,8 +15,8 @@ use rocket_multipart_form_data::{
 pub struct NewDonor {
     pub name: String,
     pub photo: String,
-    pub description: String,
-    pub published: bool,
+    pub position: String,
+    pub quote: String,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
@@ -24,8 +24,8 @@ pub struct Donor {
     pub id: i32,
     pub name: String,
     pub photo: String,
-    pub description: String,
-    pub published: bool,
+    pub position: String,
+    pub quote: String,
     pub created_at: NaiveDateTime,
 }
 
@@ -86,10 +86,10 @@ impl FromDataSimple for NewDonor {
             .push(MultipartFormDataField::text("name"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("description"));
+            .push(MultipartFormDataField::text("position"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("published"));
+            .push(MultipartFormDataField::text("quote"));
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -127,23 +127,21 @@ impl FromDataSimple for NewDonor {
             name = &text.text;
         }
 
-        let mut description = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
-            description = &text.text;
+        let mut position = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("position") {
+            position = &text.text;
         }
 
-        let mut published = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
-            if &text.text == "on" {
-                published = true;
-            }
+        let mut quote = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("quote") {
+            quote = &text.text;
         }
 
         Success(NewDonor {
             name: name.to_string(),
             photo,
-            description: description.to_string(),
-            published,
+            position: position.to_string(),
+            quote: quote.to_string(),
         })
     }
 }

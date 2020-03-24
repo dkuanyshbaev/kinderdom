@@ -1,4 +1,4 @@
-use crate::models::{article::Article, event::Event, profile::Profile, project::Project};
+use crate::models::event::Event;
 use crate::Db;
 use rocket_contrib::templates::Template;
 
@@ -10,9 +10,6 @@ struct TemplateContext {
 
 #[get("/")]
 pub fn index(connection: Db) -> Template {
-    let _ = Article::published(&connection);
-    let _ = Profile::published(&connection);
-    let _ = Project::published(&connection);
     let _ = Event::published(&connection);
 
     let name = "Denis".to_string();

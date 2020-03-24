@@ -1,4 +1,4 @@
-use super::schema::profiles;
+use super::schema::causes;
 use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
 use chrono::NaiveDateTime;
@@ -11,10 +11,10 @@ use rocket_multipart_form_data::{
 };
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
-#[table_name = "profiles"]
-pub struct NewProfile {
+#[table_name = "causes"]
+pub struct NewCause {
     pub name: String,
-    pub photo: String,
+    pub image: String,
     pub video: String,
     pub needed: i32,
     pub collected: i32,
@@ -23,10 +23,10 @@ pub struct NewProfile {
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
-pub struct Profile {
+pub struct Cause {
     pub id: i32,
     pub name: String,
-    pub photo: String,
+    pub image: String,
     pub video: String,
     pub needed: i32,
     pub collected: i32,
@@ -35,58 +35,58 @@ pub struct Profile {
     pub created_at: NaiveDateTime,
 }
 
-impl Profile {
-    pub fn all(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
-        profiles::table.order(profiles::id.desc()).load(connection)
+impl Cause {
+    pub fn all(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+        causes::table.order(causes::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
-        profiles::table
-            .filter(profiles::published.eq(true))
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+        causes::table
+            .filter(causes::published.eq(true))
             .limit(4)
-            .order(profiles::id.desc())
+            .order(causes::id.desc())
             .load(connection)
     }
 
-    pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
-        profiles::table.find(id).get_result(connection)
+    pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Cause> {
+        causes::table.find(id).get_result(connection)
     }
 
-    pub fn insert(connection: &PgConnection, new_profile: NewProfile) -> QueryResult<Profile> {
-        diesel::insert_into(profiles::table)
-            .values(new_profile)
+    pub fn insert(connection: &PgConnection, new_cause: NewCause) -> QueryResult<Cause> {
+        diesel::insert_into(causes::table)
+            .values(new_cause)
             .get_result(connection)
     }
 
     pub fn update(
         connection: &PgConnection,
-        mut new_profile: NewProfile,
+        mut new_cause: NewCause,
         id: i32,
-    ) -> QueryResult<Profile> {
-        let old_profile: Profile = Self::get(connection, id)?;
-        if new_profile.photo == "".to_string() {
+    ) -> QueryResult<Cause> {
+        let old_cause: Cause = Self::get(connection, id)?;
+        if new_cause.image == "".to_string() {
             // keep old image name in case of update without image
-            new_profile.photo = old_profile.photo.clone();
+            new_cause.image = old_cause.image.clone();
         } else {
-            delete_file(&old_profile.photo);
+            delete_file(&old_cause.image);
         }
 
-        diesel::update(&old_profile)
-            .set(new_profile)
+        diesel::update(&old_cause)
+            .set(new_cause)
             .get_result(connection)
     }
 
-    pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
-        // remove photo
-        let profile: Profile = Self::get(connection, id)?;
-        delete_file(&profile.photo);
+    pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Cause> {
+        // remove image
+        let cause: Cause = Self::get(connection, id)?;
+        delete_file(&cause.image);
 
-        diesel::delete(&profile).get_result(connection)
+        diesel::delete(&cause).get_result(connection)
     }
 }
 
 // we need this custom impl for multipart form
-impl FromDataSimple for NewProfile {
+impl FromDataSimple for NewCause {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
@@ -94,7 +94,7 @@ impl FromDataSimple for NewProfile {
 
         options
             .allowed_fields
-            .push(MultipartFormDataField::file("photo"));
+            .push(MultipartFormDataField::file("image"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("name"));
@@ -131,16 +131,16 @@ impl FromDataSimple for NewProfile {
             }
         };
 
-        let mut photo = "".to_string();
-        if let Some(FileField::Single(file)) = multipart_form.files.get("photo") {
+        let mut image = "".to_string();
+        if let Some(FileField::Single(file)) = multipart_form.files.get("image") {
             let file_name = &file.file_name;
             let path = &file.path;
 
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    photo = file_name_with_prefix(file_path);
-                    save_file(path, &photo);
+                    image = file_name_with_prefix(file_path);
+                    save_file(path, &image);
                 }
             }
         }
@@ -179,9 +179,9 @@ impl FromDataSimple for NewProfile {
             }
         }
 
-        Success(NewProfile {
+        Success(NewCause {
             name: name.to_string(),
-            photo,
+            image,
             video: video.to_string(),
             needed,
             collected,
