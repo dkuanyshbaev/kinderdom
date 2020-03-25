@@ -14,7 +14,7 @@ extern crate rocket_multipart_form_data;
 use config::Config;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
-use views::{admin, common, pages};
+use views::{admin, pages};
 
 mod auth;
 mod config;
@@ -44,15 +44,10 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::reports,
                 pages::about,
                 pages::help,
-            ],
-        )
-        .mount(
-            "/admin",
-            routes![
-                common::main,
-                common::login_page,
-                common::login,
-                common::logout,
+                pages::admin,
+                pages::login_page,
+                pages::login,
+                pages::logout,
             ],
         )
         .mount(
@@ -99,7 +94,7 @@ fn rocket(config: Config) -> rocket::Rocket {
                 admin::donors::delete,
             ],
         )
-        .register(catchers![common::not_found, common::unauthorized])
+        .register(catchers![pages::not_found, pages::unauthorized])
 }
 
 fn main() {
