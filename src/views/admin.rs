@@ -67,6 +67,7 @@ macro_rules! handle {
             //     item,
             // ))
 
+            // items here it's categories for edit's form select
             Ok(rocket_contrib::templates::Template::render(
                 format!("{}/edit", $tp),
                 crate::views::ComplexContext {
@@ -114,6 +115,11 @@ macro_rules! handle {
 pub mod events {
     use crate::models::event::{Event, NewEvent};
     handle!(Event, NewEvent, "admin/events");
+}
+
+pub mod cats {
+    use crate::models::cat::{Cat, NewCat};
+    handle!(Cat, NewCat, "admin/cats");
 }
 
 pub mod causes {

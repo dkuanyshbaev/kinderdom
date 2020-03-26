@@ -62,6 +62,17 @@ fn rocket(config: Config) -> rocket::Rocket {
             ],
         )
         .mount(
+            "/admin/cats",
+            routes![
+                admin::cats::list,
+                admin::cats::add,
+                admin::cats::create,
+                admin::cats::edit,
+                admin::cats::update,
+                admin::cats::delete,
+            ],
+        )
+        .mount(
             "/admin/causes",
             routes![
                 admin::causes::list,
