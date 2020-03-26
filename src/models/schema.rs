@@ -45,6 +45,18 @@ table! {
 }
 
 table! {
+    profiles (id) {
+        id -> Int4,
+        name -> Varchar,
+        photo -> Varchar,
+        video -> Varchar,
+        description -> Text,
+        published -> Bool,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
     reports (id) {
         id -> Int4,
         pdf -> Varchar,
@@ -60,5 +72,6 @@ allow_tables_to_appear_in_same_query!(
     causes,
     donors,
     events,
+    profiles,
     reports,
 );

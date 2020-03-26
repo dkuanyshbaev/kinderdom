@@ -112,6 +112,11 @@ macro_rules! handle {
     };
 }
 
+pub mod profiles {
+    use crate::models::profile::{NewProfile, Profile};
+    handle!(Profile, NewProfile, "admin/profiles");
+}
+
 pub mod events {
     use crate::models::event::{Event, NewEvent};
     handle!(Event, NewEvent, "admin/events");

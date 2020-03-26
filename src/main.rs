@@ -51,6 +51,17 @@ fn rocket(config: Config) -> rocket::Rocket {
             ],
         )
         .mount(
+            "/admin/profiles",
+            routes![
+                admin::profiles::list,
+                admin::profiles::add,
+                admin::profiles::create,
+                admin::profiles::edit,
+                admin::profiles::update,
+                admin::profiles::delete,
+            ],
+        )
+        .mount(
             "/admin/events",
             routes![
                 admin::events::list,
