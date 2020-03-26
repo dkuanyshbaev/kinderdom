@@ -8,3 +8,9 @@ pub struct NoContext {}
 pub struct ListContext<T> {
     items: Vec<T>,
 }
+
+#[derive(Serialize)]
+pub struct ComplexContext<T, U> {
+    item: U,
+    items: Vec<T>,
+}

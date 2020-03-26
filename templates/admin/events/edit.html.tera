@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-    <img src="/static/upload/{{ cover }}" class="img-thumbnail" alt="Обложка"><br><br>
+    <img src="/static/upload/{{ item.cover }}" class="img-thumbnail" alt="Обложка"><br><br>
 
-    <form action="/admin/events/{{ id }}" method="post" enctype="multipart/form-data">
+    <form action="/admin/events/{{ item.id }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="put" />
 
         <div class="form-group">
@@ -14,22 +14,35 @@
         </div>
 
         <div class="form-group">
+            <label for="cat">Категория</label>
+            <select class="custom-select" id="cat" name="cat">
+                {% for i in items %}
+                    {% if i.id == item.cat_id %}
+                        <option selected value="{{ i.id }}">{{ i.name }}</option>
+                    {% else %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="title">Заголовок</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{ title }}">
+            <input type="text" class="form-control" id="title" name="title" value="{{ item.title }}">
         </div>
 
         <div class="form-group">
             <label for="lead">Краткое описание</label>
-            <input type="text" class="form-control" id="lead" name="lead" value="{{ lead }}">
+            <input type="text" class="form-control" id="lead" name="lead" value="{{ item.lead }}">
         </div>
 
         <div class="form-group">
             <label for="content">Содержимое</label>
-            <textarea class="form-control" id="summernote" name="description" rows="10">{{ content }}</textarea>
+            <textarea class="form-control" id="summernote" name="content" rows="10">{{ item.content }}</textarea>
         </div>
 
         <div class="form-group form-check">
-            {% if published %}
+            {% if item.published %}
                 <input type="checkbox" class="form-check-input" id="published" name="published" checked>
             {% else %}
                 <input type="checkbox" class="form-check-input" id="published" name="published">

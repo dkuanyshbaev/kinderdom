@@ -18,6 +18,7 @@ pub struct NewEvent {
     pub cover: String,
     pub content: String,
     pub published: bool,
+    pub cat_id: i32,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
@@ -28,6 +29,7 @@ pub struct Event {
     pub cover: String,
     pub content: String,
     pub published: bool,
+    pub cat_id: i32,
     pub created_at: NaiveDateTime,
 }
 
@@ -96,6 +98,9 @@ impl FromDataSimple for NewEvent {
             .push(MultipartFormDataField::text("title"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("cat"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("lead"));
         options
             .allowed_fields
@@ -135,6 +140,12 @@ impl FromDataSimple for NewEvent {
             }
         }
 
+        let mut cat = 1;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("cat") {
+            let amount = &text.text;
+            cat = amount.parse().unwrap();
+        }
+
         let mut title = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
             title = &text.text;
@@ -158,6 +169,7 @@ impl FromDataSimple for NewEvent {
         }
 
         Success(NewEvent {
+            cat_id: cat,
             title: title.to_string(),
             lead: lead.to_string(),
             cover,

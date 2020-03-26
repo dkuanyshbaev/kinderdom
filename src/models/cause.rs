@@ -19,6 +19,7 @@ pub struct NewCause {
     pub needed: i32,
     pub collected: i32,
     pub description: String,
+    pub vital: bool,
     pub published: bool,
 }
 
@@ -31,6 +32,7 @@ pub struct Cause {
     pub needed: i32,
     pub collected: i32,
     pub description: String,
+    pub vital: bool,
     pub published: bool,
     pub created_at: NaiveDateTime,
 }
@@ -112,6 +114,9 @@ impl FromDataSimple for NewCause {
             .push(MultipartFormDataField::text("description"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("vital"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
@@ -172,6 +177,13 @@ impl FromDataSimple for NewCause {
             description = &text.text;
         }
 
+        let mut vital = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("vital") {
+            if &text.text == "on" {
+                vital = true;
+            }
+        }
+
         let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
@@ -186,6 +198,7 @@ impl FromDataSimple for NewCause {
             needed,
             collected,
             description: description.to_string(),
+            vital,
             published,
         })
     }

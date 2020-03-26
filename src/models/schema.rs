@@ -1,4 +1,11 @@
 table! {
+    cats (id) {
+        id -> Int4,
+        name -> Varchar,
+    }
+}
+
+table! {
     causes (id) {
         id -> Int4,
         name -> Varchar,
@@ -7,6 +14,7 @@ table! {
         needed -> Int4,
         collected -> Int4,
         description -> Text,
+        vital -> Bool,
         published -> Bool,
         created_at -> Timestamp,
     }
@@ -31,6 +39,7 @@ table! {
         cover -> Varchar,
         content -> Text,
         published -> Bool,
+        cat_id -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -44,7 +53,10 @@ table! {
     }
 }
 
+joinable!(events -> cats (cat_id));
+
 allow_tables_to_appear_in_same_query!(
+    cats,
     causes,
     donors,
     events,

@@ -11,7 +11,7 @@
                         <span>Donate Now To Support</span>
                         <h3>Let your life be an <strong> Inspiration</strong></h3>
                         <p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta, et malesuada erat bibendum. Cras sed nunc massa. </p>
-                        <a class="btn" href="#" title="">Я хочу помочь</a>
+                        <a class="btn open-popup" href="#" title="">Я хочу помочь</a>
                     </div><!-- Big Text -->
                 </div>
             </div>
@@ -213,7 +213,7 @@
                     <div class="simple-parallax">
                         <h3>Let’s Make The World Better Place Together</h3>
                         <p>Charity fundraising ideas, and fundraise or crowdfund for an Australian charity close to your heart. With over 1500 Australian charities to choose from raising money for your cause is easy.</p>
-                        <a class="btn" href="#" title="">Join Our Compaign</a>
+                        <a class="btn open-popup" href="#" title="">Join Our Compaign</a>
                     </div>
                 </div>
             </div>

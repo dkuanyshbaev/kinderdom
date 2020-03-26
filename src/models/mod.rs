@@ -1,3 +1,4 @@
+pub mod cat;
 pub mod cause;
 pub mod donor;
 pub mod event;

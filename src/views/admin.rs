@@ -1,3 +1,9 @@
+#[derive(Serialize)]
+struct Select {
+    id: i32,
+    name: String,
+}
+
 macro_rules! handle {
     ($t:ty, $nt:ty, $tp:expr) => {
         // list of items
@@ -17,11 +23,16 @@ macro_rules! handle {
 
         // show add form
         #[get("/add")]
-        pub fn add(_admin: crate::auth::Admin) -> rocket_contrib::templates::Template {
-            rocket_contrib::templates::Template::render(
+        pub fn add(
+            _admin: crate::auth::Admin,
+            connection: crate::Db,
+        ) -> crate::KinderResult<rocket_contrib::templates::Template> {
+            Ok(rocket_contrib::templates::Template::render(
                 format!("{}/add", $tp),
-                crate::views::NoContext {},
-            )
+                crate::views::ListContext {
+                    items: crate::models::cat::Cat::all(&connection)?,
+                },
+            ))
         }
 
         // create item
@@ -50,11 +61,18 @@ macro_rules! handle {
             connection: crate::Db,
             id: i32,
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
-            let item = <$t>::get(&connection, id)?;
+            // let item = <$t>::get(&connection, id)?;
+            // Ok(rocket_contrib::templates::Template::render(
+            //     format!("{}/edit", $tp),
+            //     item,
+            // ))
 
             Ok(rocket_contrib::templates::Template::render(
                 format!("{}/edit", $tp),
-                item,
+                crate::views::ComplexContext {
+                    item: <$t>::get(&connection, id)?,
+                    items: crate::models::cat::Cat::all(&connection)?,
+                },
             ))
         }
 

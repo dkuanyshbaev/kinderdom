@@ -6,6 +6,7 @@ create table if not exists causes (
     needed int not null,
     collected int not null,
     description text not null,
+    vital boolean not null default 'f',
     published boolean not null default 'f',
     created_at timestamp not null default now()
 );
