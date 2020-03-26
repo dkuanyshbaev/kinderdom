@@ -1,6 +1,7 @@
 use crate::auth::{Admin, LoginForm};
 use crate::models::cause::Cause;
 use crate::models::event::Event;
+use crate::models::profile::Profile;
 use crate::models::report::Report;
 use crate::views::{ListContext, NoContext};
 use crate::{Config, Db, KinderResult};
@@ -27,9 +28,9 @@ pub fn events(connection: Db) -> KinderResult<Template> {
 }
 
 #[get("/events/<id>")]
-pub fn event_detail(connection: Db, id: i32) -> KinderResult<Template> {
+pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render(
-        "pages/event_detail",
+        "pages/event_details",
         Event::get(&connection, id)?,
     ))
 }
@@ -45,10 +46,28 @@ pub fn causes(connection: Db) -> KinderResult<Template> {
 }
 
 #[get("/causes/<id>")]
-pub fn cause_detail(connection: Db, id: i32) -> KinderResult<Template> {
+pub fn cause_details(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render(
-        "pages/cause_detail",
+        "pages/cause_details",
         Cause::get(&connection, id)?,
+    ))
+}
+
+#[get("/profiles")]
+pub fn profiles(connection: Db) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/profiles",
+        ListContext {
+            items: Profile::published(&connection)?,
+        },
+    ))
+}
+
+#[get("/profiles/<id>")]
+pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/profile_details",
+        Profile::get(&connection, id)?,
     ))
 }
 

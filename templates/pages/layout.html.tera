@@ -49,6 +49,7 @@
                             <li><a href="/" title="">Главная</a></li>
                             <li><a href="/events" title="">События</a></li>
                             <li><a href="/causes" title="">Цели</a></li>
+                            <li><a href="/profiles" title="">Анкеты</a></li>
                             <li><a href="/reports" title="">Отчёты</a></li>
                             <li><a href="/about" title="">О фонде</a></li>
                         </ul>
@@ -81,6 +82,7 @@
                         <li><a href="/" title="">Главная</a></li>
                         <li><a href="/events" title="">События</a></li>
                         <li><a href="/causes" title="">Цели</a></li>
+                        <li><a href="/profiles" title="">Анкеты</a></li>
                         <li><a href="/reports" title="">Отчёты</a></li>
                         <li><a href="/about" title="">О фонде</a></li>
                         <li class="lang_mobi">

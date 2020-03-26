@@ -1,0 +1,151 @@
+{% extends "pages/layout" %}
+
+{% block content %}
+		<div class="pagetop">
+			<div class="container">
+				<h1><i>PROFILES</i> PAGE</h1>
+				<ul class="breadcrumbs">
+					<li><a href="#" title="">Home</a></li>
+					<li>Profiles</li>
+				</ul>
+			</div>
+		</div>
+		<section>
+			<div class="block">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="shelter-team">
+								<div class="row">
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>Mona Cristina</h4>
+												<span>
+													<i>Social Worker</i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>John Carley</h4>
+												<span>
+													<i>Market Analyst </i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>Wasley Steven</h4>
+												<span>
+													<i>Scoail Worker</i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>Mona Cristina</h4>
+												<span>
+													<i>Social Worker</i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>John Carley</h4>
+												<span>
+													<i>Market Analyst </i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>Wasley Steven</h4>
+												<span>
+													<i>Scoail Worker</i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>Mona Cristina</h4>
+												<span>
+													<i>Social Worker</i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>John Carley</h4>
+												<span>
+													<i>Market Analyst </i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+									<div class="col-4">
+										<div class="member">
+											<img src="http://placehold.it/370x410" alt="" />
+											<div class="member-name">
+												<h4>Wasley Steven</h4>
+												<span>
+													<i>Scoail Worker</i>
+													<a href="team-detail.html" title="">Read More</a>
+												</span>
+											</div>
+										</div><!-- Member -->
+									</div>
+								</div>
+							</div><!-- Shelter Team -->
+
+
+							<div class="shelter-pagination">
+								<ul class="pagination">
+									<li> <a href="#" title=""> Previous </a> </li>
+									<li><a class="current" href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li> <a href="#" title=""> Next</a> </li>
+								</ul>
+							</div><!-- Shelter Pagination -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+{% endblock content %}

@@ -38,9 +38,11 @@ fn rocket(config: Config) -> rocket::Rocket {
             routes![
                 pages::index,
                 pages::events,
-                pages::event_detail,
+                pages::event_details,
                 pages::causes,
-                pages::cause_detail,
+                pages::cause_details,
+                pages::profiles,
+                pages::profile_details,
                 pages::reports,
                 pages::about,
                 pages::help,
