@@ -6,11 +6,11 @@
         <div class="fixed-bg bg6"></div>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5 col-md-12">
+                <div class="col-lg-6 col-md-12">
                     <div class="big-text style2">
                         <span>Меняйте мир вместе с нами</span>
-                        <h3>Let your life be an <strong> Inspiration</strong></h3>
-                        <p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta, et malesuada erat bibendum. Cras sed nunc massa. </p>
+                        <h3>Путь к светлому <strong>Будущему</strong></h3>
+                        <p>Реализуя програму «Путь к светлому будущему», мы ставим перед собой цель дать возможность детям овладеть современными, необходимыми знаниями на достойном уровне, чтобы каждый ребенок имел возможность реализоваться и добиться успеха, мы стремимся дать шанс каждому</p>
                         <a class="btn open-popup" href="#" title="">Я хочу помочь</a>
                     </div><!-- Big Text -->
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="shelter-bar">
-                        <h4>LET'S START DOING <strong>YOUR BIT FOR THE WORLD</strong>. JOIN US AS A VOLUNTEER</h4>
+                        <h4>Наш девиз - <strong>«Подари тепло детям»</strong>. Подай заявку сейчас!</h4>
 
                         <a class="btn style3" href="/help" title="">Стать волонтёром</a>
                     </div><!-- Shelter Bar -->
@@ -42,17 +42,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-12">
-                    <h2 class="col-title"><strong>Founded in 1981</strong> by <strong>Daniel Whitaker</strong>, aims to address the many needs of the <strong>world's growing refugees.</strong></h2>
+                    <h2 class="col-title">Благотворительный Фонд <strong>«Мы и Дети»</strong> был <strong>основан в 2007 году</strong> людьми, не равнодушными к судьбам детей сирот.</h2>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <div class="frame-img"><img src="http://placehold.it/311x366" alt="" /></div>
+                    <div class="frame-img"><img src="/static/images/kri.jpg" alt="" /></div>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="simple-text">
-                        <h3>Making someone smile is the most beautiful thing,</h3>
-                        <p>Over 8,000 people have died (with death toll rising), thousands more are injured, and countless more have been displaced. Many homes, temples, and public monuments have been destroyed throughout the affected areas.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur elit. Sequi tempora veritatis nemo aut ea iustoqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <span>DANEIL WHITAKER</span>
+                        <h3>Улыбка ребёнка - самая прекрасная вещь на свете!</h3>
+                        <p>«Имея опыт общения с различными людьми, с теми, кому не все равно — становится ясно, «кто с этим должен разбираться?». Ответ — человек. Именно с маленькой буквы. Потому что люди вносят свой вклад в большинстве случаев анонимно. Но пожертвования бывают разные.</p>
+                        <p>В любом случае тот, кто получает эту помощь, он получает ее тоже как человек. И вот в этом видится добро и в то же время попытка ценить то, что у нас есть и чего лишены другие. Чужих детей не бывает.»</p>
+                        <span>Кристина (представитель фонда)</span>
                     </div>
                 </div>
             </div>
@@ -67,8 +67,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>Help The Homeless People</span>
-                        <h2><i>SHELTER</i> RECENT CAUSES</h2>
+                        <span>Помоги детям</span>
+                        <h2><i>СРОЧНЫЕ</i> СБОРЫ</h2>
                     </div>
 
                     <div class="creative-causes">
@@ -132,17 +132,16 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-12">
                             <div class="video-text">
-                                <span>Promote and Monitor Human Rights</span>
-                                <h3>Helath Is Essential For <br><strong>BETTER FUTURE</strong></h3>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit autugit, sed consequuntur magni dolores ratione voluptatem sequi nesciunt. Neque porro quisquamst Nemo enim ipsam voluptatem.</p>
-                                <a class="btn" href="#" title="">Explore Now</a>
+                                <h3>Проект БФ «Мы и Дети»: <br><strong>ДОРОГА ДОМОЙ</strong></h3>
+                                <p>В рамках проекта выходят в эфир и выкладываются в интернет-сети видео-портреты детей сирот, которым присвоен статус «на опеку и усыновление», а также интервью и сюжеты о работе специалистов, работающих в сфере образования, охраны материнства и детства - сотрудников органов опеки, экспертов в сфере детской психологии и семейного устройства.</p>
+                                <a class="btn" href="https://www.youtube.com/channel/UCJZFYjS5stQIGQQQdmACEcg" target="_blank" title="">Узнать больше</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
-                            <div class="video-img"><img src="http://placehold.it/793x585" alt="" /></div>
+                            <div class="video-img"><img src="/static/images/video.jpg" alt="" /></div>
                         </div>
                     </div>
-                    <a class="round-icon-btn" href="#" title=""><i class="ion-ios-play-outline"></i></a>
+                    <a class="round-icon-btn" href="https://www.youtube.com/channel/UCJZFYjS5stQIGQQQdmACEcg" target="_blank" title=""><i class="ion-ios-play-outline"></i></a>
                 </div><!-- Shelter Video -->
             </div>
         </div>
@@ -156,8 +155,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>Give Your Hand To Help</span>
-                        <h2><i>SHELTER</i> UPCOMING EVENT</h2>
+                        <span>ПРОТЯНИ РУКУ ПОМОЩИ</span>
+                        <h2><i>ПРЕДСТОЯЩИЕ</i> СОБЫТИЯ</h2>
                     </div>
 
                     <div class="shelter-fancy-events">
@@ -211,9 +210,9 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-12">
                     <div class="simple-parallax">
-                        <h3>Let’s Make The World Better Place Together</h3>
-                        <p>Charity fundraising ideas, and fundraise or crowdfund for an Australian charity close to your heart. With over 1500 Australian charities to choose from raising money for your cause is easy.</p>
-                        <a class="btn open-popup" href="#" title="">Join Our Compaign</a>
+                        <h3>Давайте сделаем мир лучше вместе</h3>
+                        <p>Мы уже сняли немало видеоанкет детей-сирот, но нужно снять еще больше. Каждые 1500 тыс. рублей (столько стоит одна видеоанкета) дают шанс еще одному ребенку-сироте обрести семью.</p>
+                        <a class="btn open-popup" href="#" title="">Помочь проекту</a>
                     </div>
                 </div>
             </div>
@@ -229,8 +228,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>Help The Homeless People</span>
-                        <h2><i>SHELTER</i> RECENT CAUSES</h2>
+                        <span>Дети обретают семью</span>
+                        <h2><i>ИСТОРИИ</i> УСПЕХА</h2>
                     </div>
 
 

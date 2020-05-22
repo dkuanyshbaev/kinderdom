@@ -225,7 +225,8 @@ section{
 .coloured:before{
     content:"";
     height:100%;
-    opacity:0.9;
+    opacity:0.75;
+    /* opacity:0.9; */
     z-index:0;
     background:#37383e;
     position:absolute;
@@ -2905,7 +2906,8 @@ nav ul ul li:hover > a{color:#FFF}
 .pagetop{
     float:left;
     width:100%;
-    background:url(http://placehold.it/1600x335) no-repeat scroll 0 0 / cover transparent;
+    /* background:url(http://placehold.it/1600x335) no-repeat scroll 0 0 / cover transparent; */
+    background:url(../images/bc.jpg) no-repeat scroll 0 0 / cover transparent;
     padding-top:110px;
     text-align:center;
     padding-bottom:110px;

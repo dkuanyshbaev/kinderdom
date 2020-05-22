@@ -3,10 +3,10 @@
 {% block content %}
 		<div class="pagetop">
 			<div class="container">
-				<h1><i>Events</i> Page</h1>
+				<h1><i>СОБЫТИЯ</i> ФОНДА</h1>
 				<ul class="breadcrumbs">
-					<li><a href="#" title="">Home</a></li>
-					<li>Blog</li>
+					<li><a href="/" title="">Главная</a></li>
+					<li>События</li>
 				</ul>
 			</div>
 		</div>

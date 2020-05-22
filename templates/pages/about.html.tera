@@ -3,10 +3,10 @@
 {% block content %}
 		<div class="pagetop">
 			<div class="container">
-				<h1><i>ABOUT</i> PAGE</h1>
+				<h1><i>О</i> ФОНДЕ</h1>
 				<ul class="breadcrumbs">
-					<li><a href="#" title="">Home</a></li>
-					<li>ABOUT</li>
+					<li><a href="/" title="">Главная</a></li>
+					<li>О Нас</li>
 				</ul>
 			</div>
 		</div>
@@ -21,11 +21,6 @@
 								<div class="team-detail-text">
 									<h1>Mark Linux</h1>
 									<span>UI/UX Developer</span>
-									<div class="round-socials">
-										<a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
-										<a class="twitter" href="#" title=""><i class="fa fa-twitter"></i></a>
-										<a class="pinterest" href="#" title=""><i class="fa fa-pinterest"></i></a>
-									</div>
 									<p>Corem ipsum dolor sit amet, consectetur adipisicing elit ased tempor eiusmod tempor incid idunts uet labore moslet dolore magna aliqua uat enim ad minim quis nostrud exercitation ullamco laboris tem nisil dolorut aliquip consequat.Quis autem velum iure reprehe nderit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sapien neque, bibendum in sagit tis. Duis varius tellus eget massa pulvinar eu aliquet nibh dapibus. Aenean eros erat, tincidunt vitae fringi la nec, fermentum et quam. Class aptent tacit socio squ ad litora torquent peri bia nostra, per inceptos himenaeos. Aenean eros erat, tincidunt vitae fringilla nec, fermentum et quam. Quis autem velum iure reprehe nderit. </p>
 									<ul>
 										<li>Phone: 123 - 3456 - 9085 </li>
