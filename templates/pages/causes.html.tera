@@ -3,7 +3,7 @@
 {% block content %}
 		<div class="pagetop">
 			<div class="container">
-				<h1><i>ЦЕЛИ</i> СБОРОВ</h1>
+				<h1><i>СБОР</i> СРЕДСТВ</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/" title="">Главная</a></li>
 					<li>Цели</li>
