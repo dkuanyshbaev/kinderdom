@@ -154,22 +154,22 @@
                 <div class="popup-title"> <h3>Donation Form</h3> <a class="close-popup" href="#" title=""><i class="ion-close-round"></i></a> </div><!-- Popup Title -->
                 <div class="popup-content">
                     <p>You can transform a world of povertyt to sustainability. Over 70% of infant deaths occur within the first year of life.</p>
-                    <div class="select-cause">
-                        <label>Select Cause</label>
-                        <select class="select">
-                            <option>Cause 1</option>
-                            <option>Cause 2</option>
-                            <option>Cause 3</option>
-                            <option>Cause 4</option>
-                        </select>
-                    </div>
+                    <!-- <div class="select&#45;cause"> -->
+                    <!--     <label>Select Cause</label> -->
+                    <!--     <select class="select"> -->
+                    <!--         <option>Cause 1</option> -->
+                    <!--         <option>Cause 2</option> -->
+                    <!--         <option>Cause 3</option> -->
+                    <!--         <option>Cause 4</option> -->
+                    <!--     </select> -->
+                    <!-- </div> -->
 
-                    <div class="shelter-skills">
-                        <div class="skillbar">
-                            <span>$350 of $1,000 raised </span>
-                            <div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-                        </div>
-                    </div>
+                    <!-- <div class="shelter&#45;skills"> -->
+                    <!--     <div class="skillbar"> -->
+                    <!--         <span>$350 of $1,000 raised </span> -->
+                    <!--         <div class="progress"> <div class="progress&#45;bar" style="width: 85%;"><span>85%</span></div> </div> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
 
                     <div class="your-donation">
                         <strong>YOUR DONATION</strong>
@@ -185,15 +185,11 @@
 
 
                     <form>
-                        <input type="text" placeholder="First Name" />
-                        <input type="text" placeholder="Last Name" />
-                        <input type="email" placeholder="Email" />
-                        <input type="text" placeholder="Phone Number" />
-                        <input type="text" placeholder="Address" />
+                        <input type="text" placeholder="Ваше имя" />
                     </form>
                 </div><!-- Popup Content -->
                 <div class="popup-footer">
-                    <a class="btn" href="#" title="">Proceed</a>
+                    <a class="btn" href="#" title="">Продолжить</a>
                 </div><!-- Popup Footer -->
             </div>
         </div><!-- Popup -->
