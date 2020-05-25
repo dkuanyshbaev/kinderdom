@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-    <img src="/static/upload/{{ photo }}" class="img-thumbnail" alt="Фото"><br><br>
+    <img src="/static/upload/{{ item.photo }}" class="img-thumbnail" alt="Фото"><br><br>
 
-    <form action="/admin/donors/{{ id }}" method="post" enctype="multipart/form-data">
+    <form action="/admin/donors/{{ item.id }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="put" />
 
         <div class="form-group">
@@ -15,17 +15,17 @@
 
         <div class="form-group">
             <label for="name">Имя</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ name }}">
+            <input type="text" class="form-control" id="name" name="name" value="{{ item.name }}">
         </div>
 
         <div class="form-group">
             <label for="position">Должность</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{ position }}">
+            <input type="text" class="form-control" id="position" name="position" value="{{ item.position }}">
         </div>
 
         <div class="form-group">
             <label for="quote">Цитата</label>
-            <textarea class="form-control" id="summernote" name="quote" rows="10">{{ quote }}</textarea>
+            <textarea class="form-control" id="summernote" name="quote" rows="10">{{ item.quote }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-info">Сохранить</button>
