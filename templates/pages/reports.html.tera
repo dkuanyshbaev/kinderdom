@@ -1,156 +1,59 @@
 {% extends "pages/layout" %}
 
 {% block content %}
-		<div class="pagetop">
-			<div class="container">
-				<h1><i>ОТЧЁТЫ</i> ФОНДА</h1>
-				<ul class="breadcrumbs">
-					<li><a href="/" title="">Главная</a></li>
-					<li>Отчёты</li>
-				</ul>
-			</div>
-		</div>
+<div class="pagetop">
+    <div class="container">
+        <h1><i>ОТЧЁТЫ</i> ФОНДА</h1>
+        <ul class="breadcrumbs">
+            <li><a href="/" title="">Главная</a></li>
+            <li>Отчёты</li>
+        </ul>
+    </div>
+</div>
 
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="shelter-events">
+                        <div class="row">
+                            {% for item in items -%}
+                                <div class="col-3">
+                                    <div class="shelter-event">
+                                        <div class="event-inner">
+                                            <h4><a href="{{ item.url }}" target="_blank">{{ item.description }}</a></h4>
+                                            <!--<span>Dec 25 - 2017        05:00 pm</span>-->
+                                        </div>
+                                        <a class="event-link" href="{{ item.url }}" target="_blank"><i class="ion-forward"></i></a>
+                                        <!-- <div class="social-links">
+                                            <a href="#" title=""><i class="fa fa-facebook"></i></a>
+                                            <a href="#" title=""><i class="fa fa-twitter"></i></a>
+                                            <a href="#" title=""><i class="fa fa-pinterest"></i></a>
+                                        </div> -->
+                                    </div><!-- Shelter Event -->
+                                </div>
+                            {%- endfor %}
+                        </div>
+                    </div><!-- Shelter Events -->
 
+                    <div class="shelter-pagination">
+                        <ul class="pagination">
+                            <li><a href="#" title=""> Назад </a> </li>
+                            <li><a class="current" href="#">1</a></li>
+                            <!--
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            -->
+                            <li> <a href="#" title=""> Дальше</a> </li>
+                        </ul>
+                    </div><!-- Shelter Pagination -->
 
-
-		<section>
-			<div class="block">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div class="shelter-events">
-								<div class="row">
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Seminar For Children To Learn About The Future</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Make Life Easier For Ebola & Alzheimer</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Climate Change: Vital Signs Of The Planet</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Seminar For Children To Learn About The Future</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Make Life Easier For Ebola & Alzheimer</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Climate Change: Vital Signs Of The Planet</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-									<div class="col-3">
-										<div class="shelter-event">
-											<div class="event-inner">
-												<h4><a href="#" title="">Dedicated To Helping Kids Making A Playground.</a></h4>
-												<span>Dec 25 - 2017        05:00 pm</span>
-											</div>
-											<a class="event-link" href="#" title=""><i class="ion-forward"></i></a>
-											<div class="social-links">
-												<a href="#" title=""><i class="fa fa-facebook"></i></a>
-												<a href="#" title=""><i class="fa fa-twitter"></i></a>
-												<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-											</div>
-										</div><!-- Shelter Event -->
-									</div>
-								</div>
-							</div><!-- Shelter Events -->
-
-
-							<div class="shelter-pagination">
-								<ul class="pagination">
-									<li> <a href="#" title=""> Previous </a> </li>
-									<li><a class="current" href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li> <a href="#" title=""> Next</a> </li>
-								</ul>
-							</div><!-- Shelter Pagination -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
