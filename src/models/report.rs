@@ -1,5 +1,4 @@
 use super::schema::reports;
-use super::utils::{delete_file, file_name_with_prefix, save_file};
 use crate::errors::KinderError;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
@@ -7,20 +6,20 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
+    MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
 };
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "reports"]
 pub struct NewReport {
-    pub pdf: String,
+    pub url: String,
     pub description: String,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Report {
     pub id: i32,
-    pub pdf: String,
+    pub url: String,
     pub description: String,
     pub created_at: NaiveDateTime,
 }
@@ -42,27 +41,17 @@ impl Report {
 
     pub fn update(
         connection: &PgConnection,
-        mut new_report: NewReport,
+        new_report: NewReport,
         id: i32,
     ) -> QueryResult<Report> {
         let old_report: Report = Self::get(connection, id)?;
-        if new_report.pdf == "".to_string() {
-            // keep old file in case of update without file
-            new_report.pdf = old_report.pdf.clone();
-        } else {
-            delete_file(&old_report.pdf);
-        }
-
         diesel::update(&old_report)
             .set(new_report)
             .get_result(connection)
     }
 
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Report> {
-        // remove related file
         let report: Report = Self::get(connection, id)?;
-        delete_file(&report.pdf);
-
         diesel::delete(&report).get_result(connection)
     }
 }
@@ -76,7 +65,7 @@ impl FromDataSimple for NewReport {
 
         options
             .allowed_fields
-            .push(MultipartFormDataField::file("pdf"));
+            .push(MultipartFormDataField::text("url"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
@@ -98,18 +87,9 @@ impl FromDataSimple for NewReport {
             }
         };
 
-        let mut pdf = "".to_string();
-        if let Some(FileField::Single(file)) = multipart_form.files.get("pdf") {
-            let file_name = &file.file_name;
-            let path = &file.path;
-
-            if let Some(file_path) = file_name {
-                // check if it's update or create?
-                if file_path != "" {
-                    pdf = file_name_with_prefix(file_path);
-                    save_file(path, &pdf);
-                }
-            }
+        let mut url = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("url") {
+            url = &text.text;
         }
 
         let mut description = "";
@@ -118,7 +98,7 @@ impl FromDataSimple for NewReport {
         }
 
         Success(NewReport {
-            pdf,
+            url: url.to_string(),
             description: description.to_string(),
         })
     }

@@ -59,7 +59,7 @@ table! {
 table! {
     reports (id) {
         id -> Int4,
-        pdf -> Varchar,
+        url -> Varchar,
         description -> Varchar,
         created_at -> Timestamp,
     }
