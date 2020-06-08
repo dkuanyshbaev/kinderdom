@@ -135,12 +135,13 @@
                                 <h3 class="widget-title">Мы в instagram</h3>
                                 <div class="shelter-gallery">
                                     <div class="row">
-                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-                                        <div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
+                                        <iframe src="https://averin.pro/widget.php?l=bf_mi_i_deti&style=1&width=250&gallery=1&s=80&icc=3&icr=2&t=0&tt=Мы в Инстаграм&h=0&ttcolor=FFFFFF&th=c3c3c3&bw=2e2e2e&bscolor=FFFFFF&bs=FF0000&ts=Подписаться&ch=utf8" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:250px;height:165px;" ></iframe>
+                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
+                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
+                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
+                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
+                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
+                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
                                     </div>
                                 </div>
                             </div>
