@@ -50,6 +50,8 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::login_page,
                 pages::login,
                 pages::logout,
+                pages::payment,
+                pages::thankyou,
             ],
         )
         .mount(
@@ -118,7 +120,11 @@ fn rocket(config: Config) -> rocket::Rocket {
                 admin::donors::delete,
             ],
         )
-        .register(catchers![pages::not_found, pages::unauthorized])
+        .register(catchers![
+            pages::not_found,
+            pages::unauthorized,
+            pages::unprocessable
+        ])
 }
 
 fn main() {

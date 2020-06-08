@@ -1,20 +1,33 @@
 use crate::auth::{Admin, LoginForm};
 use crate::models::cause::Cause;
 use crate::models::event::Event;
+use crate::models::payment::{
+    Amount, PaymentBody, PaymentForm, PaymentResponse, RequestConfirmation,
+};
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::views::{ListContext, NoContext};
+use crate::views::{IndexContext, ListContext, NoContext};
 use crate::{Config, Db, KinderResult};
+use base64::encode;
+use reqwest::header::AUTHORIZATION;
+use reqwest::StatusCode;
 use rocket::http::{Cookie, Cookies};
 use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket::State;
 use rocket_contrib::templates::Template;
+use uuid::Uuid;
 
 #[get("/")]
 pub fn index(_connection: Db) -> KinderResult<Template> {
     // TODO: get all
-    Ok(Template::render("pages/index", NoContext {}))
+    // Ok(Template::render("pages/index", NoContext {}))
+    Ok(Template::render(
+        "pages/index",
+        IndexContext {
+            payment_description: "the payment_description for index".to_string(),
+        },
+    ))
 }
 
 #[get("/events")]
@@ -123,6 +136,63 @@ pub fn logout(mut cookies: Cookies) -> Redirect {
     Redirect::to("/login")
 }
 
+#[post("/payment", data = "<payment_form>")]
+pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> KinderResult<Redirect> {
+    let idempotence_key = Uuid::new_v4();
+    let auth_credentials = encode(config.yandex_credentials.to_owned());
+    let body = PaymentBody {
+        amount: Amount {
+            value: payment_form.amount.to_owned(),
+            currency: "RUB".to_string(),
+        },
+        capture: true,
+        confirmation: RequestConfirmation {
+            r#type: "redirect".to_string(),
+            return_url: "https://kinderdom.org/thankyou".to_string(),
+        },
+        description: payment_form.description.to_owned(),
+    };
+
+    let client = reqwest::blocking::Client::new();
+    let res = client
+        .post("https://payment.yandex.net/api/v3/payments")
+        .header("Idempotence-Key", idempotence_key.to_string())
+        .header(AUTHORIZATION, format!("Basic {}", auth_credentials))
+        .json(&body)
+        .send();
+
+    match res {
+        Ok(r) => match r.status() {
+            StatusCode::OK => {
+                if let Ok(res_json) = r.json::<PaymentResponse>() {
+                    Ok(Redirect::to(res_json.confirmation.confirmation_url))
+                } else {
+                    println!("Can't find confirmation url");
+                    Ok(Redirect::to("/"))
+                }
+            }
+            s => {
+                println!("Response status: {:?}", s);
+                Ok(Redirect::to("/"))
+            }
+        },
+        Err(e) => {
+            println!("Payment response: {}", e);
+            Ok(Redirect::to("/"))
+        }
+    }
+}
+
+#[get("/thankyou")]
+pub fn thankyou() -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/thankyou",
+        IndexContext {
+            payment_description: "".to_string(),
+        },
+    ))
+}
+
 #[catch(404)]
 pub fn not_found() -> Template {
     Template::render("pages/404", NoContext {})
@@ -131,4 +201,9 @@ pub fn not_found() -> Template {
 #[catch(401)]
 pub fn unauthorized() -> Redirect {
     Redirect::to("/login")
+}
+
+#[catch(422)]
+pub fn unprocessable() -> Redirect {
+    Redirect::to("/")
 }

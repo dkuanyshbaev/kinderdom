@@ -151,9 +151,12 @@
 
         <div class="popup">
             <div class="popup-box">
-                <div class="popup-title"> <h3>Donation Form</h3> <a class="close-popup" href="#" title=""><i class="ion-close-round"></i></a> </div><!-- Popup Title -->
+                <div class="popup-title">
+                    <h3>Я хочу помочь</h3>
+                    <a class="close-popup" href="#" title=""><i class="ion-close-round"></i></a>
+                </div><!-- Popup Title -->
                 <div class="popup-content">
-                    <p>You can transform a world of povertyt to sustainability. Over 70% of infant deaths occur within the first year of life.</p>
+                    <p>Каждое пожертвование даёт шанс еще одному ребенку-сироте обрести семью. Меняйте мир вместе с нами!</p>
                     <!-- <div class="select&#45;cause"> -->
                     <!--     <label>Select Cause</label> -->
                     <!--     <select class="select"> -->
@@ -172,20 +175,24 @@
                     <!-- </div> -->
 
                     <div class="your-donation">
-                        <strong>YOUR DONATION</strong>
+                        <strong>Сумма в рублях</strong>
                         <ul class="donation-figures">
-                            <li><a class="wpdonation-button" href="#" title="">$ 10.00</a></li>
-                            <li><a class="wpdonation-button" href="#" title="">$ 50.00</a></li>
-                            <li><a class="wpdonation-button" href="#" title="">$ 100.00</a></li>
-                            <li><a class="wpdonation-button active" href="#" title="">$ 500.00</a></li>
-                            <li><a href="#" title="">Other Amount</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">300</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">500</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">1000</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">3000</a></li>
+                            <li><a class="wpdonation-button" href="#" title="">5000</a></li>
+                            <li><a href="#" title="">Другая сумма</a></li>
                         </ul>
-                        <div class="donation-amount"><textarea placeholder="Enter The Amount You Want">$ 500.00</textarea></div>
+                        <div class="donation-amount">
+                            <textarea placeholder="Введите сумму">1000</textarea>
+                        </div>
                     </div>
 
-
-                    <form>
-                        <input type="text" placeholder="Ваше имя" />
+                    <form id="donation_form" method="POST" action="/payment">
+                        <input type="hidden" id="donation_amount" name="amount" value="0" />
+                        <input type="hidden" id="donation_description" name="description" value="{{ payment_description }}" />
+                        <!-- <input type="text" placeholder="Ваше имя" name="name" /> -->
                     </form>
                 </div><!-- Popup Content -->
                 <div class="popup-footer">
@@ -196,8 +203,8 @@
 
         <script src="/static/js/jquery.min.js"></script>
         <script src="/static/js/slick.min.js"></script>
-        <script src="/static/js/downcount.js"></script>
-        <script src="/static/js/simpleLightbox.min.js"></script>
+        <!-- <script src="/static/js/downcount.js"></script> -->
+        <!-- <script src="/static/js/simpleLightbox.min.js"></script> -->
         <script src="/static/js/script.js"></script>
     </body>
 </html>

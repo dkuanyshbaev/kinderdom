@@ -30,8 +30,8 @@ $(window).on("load", function() {
         $(this).next("ul").slideToggle();
         $(this).parent().siblings().find("ul").slideUp();
         return false;
-    });    
-    
+    });
+
 
     /*=================== Shelter Search  ===================*/
     $(".shelter-search a").on("click",function(){
@@ -90,7 +90,7 @@ $(window).on("load", function() {
                 $(this).toggleClass('active').next().slideDown(500).parent().toggleClass("activate");
             }
         });
-    });   
+    });
 
 
     /* =============== Ajax Contact Form ===================== */
@@ -127,11 +127,9 @@ $(window).on("load", function() {
         $(this).parent().siblings().find('a').removeClass("active");
         $(this).addClass("active");
         var amount_val = $(this).html();
-        $(".donation-amount textarea").val(amount_val);    
+        $(".donation-amount textarea").val(amount_val);
         return false;
     });
-
-
 
     /* =============== Popup ===================== */
     $(".open-popup").on("click",function(){
@@ -141,6 +139,17 @@ $(window).on("load", function() {
 
     $(".close-popup").on("click",function(){
         $(".popup").removeClass("active");
+        return false;
+    });
+
+    /* =============== Donation send ===================== */
+    $(".popup-footer a").on("click",function(){
+        let form = $("#donation_form");
+
+        var amount = $(".donation-amount textarea").val();
+        $("#donation_amount").val(amount);
+
+        form.submit();
         return false;
     });
 });
