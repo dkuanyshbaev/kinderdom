@@ -9,7 +9,11 @@
         <tbody>
             {% for item in items %}
                 <tr>
-                    <td class="align-middle">{{ item.name }}</td>
+                    {% set vital = "" %}
+                    {% if item.vital %}
+                        {% set vital = " - (Важно!)" %}
+                    {% endif %}
+                    <td class="align-middle">{{ item.name }}{{ vital }}</td>
                     <td style="width: 20%; text-align: center"><a href="/admin/causes/{{ item.id }}" class="btn btn-outline-warning">Редактировать</a></td>
                     <td style="width: 20%; text-align: center">
                         <form action="/admin/causes/{{ item.id }}" method="post">
