@@ -25,7 +25,7 @@ pub fn index(_connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/index",
         IndexContext {
-            payment_description: "the payment_description for index".to_string(),
+            payment_description: "Я хочу помочь".to_string(),
         },
     ))
 }
