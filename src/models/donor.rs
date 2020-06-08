@@ -34,6 +34,13 @@ impl Donor {
         donors::table.order(donors::id.desc()).load(connection)
     }
 
+    pub fn last(connection: &PgConnection) -> QueryResult<Vec<Donor>> {
+        donors::table
+            .limit(4)
+            .order(donors::id.desc())
+            .load(connection)
+    }
+
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Donor> {
         donors::table.find(id).get_result(connection)
     }

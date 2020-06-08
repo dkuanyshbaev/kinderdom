@@ -282,24 +282,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-12">
                     <div class="shelter-reviews center-dots">
-                        <div class="client-review">
-                            <img src="http://placehold.it/103x102" alt="" />
-                            <h5>John Brown</h5>
-                            <span>(Photographer)</span>
-                            <p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
-                        </div>
-                        <div class="client-review">
-                            <img src="http://placehold.it/103x102" alt="" />
-                            <h5>John Carley</h5>
-                            <span>(Developer)</span>
-                            <p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
-                        </div>
-                        <div class="client-review">
-                            <img src="http://placehold.it/103x102" alt="" />
-                            <h5>Wasley Steven</h5>
-                            <span>(Designer)</span>
-                            <p>"Vivamus urna elit, molestie ut odio ut, blandit bibend um lectus. Nam et ante facilisis sem auctor elementum vitae et dui.Cras faucibus, odio a pretium egestas, augue augue venenatis nisl, ut ornare risus sapien sed eros. Mauris mattis velit a turpis rhoncus, sit amet sagittis enim euismod.</p>
-                        </div>
+                        {% for donor in donors -%}
+                            <div class="client-review">
+                                <img src="/static/upload/{{ donor.photo }}" alt="" />
+                                <h5>{{ donor.name }}</h5>
+                                <span>({{ donor.position }})</span>
+                                <p>{{ donor.quote | safe }}</p>
+                            </div>
+                        {%- endfor %}
                     </div><!-- Shelter Testimonials -->
                 </div>
             </div>

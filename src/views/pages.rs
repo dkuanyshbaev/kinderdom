@@ -1,5 +1,6 @@
 use crate::auth::{Admin, LoginForm};
 use crate::models::cause::Cause;
+use crate::models::donor::Donor;
 use crate::models::event::Event;
 use crate::models::payment::{
     Amount, PaymentBody, PaymentForm, PaymentResponse, RequestConfirmation,
@@ -26,7 +27,7 @@ pub fn index(connection: Db) -> KinderResult<Template> {
             causes: Cause::vital(&connection)?,
             events: vec![],
             stories: vec![],
-            donors: vec![],
+            donors: Donor::last(&connection)?,
         },
     ))
 }
