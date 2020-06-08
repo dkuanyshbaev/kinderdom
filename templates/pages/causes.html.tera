@@ -1,127 +1,62 @@
 {% extends "pages/layout" %}
 
 {% block content %}
-		<div class="pagetop">
-			<div class="container">
-				<h1><i>СБОР</i> СРЕДСТВ</h1>
-				<ul class="breadcrumbs">
-					<li><a href="/" title="">Главная</a></li>
-					<li>Цели</li>
-				</ul>
-			</div>
-		</div>
+<div class="pagetop">
+    <div class="container">
+        <h1><i>СБОР</i> СРЕДСТВ</h1>
+        <ul class="breadcrumbs">
+            <li><a href="/" title="">Главная</a></li>
+            <li>Цели</li>
+        </ul>
+    </div>
+</div>
 
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="creative-causes">
+                        <div class="row">
+                            {% for item in items -%}
+                                <div class="col-4">
+                                    <div class="creative-cause">
+                                        <div class="cre-cause-img">
+                                            <img src="/static/upload/{{ item.image }}" alt="" />
+                                            <span><i>{{ item.collected }} р.</i> Собрано из {{ item.needed }}</span>
+                                            <div class="skillbar">
+                                                {% set collected_in_percent = item.collected / item.needed * 100 | round  %}
+                                                {% set width = collected_in_percent %}
+                                                {% if width < 7 %}
+                                                    {% set width = 7 %}
+                                                {% endif %}
+                                                <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
+                                            </div>
+                                            <a class="btn" href="#" title="">Пожертвовать</a>
+                                        </div>
+                                        <!--<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>-->
+                                        <h3><a href="/causes/{{ item.id }}" title="">{{ item.name }}</a></h3>
+                                    </div><!-- Creative Cause -->
+                                </div>
+                            {%- endfor %}
+                        </div>
+                    </div><!-- Creative Causes -->
 
-		<section>
-			<div class="block">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div class="creative-causes">
-								<div class="row">
-									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
-											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">The story behind the Hope Bracelet by Patricia Heaton</a></h3>
-										</div><!-- Creative Cause -->
-									</div>
-									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
-											</div>
-											<div class="cause-loc"><span>Charitable Giving</span> <span>India</span></div>
-											<h3><a href="#" title="">World Vision donations double through Thirty-One Gifts</a></h3>
-										</div><!-- Creative Cause -->
-									</div>
-									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
-											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">Child sponsorship and animals change lives in Bangladesh</a></h3>
-										</div><!-- Creative Cause -->
-									</div>
-									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
-											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">The story behind the Hope Bracelet by Patricia Heaton</a></h3>
-										</div><!-- Creative Cause -->
-									</div>
-									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
-											</div>
-											<div class="cause-loc"><span>Charitable Giving</span> <span>India</span></div>
-											<h3><a href="#" title="">World Vision donations double through Thirty-One Gifts</a></h3>
-										</div><!-- Creative Cause -->
-									</div>
-									<div class="col-4">
-										<div class="creative-cause">
-											<div class="cre-cause-img">
-												<img src="http://placehold.it/370x319" alt="" />
-												<span><i>$653</i> Raised of $60,524 Goal</span>
-												<div class="skillbar">
-													<div class="progress"> <div class="progress-bar" style="width: 85%;"><span>85%</span></div> </div>
-												</div>
-												<a class="btn" href="#" title="">Donate Now</a>
-											</div>
-											<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>
-											<h3><a href="#" title="">Child sponsorship and animals change lives in Bangladesh</a></h3>
-										</div><!-- Creative Cause -->
-									</div>
-								</div>
-							</div><!-- Creative Causes -->
+                    <!-- <div class="shelter-pagination">
+                        <ul class="pagination">
+                            <li> <a href="#" title=""> Previous </a> </li>
+                            <li><a class="current" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li> <a href="#" title=""> Next</a> </li>
+                        </ul>
+                    </div>--><!-- Shelter Pagination -->
 
-
-							<div class="shelter-pagination">
-								<ul class="pagination">
-									<li> <a href="#" title=""> Previous </a> </li>
-									<li><a class="current" href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li> <a href="#" title=""> Next</a> </li>
-								</ul>
-							</div><!-- Shelter Pagination -->
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}

@@ -50,6 +50,15 @@ impl Cause {
             .load(connection)
     }
 
+    pub fn vital(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+        causes::table
+            .filter(causes::published.eq(true))
+            .filter(causes::vital.eq(true))
+            .limit(3)
+            .order(causes::id.desc())
+            .load(connection)
+    }
+
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Cause> {
         causes::table.find(id).get_result(connection)
     }

@@ -6,7 +6,7 @@ use crate::models::payment::{
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::views::{ListContext, NoContext};
+use crate::views::{IndexContext, ListContext, NoContext};
 use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
@@ -19,8 +19,16 @@ use rocket_contrib::templates::Template;
 use uuid::Uuid;
 
 #[get("/")]
-pub fn index(_connection: Db) -> KinderResult<Template> {
-    Ok(Template::render("pages/index", NoContext {}))
+pub fn index(connection: Db) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/index",
+        IndexContext {
+            causes: Cause::vital(&connection)?,
+            events: vec![],
+            stories: vec![],
+            donors: vec![],
+        },
+    ))
 }
 
 #[get("/events")]
