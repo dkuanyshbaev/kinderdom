@@ -45,7 +45,6 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::profile_details,
                 pages::reports,
                 pages::about,
-                pages::help,
                 pages::admin,
                 pages::login_page,
                 pages::login,

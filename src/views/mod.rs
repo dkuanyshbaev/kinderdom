@@ -14,8 +14,3 @@ pub struct ComplexContext<T, U> {
     item: U,
     items: Vec<T>,
 }
-
-#[derive(Serialize)]
-pub struct IndexContext {
-    payment_description: String,
-}

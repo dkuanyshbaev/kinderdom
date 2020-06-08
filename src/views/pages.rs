@@ -6,7 +6,7 @@ use crate::models::payment::{
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::views::{IndexContext, ListContext, NoContext};
+use crate::views::{ListContext, NoContext};
 use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
@@ -20,14 +20,7 @@ use uuid::Uuid;
 
 #[get("/")]
 pub fn index(_connection: Db) -> KinderResult<Template> {
-    // TODO: get all
-    // Ok(Template::render("pages/index", NoContext {}))
-    Ok(Template::render(
-        "pages/index",
-        IndexContext {
-            payment_description: "Я хочу помочь".to_string(),
-        },
-    ))
+    Ok(Template::render("pages/index", NoContext {}))
 }
 
 #[get("/events")]
@@ -97,11 +90,6 @@ pub fn reports(connection: Db) -> KinderResult<Template> {
 #[get("/about")]
 pub fn about() -> Template {
     Template::render("pages/about", NoContext {})
-}
-
-#[get("/help")]
-pub fn help() -> Template {
-    Template::render("pages/help", NoContext {})
 }
 
 #[get("/admin")]
@@ -184,13 +172,8 @@ pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> Kinder
 }
 
 #[get("/thankyou")]
-pub fn thankyou() -> KinderResult<Template> {
-    Ok(Template::render(
-        "pages/thankyou",
-        IndexContext {
-            payment_description: "".to_string(),
-        },
-    ))
+pub fn thankyou() -> Template {
+    Template::render("pages/thankyou", NoContext {})
 }
 
 #[catch(404)]
