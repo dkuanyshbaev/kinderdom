@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="big-text style2">
-                        <span>Меняйте мир вместе с нами</span>
+                        <span>Меняйте мир к лучшему вместе с нами</span>
                         <h3>Путь к светлому <strong>Будущему</strong></h3>
                         <p style="color: #f3f3f3">Мы ставим перед собой цель дать возможность детям овладеть современными, необходимыми знаниями на достойном уровне, чтобы каждый ребенок имел возможность реализоваться и добиться успеха, мы стремимся дать шанс каждому</p>
                         <a class="btn open-popup" href="#" title="">Я хочу помочь</a>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="shelter-bar">
-                        <h4>Наш девиз - <strong>«Подари тепло детям»</strong>. Участвуй прямо сейчас!</h4>
+                        <h4>Наш девиз - <strong>«Подари тепло детям»</strong>. Присоединяйся прямо сейчас!</h4>
 
                         <a class="btn style3" href="/causes" title="">Участвовать</a>
                     </div><!-- Shelter Bar -->
@@ -68,7 +68,7 @@
                 <div class="col-12">
                     <div class="title">
                         <span>Помоги детям</span>
-                        <h2><i>СРОЧНЫЕ</i> СБОРЫ</h2>
+                        <h2><i>СРОЧНЫЕ</i> НУЖДЫ</h2>
                     </div>
 
                     <div class="creative-causes">
@@ -141,6 +141,7 @@
                     <div class="shelter-fancy-events">
                         <div class="custom-row">
                             <div class="masonary">
+
                                 <div class="custom-grid2">
                                     <div class="fancy-event">
                                         <img src="http://placehold.it/485x548.jpg" alt="" />
@@ -151,6 +152,7 @@
                                         </div>
                                     </div><!-- Fancy Event -->
                                 </div>
+
                                 <div class="custom-grid1">
                                     <div class="fancy-event">
                                         <img src="http://placehold.it/676x249" alt="" />
@@ -161,6 +163,7 @@
                                         </div>
                                     </div><!-- Fancy Event -->
                                 </div>
+
                                 <div class="custom-grid1">
                                     <div class="fancy-event">
                                         <img src="http://placehold.it/676x249" alt="" />
@@ -171,6 +174,7 @@
                                         </div>
                                     </div><!-- Fancy Event -->
                                 </div>
+
                             </div>
                         </div>
                     </div><!-- Shelter Fancy Event -->
@@ -189,7 +193,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-12">
                     <div class="simple-parallax">
-                        <h3>Давайте сделаем мир лучше вместе</h3>
+                        <h3>Давайте вместе сделаем наш мир лучше</h3>
                         <p>Мы уже сняли немало видеоанкет детей-сирот, но нужно снять еще больше. Каждое пожертвование даёт шанс еще одному ребенку-сироте обрести семью.</p>
                         <a class="btn open-popup" href="#" title="">Помочь проекту</a>
                     </div>
@@ -198,7 +202,6 @@
         </div>
     </div>
 </section>
-
 
 
 <section>

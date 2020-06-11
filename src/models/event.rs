@@ -46,6 +46,14 @@ impl Event {
             .load(connection)
     }
 
+    pub fn last(connection: &PgConnection) -> QueryResult<Vec<Event>> {
+        events::table
+            .filter(events::published.eq(true))
+            .limit(3)
+            .order(events::id.desc())
+            .load(connection)
+    }
+
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Event> {
         events::table.find(id).get_result(connection)
     }

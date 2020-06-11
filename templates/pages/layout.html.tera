@@ -132,18 +132,26 @@
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="widget">
-                                <h3 class="widget-title">Мы в instagram</h3>
-                                <div class="shelter-gallery">
-                                    <div class="row">
-                                        <iframe src="https://averin.pro/widget.php?l=bf_mi_i_deti&style=1&width=250&gallery=1&s=80&icc=3&icr=2&t=0&tt=Мы в Инстаграм&h=0&ttcolor=FFFFFF&th=c3c3c3&bw=2e2e2e&bscolor=FFFFFF&bs=FF0000&ts=Подписаться&ch=utf8" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:250px;height:165px;" ></iframe>
-                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
-                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
-                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
-                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
-                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
-                                        <!-- <div class="col&#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> -->
-                                    </div>
-                                </div>
+                                <!-- <h3 class="widget&#45;title">Мы в instagram</h3> -->
+                                <h3 class="widget-title">Реквизиты</h3>
+                                        <ul>
+                                            <li>Р/СЧ: 40703810800010000016</li>
+                                            <li>К/СЧ: 30101810000000000867</li>
+                                            <li>ИНН: 2539091280</li>
+                                            <li>КПП: 253901001</li>
+                                            <li>БИК: 040507867</li>
+                                        </ul>
+                                <!-- <div class="shelter&#45;gallery"> -->
+                                <!--     <div class="row"> -->
+                                <!--         <!&#45;&#45; <iframe src="https://averin.pro/widget.php?l=bf_mi_i_deti&#38;#38;style=1&#38;#38;width=250&#38;#38;gallery=1&#38;#38;s=80&#38;#38;icc=3&#38;#38;icr=2&#38;#38;t=0&#38;#38;tt=Мы в Инстаграм&#38;#38;h=0&#38;#38;ttcolor=FFFFFF&#38;#38;th=c3c3c3&#38;#38;bw=2e2e2e&#38;#38;bscolor=FFFFFF&#38;#38;bs=FF0000&#38;#38;ts=Подписаться&#38;#38;ch=utf8" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:250px;height:165px;" ></iframe> &#45;&#45;> -->
+                                <!--         <!&#45;&#45; <div class="col&#38;#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> &#45;&#45;> -->
+                                <!--         <!&#45;&#45; <div class="col&#38;#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> &#45;&#45;> -->
+                                <!--         <!&#45;&#45; <div class="col&#38;#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> &#45;&#45;> -->
+                                <!--         <!&#45;&#45; <div class="col&#38;#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> &#45;&#45;> -->
+                                <!--         <!&#45;&#45; <div class="col&#38;#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> &#45;&#45;> -->
+                                <!--         <!&#45;&#45; <div class="col&#38;#45;4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div> &#45;&#45;> -->
+                                <!--     </div> -->
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
