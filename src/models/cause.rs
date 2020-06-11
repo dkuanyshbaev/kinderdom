@@ -15,9 +15,10 @@ use rocket_multipart_form_data::{
 pub struct NewCause {
     pub name: String,
     pub image: String,
-    pub video: String,
     pub needed: i32,
     pub collected: i32,
+    pub location: String,
+    pub organisation: String,
     pub description: String,
     pub vital: bool,
     pub published: bool,
@@ -28,9 +29,10 @@ pub struct Cause {
     pub id: i32,
     pub name: String,
     pub image: String,
-    pub video: String,
     pub needed: i32,
     pub collected: i32,
+    pub location: String,
+    pub organisation: String,
     pub description: String,
     pub vital: bool,
     pub published: bool,
@@ -111,13 +113,16 @@ impl FromDataSimple for NewCause {
             .push(MultipartFormDataField::text("name"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("video"));
-        options
-            .allowed_fields
             .push(MultipartFormDataField::text("needed"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("collected"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("location"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("organisation"));
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
@@ -164,11 +169,6 @@ impl FromDataSimple for NewCause {
             name = &text.text;
         }
 
-        let mut video = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("video") {
-            video = &text.text;
-        }
-
         let mut needed = 0;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("needed") {
             let amount = &text.text;
@@ -179,6 +179,16 @@ impl FromDataSimple for NewCause {
         if let Some(TextField::Single(text)) = multipart_form.texts.get("collected") {
             let amount = &text.text;
             collected = amount.parse().unwrap();
+        }
+
+        let mut location = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("location") {
+            location = &text.text;
+        }
+
+        let mut organisation = "";
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("organisation") {
+            organisation = &text.text;
         }
 
         let mut description = "";
@@ -203,9 +213,10 @@ impl FromDataSimple for NewCause {
         Success(NewCause {
             name: name.to_string(),
             image,
-            video: video.to_string(),
             needed,
             collected,
+            location: location.to_string(),
+            organisation: organisation.to_string(),
             description: description.to_string(),
             vital,
             published,

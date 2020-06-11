@@ -89,7 +89,7 @@
                                             </div>
                                             <a class="btn open-popup" href="#" title="">Помочь</a>
                                         </div>
-                                        <div class="cause-loc"><span>Детский дом №2</span> <span>Владивосток</span></div>
+                                        <div class="cause-loc"><span>{{ cause.organisation }}</span> <span>{{ cause.location }}</span></div>
                                         <h3><a href="/causes/{{ cause.id }}" title="">{{ cause.name }}</a></h3>
                                     </div><!-- Creative Cause -->
                                 </div>

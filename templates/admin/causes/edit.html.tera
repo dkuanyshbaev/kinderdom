@@ -19,9 +19,13 @@
         </div>
 
         <div class="form-group">
-            <label for="video">Видео</label>
-            <input type="text" class="form-control" id="video" name="video" aria-describedby="video_help" value="{{ item.video }}">
-            <small id="video_help" class="form-text text-muted">Ссылка на youtube видео</small>
+            <label for="location">Место</label>
+            <input type="text" class="form-control" id="location" name="location" value="{{ item.location }}">
+        </div>
+
+        <div class="form-group">
+            <label for="organisation">Организация</label>
+            <input type="text" class="form-control" id="organisation" name="organisation" value="{{ item.organisation }}">
         </div>
 
         <div class="form-group form-row">

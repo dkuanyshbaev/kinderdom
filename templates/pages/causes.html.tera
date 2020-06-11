@@ -32,9 +32,9 @@
                                                 {% endif %}
                                                 <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
                                             </div>
-                                            <a class="btn" href="#" title="">Помочь</a>
+                                            <a class="btn" href="/causes/{{ item.id }}">Подробности</a>
                                         </div>
-                                        <!--<div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div>-->
+                                        <div class="cause-loc"><span>{{ item.organisation }}</span> <span>{{ item.location }}</span></div>
                                         <h3><a href="/causes/{{ item.id }}" title="">{{ item.name }}</a></h3>
                                     </div><!-- Creative Cause -->
                                 </div>

@@ -72,7 +72,7 @@
 
         <div class="responsive-header">
             <div class="responsive-menubar">
-                <div class="logo"><a href="/" title=""><img src="static/images/logo3.png" alt="" /></a></div>
+                <div class="logo"><a href="/" title=""><img src="/static/images/logo3.png" alt="" /></a></div>
                 <a class="responsive-menu-btn" href="#" title=""><i class="ion-navicon"></i></a>
             </div><!-- Responsive Menubar -->
 

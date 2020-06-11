@@ -1,5 +1,4 @@
 use crate::models::cause::Cause;
-use crate::models::donor::Donor;
 use crate::models::event::Event;
 
 pub mod admin;
@@ -24,5 +23,4 @@ pub struct IndexContext {
     causes: Vec<Cause>,
     events: Vec<Event>,
     stories: Vec<Event>,
-    donors: Vec<Donor>,
 }

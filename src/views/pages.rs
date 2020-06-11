@@ -1,13 +1,12 @@
 use crate::auth::{Admin, LoginForm};
 use crate::models::cause::Cause;
-use crate::models::donor::Donor;
 use crate::models::event::Event;
 use crate::models::payment::{
     Amount, PaymentBody, PaymentForm, PaymentResponse, RequestConfirmation,
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::views::{IndexContext, ListContext, NoContext};
+use crate::views::{ComplexContext, IndexContext, ListContext, NoContext};
 use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
@@ -27,7 +26,6 @@ pub fn index(connection: Db) -> KinderResult<Template> {
             causes: Cause::vital(&connection)?,
             events: Event::last(&connection)?,
             stories: Event::last(&connection)?,
-            donors: Donor::last(&connection)?,
         },
     ))
 }
@@ -62,9 +60,16 @@ pub fn causes(connection: Db) -> KinderResult<Template> {
 
 #[get("/causes/<id>")]
 pub fn cause_details(connection: Db, id: i32) -> KinderResult<Template> {
+    // Ok(Template::render(
+    //     "pages/cause_details",
+    //     Cause::get(&connection, id)?,
+    // ))
     Ok(Template::render(
         "pages/cause_details",
-        Cause::get(&connection, id)?,
+        ComplexContext {
+            item: Cause::get(&connection, id)?,
+            items: Cause::vital(&connection)?,
+        },
     ))
 }
 
