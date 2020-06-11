@@ -89,7 +89,7 @@
                                             </div>
                                             <a class="btn open-popup" href="#" title="">Помочь</a>
                                         </div>
-                                        <!-- <div class="cause-loc"><span>Child Sponsorship</span> <span>Bangladesh</span></div> -->
+                                        <div class="cause-loc"><span>Детский дом №2</span> <span>Владивосток</span></div>
                                         <h3><a href="/causes/{{ cause.id }}" title="">{{ cause.name }}</a></h3>
                                     </div><!-- Creative Cause -->
                                 </div>
@@ -279,6 +279,7 @@
 </section>
 
 
+<!--
 <section>
     <div class="block remove-gap">
         <div class="container">
@@ -293,7 +294,26 @@
                                 <p>{{ donor.quote | safe }}</p>
                             </div>
                         {%- endfor %}
-                    </div><!-- Shelter Testimonials -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+
+<section>
+    <div class="block less-space gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="shelter-logos">
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                    </ul>
                 </div>
             </div>
         </div>

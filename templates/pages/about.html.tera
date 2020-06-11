@@ -1,45 +1,64 @@
 {% extends "pages/layout" %}
 
 {% block content %}
-		<div class="pagetop">
-			<div class="container">
-				<h1><i>О</i> ФОНДЕ</h1>
-				<ul class="breadcrumbs">
-					<li><a href="/" title="">Главная</a></li>
-					<li>О Нас</li>
-				</ul>
-			</div>
-		</div>
+<div class="pagetop">
+    <div class="container">
+        <h1><i>О</i> ФОНДЕ</h1>
+        <ul class="breadcrumbs">
+            <li><a href="/" title="">Главная</a></li>
+            <li>О Нас</li>
+        </ul>
+    </div>
+</div>
 
-		<section>
-			<div class="block">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div class="team-detail">
-								<div class="abt-img"><img src="http://placehold.it/419x591" alt="" /></div>
-								<div class="team-detail-text">
-									<h1>«Мы и дети»</h1>
-									<span>Благотворительный Фонд</span>
-									<p>Наша история началась в 2007 году, когда команда единомышленников приняла решение помочь одному из самых нуждающихся детских домов Приморского края. С тех пор наша миссия - это улучшение образа жизни и образа мысли растущего здесь и сейчас поколения детей, которым, к сожалению, не могут помочь близкие. Мы создаём условия, в которых у ребят появляется больше шансов для наилучшей реализации собственных жизней. Если Вы хотите оказать помощь воспитанникам Центров содействия семейному устройству и социальных приютов, Мы всегда на связи!</p>
-									<ul>
-                                        <li style="font-size:17px;">Тел.: +7 (914) 703-01-21</li>
-										<li style="font-size:17px;">Почта: kinderdom@mail.ru</li>
-										<li style="font-size:17px;">Адрес: 690069, г. Владивосток, ул. Давыдова, д. 18</li>
-                                        <!--
-										<li>ИНН: 2539091280</li>
-										<li>КПП: 253901001</li>
-										<li>БИК: 040507867</li>
-										<li>Р/СЧ: 40703810800010000016</li>
-										<li>К/СЧ: 30101810000000000867</li>
-										<li>В ФАКБ «Балтийский Банк Развития» г. Владивосток</li>
-                                        -->
-									</ul>
-								</div>
-							</div><!-- Team Detail -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="team-detail">
+                        <div class="abt-img"><img src="http://placehold.it/419x591" alt="" /></div>
+                        <div class="team-detail-text">
+                            <h1>«Мы и дети»</h1>
+                            <span>Благотворительный Фонд</span>
+                            <p>Наша история началась в 2007 году, когда команда единомышленников приняла решение помочь одному из самых нуждающихся детских домов Приморского края. С тех пор наша миссия - это улучшение образа жизни и образа мысли растущего здесь и сейчас поколения детей, которым, к сожалению, не могут помочь близкие. Мы создаём условия, в которых у ребят появляется больше шансов для наилучшей реализации собственных жизней. Если Вы хотите оказать помощь воспитанникам Центров содействия семейному устройству и социальных приютов, Мы всегда на связи!</p>
+                            <ul>
+                                <li style="font-size:17px;">Тел.: +7 (914) 703-01-21</li>
+                                <li style="font-size:17px;">Почта: kinderdom@mail.ru</li>
+                                <li style="font-size:17px;">Адрес: 690069, г. Владивосток, ул. Давыдова, д. 18</li>
+                                <!--
+                                <li>ИНН: 2539091280</li>
+                                <li>КПП: 253901001</li>
+                                <li>БИК: 040507867</li>
+                                <li>Р/СЧ: 40703810800010000016</li>
+                                <li>К/СЧ: 30101810000000000867</li>
+                                <li>В ФАКБ «Балтийский Банк Развития» г. Владивосток</li>
+                                -->
+                            </ul>
+                        </div>
+                    </div><!-- Team Detail -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block less-space gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="shelter-logos">
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
