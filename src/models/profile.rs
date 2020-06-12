@@ -37,7 +37,7 @@ impl Profile {
     pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
         profiles::table
             .filter(profiles::published.eq(true))
-            .limit(4)
+            .limit(9)
             .order(profiles::id.desc())
             .load(connection)
     }
