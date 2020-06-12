@@ -61,4 +61,52 @@
         </div>
     </div>
 </section>
+	<section>
+		<div class="block no-padding coloured-bg">
+			<div class="row align-items-center">
+				<div class="col-lg-4 col-md-12">
+					<div class="dark-column-title">
+						<h3>Recent <strong>Donators</strong></h3>
+						<p>Nemo enim ipsam voluptatem quiatyu r voluptas siaspernatur aut odit ipsam voluptatem quiatyu.</p>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-12">
+					<div class="donators-carousel">
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Chris Maline</strong>
+								<span>Donated: $420</span>
+								<span>Education In Africa</span>
+							</div>
+						</div><!-- Donator -->
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Binny Terad</strong>
+								<span>Donated: $2850</span>
+								<span>Water In Uganda</span>
+							</div>
+						</div><!-- Donator -->
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Collis Mentrea</strong>
+								<span>Donated: $670</span>
+								<span>Education In Africa</span>
+							</div>
+						</div><!-- Donator -->
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Chris Maline</strong>
+								<span>Donated: $420</span>
+								<span>Education In Africa</span>
+							</div>
+						</div><!-- Donator -->
+					</div><!-- Donators Carousel -->
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock content %}

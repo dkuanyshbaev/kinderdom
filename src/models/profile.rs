@@ -15,7 +15,6 @@ use rocket_multipart_form_data::{
 pub struct NewProfile {
     pub name: String,
     pub photo: String,
-    pub video: String,
     pub description: String,
     pub published: bool,
 }
@@ -25,7 +24,6 @@ pub struct Profile {
     pub id: i32,
     pub name: String,
     pub photo: String,
-    pub video: String,
     pub description: String,
     pub published: bool,
     pub created_at: NaiveDateTime,
@@ -96,9 +94,6 @@ impl FromDataSimple for NewProfile {
             .push(MultipartFormDataField::text("name"));
         options
             .allowed_fields
-            .push(MultipartFormDataField::text("video"));
-        options
-            .allowed_fields
             .push(MultipartFormDataField::text("description"));
         options
             .allowed_fields
@@ -140,11 +135,6 @@ impl FromDataSimple for NewProfile {
             name = &text.text;
         }
 
-        let mut video = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("video") {
-            video = &text.text;
-        }
-
         let mut description = "";
         if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
             description = &text.text;
@@ -160,7 +150,6 @@ impl FromDataSimple for NewProfile {
         Success(NewProfile {
             name: name.to_string(),
             photo,
-            video: video.to_string(),
             description: description.to_string(),
             published,
         })

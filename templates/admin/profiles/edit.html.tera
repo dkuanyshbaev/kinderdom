@@ -19,12 +19,6 @@
         </div>
 
         <div class="form-group">
-            <label for="video">Видео</label>
-            <input type="text" class="form-control" id="video" name="video" aria-describedby="video_help" value="{{ item.video }}">
-            <small id="video_help" class="form-text text-muted">Ссылка на youtube видео</small>
-        </div>
-
-        <div class="form-group">
             <label for="description">Содержимое</label>
             <textarea class="form-control" id="summernote" name="description" rows="10">{{ item.description }}</textarea>
         </div>

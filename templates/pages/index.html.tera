@@ -27,7 +27,6 @@
                 <div class="col-12">
                     <div class="shelter-bar">
                         <h4>Наш девиз - <strong>«Подари тепло детям»</strong>. Присоединяйся прямо сейчас!</h4>
-
                         <a class="btn style3" href="/causes" title="">Участвовать</a>
                     </div><!-- Shelter Bar -->
                 </div>
@@ -120,7 +119,7 @@
                             <div class="video-img"><img src="/static/images/video.jpg" alt="" /></div>
                         </div>
                     </div>
-                    <a class="round-icon-btn" href="https://www.youtube.com/channel/UCJZFYjS5stQIGQQQdmACEcg" target="_blank" title=""><i class="ion-ios-play-outline"></i></a>
+                    <a class="round-icon-btn" href="https://www.youtube.com/channel/UCJZFYjS5stQIGQQQdmACEcg" target="_blank"><i class="ion-ios-play-outline"></i></a>
                 </div><!-- Shelter Video -->
             </div>
         </div>
@@ -135,50 +134,28 @@
                 <div class="col-12">
                     <div class="title">
                         <span>ПРОТЯНИ РУКУ ПОМОЩИ</span>
-                        <h2><i>ПРЕДСТОЯЩИЕ</i> СОБЫТИЯ</h2>
+                        <h2><i>СОБЫТИЯ И</i> НОВОСТИ</h2>
                     </div>
 
-                    <div class="shelter-fancy-events">
-                        <div class="custom-row">
-                            <div class="masonary">
-
-                                <div class="custom-grid2">
-                                    <div class="fancy-event">
-                                        <img src="http://placehold.it/485x548.jpg" alt="" />
-                                        <span>Oct 12, 2016 3:53 am</span>
-                                        <div class="fancy-event-details">
-                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-                                            <i> 90012 South Street, Sanford, FL South Africa </i>
-                                        </div>
-                                    </div><!-- Fancy Event -->
+                    <div class="shelter-blog">
+                        <div class="row">
+                            {% for event in events -%}
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                        </ul>
+                                        <h3><a href="/events/{{ event.id }}">{{ event.title }}</a></h3>
+                                        <p>{{ event.lead }}</p>
+                                        <a class="readmore" href="/events/{{ event.id }}">Подробности</a>
+                                    </div>
                                 </div>
-
-                                <div class="custom-grid1">
-                                    <div class="fancy-event">
-                                        <img src="http://placehold.it/676x249" alt="" />
-                                        <span>Oct 12, 2016 3:53 am</span>
-                                        <div class="fancy-event-details">
-                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-                                            <i> 90012 South Street, Sanford, FL South Africa </i>
-                                        </div>
-                                    </div><!-- Fancy Event -->
-                                </div>
-
-                                <div class="custom-grid1">
-                                    <div class="fancy-event">
-                                        <img src="http://placehold.it/676x249" alt="" />
-                                        <span>Oct 12, 2016 3:53 am</span>
-                                        <div class="fancy-event-details">
-                                            <h3><a href="#" title="">Seminar For Children To Learn About The Future</a></h3>
-                                            <i> 90012 South Street, Sanford, FL South Africa </i>
-                                        </div>
-                                    </div><!-- Fancy Event -->
-                                </div>
-
                             </div>
+                            {%- endfor %}
                         </div>
-                    </div><!-- Shelter Fancy Event -->
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -295,4 +272,52 @@
         </div>
     </div>
 </section>
+	<section>
+		<div class="block no-padding coloured-bg">
+			<div class="row align-items-center">
+				<div class="col-lg-4 col-md-12">
+					<div class="dark-column-title">
+						<h3>Recent <strong>Donators</strong></h3>
+						<p>Nemo enim ipsam voluptatem quiatyu r voluptas siaspernatur aut odit ipsam voluptatem quiatyu.</p>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-12">
+					<div class="donators-carousel">
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Chris Maline</strong>
+								<span>Donated: $420</span>
+								<span>Education In Africa</span>
+							</div>
+						</div><!-- Donator -->
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Binny Terad</strong>
+								<span>Donated: $2850</span>
+								<span>Water In Uganda</span>
+							</div>
+						</div><!-- Donator -->
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Collis Mentrea</strong>
+								<span>Donated: $670</span>
+								<span>Education In Africa</span>
+							</div>
+						</div><!-- Donator -->
+						<div class="donator">
+							<img src="http://placehold.it/100x103" alt="" />
+							<div class="donator-info">
+								<strong>Chris Maline</strong>
+								<span>Donated: $420</span>
+								<span>Education In Africa</span>
+							</div>
+						</div><!-- Donator -->
+					</div><!-- Donators Carousel -->
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock content %}
