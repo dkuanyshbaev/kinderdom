@@ -29,7 +29,7 @@
                                 {% if width < 5 %}{% set width = 5 %}{% endif %}
                                 <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
                             </div>
-                            <a class="btn style3 open-popup" href="#">Я хочу помочь</a>
+                            <a class="btn style3 open-cause-popup" href="#" title="{{ item.name }}">Я хочу помочь</a>
                         </div>
                         <div class="post-information">
                             <h1 class="post-title">{{ item.name }}</h1>

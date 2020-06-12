@@ -141,6 +141,15 @@ $(window).on("load", function() {
         $(".popup").removeClass("active");
         return false;
     });
+    /* =============== Cause popup ===================== */
+
+    $(".open-cause-popup").on("click",function(){
+        let cause_name = $(this).parent().find('a').attr('title');
+        $("#donation_description").val(cause_name);
+
+        $(".popup").addClass("active");
+        return false;
+    });
 
     /* =============== Donation send ===================== */
     $(".popup-footer a").on("click",function(){

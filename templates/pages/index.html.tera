@@ -87,10 +87,10 @@
                                                 {% endif %}
                                                 <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
                                             </div>
-                                            <a class="btn open-popup" href="#" title="">Помочь</a>
+                                            <a class="btn open-cause-popup" href="#" title="{{ cause.name }}">Помочь</a>
                                         </div>
                                         <div class="cause-loc"><span>{{ cause.organisation }}</span> <span>{{ cause.location }}</span></div>
-                                        <h3><a href="/causes/{{ cause.id }}" title="">{{ cause.name }}</a></h3>
+                                        <h3><a href="/causes/{{ cause.id }}" id="cause_name">{{ cause.name }}</a></h3>
                                     </div><!-- Creative Cause -->
                                 </div>
                             {%- endfor %}
@@ -277,30 +277,6 @@
         </div>
     </div>
 </section>
-
-
-<!--
-<section>
-    <div class="block remove-gap">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-12">
-                    <div class="shelter-reviews center-dots">
-                        {% for donor in donors -%}
-                            <div class="client-review">
-                                <img src="/static/upload/{{ donor.photo }}" alt="" />
-                                <h5>{{ donor.name }}</h5>
-                                <span>({{ donor.position }})</span>
-                                <p>{{ donor.quote | safe }}</p>
-                            </div>
-                        {%- endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
--->
 
 
 <section>
