@@ -134,7 +134,7 @@
                 <div class="col-12">
                     <div class="title">
                         <span>ПРОТЯНИ РУКУ ПОМОЩИ</span>
-                        <h2><i>СОБЫТИЯ И</i> НОВОСТИ</h2>
+                        <h2><i>НОВОСТИ И</i> СОБЫТИЯ</h2>
                     </div>
 
                     <div class="shelter-blog">
@@ -191,64 +191,27 @@
                         <h2><i>ИСТОРИИ</i> УСПЕХА</h2>
                     </div>
 
-
                     <div class="recent-causes">
                         <div class="causes-carousel">
-                            <div class="cause-img">
-                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
-                                <div class="cause-inner">
-                                    <img src="http://placehold.it/484x336" alt="" />
-                                    <div class="cause-text">
-                                        <span>UREGENTLY NEEDED DONATION</span>
-                                        <h4>Education To <i>Every Child</i></h4>
-                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
-                                        <a class="btn small open-popup" href="#" title="">Donate Now</a>
+                            {% for event in events -%}
+                                <div class="cause-img">
+                                    <div class="cause-bg"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
+                                    <div class="cause-inner">
+                                        <img src="/static/upload/{{ event.cover }}" alt="" />
+                                        <div class="cause-text">
+                                            <span>ДЕТИ ОБРЕТАЮТ СЕМЬЮ</span>
+                                            <h4><i>{{ event.title }}</i></h4>
+                                            <p>{{ event.lead }}</p>
+                                            <a class="btn small" href="/events/{{ event.id }}">Подробности</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="cause-img">
-                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
-                                <div class="cause-inner">
-                                    <img src="http://placehold.it/484x336" alt="" />
-                                    <div class="cause-text">
-                                        <span>UREGENTLY NEEDED DONATION</span>
-                                        <h4>Home To <i>Homeless</i></h4>
-                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
-                                        <a class="btn small open-popup" href="#" title="">Donate Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cause-img">
-                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
-                                <div class="cause-inner">
-                                    <img src="http://placehold.it/484x336" alt="" />
-                                    <div class="cause-text">
-                                        <span>UREGENTLY NEEDED DONATION</span>
-                                        <h4>Food For <i>Hungry</i></h4>
-                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
-                                        <a class="btn small" href="#" title="">Donate Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cause-img">
-                                <div class="cause-bg"><img src="http://placehold.it/773x448" alt="" /></div>
-                                <div class="cause-inner">
-                                    <img src="http://placehold.it/484x336" alt="" />
-                                    <div class="cause-text">
-                                        <span>UREGENTLY NEEDED DONATION</span>
-                                        <h4>Education To <i>Every Child</i></h4>
-                                        <p>Fusce suscipit varius mium sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mususce feugiat malesua orbi nunc odio gravida.</p>
-                                        <a class="btn small open-popup" href="#" title="">Donate Now</a>
-                                    </div>
-                                </div>
-                            </div>
+                            {%- endfor %}
                         </div>
                         <div class="creative-navs">
                             <span class="slick-current">01</span><span>02</span><span>03</span>
-                            <span>04</span>
                         </div>
-                    </div><!-- Creative Portfolio -->
-
+                    </div>
                 </div>
             </div>
         </div>
