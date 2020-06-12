@@ -42,9 +42,16 @@ pub fn events(connection: Db) -> KinderResult<Template> {
 
 #[get("/events/<id>")]
 pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
+    // Ok(Template::render(
+    //     "pages/event_details",
+    //     Event::get(&connection, id)?,
+    // ))
     Ok(Template::render(
         "pages/event_details",
-        Event::get(&connection, id)?,
+        ComplexContext {
+            item: Event::get(&connection, id)?,
+            items: Cause::vital(&connection)?,
+        },
     ))
 }
 
