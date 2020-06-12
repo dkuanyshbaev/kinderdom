@@ -41,12 +41,20 @@ impl Event {
     pub fn published(connection: &PgConnection) -> QueryResult<Vec<Event>> {
         events::table
             .filter(events::published.eq(true))
-            .limit(4)
+            .limit(6)
             .order(events::id.desc())
             .load(connection)
     }
 
     pub fn last(connection: &PgConnection) -> QueryResult<Vec<Event>> {
+        events::table
+            .filter(events::published.eq(true))
+            .limit(3)
+            .order(events::id.desc())
+            .load(connection)
+    }
+
+    pub fn stories(connection: &PgConnection) -> QueryResult<Vec<Event>> {
         events::table
             .filter(events::published.eq(true))
             .limit(3)

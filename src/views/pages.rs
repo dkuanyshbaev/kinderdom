@@ -25,7 +25,7 @@ pub fn index(connection: Db) -> KinderResult<Template> {
         IndexContext {
             causes: Cause::vital(&connection)?,
             events: Event::last(&connection)?,
-            stories: Event::last(&connection)?,
+            stories: Event::stories(&connection)?,
         },
     ))
 }
