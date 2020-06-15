@@ -6,7 +6,7 @@ use crate::models::payment::{
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::views::{ComplexContext, IndexContext, ListContext, NoContext};
+use crate::views::{ComplexContext, IndexContext, ListContext, NoContext, PageContext};
 use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
@@ -41,7 +41,10 @@ pub fn events(connection: Db, page: Option<i64>) -> KinderResult<Template> {
 
     Ok(Template::render(
         "pages/events",
-        ListContext {
+        PageContext {
+            // this is for pagination; tera can't iterate on range
+            total: vec![0; Event::pages_total(&connection)],
+            page: page_num,
             items: Event::published(&connection, page_num)?,
         },
     ))
@@ -98,7 +101,9 @@ pub fn profiles(connection: Db, page: Option<i64>) -> KinderResult<Template> {
 
     Ok(Template::render(
         "pages/profiles",
-        ListContext {
+        PageContext {
+            total: 0,
+            page: page_num,
             items: Profile::published(&connection, page_num)?,
         },
     ))
@@ -130,7 +135,9 @@ pub fn reports(connection: Db, page: Option<i64>) -> KinderResult<Template> {
 
     Ok(Template::render(
         "pages/reports",
-        ListContext {
+        PageContext {
+            total: 0,
+            page: page_num,
             items: Report::paginated(&connection, page_num)?,
         },
     ))

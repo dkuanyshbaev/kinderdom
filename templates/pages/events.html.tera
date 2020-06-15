@@ -39,13 +39,15 @@
 
                     <div class="shelter-pagination">
                         <ul class="pagination">
-                            <li><a href="#" title=""> Назад </a> </li>
-                            <li><a class="current" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li> <a href="#" title=""> Дальше</a> </li>
+                            <li><a href="/events?page={{ page - 1 }}"> Назад </a> </li>
+                            {% for p in total -%}
+                                {% if page + 1 == loop.index %}
+                                    <li><a class="current" href="/events?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
+                                {% else %}
+                                    <li><a href="/events?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
+                                {% endif %}
+                            {%- endfor %}
+                            <li> <a href="/events?page={{ page + 1 }}"> Дальше</a> </li>
                         </ul>
                     </div>
                 </div>

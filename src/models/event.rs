@@ -49,6 +49,17 @@ impl Event {
             .load(connection)
     }
 
+    pub fn pages_total(connection: &PgConnection) -> usize {
+        let mut total = 0;
+        if let Ok(es) = events::table
+            .filter(events::published.eq(true))
+            .load::<Event>(connection)
+        {
+            total = es.len() / EVENTS_PER_PAGE as usize + 1;
+        }
+        total
+    }
+
     pub fn last(connection: &PgConnection) -> QueryResult<Vec<Event>> {
         events::table
             .filter(events::published.eq(true))
