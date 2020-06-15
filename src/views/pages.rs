@@ -92,9 +92,16 @@ pub fn profiles(connection: Db) -> KinderResult<Template> {
 
 #[get("/profiles/<id>")]
 pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
+    // Ok(Template::render(
+    //     "pages/profile_details",
+    //     Profile::get(&connection, id)?,
+    // ))
     Ok(Template::render(
         "pages/profile_details",
-        Profile::get(&connection, id)?,
+        ComplexContext {
+            item: Profile::get(&connection, id)?,
+            items: Cause::vital(&connection)?,
+        },
     ))
 }
 

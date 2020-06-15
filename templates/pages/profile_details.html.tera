@@ -1,123 +1,58 @@
 {% extends "pages/layout" %}
 
 {% block content %}
-		<div class="pagetop">
-			<div class="container">
-				<h1><i>Profile</i> Page</h1>
-				<ul class="breadcrumbs">
-					<li><a href="#" title="">Home</a></li>
-					<li>Profile</li>
-				</ul>
-			</div>
-		</div>
+<div class="pagetop">
+    <div class="container">
+        <h1><i>ВИДЕО</i> АНКЕТА</h1>
+        <ul class="breadcrumbs">
+            <li><a href="/" title="">Главная</a></li>
+            <li><a href="/events">Анкеты</a></li>
+            <li>Подробности</li>
+        </ul>
+    </div>
+</div>
 
-		<section>
-			<div class="block">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9 col-md-12">
-							<div class="shelter-blog-detail event-detail">
-								<div class="post-img"><img src="http://placehold.it/870x444" alt="" /></div>
-								<div class="post-information">
-									<div class="cat-box"><a href="#" title="">Photography</a></div>
-									<h1 class="post-title"><a href="#" title="">Seminar for children to learn about the future world.</a></h1>
-									<ul class="meta">
-										<li>By <a href="#" title="">02-dec-2017</a></li>
-										<li>63 Birch Street Granada Hills, CA 91344</li>
-									</ul>
-									<div class="round-socials">
-										<a class="facebook" title="" href="#"><i class="fa fa-facebook"></i></a>
-										<a class="twitter" title="" href="#"><i class="fa fa-twitter"></i></a>
-										<a class="pinterest" title="" href="#"><i class="fa fa-pinterest"></i></a>
-									</div>
-								</div>
-								<div class="event-info">
-									<div class="row">
-										<div class="col-lg-3 col-md-6 col-xs-12"><strong>Event Organizer</strong></div>
-										<div class="col-lg-3 col-md-6 col-xs-12"><span>Caster Redolf</span></div>
-										<div class="col-lg-3 col-md-6 col-xs-12"><span>+960 666 777 999</span></div>
-										<div class="col-lg-3 col-md-6 col-xs-12"><span>http://www.yoursites.com</span></div>
-									</div>
-								</div>
-								<p>Lorem ipsum dolor sit amet, denique delectus vis in. Est augue convenire et, sit ponderum eleifend corrumpit in. Quem meliore ancillae nam et. Vix mucius sententiae ei. Graece perfecto adolescens te usu, ut mel velit feugiat, cu est dicant intellegam. Ceteros adolescens sadipscing at vim, sale invenire necessitatibus ne est. Ei vis fugit alterum oportere. In vis summo malorum consequuntur. Est augue convenire et, sit ponderum eleifend corrumpit in. Quem meliore ancillae nam et. Vix mucius sententiae ei. Graece perfecto adolescens te usu, ut mel velit feugiat, cu est dicant intellegam. Ceteros adolescens sadipscing at vim, sale invenire necessitatibus ne est. Ei vis fugit alterum oportere. In vis summo malorum consequuntur.</p>
 
-								<blockquote>Sometimes the simplest things are the hardest to find. So we created a new line for everyday life, All simplest things are the hardest to find you. </blockquote>
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-12">
+                    <div class="shelter-blog-detail event-detail">
+                        <div class="post-img"><img src="/static/upload/{{ item.photo }}" alt="" /></div>
+                        <div class="post-information">
+                            <h1 class="post-title">{{ item.name }}</h1>
+                            <ul class="meta">
+                                <li><strong>{{ item.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                            </ul>
+                        </div>
+                        <!--
+                        <div class="event-info">
+                            <div class="row">
+                                <div class="col-lg-3"><strong>Event Organizer</strong></div>
+                            </div>
+                        </div>
+                        -->
+                        <p>{{ item.description | safe }}</p>
+                    </div>
+                </div>
 
-								<p>Usu an sumo delenit voluptaria. Sit ei electram liberavisse. An mazim facilis intellegebat eum, his at reque malis lobortis. Ferri iriure quaestio no nam, cum ea hinc comprehensam, vix stet nemore suscipit ne. Oratio perfecto necessitatibus in pro. Pro te noluisse vulputate, in quo meis discere albucius. Vidisse vocibus suscipit pri ad, has no meis ludus quaeque, tractatos assentior an eam. Sed at officiis praesent, dolor volutpat disputando eos ea. An dicta suscipiantur mel, quod corpora per et. Ei adversarium liberavisse eos, per quidam legendos id. Usu ei aliquam adversarium instructior. Sea saepe labore quaeque cu, ex sit mutat epicuri facilisi. Veri saperet sapientem ut mei.</p>
-
-								<h3>Fashion Industry</h3>
-
-								<p>quis nostrud exerci tation ullamcorpe Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat , sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorpe nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-								<ul>
-									<li>Ut wisi enim ad minim veniam,</li>
-									<li>Quis nostrud exerci tation ullamcorpe Lorem ipsum dolor sit amet,</li>
-									<li>Consectetuer adipiscing elit, sed diam nonummy nibh euismod</li>
-									<li>Tincidunt ut laoreet dolore magna aliquam erat volutpat</li>
-									<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,</li>
-									<li>Sed diam nonummy nibh euismod tincidunt ut laoreet dolore</li>
-								</ul>
-
-								<img class="alignright" src="http://placehold.it/267x286" alt="" />
-
-								<p>Usu an sumo delenit voluptaria. Sit ei electram liberavisse. An mazim facilis intellegebat eum, his at reque malis lobortis. Ferri iriure quaestio no nam, cum ea hinc comprehensam, vix stet nemore suscipit ne. Oratio perfecto necessitatibus in pro. Pro te noluisse vulputate, in quo meis discere albucius. Vidisse vocibus suscipit pri ad, has no meis ludus quaeque, tractatos assentior an eam. Sed at officiis praesent, dolor volutpat disputando eos ea. An dicta suscipiantur mel, quod corpora per et. Ei adversarium liberavisse eos, per quidam legendos id. Usu ei aliquam adversarium instructior. Sea saepe labore quaeque cu, ex sit mutat epicuri facilisi. Veri saperet sapientem ut mei.</p>
-							</div><!-- Shelter Blog Detail -->
-
-						</div>
-
-						<aside class="col-lg-3 col-md-12 sidebar">
-							<div class="widget">
-								<div class="widget-title"><h4>Search Here</h4></div>
-								<form class="search-form">
-									<input type="text" placeholder="Enter Your Keywords" />
-									<button><i class="fa fa-search"></i></button>
-								</form>
-							</div><!-- Widget -->
-
-							<div class="widget">
-								<div class="widget-title"><h4>URGENTLY NEEDED DONATION</h4></div>
-								<div class="urgent-need">
-									<img src="http://placehold.it/245x174" alt="" />
-									<div class="urgent-text">
-										<i>URGENTLY NEEDED</i>
-										<h3><a href="#" title="">Make life easier for Ebula </a></h3>
-										<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blan ditaiis praesentium .</p>
-										<a class="btn small" href="#" title="">Donate Now</a>
-									</div>
-								</div>
-							</div><!-- Widget -->
-
-							<div class="widget">
-								<div class="widget-title"><h4>Categories</h4></div>
-								<ul>
-									<li><a href="#" title="">Business (12)</a></li>
-									<li><a href="#" title="">Coorporate (04)</a></li>
-									<li><a href="#" title="">Photography (01)</a></li>
-									<li><a href="#" title="">Portfolio (03)</a></li>
-									<li><a href="#" title="">Travel (16)</a></li>
-									<li><a href="#" title="">Design (08)</a></li>
-									<li><a href="#" title="">Illustration (02)</a></li>
-									<li><a href="#" title="">Branding (01)</a></li>
-								</ul>
-							</div><!-- Widget -->
-
-							<div class="widget">
-								<div class="widget-title"><h4>Shelter Gallery</h4></div>
-								<div class="shelter-gallery">
-									<div class="row">
-										<div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-										<div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-										<div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-										<div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-										<div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-										<div class="col-4"><a href="#" title=""><img src="http://placehold.it/90x90" alt=""></a></div>
-									</div>
-								</div>
-							</div><!-- Widget -->
-						</aside>
-					</div>
-				</div>
-			</div>
-		</section>
-
+                <aside class="col-lg-3 col-md-12 sidebar">
+                    <div class="widget">
+                        <div class="widget-title"><h4>СРОЧНЫЕ НУЖДЫ</h4></div>
+                        {% for item in items -%}
+                            <div class="urgent-need bottom_space">
+                                <img src="/static/upload/{{ item.image }}" alt="cause image" />
+                                <div class="urgent-text">
+                                    <h3>{{ item.name }}</h3>
+                                    <a class="btn small" href="/causes/{{ item.id }}">Подробности</a>
+                                </div>
+                            </div>
+                        {%- endfor %}
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
