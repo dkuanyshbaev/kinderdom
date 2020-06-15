@@ -1,5 +1,5 @@
 use super::schema::profiles;
-use super::utils::{delete_file, file_name_with_prefix, save_file};
+use super::utils::{delete_file, save_file, uuid_file_name};
 use crate::errors::KinderError;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
@@ -9,6 +9,8 @@ use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
     FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
 };
+
+const PROFILES_PER_PAGE: i64 = 9;
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "profiles"]
@@ -34,10 +36,11 @@ impl Profile {
         profiles::table.order(profiles::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
+    pub fn published(connection: &PgConnection, page: i64) -> QueryResult<Vec<Profile>> {
         profiles::table
             .filter(profiles::published.eq(true))
-            .limit(9)
+            .offset(page * PROFILES_PER_PAGE)
+            .limit(PROFILES_PER_PAGE)
             .order(profiles::id.desc())
             .load(connection)
     }
@@ -124,7 +127,7 @@ impl FromDataSimple for NewProfile {
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    photo = file_name_with_prefix(file_path);
+                    photo = uuid_file_name(file_path);
                     save_file(path, &photo);
                 }
             }

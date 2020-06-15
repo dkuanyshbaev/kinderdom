@@ -30,12 +30,19 @@ pub fn index(connection: Db) -> KinderResult<Template> {
     ))
 }
 
-#[get("/events")]
-pub fn events(connection: Db) -> KinderResult<Template> {
+#[get("/events?<page>")]
+pub fn events(connection: Db, page: Option<i64>) -> KinderResult<Template> {
+    let mut page_num = 0;
+    if let Some(p) = page {
+        if p > 0 {
+            page_num = p;
+        }
+    }
+
     Ok(Template::render(
         "pages/events",
         ListContext {
-            items: Event::published(&connection)?,
+            items: Event::published(&connection, page_num)?,
         },
     ))
 }
@@ -80,12 +87,19 @@ pub fn cause_details(connection: Db, id: i32) -> KinderResult<Template> {
     ))
 }
 
-#[get("/profiles")]
-pub fn profiles(connection: Db) -> KinderResult<Template> {
+#[get("/profiles?<page>")]
+pub fn profiles(connection: Db, page: Option<i64>) -> KinderResult<Template> {
+    let mut page_num = 0;
+    if let Some(p) = page {
+        if p > 0 {
+            page_num = p;
+        }
+    }
+
     Ok(Template::render(
         "pages/profiles",
         ListContext {
-            items: Profile::published(&connection)?,
+            items: Profile::published(&connection, page_num)?,
         },
     ))
 }
@@ -105,12 +119,19 @@ pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
     ))
 }
 
-#[get("/reports")]
-pub fn reports(connection: Db) -> KinderResult<Template> {
+#[get("/reports?<page>")]
+pub fn reports(connection: Db, page: Option<i64>) -> KinderResult<Template> {
+    let mut page_num = 0;
+    if let Some(p) = page {
+        if p > 0 {
+            page_num = p;
+        }
+    }
+
     Ok(Template::render(
         "pages/reports",
         ListContext {
-            items: Report::all(&connection)?,
+            items: Report::paginated(&connection, page_num)?,
         },
     ))
 }

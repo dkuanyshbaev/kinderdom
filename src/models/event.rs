@@ -1,5 +1,5 @@
 use super::schema::events;
-use super::utils::{delete_file, file_name_with_prefix, save_file};
+use super::utils::{delete_file, save_file, uuid_file_name};
 use crate::errors::KinderError;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
@@ -9,6 +9,8 @@ use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
     FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
 };
+
+const EVENTS_PER_PAGE: i64 = 6;
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "events"]
@@ -38,10 +40,11 @@ impl Event {
         events::table.order(events::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Event>> {
+    pub fn published(connection: &PgConnection, page: i64) -> QueryResult<Vec<Event>> {
         events::table
             .filter(events::published.eq(true))
-            .limit(6)
+            .offset(page * EVENTS_PER_PAGE)
+            .limit(EVENTS_PER_PAGE)
             .order(events::id.desc())
             .load(connection)
     }
@@ -150,7 +153,7 @@ impl FromDataSimple for NewEvent {
             if let Some(file_path) = file_name {
                 // check if it's update or create?
                 if file_path != "" {
-                    cover = file_name_with_prefix(file_path);
+                    cover = uuid_file_name(file_path);
                     save_file(path, &cover);
                 }
             }

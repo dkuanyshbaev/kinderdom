@@ -9,6 +9,8 @@ use rocket_multipart_form_data::{
     MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
 };
 
+const REPORTS_PER_PAGE: i64 = 9;
+
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
 #[table_name = "reports"]
 pub struct NewReport {
@@ -27,6 +29,14 @@ pub struct Report {
 impl Report {
     pub fn all(connection: &PgConnection) -> QueryResult<Vec<Report>> {
         reports::table.order(reports::id.desc()).load(connection)
+    }
+
+    pub fn paginated(connection: &PgConnection, page: i64) -> QueryResult<Vec<Report>> {
+        reports::table
+            .offset(page * REPORTS_PER_PAGE)
+            .limit(REPORTS_PER_PAGE)
+            .order(reports::id.desc())
+            .load(connection)
     }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Report> {
