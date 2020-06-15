@@ -39,6 +39,14 @@ impl Report {
             .load(connection)
     }
 
+    pub fn pages_total(connection: &PgConnection) -> usize {
+        let mut total = 0;
+        if let Ok(rs) = reports::table.load::<Report>(connection) {
+            total = rs.len() / REPORTS_PER_PAGE as usize + 1;
+        }
+        total
+    }
+
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Report> {
         reports::table.find(id).get_result(connection)
     }

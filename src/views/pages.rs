@@ -102,7 +102,8 @@ pub fn profiles(connection: Db, page: Option<i64>) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/profiles",
         PageContext {
-            total: 0,
+            // this is for pagination; tera can't iterate on range
+            total: vec![0; Profile::pages_total(&connection)],
             page: page_num,
             items: Profile::published(&connection, page_num)?,
         },
@@ -136,7 +137,8 @@ pub fn reports(connection: Db, page: Option<i64>) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/reports",
         PageContext {
-            total: 0,
+            // this is for pagination; tera can't iterate on range
+            total: vec![0; Report::pages_total(&connection)],
             page: page_num,
             items: Report::paginated(&connection, page_num)?,
         },
