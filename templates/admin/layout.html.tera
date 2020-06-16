@@ -36,9 +36,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/reports">Отчёты</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/donors">Доноры</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">

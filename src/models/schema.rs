@@ -22,17 +22,6 @@ table! {
 }
 
 table! {
-    donors (id) {
-        id -> Int4,
-        name -> Varchar,
-        photo -> Varchar,
-        position -> Varchar,
-        quote -> Text,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
     events (id) {
         id -> Int4,
         title -> Varchar,
@@ -70,7 +59,6 @@ joinable!(events -> cats (cat_id));
 allow_tables_to_appear_in_same_query!(
     cats,
     causes,
-    donors,
     events,
     profiles,
     reports,

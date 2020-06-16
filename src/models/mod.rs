@@ -1,6 +1,5 @@
 pub mod cat;
 pub mod cause;
-pub mod donor;
 pub mod event;
 pub mod payment;
 pub mod profile;

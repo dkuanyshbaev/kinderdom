@@ -110,17 +110,6 @@ fn rocket(config: Config) -> rocket::Rocket {
                 admin::reports::delete,
             ],
         )
-        .mount(
-            "/admin/donors",
-            routes![
-                admin::donors::list,
-                admin::donors::add,
-                admin::donors::create,
-                admin::donors::edit,
-                admin::donors::update,
-                admin::donors::delete,
-            ],
-        )
         .register(catchers![
             pages::not_found,
             pages::unauthorized,

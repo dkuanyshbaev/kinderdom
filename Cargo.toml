@@ -15,6 +15,7 @@ rocket-multipart-form-data = "0.7.2"
 base64 = "0.12.1"
 uuid = { version = "0.8.1", features = ["v4"]  }
 reqwest = { version = "0.10.6", features = ["blocking", "json"] }
+sql_lexer = "0.9.1"
 
 [dependencies.rocket_contrib]
 version = "0.4.4"

@@ -88,7 +88,7 @@ impl Event {
             "select * from events
             where to_tsvector(title) || to_tsvector(content)
             @@ plainto_tsquery('{}') order by id desc",
-            term
+            sql_lexer::sanitize_string(term)
         ))
         .load(connection)
     }

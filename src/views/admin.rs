@@ -136,8 +136,3 @@ pub mod reports {
     use crate::models::report::{NewReport, Report};
     handle!(Report, NewReport, "admin/reports");
 }
-
-pub mod donors {
-    use crate::models::donor::{Donor, NewDonor};
-    handle!(Donor, NewDonor, "admin/donors");
-}
