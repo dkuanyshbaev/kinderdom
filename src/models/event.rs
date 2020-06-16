@@ -3,6 +3,7 @@ use super::utils::{delete_file, save_file, uuid_file_name};
 use crate::errors::KinderError;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
+use diesel::sql_query;
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
@@ -23,7 +24,8 @@ pub struct NewEvent {
     pub cat_id: i32,
 }
 
-#[derive(Serialize, Queryable, Identifiable, Debug)]
+#[derive(QueryableByName, Serialize, Queryable, Identifiable, Debug)]
+#[table_name = "events"]
 pub struct Event {
     pub id: i32,
     pub title: String,
@@ -79,6 +81,16 @@ impl Event {
         }
 
         total / EVENTS_PER_PAGE as usize + 1
+    }
+
+    pub fn search(connection: &PgConnection, term: String) -> QueryResult<Vec<Event>> {
+        sql_query(format!(
+            "select * from events
+            where to_tsvector(title) || to_tsvector(content)
+            @@ plainto_tsquery('{}') order by id desc",
+            term
+        ))
+        .load(connection)
     }
 
     pub fn last(connection: &PgConnection) -> QueryResult<Vec<Event>> {

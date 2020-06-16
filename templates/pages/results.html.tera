@@ -1,0 +1,44 @@
+{% extends "pages/layout" %}
+
+{% block content %}
+<div class="pagetop">
+    <div class="container">
+        <h1><i>РЕЗУЛЬТАТЫ</i> ПОИСКА</h1>
+        <ul class="breadcrumbs">
+            <li><a href="/" title="">Главная</a></li>
+            <li>Результаты</li>
+        </ul>
+    </div>
+</div>
+
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="shelter-blog">
+                        <div class="row">
+                            {% for event in items -%}
+                                <div class="col-4">
+                                    <div class="simple-post">
+                                        <div class="simple-post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
+                                        <div class="simple-post-detail">
+                                            <ul class="meta">
+                                                <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                            </ul>
+                                            <h3><a href="/events/{{ event.id }}" title="">{{ event.title }}</a></h3>
+                                            <p>{{ event.lead }}</p>
+                                            <a class="readmore" href="/events/{{ event.id }}">Подробности</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

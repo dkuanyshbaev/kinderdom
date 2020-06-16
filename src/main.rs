@@ -20,6 +20,7 @@ mod auth;
 mod config;
 mod errors;
 mod models;
+mod search;
 mod views;
 
 type KinderResult<T> = Result<T, errors::KinderError>;
@@ -51,6 +52,7 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::logout,
                 pages::payment,
                 pages::thankyou,
+                pages::search,
             ],
         )
         .mount(

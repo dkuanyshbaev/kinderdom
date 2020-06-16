@@ -47,8 +47,8 @@
                 <aside class="col-lg-3  col-md-12 sidebar">
                     <div class="widget">
                         <div class="widget-title"><h4>Поиск</h4></div>
-                        <form class="search-form">
-                            <input type="text" placeholder="Событие" />
+                        <form class="search-form" method="POST" action="/search">
+                            <input type="text" placeholder="Событие" name="term" />
                             <button><i class="fa fa-search"></i></button>
                         </form>
                     </div><!-- Widget -->

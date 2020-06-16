@@ -7,6 +7,7 @@ use crate::models::payment::{
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
+use crate::search::SearchForm;
 use crate::views::{
     ComplexContext, EventContext, EventsContext, IndexContext, ListContext, NoContext, PageContext,
 };
@@ -242,6 +243,16 @@ pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> Kinder
 #[get("/thankyou")]
 pub fn thankyou() -> Template {
     Template::render("pages/thankyou", NoContext {})
+}
+
+#[post("/search", data = "<search_form>")]
+pub fn search(connection: Db, search_form: Form<SearchForm>) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/results",
+        ListContext {
+            items: Event::search(&connection, search_form.term.to_owned())?,
+        },
+    ))
 }
 
 #[catch(404)]
