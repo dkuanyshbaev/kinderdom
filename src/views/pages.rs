@@ -1,4 +1,5 @@
 use crate::auth::{Admin, LoginForm};
+use crate::models::cat::Cat;
 use crate::models::cause::Cause;
 use crate::models::event::Event;
 use crate::models::payment::{
@@ -6,7 +7,9 @@ use crate::models::payment::{
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::views::{ComplexContext, IndexContext, ListContext, NoContext, PageContext};
+use crate::views::{
+    ComplexContext, EventContext, IndexContext, ListContext, NoContext, PageContext,
+};
 use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
@@ -58,7 +61,8 @@ pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
     // ))
     Ok(Template::render(
         "pages/event_details",
-        ComplexContext {
+        EventContext {
+            cats: Cat::all(&connection)?,
             item: Event::get(&connection, id)?,
             items: Cause::vital(&connection)?,
         },

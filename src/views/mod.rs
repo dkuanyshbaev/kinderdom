@@ -20,6 +20,13 @@ pub struct PageContext<T, U, P> {
 }
 
 #[derive(Serialize)]
+pub struct EventContext<T, U, C> {
+    cats: Vec<C>,
+    item: U,
+    items: Vec<T>,
+}
+
+#[derive(Serialize)]
 pub struct ComplexContext<T, U> {
     item: U,
     items: Vec<T>,
