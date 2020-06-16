@@ -8,7 +8,7 @@ use crate::models::payment::{
 use crate::models::profile::Profile;
 use crate::models::report::Report;
 use crate::views::{
-    ComplexContext, EventContext, IndexContext, ListContext, NoContext, PageContext,
+    ComplexContext, EventContext, EventsContext, IndexContext, ListContext, NoContext, PageContext,
 };
 use crate::{Config, Db, KinderResult};
 use base64::encode;
@@ -49,9 +49,10 @@ pub fn events(connection: Db, page: Option<i64>, cat: Option<i32>) -> KinderResu
 
     Ok(Template::render(
         "pages/events",
-        PageContext {
+        EventsContext {
             // this is for pagination; tera can't iterate on range
-            total: vec![0; Event::pages_total(&connection)],
+            total: vec![0; Event::pages_total(&connection, cat_num)],
+            cat: cat_num,
             page: page_num,
             items: Event::published(&connection, page_num, cat_num)?,
         },

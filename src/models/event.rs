@@ -59,15 +59,26 @@ impl Event {
         }
     }
 
-    pub fn pages_total(connection: &PgConnection) -> usize {
+    pub fn pages_total(connection: &PgConnection, cat: i32) -> usize {
         let mut total = 0;
-        if let Ok(es) = events::table
-            .filter(events::published.eq(true))
-            .load::<Event>(connection)
-        {
-            total = es.len() / EVENTS_PER_PAGE as usize + 1;
+        if cat > 0 {
+            if let Ok(es) = events::table
+                .filter(events::cat_id.eq(cat))
+                .filter(events::published.eq(true))
+                .load::<Event>(connection)
+            {
+                total = es.len();
+            }
+        } else {
+            if let Ok(es) = events::table
+                .filter(events::published.eq(true))
+                .load::<Event>(connection)
+            {
+                total = es.len();
+            }
         }
-        total
+
+        total / EVENTS_PER_PAGE as usize + 1
     }
 
     pub fn last(connection: &PgConnection) -> QueryResult<Vec<Event>> {

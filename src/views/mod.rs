@@ -13,6 +13,14 @@ pub struct ListContext<T> {
 }
 
 #[derive(Serialize)]
+pub struct EventsContext<T, U, P, C> {
+    cat: C,
+    total: U,
+    page: P,
+    items: Vec<T>,
+}
+
+#[derive(Serialize)]
 pub struct PageContext<T, U, P> {
     total: U,
     page: P,
