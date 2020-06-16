@@ -40,13 +40,23 @@ impl Event {
         events::table.order(events::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection, page: i64) -> QueryResult<Vec<Event>> {
-        events::table
-            .filter(events::published.eq(true))
-            .offset(page * EVENTS_PER_PAGE)
-            .limit(EVENTS_PER_PAGE)
-            .order(events::id.desc())
-            .load(connection)
+    pub fn published(connection: &PgConnection, page: i64, cat: i32) -> QueryResult<Vec<Event>> {
+        if cat > 0 {
+            events::table
+                .filter(events::published.eq(true))
+                .filter(events::cat_id.eq(cat))
+                .offset(page * EVENTS_PER_PAGE)
+                .limit(EVENTS_PER_PAGE)
+                .order(events::id.desc())
+                .load(connection)
+        } else {
+            events::table
+                .filter(events::published.eq(true))
+                .offset(page * EVENTS_PER_PAGE)
+                .limit(EVENTS_PER_PAGE)
+                .order(events::id.desc())
+                .load(connection)
+        }
     }
 
     pub fn pages_total(connection: &PgConnection) -> usize {

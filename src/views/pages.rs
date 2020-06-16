@@ -33,8 +33,13 @@ pub fn index(connection: Db) -> KinderResult<Template> {
     ))
 }
 
-#[get("/events?<page>")]
-pub fn events(connection: Db, page: Option<i64>) -> KinderResult<Template> {
+#[get("/events?<page>&<cat>")]
+pub fn events(connection: Db, page: Option<i64>, cat: Option<i32>) -> KinderResult<Template> {
+    let mut cat_num = 0;
+    if let Some(c) = cat {
+        cat_num = c;
+    }
+
     let mut page_num = 0;
     if let Some(p) = page {
         if p > 0 {
@@ -48,7 +53,7 @@ pub fn events(connection: Db, page: Option<i64>) -> KinderResult<Template> {
             // this is for pagination; tera can't iterate on range
             total: vec![0; Event::pages_total(&connection)],
             page: page_num,
-            items: Event::published(&connection, page_num)?,
+            items: Event::published(&connection, page_num, cat_num)?,
         },
     ))
 }
