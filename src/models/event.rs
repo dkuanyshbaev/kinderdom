@@ -1,6 +1,8 @@
+use super::schema::cats;
 use super::schema::events;
 use super::utils::{delete_file, save_file, uuid_file_name};
 use crate::errors::KinderError;
+use crate::models::cat::Cat;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use diesel::sql_query;
@@ -102,8 +104,14 @@ impl Event {
     }
 
     pub fn stories(connection: &PgConnection) -> QueryResult<Vec<Event>> {
+        // TODO: implement in one query
+        let cat = cats::table
+            .filter(cats::name.eq("Истории успеха"))
+            .first::<Cat>(connection)?;
+
         events::table
             .filter(events::published.eq(true))
+            .filter(events::cat_id.eq(cat.id))
             .limit(3)
             .order(events::id.desc())
             .load(connection)

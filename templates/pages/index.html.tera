@@ -193,7 +193,7 @@
 
                     <div class="recent-causes">
                         <div class="causes-carousel">
-                            {% for event in events -%}
+                            {% for event in stories -%}
                                 <div class="cause-img">
                                     <div class="cause-bg"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
                                     <div class="cause-inner">
