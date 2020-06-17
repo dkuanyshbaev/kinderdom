@@ -180,6 +180,9 @@ impl FromDataSimple for NewEvent {
             .push(MultipartFormDataField::text("content"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("en"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
@@ -234,6 +237,13 @@ impl FromDataSimple for NewEvent {
             content = &text.text;
         }
 
+        let mut en = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
+            if &text.text == "on" {
+                en = true;
+            }
+        }
+
         let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
@@ -247,6 +257,7 @@ impl FromDataSimple for NewEvent {
             lead: lead.to_string(),
             cover,
             content: content.to_string(),
+            en,
             published,
         })
     }

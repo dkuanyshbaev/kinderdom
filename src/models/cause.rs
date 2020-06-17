@@ -133,6 +133,9 @@ impl FromDataSimple for NewCause {
             .push(MultipartFormDataField::text("vital"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("en"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
@@ -205,6 +208,13 @@ impl FromDataSimple for NewCause {
             }
         }
 
+        let mut en = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
+            if &text.text == "on" {
+                en = true;
+            }
+        }
+
         let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
@@ -221,6 +231,7 @@ impl FromDataSimple for NewCause {
             organisation: organisation.to_string(),
             description: description.to_string(),
             vital,
+            en,
             published,
         })
     }

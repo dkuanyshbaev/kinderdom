@@ -89,6 +89,9 @@ impl FromDataSimple for NewReport {
         options
             .allowed_fields
             .push(MultipartFormDataField::text("description"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("en"));
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -117,9 +120,17 @@ impl FromDataSimple for NewReport {
             description = &text.text;
         }
 
+        let mut en = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
+            if &text.text == "on" {
+                en = true;
+            }
+        }
+
         Success(NewReport {
             url: url.to_string(),
             description: description.to_string(),
+            en,
         })
     }
 }

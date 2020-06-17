@@ -58,6 +58,9 @@ impl FromDataSimple for NewCat {
         options
             .allowed_fields
             .push(MultipartFormDataField::text("name"));
+        options
+            .allowed_fields
+            .push(MultipartFormDataField::text("en"));
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -81,8 +84,16 @@ impl FromDataSimple for NewCat {
             name = &text.text;
         }
 
+        let mut en = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
+            if &text.text == "on" {
+                en = true;
+            }
+        }
+
         Success(NewCat {
             name: name.to_string(),
+            en,
         })
     }
 }

@@ -113,6 +113,9 @@ impl FromDataSimple for NewProfile {
             .push(MultipartFormDataField::text("description"));
         options
             .allowed_fields
+            .push(MultipartFormDataField::text("en"));
+        options
+            .allowed_fields
             .push(MultipartFormDataField::text("published"));
 
         // check if the content type is set properly
@@ -156,6 +159,13 @@ impl FromDataSimple for NewProfile {
             description = &text.text;
         }
 
+        let mut en = false;
+        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
+            if &text.text == "on" {
+                en = true;
+            }
+        }
+
         let mut published = false;
         if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
             if &text.text == "on" {
@@ -167,6 +177,7 @@ impl FromDataSimple for NewProfile {
             name: name.to_string(),
             photo,
             description: description.to_string(),
+            en,
             published,
         })
     }
