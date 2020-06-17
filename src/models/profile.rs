@@ -19,6 +19,7 @@ pub struct NewProfile {
     pub photo: String,
     pub description: String,
     pub published: bool,
+    pub en: bool,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
@@ -28,6 +29,7 @@ pub struct Profile {
     pub photo: String,
     pub description: String,
     pub published: bool,
+    pub en: bool,
     pub created_at: NaiveDateTime,
 }
 

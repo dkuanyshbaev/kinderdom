@@ -9,5 +9,6 @@ create table if not exists causes (
     description text not null,
     vital boolean not null default 'f',
     published boolean not null default 'f',
+    en boolean not null default 'f',
     created_at timestamp not null default now()
 );

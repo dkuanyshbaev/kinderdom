@@ -2,6 +2,7 @@ table! {
     cats (id) {
         id -> Int4,
         name -> Varchar,
+        en -> Bool,
     }
 }
 
@@ -17,6 +18,7 @@ table! {
         description -> Text,
         vital -> Bool,
         published -> Bool,
+        en -> Bool,
         created_at -> Timestamp,
     }
 }
@@ -29,6 +31,7 @@ table! {
         cover -> Varchar,
         content -> Text,
         published -> Bool,
+        en -> Bool,
         cat_id -> Int4,
         created_at -> Timestamp,
     }
@@ -41,6 +44,7 @@ table! {
         photo -> Varchar,
         description -> Text,
         published -> Bool,
+        en -> Bool,
         created_at -> Timestamp,
     }
 }
@@ -50,6 +54,7 @@ table! {
         id -> Int4,
         url -> Varchar,
         description -> Varchar,
+        en -> Bool,
         created_at -> Timestamp,
     }
 }

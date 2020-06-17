@@ -12,12 +12,14 @@ use rocket_multipart_form_data::{
 #[table_name = "cats"]
 pub struct NewCat {
     pub name: String,
+    pub en: bool,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
 pub struct Cat {
     pub id: i32,
     pub name: String,
+    pub en: bool,
 }
 
 impl Cat {

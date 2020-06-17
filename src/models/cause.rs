@@ -22,6 +22,7 @@ pub struct NewCause {
     pub description: String,
     pub vital: bool,
     pub published: bool,
+    pub en: bool,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
@@ -36,6 +37,7 @@ pub struct Cause {
     pub description: String,
     pub vital: bool,
     pub published: bool,
+    pub en: bool,
     pub created_at: NaiveDateTime,
 }
 

@@ -23,6 +23,7 @@ pub struct NewEvent {
     pub cover: String,
     pub content: String,
     pub published: bool,
+    pub en: bool,
     pub cat_id: i32,
 }
 
@@ -35,6 +36,7 @@ pub struct Event {
     pub cover: String,
     pub content: String,
     pub published: bool,
+    pub en: bool,
     pub cat_id: i32,
     pub created_at: NaiveDateTime,
 }

@@ -4,5 +4,6 @@ create table if not exists profiles (
     photo varchar not null,
     description text not null,
     published boolean not null default 'f',
+    en boolean not null default 'f',
     created_at timestamp not null default now()
 );

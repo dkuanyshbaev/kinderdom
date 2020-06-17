@@ -16,6 +16,7 @@ const REPORTS_PER_PAGE: i64 = 9;
 pub struct NewReport {
     pub url: String,
     pub description: String,
+    pub en: bool,
 }
 
 #[derive(Serialize, Queryable, Identifiable, Debug)]
@@ -23,6 +24,7 @@ pub struct Report {
     pub id: i32,
     pub url: String,
     pub description: String,
+    pub en: bool,
     pub created_at: NaiveDateTime,
 }
 
