@@ -46,16 +46,38 @@
 
 
 <section>
-    <div class="block less-space gray">
+    <div class="block no-top">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <ul class="shelter-logos">
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                    </ul>
+                <div class="col">
+                    <div class="shelter-donations-boxes style2">
+                        <div class="row">
+                            <div class="col">
+                                <div class="donation-box">
+                                    <div class="box-text">
+                                        <p style="font-size:17px;">Устав благотворительного фонда<br>«Мы и дети»</p>
+                                        <a class="btn style4 small" href="/static/docs/ustav.pdf">Скачать</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="donation-box">
+                                    <div class="box-text">
+                                        <p style="font-size:17px;">Свидетельство о регистрации некоммерческой организации</p>
+                                        <a class="btn style4 small" href="/static/docs/1.pdf">Скачать</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="donation-box">
+                                    <div class="box-text">
+                                        <p style="font-size:17px;">Свидетельство о постановке на учёт в налоговом органе</p>
+                                        <a class="btn style4 small" href="/static/docs/2.pdf">Скачать</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
