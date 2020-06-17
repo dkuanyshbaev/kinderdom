@@ -5,7 +5,7 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
+    MultipartFormData, MultipartFormDataField, MultipartFormDataOptions,
 };
 
 #[derive(Serialize, Insertable, FromForm, AsChangeset)]
@@ -53,14 +53,10 @@ impl FromDataSimple for NewCat {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
-        let mut options = MultipartFormDataOptions::new();
-
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("name"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("en"));
+        let options = MultipartFormDataOptions::with_multipart_form_data_fields(vec![
+            MultipartFormDataField::text("name"),
+            MultipartFormDataField::text("en"),
+        ]);
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -71,7 +67,7 @@ impl FromDataSimple for NewCat {
         };
 
         // do the form parsing and return on error
-        let multipart_form = match MultipartFormData::parse(&content_type, data, options) {
+        let mut multipart_form = match MultipartFormData::parse(&content_type, data, options) {
             Ok(multipart) => multipart,
             Err(error) => {
                 println!("Multipart form parsing error: {:?}", error);
@@ -79,21 +75,20 @@ impl FromDataSimple for NewCat {
             }
         };
 
-        let mut name = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
-            name = &text.text;
+        let mut name = "".to_string();
+        if let Some(mut text_fields) = multipart_form.texts.remove("name") {
+            let text_field = text_fields.remove(0);
+            name = text_field.text;
         }
 
         let mut en = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
-            if &text.text == "on" {
+        if let Some(mut text_fields) = multipart_form.texts.remove("en") {
+            let text_field = text_fields.remove(0);
+            if text_field.text == "on" {
                 en = true;
             }
         }
 
-        Success(NewCat {
-            name: name.to_string(),
-            en,
-        })
+        Success(NewCat { name, en })
     }
 }

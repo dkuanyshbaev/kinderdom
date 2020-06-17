@@ -7,7 +7,7 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
+    MultipartFormData, MultipartFormDataField, MultipartFormDataOptions,
 };
 
 const PROFILES_PER_PAGE: i64 = 9;
@@ -100,23 +100,13 @@ impl FromDataSimple for NewProfile {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
-        let mut options = MultipartFormDataOptions::new();
-
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::file("photo"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("name"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("description"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("en"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("published"));
+        let options = MultipartFormDataOptions::with_multipart_form_data_fields(vec![
+            MultipartFormDataField::file("photo"),
+            MultipartFormDataField::text("name"),
+            MultipartFormDataField::text("description"),
+            MultipartFormDataField::text("en"),
+            MultipartFormDataField::text("published"),
+        ]);
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -127,7 +117,7 @@ impl FromDataSimple for NewProfile {
         };
 
         // do the form parsing and return on error
-        let multipart_form = match MultipartFormData::parse(&content_type, data, options) {
+        let mut multipart_form = match MultipartFormData::parse(&content_type, data, options) {
             Ok(multipart) => multipart,
             Err(error) => {
                 println!("Multipart form parsing error: {:?}", error);
@@ -136,9 +126,10 @@ impl FromDataSimple for NewProfile {
         };
 
         let mut photo = "".to_string();
-        if let Some(FileField::Single(file)) = multipart_form.files.get("photo") {
-            let file_name = &file.file_name;
-            let path = &file.path;
+        if let Some(file_fields) = multipart_form.files.get("photo") {
+            let file_field = &file_fields[0];
+            let file_name = &file_field.file_name;
+            let path = &file_field.path;
 
             if let Some(file_path) = file_name {
                 // check if it's update or create?
@@ -149,34 +140,38 @@ impl FromDataSimple for NewProfile {
             }
         }
 
-        let mut name = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("name") {
-            name = &text.text;
+        let mut name = "".to_string();
+        if let Some(mut text_fields) = multipart_form.texts.remove("name") {
+            let text_field = text_fields.remove(0);
+            name = text_field.text;
         }
 
-        let mut description = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("description") {
-            description = &text.text;
+        let mut description = "".to_string();
+        if let Some(mut text_fields) = multipart_form.texts.remove("description") {
+            let text_field = text_fields.remove(0);
+            description = text_field.text;
         }
 
         let mut en = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
-            if &text.text == "on" {
+        if let Some(mut text_fields) = multipart_form.texts.remove("en") {
+            let text_field = text_fields.remove(0);
+            if text_field.text == "on" {
                 en = true;
             }
         }
 
         let mut published = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
-            if &text.text == "on" {
+        if let Some(mut text_fields) = multipart_form.texts.remove("published") {
+            let text_field = text_fields.remove(0);
+            if text_field.text == "on" {
                 published = true;
             }
         }
 
         Success(NewProfile {
-            name: name.to_string(),
+            name,
             photo,
-            description: description.to_string(),
+            description,
             en,
             published,
         })

@@ -5,13 +5,13 @@ authors = ["denis <orca84@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
-diesel = { version = "1.4.3", features = ["postgres", "chrono"] }
-rocket= {version = "0.4.4", features = ["private-cookies"]}
+diesel = { version = "1.4.5", features = ["postgres", "chrono"] }
+rocket= {version = "0.4.5", features = ["private-cookies"]}
 serde = "1.0.104"
 serde_derive = "1.0.104"
 serde_json = "1.0.44"
 chrono = { version = "0.4.10", features = ["serde"]  }
-rocket-multipart-form-data = "0.7.2"
+rocket-multipart-form-data = "0.9.2"
 base64 = "0.12.1"
 uuid = { version = "0.8.1", features = ["v4"]  }
 reqwest = { version = "0.10.6", features = ["blocking", "json"] }

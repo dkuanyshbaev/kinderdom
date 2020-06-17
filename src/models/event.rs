@@ -10,7 +10,7 @@ use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
 use rocket_multipart_form_data::{
-    FileField, MultipartFormData, MultipartFormDataField, MultipartFormDataOptions, TextField,
+    MultipartFormData, MultipartFormDataField, MultipartFormDataOptions,
 };
 
 const EVENTS_PER_PAGE: i64 = 6;
@@ -161,29 +161,15 @@ impl FromDataSimple for NewEvent {
     type Error = KinderError;
 
     fn from_data(request: &Request, data: Data) -> Outcome<Self, Self::Error> {
-        let mut options = MultipartFormDataOptions::new();
-
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::file("cover"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("title"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("cat"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("lead"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("content"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("en"));
-        options
-            .allowed_fields
-            .push(MultipartFormDataField::text("published"));
+        let options = MultipartFormDataOptions::with_multipart_form_data_fields(vec![
+            MultipartFormDataField::file("cover"),
+            MultipartFormDataField::text("title"),
+            MultipartFormDataField::text("cat"),
+            MultipartFormDataField::text("lead"),
+            MultipartFormDataField::text("content"),
+            MultipartFormDataField::text("en"),
+            MultipartFormDataField::text("published"),
+        ]);
 
         // check if the content type is set properly
         let content_type = match request.content_type() {
@@ -194,7 +180,7 @@ impl FromDataSimple for NewEvent {
         };
 
         // do the form parsing and return on error
-        let multipart_form = match MultipartFormData::parse(&content_type, data, options) {
+        let mut multipart_form = match MultipartFormData::parse(&content_type, data, options) {
             Ok(multipart) => multipart,
             Err(error) => {
                 println!("Multipart form parsing error: {:?}", error);
@@ -203,9 +189,10 @@ impl FromDataSimple for NewEvent {
         };
 
         let mut cover = "".to_string();
-        if let Some(FileField::Single(file)) = multipart_form.files.get("cover") {
-            let file_name = &file.file_name;
-            let path = &file.path;
+        if let Some(file_fields) = multipart_form.files.get("cover") {
+            let file_field = &file_fields[0];
+            let file_name = &file_field.file_name;
+            let path = &file_field.path;
 
             if let Some(file_path) = file_name {
                 // check if it's update or create?
@@ -216,47 +203,53 @@ impl FromDataSimple for NewEvent {
             }
         }
 
-        let mut cat = 1;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("cat") {
-            let amount = &text.text;
-            cat = amount.parse().unwrap();
+        let mut cat_id = 1;
+        if let Some(mut text_fields) = multipart_form.texts.remove("cat") {
+            let text_field = text_fields.remove(0);
+            let amount = text_field.text;
+            cat_id = amount.parse().unwrap();
         }
 
-        let mut title = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("title") {
-            title = &text.text;
+        let mut title = "".to_string();
+        if let Some(mut text_fields) = multipart_form.texts.remove("title") {
+            let text_field = text_fields.remove(0);
+            title = text_field.text;
         }
 
-        let mut lead = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("lead") {
-            lead = &text.text;
+        let mut lead = "".to_string();
+        if let Some(mut text_fields) = multipart_form.texts.remove("lead") {
+            let text_field = text_fields.remove(0);
+            lead = text_field.text;
         }
 
-        let mut content = "";
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("content") {
-            content = &text.text;
+        let mut content = "".to_string();
+        if let Some(mut text_fields) = multipart_form.texts.remove("content") {
+            let text_field = text_fields.remove(0);
+            content = text_field.text;
         }
 
         let mut en = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("en") {
-            if &text.text == "on" {
+        if let Some(mut text_fields) = multipart_form.texts.remove("en") {
+            let text_field = text_fields.remove(0);
+            if text_field.text == "on" {
                 en = true;
             }
         }
 
         let mut published = false;
-        if let Some(TextField::Single(text)) = multipart_form.texts.get("published") {
-            if &text.text == "on" {
+        if let Some(mut text_fields) = multipart_form.texts.remove("published") {
+            let text_field = text_fields.remove(0);
+            if text_field.text == "on" {
                 published = true;
             }
         }
 
         Success(NewEvent {
-            cat_id: cat,
-            title: title.to_string(),
-            lead: lead.to_string(),
+            cat_id,
+            title,
+            lead,
             cover,
-            content: content.to_string(),
+            content,
             en,
             published,
         })
