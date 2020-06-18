@@ -14,8 +14,8 @@
         <div class="form-group">
             <label for="cat">Категория</label>
             <select class="custom-select" id="cat" name="cat">
-                {% for i in items %}
-                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% for cat in cats %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
                 {% endfor %}
             </select>
         </div>

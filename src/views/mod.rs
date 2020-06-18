@@ -7,10 +7,20 @@ pub mod pages;
 #[derive(Serialize)]
 pub struct NoContext {}
 
+// ---------------------------------------------
+
 #[derive(Serialize)]
 pub struct ListContext<T> {
     items: Vec<T>,
 }
+
+#[derive(Serialize)]
+pub struct ComplexContext<T, U> {
+    item: U,
+    items: Vec<T>,
+}
+
+// ---------------------------------------------
 
 #[derive(Serialize)]
 pub struct EventsContext<T, U, P, C> {
@@ -30,12 +40,6 @@ pub struct PageContext<T, U, P> {
 #[derive(Serialize)]
 pub struct EventContext<T, U, C> {
     cats: Vec<C>,
-    item: U,
-    items: Vec<T>,
-}
-
-#[derive(Serialize)]
-pub struct ComplexContext<T, U> {
     item: U,
     items: Vec<T>,
 }

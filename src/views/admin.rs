@@ -1,7 +1,19 @@
+use crate::models::cat::Cat;
+
 #[derive(Serialize)]
-struct Select {
-    id: i32,
-    name: String,
+pub struct ListContext<T> {
+    items: Vec<T>,
+}
+
+#[derive(Serialize)]
+pub struct AddContext {
+    cats: Vec<Cat>,
+}
+
+#[derive(Serialize)]
+pub struct EditContext<T> {
+    item: T,
+    cats: Vec<Cat>,
 }
 
 macro_rules! handle {
@@ -12,12 +24,11 @@ macro_rules! handle {
             _admin: crate::auth::Admin,
             connection: crate::Db,
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
-            let items = <$t>::all(&connection)?;
-            let context: crate::views::ListContext<$t> = crate::views::ListContext { items };
-
             Ok(rocket_contrib::templates::Template::render(
                 format!("{}/list", $tp),
-                context,
+                crate::views::admin::ListContext {
+                    items: <$t>::all(&connection)?,
+                },
             ))
         }
 
@@ -29,8 +40,9 @@ macro_rules! handle {
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
             Ok(rocket_contrib::templates::Template::render(
                 format!("{}/add", $tp),
-                crate::views::ListContext {
-                    items: crate::models::cat::Cat::all(&connection)?,
+                crate::views::admin::AddContext {
+                    // this is for event form
+                    cats: crate::models::cat::Cat::all(&connection)?,
                 },
             ))
         }
@@ -61,18 +73,12 @@ macro_rules! handle {
             connection: crate::Db,
             id: i32,
         ) -> crate::KinderResult<rocket_contrib::templates::Template> {
-            // let item = <$t>::get(&connection, id)?;
-            // Ok(rocket_contrib::templates::Template::render(
-            //     format!("{}/edit", $tp),
-            //     item,
-            // ))
-
-            // items here it's categories for edit's form select
             Ok(rocket_contrib::templates::Template::render(
                 format!("{}/edit", $tp),
-                crate::views::ComplexContext {
+                crate::views::admin::EditContext {
                     item: <$t>::get(&connection, id)?,
-                    items: crate::models::cat::Cat::all(&connection)?,
+                    // this is for event form
+                    cats: crate::models::cat::Cat::all(&connection)?,
                 },
             ))
         }
