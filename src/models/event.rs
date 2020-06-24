@@ -1,11 +1,9 @@
-use super::schema::cats;
-use super::schema::events;
+use super::schema::{cats, events};
 use super::utils::{delete_file, save_file, uuid_file_name};
 use crate::errors::KinderError;
 use crate::models::cat::Cat;
 use chrono::NaiveDateTime;
-use diesel::prelude::*;
-use diesel::sql_query;
+use diesel::{prelude::*, sql_query};
 use rocket::data::{FromDataSimple, Outcome};
 use rocket::http::Status;
 use rocket::{Data, Outcome::*, Request};
@@ -27,7 +25,7 @@ pub struct NewEvent {
     pub cat_id: i32,
 }
 
-#[derive(QueryableByName, Serialize, Queryable, Identifiable, Debug)]
+#[derive(QueryableByName, Serialize, Queryable, Identifiable, Clone, Debug)]
 #[table_name = "events"]
 pub struct Event {
     pub id: i32,
@@ -44,79 +42,6 @@ pub struct Event {
 impl Event {
     pub fn all(connection: &PgConnection) -> QueryResult<Vec<Event>> {
         events::table.order(events::id.desc()).load(connection)
-    }
-
-    pub fn published(connection: &PgConnection, page: i64, cat: i32) -> QueryResult<Vec<Event>> {
-        if cat > 0 {
-            events::table
-                .filter(events::published.eq(true))
-                .filter(events::cat_id.eq(cat))
-                .offset(page * EVENTS_PER_PAGE)
-                .limit(EVENTS_PER_PAGE)
-                .order(events::id.desc())
-                .load(connection)
-        } else {
-            events::table
-                .filter(events::published.eq(true))
-                .offset(page * EVENTS_PER_PAGE)
-                .limit(EVENTS_PER_PAGE)
-                .order(events::id.desc())
-                .load(connection)
-        }
-    }
-
-    pub fn pages_total(connection: &PgConnection, cat: i32) -> usize {
-        let mut total = 0;
-        if cat > 0 {
-            if let Ok(es) = events::table
-                .filter(events::cat_id.eq(cat))
-                .filter(events::published.eq(true))
-                .load::<Event>(connection)
-            {
-                total = es.len();
-            }
-        } else {
-            if let Ok(es) = events::table
-                .filter(events::published.eq(true))
-                .load::<Event>(connection)
-            {
-                total = es.len();
-            }
-        }
-
-        total / EVENTS_PER_PAGE as usize + 1
-    }
-
-    pub fn search(connection: &PgConnection, term: String) -> QueryResult<Vec<Event>> {
-        sql_query(format!(
-            "select * from events
-            where to_tsvector(title) || to_tsvector(content)
-            @@ plainto_tsquery('{}') order by id desc",
-            sql_lexer::sanitize_string(term)
-        ))
-        .load(connection)
-    }
-
-    pub fn last(connection: &PgConnection) -> QueryResult<Vec<Event>> {
-        events::table
-            .filter(events::published.eq(true))
-            .limit(3)
-            .order(events::id.desc())
-            .load(connection)
-    }
-
-    pub fn stories(connection: &PgConnection) -> QueryResult<Vec<Event>> {
-        // TODO: implement in one query
-        let cat = cats::table
-            .filter(cats::name.eq("Истории успеха"))
-            .first::<Cat>(connection)?;
-
-        events::table
-            .filter(events::published.eq(true))
-            .filter(events::cat_id.eq(cat.id))
-            .limit(3)
-            .order(events::id.desc())
-            .load(connection)
     }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Event> {
@@ -153,6 +78,100 @@ impl Event {
         delete_file(&event.cover);
 
         diesel::delete(&event).get_result(connection)
+    }
+
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Event>> {
+        events::table
+            .filter(events::published.eq(true))
+            .order(events::id.desc())
+            .load(connection)
+    }
+
+    pub fn paginated_by_cat(
+        connection: &PgConnection,
+        page: Option<u8>,
+        cat: Option<u8>,
+    ) -> QueryResult<(u8, u8, u8, Vec<Event>)> {
+        let mut cat_num = 0;
+        if let Some(c) = cat {
+            cat_num = c;
+        }
+
+        let mut page_num = 0;
+        if let Some(p) = page {
+            page_num = p;
+        }
+
+        match Self::published(connection) {
+            Ok(mut events) => {
+                if cat_num != 0 {
+                    events.retain(|e| e.cat_id == cat_num as i32);
+                }
+
+                let max = events.len();
+                let total = (max as i64 / EVENTS_PER_PAGE + 1) as u8;
+
+                let mut offset = page_num as usize * EVENTS_PER_PAGE as usize;
+                if offset > max {
+                    offset = max;
+                }
+
+                let mut limit = offset + EVENTS_PER_PAGE as usize;
+                if limit > max {
+                    limit = max;
+                }
+
+                let events = events[offset..limit].to_vec();
+
+                Ok((total, page_num, cat_num, events))
+            }
+            Err(error) => Err(error),
+        }
+    }
+
+    pub fn last(connection: &PgConnection) -> QueryResult<(Vec<Event>, Vec<Event>)> {
+        let cat = cats::table
+            .filter(cats::name.eq("Истории успеха"))
+            .first::<Cat>(connection)?;
+
+        match Self::published(connection) {
+            Ok(events) => {
+                let mut last: Vec<Event> = vec![];
+                let mut stories: Vec<Event> = vec![];
+
+                for e in events {
+                    if e.cat_id == cat.id {
+                        stories.push(e);
+                    } else {
+                        last.push(e);
+                    }
+                    if last.len() > 3 && stories.len() > 3 {
+                        break;
+                    }
+                }
+
+                if last.len() > 3 {
+                    last = last[0..3].to_vec();
+                }
+
+                if stories.len() > 3 {
+                    stories = stories[0..3].to_vec();
+                }
+
+                Ok((last, stories))
+            }
+            Err(error) => Err(error),
+        }
+    }
+
+    pub fn search(connection: &PgConnection, term: String) -> QueryResult<Vec<Event>> {
+        sql_query(format!(
+            "select * from events
+            where to_tsvector(title) || to_tsvector(content)
+            @@ plainto_tsquery('{}') order by id desc",
+            sql_lexer::sanitize_string(term)
+        ))
+        .load(connection)
     }
 }
 

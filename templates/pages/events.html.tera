@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="shelter-blog">
                         <div class="row">
-                            {% for event in items -%}
+                            {% for event in events -%}
                                 <div class="col-4">
                                     <div class="simple-post">
                                         <div class="simple-post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
@@ -39,15 +39,25 @@
 
                     <div class="shelter-pagination">
                         <ul class="pagination">
-                            <li><a href="/events?page={{ page - 1 }}&cat={{ cat }}"> Назад </a> </li>
-                            {% for p in total -%}
+                            {% if page == 0 %}
+                                <li><a href="/events?page={{ page }}&cat={{ cat }}"> Назад </a></li>
+                            {% else %}
+                                <li><a href="/events?page={{ page - 1 }}&cat={{ cat }}"> Назад </a></li>
+                            {% endif %}
+
+                            {% for p in range(start = 1, end = total + 1, step_by = 1) -%}
                                 {% if page + 1 == loop.index %}
                                     <li><a class="current" href="/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
                                 {% else %}
                                     <li><a href="/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
                                 {% endif %}
                             {%- endfor %}
-                            <li> <a href="/events?page={{ page + 1 }}&cat={{ cat }}"> Дальше</a> </li>
+
+                            {% if page + 1 == total %}
+                                <li><a href="/events?page={{ page }}&cat={{ cat }}"> Дальше</a></li>
+                            {% else %}
+                                <li><a href="/events?page={{ page + 1 }}&cat={{ cat }}"> Дальше</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

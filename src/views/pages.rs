@@ -7,10 +7,7 @@ use crate::models::payment::{
 };
 use crate::models::profile::Profile;
 use crate::models::report::Report;
-use crate::search::SearchForm;
-use crate::views::{
-    ComplexContext, EventContext, EventsContext, IndexContext, ListContext, NoContext, PageContext,
-};
+use crate::models::search::SearchForm;
 use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
@@ -22,50 +19,88 @@ use rocket::State;
 use rocket_contrib::templates::Template;
 use uuid::Uuid;
 
+#[derive(Serialize)]
+pub struct NoContext {}
+
+#[derive(Serialize)]
+pub struct IndexContext {
+    causes: Vec<Cause>,
+    events: Vec<Event>,
+    stories: Vec<Event>,
+}
+
+#[derive(Serialize)]
+pub struct EventsContext {
+    total: u8,
+    page: u8,
+    cat: u8,
+    events: Vec<Event>,
+}
+
+// ---------------------------------------------
+
+// causes, search
+#[derive(Serialize)]
+pub struct ListContext<T> {
+    items: Vec<T>,
+}
+
+#[derive(Serialize)]
+pub struct EventContext<T, U, C> {
+    cats: Vec<C>,
+    item: U,
+    items: Vec<T>,
+}
+
+// profiles, reports
+#[derive(Serialize)]
+pub struct PageContext<T, U, P> {
+    total: U,
+    page: P,
+    items: Vec<T>,
+}
+
+// cause_details, profile_details
+#[derive(Serialize)]
+pub struct ComplexContext<T, U> {
+    item: U,
+    items: Vec<T>,
+}
+
+// ---------------------------------------------
+
 #[get("/")]
 pub fn index(connection: Db) -> KinderResult<Template> {
+    let vitals = Cause::vital(&connection)?;
+    let (last, stories) = Event::last(&connection)?;
+
     Ok(Template::render(
         "pages/index",
         IndexContext {
-            causes: Cause::vital(&connection)?,
-            events: Event::last(&connection)?,
-            stories: Event::stories(&connection)?,
+            causes: vitals,
+            events: last,
+            stories: stories,
         },
     ))
 }
 
 #[get("/events?<page>&<cat>")]
-pub fn events(connection: Db, page: Option<i64>, cat: Option<i32>) -> KinderResult<Template> {
-    let mut cat_num = 0;
-    if let Some(c) = cat {
-        cat_num = c;
-    }
-
-    let mut page_num = 0;
-    if let Some(p) = page {
-        if p > 0 {
-            page_num = p;
-        }
-    }
+pub fn events(connection: Db, page: Option<u8>, cat: Option<u8>) -> KinderResult<Template> {
+    let (total, page, cat, events) = Event::paginated_by_cat(&connection, page, cat)?;
 
     Ok(Template::render(
         "pages/events",
         EventsContext {
-            // this is for pagination; tera can't iterate on range
-            total: vec![0; Event::pages_total(&connection, cat_num)],
-            cat: cat_num,
-            page: page_num,
-            items: Event::published(&connection, page_num, cat_num)?,
+            total,
+            page,
+            cat,
+            events,
         },
     ))
 }
 
 #[get("/events/<id>")]
 pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
-    // Ok(Template::render(
-    //     "pages/event_details",
-    //     Event::get(&connection, id)?,
-    // ))
     Ok(Template::render(
         "pages/event_details",
         EventContext {
@@ -88,10 +123,6 @@ pub fn causes(connection: Db) -> KinderResult<Template> {
 
 #[get("/causes/<id>")]
 pub fn cause_details(connection: Db, id: i32) -> KinderResult<Template> {
-    // Ok(Template::render(
-    //     "pages/cause_details",
-    //     Cause::get(&connection, id)?,
-    // ))
     Ok(Template::render(
         "pages/cause_details",
         ComplexContext {
@@ -123,10 +154,6 @@ pub fn profiles(connection: Db, page: Option<i64>) -> KinderResult<Template> {
 
 #[get("/profiles/<id>")]
 pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
-    // Ok(Template::render(
-    //     "pages/profile_details",
-    //     Profile::get(&connection, id)?,
-    // ))
     Ok(Template::render(
         "pages/profile_details",
         ComplexContext {
@@ -159,6 +186,16 @@ pub fn reports(connection: Db, page: Option<i64>) -> KinderResult<Template> {
 #[get("/about")]
 pub fn about() -> Template {
     Template::render("pages/about", NoContext {})
+}
+
+#[post("/search", data = "<search_form>")]
+pub fn search(connection: Db, search_form: Form<SearchForm>) -> KinderResult<Template> {
+    Ok(Template::render(
+        "pages/results",
+        ListContext {
+            items: Event::search(&connection, search_form.term.to_owned())?,
+        },
+    ))
 }
 
 #[get("/admin")]
@@ -243,16 +280,6 @@ pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> Kinder
 #[get("/thankyou")]
 pub fn thankyou() -> Template {
     Template::render("pages/thankyou", NoContext {})
-}
-
-#[post("/search", data = "<search_form>")]
-pub fn search(connection: Db, search_form: Form<SearchForm>) -> KinderResult<Template> {
-    Ok(Template::render(
-        "pages/results",
-        ListContext {
-            items: Event::search(&connection, search_form.term.to_owned())?,
-        },
-    ))
 }
 
 #[catch(404)]

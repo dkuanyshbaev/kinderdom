@@ -5,4 +5,5 @@ pub mod payment;
 pub mod profile;
 pub mod report;
 pub mod schema;
+pub mod search;
 pub mod utils;
