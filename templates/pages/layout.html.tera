@@ -113,11 +113,12 @@
                             <div class="widget">
                                 <h3 class="widget-title">Фонд</h3>
                                 <ul>
-                                    <li><a href="/" title="">Главная</a></li>
-                                    <li><a href="/events" title="">События</a></li>
-                                    <li><a href="/causes" title="">Цели</a></li>
-                                    <li><a href="/reports" title="">Отчеты</a></li>
-                                    <li><a href="/about" title="">О фонде</a></li>
+                                    <li><a href="/">Главная</a></li>
+                                    <li><a href="/events">События</a></li>
+                                    <li><a href="/causes">Цели</a></li>
+                                    <li><a href="/profiles">Анкеты</a></li>
+                                    <li><a href="/reports">Отчеты</a></li>
+                                    <li><a href="/about">О фонде</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -126,9 +127,11 @@
                                 <h3 class="widget-title">Контакты</h3>
                                 <ul>
                                     <li>Россия, Приморский край</li>
-                                    <li>690069, г. Владивосток,<br>ул. Давыдова, д. 18</li>
-                                    <li>kinderdom@mail.ru</li>
+                                    <li>690069, г. Владивосток</li>
+                                    <li>ул. Давыдова, д. 18</li>
+                                    <li>+7 (423) 231-71-21</li>
                                     <li>+7 (914) 703-01-21</li>
+                                    <li>kinderdom@mail.ru</li>
                                 </ul>
                             </div>
                         </div>
@@ -137,6 +140,7 @@
                                 <!-- <h3 class="widget&#45;title">Мы в instagram</h3> -->
                                 <h3 class="widget-title">Реквизиты</h3>
                                         <ul>
+                                            <li>ФАКБ «Балтийский Банк Развития»</li>
                                             <li>Р/СЧ: 40703810800010000016</li>
                                             <li>К/СЧ: 30101810000000000867</li>
                                             <li>ИНН: 2539091280</li>
