@@ -1,4 +1,4 @@
-{% extends "pages/layout" %}
+{% extends "en/layout_en" %}
 
 {% block content %}
 <div class="pagetop">
@@ -19,14 +19,14 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12">
                     <div class="shelter-blog-detail">
-                        <div class="post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
+                        <div class="post-img"><img src="/static/upload/{{ item.cover }}" alt="" /></div>
                         <div class="post-information">
-                            <h1 class="post-title">{{ event.title }}</h1>
+                            <h1 class="post-title">{{ item.title }}</h1>
                             <ul class="meta">
-                                <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                <li><strong>{{ item.created_at | date(format="%d.%m.%Y") }}</strong></li>
                             </ul>
                         </div>
-                        <p>{{ event.content | safe }}</p>
+                        <p>{{ item.content | safe }}</p>
                     </div>
 
                     <div class="shelter-tags">
@@ -34,7 +34,7 @@
                         {% set cat_name = "test" %}
 
                         {% for cat in cats -%}
-                            {% if cat.id == event.cat_id %}
+                            {% if cat.id == item.cat_id %}
                                 {% set_global cat_id = cat.id %}
                                 {% set_global cat_name = cat.name %}
                             {% endif %}
@@ -55,12 +55,12 @@
 
                     <div class="widget">
                         <div class="widget-title"><h4>СРОЧНЫЕ НУЖДЫ</h4></div>
-                        {% for cause in causes -%}
+                        {% for item in items -%}
                             <div class="urgent-need bottom_space">
-                                <img src="/static/upload/{{ cause.image }}" alt="cause image" />
+                                <img src="/static/upload/{{ item.image }}" alt="cause image" />
                                 <div class="urgent-text">
-                                    <h3>{{ cause.name }}</h3>
-                                    <a class="btn small" href="/causes/{{ cause.id }}">Подробности</a>
+                                    <h3>{{ item.name }}</h3>
+                                    <a class="btn small" href="/causes/{{ item.id }}">Подробности</a>
                                 </div>
                             </div>
                         {%- endfor %}

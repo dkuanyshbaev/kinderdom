@@ -19,7 +19,7 @@ pub struct NewReport {
     pub en: bool,
 }
 
-#[derive(Serialize, Queryable, Identifiable, Debug)]
+#[derive(Serialize, Queryable, Identifiable, Clone, Debug)]
 pub struct Report {
     pub id: i32,
     pub url: String,
@@ -31,22 +31,6 @@ pub struct Report {
 impl Report {
     pub fn all(connection: &PgConnection) -> QueryResult<Vec<Report>> {
         reports::table.order(reports::id.desc()).load(connection)
-    }
-
-    pub fn paginated(connection: &PgConnection, page: i64) -> QueryResult<Vec<Report>> {
-        reports::table
-            .offset(page * REPORTS_PER_PAGE)
-            .limit(REPORTS_PER_PAGE)
-            .order(reports::id.desc())
-            .load(connection)
-    }
-
-    pub fn pages_total(connection: &PgConnection) -> usize {
-        let mut total = 0;
-        if let Ok(rs) = reports::table.load::<Report>(connection) {
-            total = rs.len() / REPORTS_PER_PAGE as usize + 1;
-        }
-        total
     }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Report> {
@@ -73,6 +57,38 @@ impl Report {
     pub fn delete(connection: &PgConnection, id: i32) -> QueryResult<Report> {
         let report: Report = Self::get(connection, id)?;
         diesel::delete(&report).get_result(connection)
+    }
+
+    pub fn paginated(
+        connection: &PgConnection,
+        page: Option<u8>,
+    ) -> QueryResult<(u8, u8, Vec<Report>)> {
+        let mut page_num = 0;
+        if let Some(p) = page {
+            page_num = p;
+        }
+
+        match Self::all(connection) {
+            Ok(reports) => {
+                let max = reports.len();
+                let total = (max as i64 / REPORTS_PER_PAGE + 1) as u8;
+
+                let mut offset = page_num as usize * REPORTS_PER_PAGE as usize;
+                if offset > max {
+                    offset = max;
+                }
+
+                let mut limit = offset + REPORTS_PER_PAGE as usize;
+                if limit > max {
+                    limit = max;
+                }
+
+                let reports = reports[offset..limit].to_vec();
+
+                Ok((total, page_num, reports))
+            }
+            Err(error) => Err(error),
+        }
     }
 }
 

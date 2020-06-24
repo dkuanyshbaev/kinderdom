@@ -22,7 +22,7 @@ pub struct NewProfile {
     pub en: bool,
 }
 
-#[derive(Serialize, Queryable, Identifiable, Debug)]
+#[derive(Serialize, Queryable, Identifiable, Clone, Debug)]
 pub struct Profile {
     pub id: i32,
     pub name: String,
@@ -36,26 +36,6 @@ pub struct Profile {
 impl Profile {
     pub fn all(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
         profiles::table.order(profiles::id.desc()).load(connection)
-    }
-
-    pub fn published(connection: &PgConnection, page: i64) -> QueryResult<Vec<Profile>> {
-        profiles::table
-            .filter(profiles::published.eq(true))
-            .offset(page * PROFILES_PER_PAGE)
-            .limit(PROFILES_PER_PAGE)
-            .order(profiles::id.desc())
-            .load(connection)
-    }
-
-    pub fn pages_total(connection: &PgConnection) -> usize {
-        let mut total = 0;
-        if let Ok(ps) = profiles::table
-            .filter(profiles::published.eq(true))
-            .load::<Profile>(connection)
-        {
-            total = ps.len() / PROFILES_PER_PAGE as usize + 1;
-        }
-        total
     }
 
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Profile> {
@@ -92,6 +72,45 @@ impl Profile {
         delete_file(&profile.photo);
 
         diesel::delete(&profile).get_result(connection)
+    }
+
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
+        profiles::table
+            .filter(profiles::published.eq(true))
+            .order(profiles::id.desc())
+            .load(connection)
+    }
+
+    pub fn paginated(
+        connection: &PgConnection,
+        page: Option<u8>,
+    ) -> QueryResult<(u8, u8, Vec<Profile>)> {
+        let mut page_num = 0;
+        if let Some(p) = page {
+            page_num = p;
+        }
+
+        match Self::published(connection) {
+            Ok(profiles) => {
+                let max = profiles.len();
+                let total = (max as i64 / PROFILES_PER_PAGE + 1) as u8;
+
+                let mut offset = page_num as usize * PROFILES_PER_PAGE as usize;
+                if offset > max {
+                    offset = max;
+                }
+
+                let mut limit = offset + PROFILES_PER_PAGE as usize;
+                if limit > max {
+                    limit = max;
+                }
+
+                let profiles = profiles[offset..limit].to_vec();
+
+                Ok((total, page_num, profiles))
+            }
+            Err(error) => Err(error),
+        }
     }
 }
 

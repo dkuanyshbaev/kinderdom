@@ -46,23 +46,6 @@ impl Cause {
         causes::table.order(causes::id.desc()).load(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
-        causes::table
-            .filter(causes::published.eq(true))
-            .limit(4)
-            .order(causes::id.desc())
-            .load(connection)
-    }
-
-    pub fn vital(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
-        causes::table
-            .filter(causes::published.eq(true))
-            .filter(causes::vital.eq(true))
-            .limit(3)
-            .order(causes::id.desc())
-            .load(connection)
-    }
-
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Cause> {
         causes::table.find(id).get_result(connection)
     }
@@ -98,6 +81,22 @@ impl Cause {
 
         diesel::delete(&cause).get_result(connection)
     }
+
+    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+        causes::table
+            .filter(causes::published.eq(true))
+            .order(causes::id.desc())
+            .load(connection)
+    }
+
+    pub fn vital(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+        causes::table
+            .filter(causes::published.eq(true))
+            .filter(causes::vital.eq(true))
+            .limit(3)
+            .order(causes::id.desc())
+            .load(connection)
+    }
 }
 
 // we need this custom impl for multipart form
@@ -108,7 +107,7 @@ impl FromDataSimple for NewCause {
         let options = MultipartFormDataOptions::with_multipart_form_data_fields(vec![
             MultipartFormDataField::file("image"),
             MultipartFormDataField::text("name"),
-            MultipartFormDataField::text("need"),
+            MultipartFormDataField::text("needed"),
             MultipartFormDataField::text("collected"),
             MultipartFormDataField::text("location"),
             MultipartFormDataField::text("organisation"),

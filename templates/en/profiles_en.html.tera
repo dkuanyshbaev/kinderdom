@@ -1,4 +1,4 @@
-{% extends "pages/layout" %}
+{% extends "en/layout_en" %}
 
 {% block content %}
 <div class="pagetop">
@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <div class="shelter-team">
                         <div class="row">
-                            {% for profile in profiles -%}
+                            {% for profile in items -%}
                                 <div class="col-4">
                                     <div class="member">
                                         <img src="/static/upload/{{ profile.photo }}" alt="" />
@@ -37,25 +37,15 @@
 
                     <div class="shelter-pagination">
                         <ul class="pagination">
-                            {% if page == 0 %}
-                                <li><a href="/profiles?page={{ page }}"> Назад </a></li>
-                            {% else %}
-                                <li><a href="/profiles?page={{ page - 1 }}"> Назад </a></li>
-                            {% endif %}
-
-                            {% for p in range(start = 1, end = total + 1, step_by = 1) -%}
-                                {% if page + 1 == loop.index %}
-                                    <li><a class="current" href="/profiles?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
-                                {% else %}
-                                    <li><a href="/profiles?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
-                                {% endif %}
-                            {%- endfor %}
-
-                            {% if page + 1 == total %}
-                                <li><a href="/profiles?page={{ page }}"> Дальше</a></li>
-                            {% else %}
-                                <li><a href="/profiles?page={{ page + 1 }}"> Дальше</a></li>
-                            {% endif %}
+                            <li><a href="#" title=""> Назад </a> </li>
+                            <li><a class="current" href="#">1</a></li>
+                            <!--
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            -->
+                            <li> <a href="#" title=""> Дальше</a> </li>
                         </ul>
                     </div>
                 </div>

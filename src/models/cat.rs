@@ -27,6 +27,20 @@ impl Cat {
         cats::table.order(cats::id.asc()).load(connection)
     }
 
+    pub fn ru(connection: &PgConnection) -> QueryResult<Vec<Cat>> {
+        cats::table
+            .filter(cats::en.eq(false))
+            .order(cats::id.asc())
+            .load(connection)
+    }
+
+    pub fn en(connection: &PgConnection) -> QueryResult<Vec<Cat>> {
+        cats::table
+            .filter(cats::en.eq(true))
+            .order(cats::id.asc())
+            .load(connection)
+    }
+
     pub fn get(connection: &PgConnection, id: i32) -> QueryResult<Cat> {
         cats::table.find(id).get_result(connection)
     }

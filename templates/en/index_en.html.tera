@@ -1,0 +1,238 @@
+{% extends "en/layout_en" %}
+
+{% block content %}
+<section>
+    <div class="block full-height">
+        <div class="fixed-bg bg6"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="big-text style2">
+                        <span>Hi! Меняйте мир к лучшему вместе с нами</span>
+                        <h3>Путь к светлому <strong>Будущему</strong></h3>
+                        <p style="color: #f3f3f3">Мы ставим перед собой цель дать возможность детям овладеть современными, необходимыми знаниями на достойном уровне, чтобы каждый ребенок имел возможность реализоваться и добиться успеха, мы стремимся дать шанс каждому</p>
+                        <a class="btn open-popup" href="#" title="">Я хочу помочь</a>
+                    </div><!-- Big Text -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block coloured-bg no-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="shelter-bar">
+                        <h4>Наш девиз - <strong>«Подари тепло детям»</strong>. Присоединяйся прямо сейчас!</h4>
+                        <a class="btn style3" href="/causes" title="">Участвовать</a>
+                    </div><!-- Shelter Bar -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-12">
+                    <h2 class="col-title">Благотворительный Фонд <strong>«Мы и Дети»</strong> был <strong>основан в 2007 году</strong> людьми, не равнодушными к судьбам детей сирот.</h2>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="frame-img"><img src="/static/images/kri.jpg" alt="" /></div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="simple-text">
+                        <h3>Улыбка ребёнка - самая прекрасная вещь на свете!</h3>
+                        <p>«Имея опыт общения с различными людьми, с теми, кому не все равно — становится ясно, «кто с этим должен разбираться?». Ответ — человек. Именно с маленькой буквы. Потому что люди вносят свой вклад в большинстве случаев анонимно. Но пожертвования бывают разные.</p>
+                        <p>В любом случае тот, кто получает эту помощь, он получает ее тоже как человек. И вот в этом видится добро и в то же время попытка ценить то, что у нас есть и чего лишены другие. Чужих детей не бывает.»</p>
+                        <span>Кристина (представитель фонда)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Помоги детям</span>
+                        <h2><i>СРОЧНЫЕ</i> НУЖДЫ</h2>
+                    </div>
+
+                    <div class="creative-causes">
+                        <div class="row">
+                            {% for cause in causes -%}
+                                <div class="col-4">
+                                    <div class="creative-cause">
+                                        <div class="cre-cause-img">
+                                            <img src="/static/upload/{{ cause.image }}" alt="" />
+                                            <span><i>{{ cause.collected }} р.</i> Собрано из {{ cause.needed }}</span>
+                                            <div class="skillbar">
+                                                {% set collected_in_percent = cause.collected / cause.needed * 100 | round  %}
+                                                {% set width = collected_in_percent %}
+                                                {% if width < 7 %}
+                                                    {% set width = 7 %}
+                                                {% endif %}
+                                                <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
+                                            </div>
+                                            <a class="btn open-cause-popup" href="#" title="{{ cause.name }}">Помочь</a>
+                                        </div>
+                                        <div class="cause-loc"><span>{{ cause.organisation }}</span> <span>{{ cause.location }}</span></div>
+                                        <h3><a href="/causes/{{ cause.id }}" id="cause_name">{{ cause.name }}</a></h3>
+                                    </div><!-- Creative Cause -->
+                                </div>
+                            {%- endfor %}
+                        </div>
+                    </div><!-- Creative Causes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block no-padding dark">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="shelter-video">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="video-text">
+                                <h3>Проект БФ «Мы и Дети»: <br><strong>ДОРОГА ДОМОЙ</strong></h3>
+                                <p>В рамках проекта выходят в эфир и выкладываются в интернет-сети видео-портреты детей сирот, которым присвоен статус «на опеку и усыновление», а также интервью и сюжеты о работе специалистов, работающих в сфере образования, охраны материнства и детства - сотрудников органов опеки, экспертов в сфере детской психологии и семейного устройства.</p>
+                                <a class="btn" href="/profiles">Узнать больше</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="video-img"><img src="/static/images/video.jpg" alt="" /></div>
+                        </div>
+                    </div>
+                    <a class="round-icon-btn" href="https://www.youtube.com/channel/UCJZFYjS5stQIGQQQdmACEcg" target="_blank"><i class="ion-ios-play-outline"></i></a>
+                </div><!-- Shelter Video -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>ПРОТЯНИ РУКУ ПОМОЩИ</span>
+                        <h2><i>НОВОСТИ И</i> СОБЫТИЯ</h2>
+                    </div>
+
+                    <div class="shelter-blog">
+                        <div class="row">
+                            {% for event in events -%}
+                            <div class="col">
+                                <div class="simple-post">
+                                    <div class="simple-post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
+                                    <div class="simple-post-detail">
+                                        <ul class="meta">
+                                            <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                        </ul>
+                                        <h3><a href="/events/{{ event.id }}">{{ event.title }}</a></h3>
+                                        <p>{{ event.lead }}</p>
+                                        <a class="readmore" href="/events/{{ event.id }}">Подробности</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {%- endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block blackish">
+        <div class="fixed-bg bg2"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12">
+                    <div class="simple-parallax">
+                        <h3>Давайте вместе сделаем наш мир лучше</h3>
+                        <p>Мы уже сняли немало видеоанкет детей-сирот, но нужно снять еще больше. Каждое пожертвование даёт шанс еще одному ребенку-сироте обрести семью.</p>
+                        <a class="btn open-popup" href="#" title="">Помочь проекту</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <span>Дети обретают семью</span>
+                        <h2><i>ИСТОРИИ</i> УСПЕХА</h2>
+                    </div>
+
+                    <div class="recent-causes">
+                        <div class="causes-carousel">
+                            {% for event in stories -%}
+                                <div class="cause-img">
+                                    <div class="cause-bg"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
+                                    <div class="cause-inner">
+                                        <img src="/static/upload/{{ event.cover }}" alt="" />
+                                        <div class="cause-text">
+                                            <span>ДЕТИ ОБРЕТАЮТ СЕМЬЮ</span>
+                                            <h4><i>{{ event.title }}</i></h4>
+                                            <p>{{ event.lead }}</p>
+                                            <a class="btn small" href="/events/{{ event.id }}">Подробности</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endfor %}
+                        </div>
+                        <div class="creative-navs">
+                            <span class="slick-current">01</span><span>02</span><span>03</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="block less-space gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="shelter-logos">
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

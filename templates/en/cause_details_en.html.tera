@@ -1,7 +1,7 @@
-{% extends "pages/layout" %}
+{% extends "en/layout_en" %}
 
 {% block content %}
-{% set cause_id = cause.id  %}
+{% set cause_id = item.id  %}
 <div class="pagetop">
     <div class="container">
         <h1><i>СБОР</i> СРЕДСТВ</h1>
@@ -21,36 +21,36 @@
                 <div class="col-lg-9 col-md-12">
                     <div class="shelter-blog-detail cause-detail">
                         <div class="cre-cause-img">
-                            <img src="/static/upload/{{ cause.image }}" alt="cause image" />
-                            <span><i>{{ cause.collected }} р.</i> Собрано из {{ cause.needed }}</span>
+                            <img src="/static/upload/{{ item.image }}" alt="cause image" />
+                            <span><i>{{ item.collected }} р.</i> Собрано из {{ item.needed }}</span>
                             <div class="skillbar">
-                                {% set collected_in_percent = cause.collected / cause.needed * 100 | round  %}
+                                {% set collected_in_percent = item.collected / item.needed * 100 | round  %}
                                 {% set width = collected_in_percent %}
                                 {% if width < 5 %}{% set width = 5 %}{% endif %}
                                 <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
                             </div>
-                            <a class="btn style3 open-cause-popup" href="#" title="{{ cause.name }}">Я хочу помочь</a>
+                            <a class="btn style3 open-cause-popup" href="#" title="{{ item.name }}">Я хочу помочь</a>
                         </div>
                         <div class="post-information">
-                            <h1 class="post-title">{{ cause.name }}</h1>
+                            <h1 class="post-title">{{ item.name }}</h1>
                             <ul class="meta">
-                                <li><strong>{{ cause.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                <li><strong>{{ item.created_at | date(format="%d.%m.%Y") }}</strong></li>
                             </ul>
                         </div>
-                        <p>{{ cause.description | safe }}</p>
+                        <p>{{ item.description | safe }}</p>
                     </div><!-- Shelter Blog Detail -->
                 </div>
 
                 <aside class="col-lg-3 col-md-12 sidebar">
                     <div class="widget">
                         <div class="widget-title"><h4>СРОЧНЫЕ НУЖДЫ</h4></div>
-                        {% for cause in vitals -%}
-                            {% if cause_id != cause.id %}
+                        {% for item in items -%}
+                            {% if cause_id != item.id %}
                                 <div class="urgent-need bottom_space">
-                                    <img src="/static/upload/{{ cause.image }}" alt="cause image" />
+                                    <img src="/static/upload/{{ item.image }}" alt="cause image" />
                                     <div class="urgent-text">
-                                        <h3>{{ cause.name }}</h3>
-                                        <a class="btn small" href="/causes/{{ cause.id }}">Подробности</a>
+                                        <h3>{{ item.name }}</h3>
+                                        <a class="btn small" href="/causes/{{ item.id }}">Подробности</a>
                                     </div>
                                 </div>
                             {% endif %}

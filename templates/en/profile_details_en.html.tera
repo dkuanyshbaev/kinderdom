@@ -1,4 +1,4 @@
-{% extends "pages/layout" %}
+{% extends "en/layout_en" %}
 
 {% block content %}
 <div class="pagetop">
@@ -19,11 +19,11 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12">
                     <div class="shelter-blog-detail event-detail">
-                        <div class="post-img"><img src="/static/upload/{{ profile.photo }}" alt="" /></div>
+                        <div class="post-img"><img src="/static/upload/{{ item.photo }}" alt="" /></div>
                         <div class="post-information">
-                            <h1 class="post-title">{{ profile.name }}</h1>
+                            <h1 class="post-title">{{ item.name }}</h1>
                             <ul class="meta">
-                                <li><strong>{{ profile.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                <li><strong>{{ item.created_at | date(format="%d.%m.%Y") }}</strong></li>
                             </ul>
                         </div>
                         <!--
@@ -33,19 +33,19 @@
                             </div>
                         </div>
                         -->
-                        <p>{{ profile.description | safe }}</p>
+                        <p>{{ item.description | safe }}</p>
                     </div>
                 </div>
 
                 <aside class="col-lg-3 col-md-12 sidebar">
                     <div class="widget">
                         <div class="widget-title"><h4>СРОЧНЫЕ НУЖДЫ</h4></div>
-                        {% for cause in vitals -%}
+                        {% for item in items -%}
                             <div class="urgent-need bottom_space">
-                                <img src="/static/upload/{{ cause.image }}" alt="cause image" />
+                                <img src="/static/upload/{{ item.image }}" alt="cause image" />
                                 <div class="urgent-text">
-                                    <h3>{{ cause.name }}</h3>
-                                    <a class="btn small" href="/causes/{{ cause.id }}">Подробности</a>
+                                    <h3>{{ item.name }}</h3>
+                                    <a class="btn small" href="/causes/{{ item.id }}">Подробности</a>
                                 </div>
                             </div>
                         {%- endfor %}

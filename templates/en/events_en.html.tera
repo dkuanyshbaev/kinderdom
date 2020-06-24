@@ -3,10 +3,10 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>РЕЗУЛЬТАТЫ</i> ПОИСКА</h1>
+        <h1><i>СОБЫТИЯ</i> ФОНДА</h1>
         <ul class="breadcrumbs">
             <li><a href="/" title="">Главная</a></li>
-            <li>Результаты</li>
+            <li>События</li>
         </ul>
     </div>
 </div>
@@ -35,6 +35,30 @@
                                 </div>
                             {%- endfor %}
                         </div>
+                    </div>
+
+                    <div class="shelter-pagination">
+                        <ul class="pagination">
+                            {% if page == 0 %}
+                                <li><a href="/events?page={{ page }}&cat={{ cat }}"> Назад </a></li>
+                            {% else %}
+                                <li><a href="/events?page={{ page - 1 }}&cat={{ cat }}"> Назад </a></li>
+                            {% endif %}
+
+                            {% for p in range(start = 1, end = total + 1, step_by = 1) -%}
+                                {% if page + 1 == loop.index %}
+                                    <li><a class="current" href="/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
+                                {% else %}
+                                    <li><a href="/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
+                                {% endif %}
+                            {%- endfor %}
+
+                            {% if page + 1 == total %}
+                                <li><a href="/events?page={{ page }}&cat={{ cat }}"> Дальше</a></li>
+                            {% else %}
+                                <li><a href="/events?page={{ page + 1 }}&cat={{ cat }}"> Дальше</a></li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
             </div>

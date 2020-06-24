@@ -20,9 +20,6 @@ use rocket_contrib::templates::Template;
 use uuid::Uuid;
 
 #[derive(Serialize)]
-pub struct NoContext {}
-
-#[derive(Serialize)]
 pub struct IndexContext {
     causes: Vec<Cause>,
     events: Vec<Event>,
@@ -37,49 +34,63 @@ pub struct EventsContext {
     events: Vec<Event>,
 }
 
-// ---------------------------------------------
-
-// causes, search
 #[derive(Serialize)]
-pub struct ListContext<T> {
-    items: Vec<T>,
+pub struct EventContext {
+    cats: Vec<Cat>,
+    event: Event,
+    causes: Vec<Cause>,
 }
 
 #[derive(Serialize)]
-pub struct EventContext<T, U, C> {
-    cats: Vec<C>,
-    item: U,
-    items: Vec<T>,
+pub struct CausesContext {
+    causes: Vec<Cause>,
 }
 
-// profiles, reports
 #[derive(Serialize)]
-pub struct PageContext<T, U, P> {
-    total: U,
-    page: P,
-    items: Vec<T>,
+pub struct CauseContext {
+    cause: Cause,
+    vitals: Vec<Cause>,
 }
 
-// cause_details, profile_details
 #[derive(Serialize)]
-pub struct ComplexContext<T, U> {
-    item: U,
-    items: Vec<T>,
+pub struct ProfilesContext {
+    total: u8,
+    page: u8,
+    profiles: Vec<Profile>,
 }
 
-// ---------------------------------------------
+#[derive(Serialize)]
+pub struct ProfileContext {
+    profile: Profile,
+    vitals: Vec<Cause>,
+}
+
+#[derive(Serialize)]
+pub struct ReportsContext {
+    total: u8,
+    page: u8,
+    reports: Vec<Report>,
+}
+
+#[derive(Serialize)]
+pub struct NoContext {}
+
+#[derive(Serialize)]
+pub struct SearchContext {
+    events: Vec<Event>,
+}
 
 #[get("/")]
 pub fn index(connection: Db) -> KinderResult<Template> {
-    let vitals = Cause::vital(&connection)?;
-    let (last, stories) = Event::last(&connection)?;
+    let causes = Cause::vital(&connection)?;
+    let (events, stories) = Event::last(&connection)?;
 
     Ok(Template::render(
         "pages/index",
         IndexContext {
-            causes: vitals,
-            events: last,
-            stories: stories,
+            causes,
+            events,
+            stories,
         },
     ))
 }
@@ -104,9 +115,9 @@ pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/event_details",
         EventContext {
-            cats: Cat::all(&connection)?,
-            item: Event::get(&connection, id)?,
-            items: Cause::vital(&connection)?,
+            cats: Cat::ru(&connection)?,
+            event: Event::get(&connection, id)?,
+            causes: Cause::vital(&connection)?,
         },
     ))
 }
@@ -115,8 +126,8 @@ pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
 pub fn causes(connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/causes",
-        ListContext {
-            items: Cause::published(&connection)?,
+        CausesContext {
+            causes: Cause::published(&connection)?,
         },
     ))
 }
@@ -125,29 +136,23 @@ pub fn causes(connection: Db) -> KinderResult<Template> {
 pub fn cause_details(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/cause_details",
-        ComplexContext {
-            item: Cause::get(&connection, id)?,
-            items: Cause::vital(&connection)?,
+        CauseContext {
+            cause: Cause::get(&connection, id)?,
+            vitals: Cause::vital(&connection)?,
         },
     ))
 }
 
 #[get("/profiles?<page>")]
-pub fn profiles(connection: Db, page: Option<i64>) -> KinderResult<Template> {
-    let mut page_num = 0;
-    if let Some(p) = page {
-        if p > 0 {
-            page_num = p;
-        }
-    }
+pub fn profiles(connection: Db, page: Option<u8>) -> KinderResult<Template> {
+    let (total, page, profiles) = Profile::paginated(&connection, page)?;
 
     Ok(Template::render(
         "pages/profiles",
-        PageContext {
-            // this is for pagination; tera can't iterate on range
-            total: vec![0; Profile::pages_total(&connection)],
-            page: page_num,
-            items: Profile::published(&connection, page_num)?,
+        ProfilesContext {
+            total,
+            page,
+            profiles,
         },
     ))
 }
@@ -156,29 +161,23 @@ pub fn profiles(connection: Db, page: Option<i64>) -> KinderResult<Template> {
 pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/profile_details",
-        ComplexContext {
-            item: Profile::get(&connection, id)?,
-            items: Cause::vital(&connection)?,
+        ProfileContext {
+            profile: Profile::get(&connection, id)?,
+            vitals: Cause::vital(&connection)?,
         },
     ))
 }
 
 #[get("/reports?<page>")]
-pub fn reports(connection: Db, page: Option<i64>) -> KinderResult<Template> {
-    let mut page_num = 0;
-    if let Some(p) = page {
-        if p > 0 {
-            page_num = p;
-        }
-    }
+pub fn reports(connection: Db, page: Option<u8>) -> KinderResult<Template> {
+    let (total, page, reports) = Report::paginated(&connection, page)?;
 
     Ok(Template::render(
         "pages/reports",
-        PageContext {
-            // this is for pagination; tera can't iterate on range
-            total: vec![0; Report::pages_total(&connection)],
-            page: page_num,
-            items: Report::paginated(&connection, page_num)?,
+        ReportsContext {
+            total,
+            page,
+            reports,
         },
     ))
 }
@@ -192,8 +191,8 @@ pub fn about() -> Template {
 pub fn search(connection: Db, search_form: Form<SearchForm>) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/results",
-        ListContext {
-            items: Event::search(&connection, search_form.term.to_owned())?,
+        SearchContext {
+            events: Event::search(&connection, search_form.term.to_owned())?,
         },
     ))
 }

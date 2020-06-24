@@ -1,4 +1,4 @@
-{% extends "pages/layout" %}
+{% extends "en/layout_en" %}
 
 {% block content %}
 <div class="pagetop">
@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="shelter-blog">
                         <div class="row">
-                            {% for event in events -%}
+                            {% for event in items -%}
                                 <div class="col-4">
                                     <div class="simple-post">
                                         <div class="simple-post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>

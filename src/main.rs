@@ -14,7 +14,7 @@ extern crate rocket_multipart_form_data;
 use config::Config;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
-use views::{admin, pages};
+use views::{admin, en, pages};
 
 mod auth;
 mod config;
@@ -52,6 +52,23 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::admin,
                 pages::payment,
                 pages::thankyou,
+            ],
+        )
+        .mount(
+            "/en",
+            routes![
+                en::index_en,
+                // pages::events,
+                // pages::event_details,
+                // pages::causes,
+                // pages::cause_details,
+                // pages::profiles,
+                // pages::profile_details,
+                // pages::reports,
+                // pages::about,
+                // pages::search,
+                // pages::payment,
+                // pages::thankyou,
             ],
         )
         .mount(
@@ -126,7 +143,6 @@ fn main() {
     println!("Launch failed: {}", error);
 }
 
-// TODO: write the actual tests
 #[cfg(test)]
 mod test {
     use super::{rocket, Config};
