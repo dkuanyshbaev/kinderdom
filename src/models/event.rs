@@ -167,7 +167,7 @@ impl Event {
     pub fn search(connection: &PgConnection, term: String) -> QueryResult<Vec<Event>> {
         sql_query(format!(
             "select * from events
-            where to_tsvector(title) || to_tsvector(content)
+            where published is true and to_tsvector(title) || to_tsvector(content)
             @@ plainto_tsquery('{}') order by id desc",
             sql_lexer::sanitize_string(term)
         ))
