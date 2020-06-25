@@ -14,7 +14,7 @@ extern crate rocket_multipart_form_data;
 use config::Config;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
-use views::{admin, en, pages};
+use views::{admin, catchers, en, login, pages};
 
 mod auth;
 mod config;
@@ -46,10 +46,6 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::reports,
                 pages::about,
                 pages::search,
-                pages::login_page,
-                pages::login,
-                pages::logout,
-                pages::admin,
                 pages::payment,
                 pages::thankyou,
             ],
@@ -70,6 +66,10 @@ fn rocket(config: Config) -> rocket::Rocket {
                 // pages::payment,
                 // pages::thankyou,
             ],
+        )
+        .mount(
+            "/",
+            routes![login::login_page, login::login, login::logout, login::admin],
         )
         .mount(
             "/admin/profiles",
@@ -127,10 +127,10 @@ fn rocket(config: Config) -> rocket::Rocket {
             ],
         )
         .register(catchers![
-            pages::not_found,
-            pages::unauthorized,
-            pages::unprocessable,
-            pages::internal_error
+            catchers::not_found,
+            catchers::unauthorized,
+            catchers::unprocessable,
+            catchers::internal_error
         ])
 }
 

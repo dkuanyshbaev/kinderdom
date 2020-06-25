@@ -1,4 +1,3 @@
-use crate::auth::{Admin, LoginForm};
 use crate::models::cat::Cat;
 use crate::models::cause::Cause;
 use crate::models::event::Event;
@@ -12,7 +11,6 @@ use crate::{Config, Db, KinderResult};
 use base64::encode;
 use reqwest::header::AUTHORIZATION;
 use reqwest::StatusCode;
-use rocket::http::{Cookie, Cookies};
 use rocket::request::Form;
 use rocket::response::Redirect;
 use rocket::State;
@@ -197,38 +195,6 @@ pub fn search(connection: Db, search_form: Form<SearchForm>) -> KinderResult<Tem
     ))
 }
 
-#[get("/admin")]
-pub fn admin(_admin: Admin) -> Redirect {
-    Redirect::to("/admin/events")
-}
-
-#[get("/login")]
-pub fn login_page() -> Template {
-    Template::render("pages/login", NoContext {})
-}
-
-#[post("/login", data = "<login_form>")]
-pub fn login(
-    mut cookies: Cookies,
-    config: State<Config>,
-    login_form: Form<LoginForm>,
-) -> KinderResult<Redirect> {
-    if login_form.password == config.secret {
-        cookies.add_private(Cookie::new("admin", 1.to_string()));
-
-        Ok(Redirect::to("/admin"))
-    } else {
-        Ok(Redirect::to("/login"))
-    }
-}
-
-#[get("/logout")]
-pub fn logout(mut cookies: Cookies) -> Redirect {
-    cookies.remove_private(Cookie::named("admin"));
-
-    Redirect::to("/login")
-}
-
 #[post("/payment", data = "<payment_form>")]
 pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> KinderResult<Redirect> {
     let idempotence_key = Uuid::new_v4();
@@ -279,24 +245,4 @@ pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> Kinder
 #[get("/thankyou")]
 pub fn thankyou() -> Template {
     Template::render("pages/thankyou", NoContext {})
-}
-
-#[catch(500)]
-pub fn internal_error() -> Template {
-    Template::render("pages/500", NoContext {})
-}
-
-#[catch(404)]
-pub fn not_found() -> Template {
-    Template::render("pages/404", NoContext {})
-}
-
-#[catch(401)]
-pub fn unauthorized() -> Redirect {
-    Redirect::to("/login")
-}
-
-#[catch(422)]
-pub fn unprocessable() -> Redirect {
-    Redirect::to("/")
 }
