@@ -15,6 +15,15 @@
             <input type="text" class="form-control" id="description" name="description" value="{{ item.description }}">
         </div>
 
+        <div class="form-group form-check">
+            {% if item.en %}
+                <input type="checkbox" class="form-check-input" id="en" name="en" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="en" name="en">
+            {% endif %}
+            <label class="form-check-label" for="en">Для английской версии</label>
+        </div>
+
         <button type="submit" class="btn btn-info">Сохранить</button>
 
         <a href="/admin/reports" class="btn btn-dark">Отмена</a>

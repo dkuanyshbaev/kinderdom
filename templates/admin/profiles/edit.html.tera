@@ -24,6 +24,15 @@
         </div>
 
         <div class="form-group form-check">
+            {% if item.en %}
+                <input type="checkbox" class="form-check-input" id="en" name="en" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="en" name="en">
+            {% endif %}
+            <label class="form-check-label" for="en">Для английской версии</label>
+        </div>
+
+        <div class="form-group form-check">
             {% if item.published %}
                 <input type="checkbox" class="form-check-input" id="published" name="published" checked>
             {% else %}
