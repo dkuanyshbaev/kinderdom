@@ -1,1 +1,26 @@
-<h1>thank you!</h1>
+{% extends "pages/layout" %}
+        <h1><i>FAQ'S</i> PAGE</h1>
+
+{% block content %}
+<div class="pagetop">
+    <div class="container">
+        <h1><i>СПАСИБО!</i></h1>
+        <ul class="breadcrumbs">
+            <li><a href="/">На главную</a></li>
+        </ul>
+    </div>
+</div>
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12">
+                    <h2>Благодарим за помощь!</h2>
+                    <p>Мы уже сняли немало видеоанкет детей-сирот, но нужно снять еще больше. Каждое пожертвование даёт шанс еще одному ребенку-сироте обрести семью.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
