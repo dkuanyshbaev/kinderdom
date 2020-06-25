@@ -129,7 +129,8 @@ fn rocket(config: Config) -> rocket::Rocket {
         .register(catchers![
             pages::not_found,
             pages::unauthorized,
-            pages::unprocessable
+            pages::unprocessable,
+            pages::internal_error
         ])
 }
 

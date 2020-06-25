@@ -1,0 +1,25 @@
+{% extends "pages/layout" %}
+
+{% block content %}
+<div class="pagetop">
+    <div class="container">
+        <h1><i>ОШИБКА!</i></h1>
+        <ul class="breadcrumbs">
+            <li><a href="/">На главную</a></li>
+        </ul>
+    </div>
+</div>
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12">
+                    <h1>500. ОШИБКА СЕРВЕРА</h1>
+                    <p>Что-то непредвиденное случилось</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

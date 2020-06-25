@@ -281,6 +281,11 @@ pub fn thankyou() -> Template {
     Template::render("pages/thankyou", NoContext {})
 }
 
+#[catch(500)]
+pub fn internal_error() -> Template {
+    Template::render("pages/500", NoContext {})
+}
+
 #[catch(404)]
 pub fn not_found() -> Template {
     Template::render("pages/404", NoContext {})
