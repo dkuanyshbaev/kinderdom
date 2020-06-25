@@ -1,5 +1,4 @@
 {% extends "pages/layout" %}
-        <h1><i>FAQ'S</i> PAGE</h1>
 
 {% block content %}
 <div class="pagetop">
