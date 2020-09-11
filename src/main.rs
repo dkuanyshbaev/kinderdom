@@ -48,6 +48,7 @@ fn rocket(config: Config) -> rocket::Rocket {
                 pages::search,
                 pages::payment,
                 pages::thankyou,
+                pages::paylink,
             ],
         )
         .mount(

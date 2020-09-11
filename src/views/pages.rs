@@ -65,8 +65,8 @@ pub struct ProfileContext {
 
 #[derive(Serialize)]
 pub struct ReportsContext {
-    total: u8,
-    page: u8,
+    // total: u8,
+    // page: u8,
     reports: Vec<Report>,
 }
 
@@ -166,18 +166,27 @@ pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
     ))
 }
 
-#[get("/reports?<page>")]
-pub fn reports(connection: Db, page: Option<u8>) -> KinderResult<Template> {
-    let (total, page, reports) = Report::paginated(&connection, page)?;
-
+// #[get("/reports?<page>")]
+// pub fn reports(connection: Db, page: Option<u8>) -> KinderResult<Template> {
+#[get("/reports")]
+pub fn reports(connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/reports",
         ReportsContext {
-            total,
-            page,
-            reports,
+            reports: Report::all(&connection)?,
         },
     ))
+
+    // let (total, page, reports) = Report::paginated(&connection, page)?;
+    //
+    // Ok(Template::render(
+    //     "pages/reports",
+    //     ReportsContext {
+    //         total,
+    //         page,
+    //         reports,
+    //     },
+    // ))
 }
 
 #[get("/about")]
@@ -245,4 +254,9 @@ pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> Kinder
 #[get("/thankyou")]
 pub fn thankyou() -> Template {
     Template::render("pages/thankyou", NoContext {})
+}
+
+#[get("/paylink")]
+pub fn paylink() -> Template {
+    Template::render("pages/paylink", NoContext {})
 }

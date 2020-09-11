@@ -37,29 +37,6 @@
                         </div>
                     </div><!-- Shelter Events -->
 
-                    <div class="shelter-pagination">
-                        <ul class="pagination">
-                            {% if page == 0 %}
-                                <li><a href="/reports?page={{ page }}"> Назад </a></li>
-                            {% else %}
-                                <li><a href="/reports?page={{ page - 1 }}"> Назад </a></li>
-                            {% endif %}
-
-                            {% for p in range(start = 1, end = total + 1, step_by = 1) -%}
-                                {% if page + 1 == loop.index %}
-                                    <li><a class="current" href="/reports?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
-                                {% else %}
-                                    <li><a href="/reports?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
-                                {% endif %}
-                            {%- endfor %}
-
-                            {% if page + 1 == total %}
-                                <li><a href="/reports?page={{ page }}"> Дальше</a></li>
-                            {% else %}
-                                <li><a href="/reports?page={{ page + 1 }}"> Дальше</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
