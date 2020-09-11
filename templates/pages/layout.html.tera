@@ -40,7 +40,7 @@
             <div class="row align-items-center">
                 <div class="col-3">
                     <div class="logo">
-                        <a href="/" title=""><img src="/static/images/logo.png" alt="Kinderdom" /></a>
+                        <a href="/" title=""><img src="/static/images/logo_white.svg" style="max-width:57%" alt="Kinderdom" /></a>
                     </div>
                 </div>
                 <div class="col-6">
@@ -49,7 +49,7 @@
                             <li><a href="/" title="">Главная</a></li>
                             <li><a href="/events" title="">События</a></li>
                             <li><a href="/causes" title="">Цели</a></li>
-                            <li><a href="/profiles" title="">Анкеты</a></li>
+                            <!-- <li><a href="/profiles" title="">Анкеты</a></li> -->
                             <li><a href="/reports" title="">Отчёты</a></li>
                             <li><a href="/about" title="">О фонде</a></li>
                         </ul>
@@ -83,7 +83,7 @@
                         <li><a href="/" title="">Главная</a></li>
                         <li><a href="/events" title="">События</a></li>
                         <li><a href="/causes" title="">Цели</a></li>
-                        <li><a href="/profiles" title="">Анкеты</a></li>
+                        <!-- <li><a href="/profiles" title="">Анкеты</a></li> -->
                         <li><a href="/reports" title="">Отчёты</a></li>
                         <li><a href="/about" title="">О фонде</a></li>
                         <li class="lang_mobi">
@@ -104,7 +104,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="widget">
                                 <div class="about-widget">
-                                    <div class="logo"><a href="/" title=""><img src="/static/images/logo2.png" alt="" /></a></div>
+                                    <div class="logo"><a href="/" title=""><img src="/static/images/logo_white.svg" alt="" /></a></div>
                                     <p>Права на фото- и иные материалы принадлежат авторам. Любое размещение материалов на сторонних ресурсах необходимо согласовывать.</p>
                                 </div><!-- About Widget -->
                             </div>
@@ -116,7 +116,7 @@
                                     <li><a href="/">Главная</a></li>
                                     <li><a href="/events">События</a></li>
                                     <li><a href="/causes">Цели</a></li>
-                                    <li><a href="/profiles">Анкеты</a></li>
+                                    <!-- <li><a href="/profiles">Анкеты</a></li> -->
                                     <li><a href="/reports">Отчеты</a></li>
                                     <li><a href="/about">О фонде</a></li>
                                 </ul>
