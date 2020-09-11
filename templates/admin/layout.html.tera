@@ -62,8 +62,8 @@
                     height: 200,
                     toolbar: [
                         ['style', ['style']],
-                        ['font', ['bold', 'italic', 'underline', 'clear']],
-                        ['fontsize', ['fontsize']],
+                        // ['font', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['italic', 'underline', 'clear']],
                         ['height', ['height']],
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],

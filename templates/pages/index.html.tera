@@ -225,12 +225,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="shelter-logos">
-                        <li><a href="#" title=""><img src="/static/images/donors/01.png" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="/static/images/donors/02.png" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="/static/images/donors/04.png" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="/static/images/donors/03.png" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="/static/images/donors/05.png" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="/static/images/donors/06.png" alt="" /></a></li>
+                        <li><img src="/static/images/donors/01.png" alt="" /></li>
+                        <li><img src="/static/images/donors/02.png" alt="" /></li>
+                        <li><img src="/static/images/donors/04.png" alt="" /></li>
+                        <li><img src="/static/images/donors/03.png" alt="" /></li>
+                        <li><img src="/static/images/donors/05.png" alt="" /></li>
+                        <li><img src="/static/images/donors/06.png" alt="" /></li>
                     </ul>
                 </div>
             </div>
