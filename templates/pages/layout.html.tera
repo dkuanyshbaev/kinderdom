@@ -58,7 +58,8 @@
                 <div class="col-3">
                     <div class="lang_txt">
                         <!-- <a href="/" title=""><img src="/static/images/uk.png" alt="ENG" /></a> -->
-                        <a href="/en"><b>EN</b></a>
+                        <!-- <a href="/en"><b>EN</b></a> -->
+                        <a href="#"><b>EN</b></a>
                     </div>
 
                     <div class="social-btns">
@@ -88,7 +89,8 @@
                         <li><a href="/about" title="">О фонде</a></li>
                         <li class="lang_mobi">
                             <!-- <a href="/" title=""><img src="static/images/uk.png" alt="ENG" /></a> -->
-                            <a href="/en"><b>EN</b></a>
+                            <!-- <a href="/en"><b>EN</b></a> -->
+                            <a href="#"><b>EN</b></a>
                         </li>
                     </ul>
                 </div>
