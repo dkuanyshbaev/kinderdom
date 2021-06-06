@@ -80,8 +80,8 @@ pub struct SearchContext {
 
 #[get("/")]
 pub fn index(connection: Db) -> KinderResult<Template> {
-    let causes = Cause::vital(&connection)?;
-    let (events, stories) = Event::last(&connection)?;
+    let causes = Cause::vital(&connection, false)?;
+    let (events, stories) = Event::last(&connection, false)?;
 
     Ok(Template::render(
         "pages/index",
@@ -95,7 +95,7 @@ pub fn index(connection: Db) -> KinderResult<Template> {
 
 #[get("/events?<page>&<cat>")]
 pub fn events(connection: Db, page: Option<u8>, cat: Option<u8>) -> KinderResult<Template> {
-    let (total, page, cat, events) = Event::paginated_by_cat(&connection, page, cat)?;
+    let (total, page, cat, events) = Event::paginated_by_cat(&connection, page, cat, false)?;
 
     Ok(Template::render(
         "pages/events",
@@ -115,7 +115,7 @@ pub fn event_details(connection: Db, id: i32) -> KinderResult<Template> {
         EventContext {
             cats: Cat::ru(&connection)?,
             event: Event::get(&connection, id)?,
-            causes: Cause::vital(&connection)?,
+            causes: Cause::vital(&connection, false)?,
         },
     ))
 }
@@ -125,7 +125,7 @@ pub fn causes(connection: Db) -> KinderResult<Template> {
     Ok(Template::render(
         "pages/causes",
         CausesContext {
-            causes: Cause::published(&connection)?,
+            causes: Cause::published(&connection, false)?,
         },
     ))
 }
@@ -136,14 +136,14 @@ pub fn cause_details(connection: Db, id: i32) -> KinderResult<Template> {
         "pages/cause_details",
         CauseContext {
             cause: Cause::get(&connection, id)?,
-            vitals: Cause::vital(&connection)?,
+            vitals: Cause::vital(&connection, false)?,
         },
     ))
 }
 
 #[get("/profiles?<page>")]
 pub fn profiles(connection: Db, page: Option<u8>) -> KinderResult<Template> {
-    let (total, page, profiles) = Profile::paginated(&connection, page)?;
+    let (total, page, profiles) = Profile::paginated(&connection, page, false)?;
 
     Ok(Template::render(
         "pages/profiles",
@@ -161,7 +161,7 @@ pub fn profile_details(connection: Db, id: i32) -> KinderResult<Template> {
         "pages/profile_details",
         ProfileContext {
             profile: Profile::get(&connection, id)?,
-            vitals: Cause::vital(&connection)?,
+            vitals: Cause::vital(&connection, false)?,
         },
     ))
 }

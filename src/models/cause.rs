@@ -82,17 +82,19 @@ impl Cause {
         diesel::delete(&cause).get_result(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+    pub fn published(connection: &PgConnection, en: bool) -> QueryResult<Vec<Cause>> {
         causes::table
             .filter(causes::published.eq(true))
+            .filter(causes::en.eq(en))
             .order(causes::id.desc())
             .load(connection)
     }
 
-    pub fn vital(connection: &PgConnection) -> QueryResult<Vec<Cause>> {
+    pub fn vital(connection: &PgConnection, en: bool) -> QueryResult<Vec<Cause>> {
         causes::table
             .filter(causes::published.eq(true))
             .filter(causes::vital.eq(true))
+            .filter(causes::en.eq(en))
             .limit(3)
             .order(causes::id.desc())
             .load(connection)

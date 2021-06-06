@@ -74,9 +74,10 @@ impl Profile {
         diesel::delete(&profile).get_result(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Profile>> {
+    pub fn published(connection: &PgConnection, en: bool) -> QueryResult<Vec<Profile>> {
         profiles::table
             .filter(profiles::published.eq(true))
+            .filter(profiles::en.eq(en))
             .order(profiles::id.desc())
             .load(connection)
     }
@@ -84,13 +85,14 @@ impl Profile {
     pub fn paginated(
         connection: &PgConnection,
         page: Option<u8>,
+        en: bool,
     ) -> QueryResult<(u8, u8, Vec<Profile>)> {
         let mut page_num = 0;
         if let Some(p) = page {
             page_num = p;
         }
 
-        match Self::published(connection) {
+        match Self::published(connection, en) {
             Ok(profiles) => {
                 let max = profiles.len();
                 let total = (max as i64 / PROFILES_PER_PAGE + 1) as u8;

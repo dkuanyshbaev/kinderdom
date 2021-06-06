@@ -80,9 +80,10 @@ impl Event {
         diesel::delete(&event).get_result(connection)
     }
 
-    pub fn published(connection: &PgConnection) -> QueryResult<Vec<Event>> {
+    pub fn published(connection: &PgConnection, en: bool) -> QueryResult<Vec<Event>> {
         events::table
             .filter(events::published.eq(true))
+            .filter(events::en.eq(en))
             .order(events::id.desc())
             .load(connection)
     }
@@ -91,6 +92,7 @@ impl Event {
         connection: &PgConnection,
         page: Option<u8>,
         cat: Option<u8>,
+        en: bool,
     ) -> QueryResult<(u8, u8, u8, Vec<Event>)> {
         let mut cat_num = 0;
         if let Some(c) = cat {
@@ -102,7 +104,7 @@ impl Event {
             page_num = p;
         }
 
-        match Self::published(connection) {
+        match Self::published(connection, en) {
             Ok(mut events) => {
                 if cat_num != 0 {
                     events.retain(|e| e.cat_id == cat_num as i32);
@@ -129,12 +131,12 @@ impl Event {
         }
     }
 
-    pub fn last(connection: &PgConnection) -> QueryResult<(Vec<Event>, Vec<Event>)> {
+    pub fn last(connection: &PgConnection, en: bool) -> QueryResult<(Vec<Event>, Vec<Event>)> {
         let cat = cats::table
             .filter(cats::name.eq("Истории успеха"))
             .first::<Cat>(connection)?;
 
-        match Self::published(connection) {
+        match Self::published(connection, en) {
             Ok(events) => {
                 let mut last: Vec<Event> = vec![];
                 let mut stories: Vec<Event> = vec![];
