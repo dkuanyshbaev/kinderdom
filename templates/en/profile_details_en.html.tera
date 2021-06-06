@@ -3,11 +3,11 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>ВИДЕО</i> АНКЕТА</h1>
+        <h1><i>VIDEO</i> PROFILE</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li><a href="/events">Анкеты</a></li>
-            <li>Подробности</li>
+            <li><a href="/en/" title="">Home</a></li>
+            <li><a href="/en/events">Profiles</a></li>
+            <li>Details</li>
         </ul>
     </div>
 </div>
@@ -19,11 +19,11 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12">
                     <div class="shelter-blog-detail event-detail">
-                        <div class="post-img"><img src="/static/upload/{{ item.photo }}" alt="" /></div>
+                        <div class="post-img"><img src="/static/upload/{{ profile.photo }}" alt="" /></div>
                         <div class="post-information">
-                            <h1 class="post-title">{{ item.name }}</h1>
+                            <h1 class="post-title">{{ profile.name }}</h1>
                             <ul class="meta">
-                                <li><strong>{{ item.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                <li><strong>{{ profile.created_at | date(format="%d.%m.%Y") }}</strong></li>
                             </ul>
                         </div>
                         <!--
@@ -33,19 +33,19 @@
                             </div>
                         </div>
                         -->
-                        <p>{{ item.description | safe }}</p>
+                        <p>{{ profile.description | safe }}</p>
                     </div>
                 </div>
 
                 <aside class="col-lg-3 col-md-12 sidebar">
                     <div class="widget">
-                        <div class="widget-title"><h4>СРОЧНЫЕ НУЖДЫ</h4></div>
-                        {% for item in items -%}
+                        <div class="widget-title"><h4>URGENT NEEDS</h4></div>
+                        {% for cause in vitals -%}
                             <div class="urgent-need bottom_space">
-                                <img src="/static/upload/{{ item.image }}" alt="cause image" />
+                                <img src="/static/upload/{{ cause.image }}" alt="cause image" />
                                 <div class="urgent-text">
-                                    <h3>{{ item.name }}</h3>
-                                    <a class="btn small" href="/causes/{{ item.id }}">Подробности</a>
+                                    <h3>{{ cause.name }}</h3>
+                                    <a class="btn small" href="/en/causes/{{ cause.id }}">Details</a>
                                 </div>
                             </div>
                         {%- endfor %}

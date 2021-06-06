@@ -3,10 +3,10 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>ОТЧЁТЫ</i> ФОНДА</h1>
+        <h1><i>OUR</i> REPORTS</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li>Отчёты</li>
+            <li><a href="/en" title="">Home</a></li>
+            <li>Reports</li>
         </ul>
     </div>
 </div>
@@ -18,14 +18,14 @@
                 <div class="col-12">
                     <div class="shelter-events">
                         <div class="row">
-                            {% for item in items -%}
+                            {% for report in reports -%}
                                 <div class="col-3">
                                     <div class="shelter-event">
                                         <div class="event-inner">
-                                            <h4><a href="{{ item.url }}" target="_blank">{{ item.description }}</a></h4>
+                                            <h4><a href="{{ report.url }}" target="_blank">{{ report.description }}</a></h4>
                                             <!--<span>Dec 25 - 2017        05:00 pm</span>-->
                                         </div>
-                                        <a class="event-link" href="{{ item.url }}" target="_blank"><i class="ion-forward"></i></a>
+                                        <a class="event-link" href="{{ report.url }}" target="_blank"><i class="ion-forward"></i></a>
                                         <!-- <div class="social-links">
                                             <a href="#" title=""><i class="fa fa-facebook"></i></a>
                                             <a href="#" title=""><i class="fa fa-twitter"></i></a>
@@ -36,20 +36,6 @@
                             {%- endfor %}
                         </div>
                     </div><!-- Shelter Events -->
-
-                    <div class="shelter-pagination">
-                        <ul class="pagination">
-                            <li><a href="#" title=""> Назад </a> </li>
-                            <li><a class="current" href="#">1</a></li>
-                            <!--
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            -->
-                            <li> <a href="#" title=""> Дальше</a> </li>
-                        </ul>
-                    </div><!-- Shelter Pagination -->
 
                 </div>
             </div>

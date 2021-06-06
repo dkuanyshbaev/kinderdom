@@ -3,10 +3,10 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>ВИДЕО</i> АНКЕТЫ</h1>
+        <h1><i>VIDEO</i> PROFILES</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li>Анкеты</li>
+            <li><a href="/en" title="">Home</a></li>
+            <li>Profiles</li>
         </ul>
     </div>
 </div>
@@ -18,15 +18,15 @@
                 <div class="col-12">
                     <div class="shelter-team">
                         <div class="row">
-                            {% for profile in items -%}
+                            {% for profile in profiles -%}
                                 <div class="col-4">
                                     <div class="member">
                                         <img src="/static/upload/{{ profile.photo }}" alt="" />
                                         <div class="member-name">
                                             <h4>{{ profile.name }}</h4>
                                             <span>
-                                                <i>Видео анкета</i>
-                                                <a href="/profiles/{{ profile.id }}">Подробности</a>
+                                                <i>{{ profile.name }}</i>
+                                                <a href="/en/profiles/{{ profile.id }}">Details</a>
                                             </span>
                                         </div>
                                     </div>
@@ -37,15 +37,25 @@
 
                     <div class="shelter-pagination">
                         <ul class="pagination">
-                            <li><a href="#" title=""> Назад </a> </li>
-                            <li><a class="current" href="#">1</a></li>
-                            <!--
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            -->
-                            <li> <a href="#" title=""> Дальше</a> </li>
+                            {% if page == 0 %}
+                                <li><a href="/en/profiles?page={{ page }}"> Prev </a></li>
+                            {% else %}
+                                <li><a href="/en/profiles?page={{ page - 1 }}"> Prev </a></li>
+                            {% endif %}
+
+                            {% for p in range(start = 1, end = total + 1, step_by = 1) -%}
+                                {% if page + 1 == loop.index %}
+                                    <li><a class="current" href="/en/profiles?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
+                                {% else %}
+                                    <li><a href="/en/profiles?page={{ loop.index - 1 }}">{{ loop.index }}</a></li>
+                                {% endif %}
+                            {%- endfor %}
+
+                            {% if page + 1 == total %}
+                                <li><a href="/en/profiles?page={{ page }}"> Next</a></li>
+                            {% else %}
+                                <li><a href="/en/profiles?page={{ page + 1 }}"> Next</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

@@ -3,11 +3,11 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>СОБЫТИЯ</i> ФОНДА</h1>
+        <h1><i>OUR</i> EVENTS</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li><a href="/events">События</a></li>
-            <li>Подробности</li>
+            <li><a href="/en" title="">Home</a></li>
+            <li><a href="/en/events">Events</a></li>
+            <li>Details</li>
         </ul>
     </div>
 </div>
@@ -19,14 +19,14 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12">
                     <div class="shelter-blog-detail">
-                        <div class="post-img"><img src="/static/upload/{{ item.cover }}" alt="" /></div>
+                        <div class="post-img"><img src="/static/upload/{{ event.cover }}" alt="" /></div>
                         <div class="post-information">
-                            <h1 class="post-title">{{ item.title }}</h1>
+                            <h1 class="post-title">{{ event.title }}</h1>
                             <ul class="meta">
-                                <li><strong>{{ item.created_at | date(format="%d.%m.%Y") }}</strong></li>
+                                <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
                             </ul>
                         </div>
-                        <p>{{ item.content | safe }}</p>
+                        <p>{{ event.content | safe }}</p>
                     </div>
 
                     <div class="shelter-tags">
@@ -34,43 +34,43 @@
                         {% set cat_name = "test" %}
 
                         {% for cat in cats -%}
-                            {% if cat.id == item.cat_id %}
+                            {% if cat.id == event.cat_id %}
                                 {% set_global cat_id = cat.id %}
                                 {% set_global cat_name = cat.name %}
                             {% endif %}
                         {%- endfor %}
 
-                        <a href="/events?cat={{ cat_id }}">{{ cat_name }}</a>
+                        <a href="/en/events?cat={{ cat_id }}">{{ cat_name }}</a>
                     </div>
                 </div>
 
                 <aside class="col-lg-3  col-md-12 sidebar">
                     <div class="widget">
-                        <div class="widget-title"><h4>Поиск</h4></div>
+                        <div class="widget-title"><h4>Search</h4></div>
                         <form class="search-form" method="POST" action="/search">
-                            <input type="text" placeholder="Событие" name="term" />
+                            <input type="text" placeholder="Event" name="term" />
                             <button><i class="fa fa-search"></i></button>
                         </form>
                     </div><!-- Widget -->
 
                     <div class="widget">
-                        <div class="widget-title"><h4>СРОЧНЫЕ НУЖДЫ</h4></div>
-                        {% for item in items -%}
+                        <div class="widget-title"><h4>URGENT NEEDS</h4></div>
+                        {% for cause in causes -%}
                             <div class="urgent-need bottom_space">
-                                <img src="/static/upload/{{ item.image }}" alt="cause image" />
+                                <img src="/static/upload/{{ cause.image }}" alt="cause image" />
                                 <div class="urgent-text">
-                                    <h3>{{ item.name }}</h3>
-                                    <a class="btn small" href="/causes/{{ item.id }}">Подробности</a>
+                                    <h3>{{ cause.name }}</h3>
+                                    <a class="btn small" href="/en/causes/{{ cause.id }}">Details</a>
                                 </div>
                             </div>
                         {%- endfor %}
                     </div>
 
                     <div class="widget">
-                        <div class="widget-title"><h4>Категории</h4></div>
+                        <div class="widget-title"><h4>Categories</h4></div>
                         <ul>
                             {% for cat in cats -%}
-                                <li><a href="/events?cat={{ cat.id }}">{{ cat.name }}</a></li>
+                                <li><a href="/en/events?cat={{ cat.id }}">{{ cat.name }}</a></li>
                             {%- endfor %}
                         </ul>
                     </div>

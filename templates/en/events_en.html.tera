@@ -1,12 +1,12 @@
-{% extends "pages/layout" %}
+{% extends "en/layout_en" %}
 
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>СОБЫТИЯ</i> ФОНДА</h1>
+        <h1>EVENTS</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li>События</li>
+            <li><a href="/en" title="">Home</a></li>
+            <li>Events</li>
         </ul>
     </div>
 </div>
@@ -27,9 +27,9 @@
                                             <ul class="meta">
                                                 <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
                                             </ul>
-                                            <h3><a href="/events/{{ event.id }}" title="">{{ event.title }}</a></h3>
+                                            <h3><a href="/en/events/{{ event.id }}" title="">{{ event.title }}</a></h3>
                                             <p>{{ event.lead }}</p>
-                                            <a class="readmore" href="/events/{{ event.id }}">Подробности</a>
+                                            <a class="readmore" href="/en/events/{{ event.id }}">Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -40,23 +40,23 @@
                     <div class="shelter-pagination">
                         <ul class="pagination">
                             {% if page == 0 %}
-                                <li><a href="/events?page={{ page }}&cat={{ cat }}"> Назад </a></li>
+                                <li><a href="/en/events?page={{ page }}&cat={{ cat }}"> Prev </a></li>
                             {% else %}
-                                <li><a href="/events?page={{ page - 1 }}&cat={{ cat }}"> Назад </a></li>
+                                <li><a href="/en/events?page={{ page - 1 }}&cat={{ cat }}"> Prev </a></li>
                             {% endif %}
 
                             {% for p in range(start = 1, end = total + 1, step_by = 1) -%}
                                 {% if page + 1 == loop.index %}
-                                    <li><a class="current" href="/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
+                                    <li><a class="current" href="/en/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
                                 {% else %}
-                                    <li><a href="/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
+                                    <li><a href="/en/events?page={{ loop.index - 1 }}&cat={{ cat }}">{{ loop.index }}</a></li>
                                 {% endif %}
                             {%- endfor %}
 
                             {% if page + 1 == total %}
-                                <li><a href="/events?page={{ page }}&cat={{ cat }}"> Дальше</a></li>
+                                <li><a href="/en/events?page={{ page }}&cat={{ cat }}"> Next</a></li>
                             {% else %}
-                                <li><a href="/events?page={{ page + 1 }}&cat={{ cat }}"> Дальше</a></li>
+                                <li><a href="/en/events?page={{ page + 1 }}&cat={{ cat }}"> Next</a></li>
                             {% endif %}
                         </ul>
                     </div>

@@ -113,7 +113,7 @@ pub fn event_details_en(connection: Db, id: i32) -> KinderResult<Template> {
     Ok(Template::render(
         "en/event_details_en",
         EventContext {
-            cats: Cat::ru(&connection)?,
+            cats: Cat::en(&connection)?,
             event: Event::get(&connection, id)?,
             causes: Cause::vital(&connection)?,
         },

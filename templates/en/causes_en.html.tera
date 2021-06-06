@@ -3,10 +3,10 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>СБОР</i> СРЕДСТВ</h1>
+        <h1><i>OUR</i> AIMS</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li>Цели</li>
+            <li><a href="/en" title="">Home</a></li>
+            <li>Aims</li>
         </ul>
     </div>
 </div>
@@ -18,41 +18,29 @@
                 <div class="col-12">
                     <div class="creative-causes">
                         <div class="row">
-                            {% for item in items -%}
+                            {% for cause in causes -%}
                                 <div class="col-4">
                                     <div class="creative-cause">
                                         <div class="cre-cause-img">
-                                            <img src="/static/upload/{{ item.image }}" alt="" />
-                                            <span><i>{{ item.collected }} р.</i> Собрано из {{ item.needed }}</span>
+                                            <img src="/static/upload/{{ cause.image }}" alt="" />
+                                            <span><i>{{ cause.collected }} р.</i> Collected from {{ cause.needed }}</span>
                                             <div class="skillbar">
-                                                {% set collected_in_percent = item.collected / item.needed * 100 | round  %}
+                                                {% set collected_in_percent = cause.collected / cause.needed * 100 | round  %}
                                                 {% set width = collected_in_percent %}
                                                 {% if width < 7 %}
                                                     {% set width = 7 %}
                                                 {% endif %}
                                                 <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
                                             </div>
-                                            <a class="btn" href="/causes/{{ item.id }}">Подробности</a>
+                                            <a class="btn" href="/en/causes/{{ cause.id }}">Details</a>
                                         </div>
-                                        <div class="cause-loc"><span>{{ item.organisation }}</span> <span>{{ item.location }}</span></div>
-                                        <h3><a href="/causes/{{ item.id }}" title="">{{ item.name }}</a></h3>
+                                        <div class="cause-loc"><span>{{ cause.organisation }}</span> <span>{{ cause.location }}</span></div>
+                                        <h3><a href="/en/causes/{{ cause.id }}" title="">{{ cause.name }}</a></h3>
                                     </div><!-- Creative Cause -->
                                 </div>
                             {%- endfor %}
                         </div>
                     </div><!-- Creative Causes -->
-
-                    <!-- <div class="shelter-pagination">
-                        <ul class="pagination">
-                            <li> <a href="#" title=""> Previous </a> </li>
-                            <li><a class="current" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li> <a href="#" title=""> Next</a> </li>
-                        </ul>
-                    </div>--><!-- Shelter Pagination -->
 
                 </div>
             </div>
