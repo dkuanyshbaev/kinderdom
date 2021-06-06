@@ -3,10 +3,10 @@
 {% block content %}
 <div class="pagetop">
     <div class="container">
-        <h1><i>О</i> ФОНДЕ</h1>
+        <h1>ABOUT US</h1>
         <ul class="breadcrumbs">
-            <li><a href="/" title="">Главная</a></li>
-            <li>О Нас</li>
+            <li><a href="/en" title="">Home</a></li>
+            <li>ABOUT US</li>
         </ul>
     </div>
 </div>
@@ -18,15 +18,24 @@
             <div class="row">
                 <div class="col-12">
                     <div class="team-detail">
-                        <div class="abt-img"><img src="http://placehold.it/419x591" alt="" /></div>
+                        <div class="abt-img"><img src="/static/images/sign_day.jpg" alt="" /></div>
                         <div class="team-detail-text">
-                            <h1>«Мы и дети»</h1>
-                            <span>Благотворительный Фонд</span>
-                            <p>Наша история началась в 2007 году, когда команда единомышленников приняла решение помочь одному из самых нуждающихся детских домов Приморского края. С тех пор наша миссия - это улучшение образа жизни и образа мысли растущего здесь и сейчас поколения детей, которым, к сожалению, не могут помочь близкие. Мы создаём условия, в которых у ребят появляется больше шансов для наилучшей реализации собственных жизней. Если Вы хотите оказать помощь воспитанникам Центров содействия семейному устройству и социальных приютов, Мы всегда на связи!</p>
+                            <h1>«We and Children»</h1>
+                            <span>Charity foundation</span>
+                            <p>
+                            Our story began in 2007, when a team of like-minded people decided to help one of
+                            the orphanages in Primorsky Territory that was in need most. Since then, our
+                            mission has been to improve the lifestyle and way of thinking of the growing
+                            generation of children here and now. To help the children who, unfortunately,
+                            cannot be helped by those close to them. We create conditions in which children
+                            have more chances for the best accomplishments of their own lives. If you want to
+                            provide assistance to the pupils of the Centers for Assistance to Family Placement
+                            and social shelters, we are always in touch!
+                            </p>
                             <ul>
-                                <li style="font-size:17px;">Тел.: +7 (914) 703-01-21</li>
-                                <li style="font-size:17px;">Почта: kinderdom@mail.ru</li>
-                                <li style="font-size:17px;">Адрес: 690069, г. Владивосток, ул. Давыдова, д. 18</li>
+                                <li style="font-size:17px;">Phone: +7 (914) 703-01-21</li>
+                                <li style="font-size:17px;">Email: kinderdom@mail.ru</li>
+                                <li style="font-size:17px;">Address: 690069, Vladivostok, Russia, Davidova 18</li>
                                 <!--
                                 <li>ИНН: 2539091280</li>
                                 <li>КПП: 253901001</li>
@@ -56,7 +65,7 @@
                                 <div class="donation-box">
                                     <div class="box-text">
                                         <p style="font-size:17px;">Устав благотворительного фонда<br>«Мы и дети»</p>
-                                        <a class="btn style4 small" href="/static/docs/ustav.pdf">Скачать</a>
+                                        <a class="btn style4 small" href="/static/docs/ustav.pdf">Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +73,7 @@
                                 <div class="donation-box">
                                     <div class="box-text">
                                         <p style="font-size:17px;">Свидетельство о регистрации некоммерческой организации</p>
-                                        <a class="btn style4 small" href="/static/docs/1.pdf">Скачать</a>
+                                        <a class="btn style4 small" href="/static/docs/1.pdf">Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +81,7 @@
                                 <div class="donation-box">
                                     <div class="box-text">
                                         <p style="font-size:17px;">Свидетельство о постановке на учёт в налоговом органе</p>
-                                        <a class="btn style4 small" href="/static/docs/2.pdf">Скачать</a>
+                                        <a class="btn style4 small" href="/static/docs/2.pdf">Download</a>
                                     </div>
                                 </div>
                             </div>
