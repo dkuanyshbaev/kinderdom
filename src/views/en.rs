@@ -1,21 +1,12 @@
 use crate::models::cat::Cat;
 use crate::models::cause::Cause;
 use crate::models::event::Event;
-use crate::models::payment::{
-    Amount, PaymentBody, PaymentForm, PaymentResponse, RequestConfirmation,
-};
 use crate::models::profile::Profile;
 use crate::models::report::Report;
 use crate::models::search::SearchForm;
-use crate::{Config, Db, KinderResult};
-use base64::encode;
-use reqwest::header::AUTHORIZATION;
-use reqwest::StatusCode;
+use crate::{Db, KinderResult};
 use rocket::request::Form;
-use rocket::response::Redirect;
-use rocket::State;
 use rocket_contrib::templates::Template;
-use uuid::Uuid;
 
 #[derive(Serialize)]
 pub struct IndexContext {
