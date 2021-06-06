@@ -168,42 +168,25 @@
         <div class="popup">
             <div class="popup-box">
                 <div class="popup-title">
-                    <h3>Я хочу помочь</h3>
+                    <h3>I want to help</h3>
                     <a class="close-popup" href="#" title=""><i class="ion-close-round"></i></a>
                 </div><!-- Popup Title -->
                 <div class="popup-content">
-                    <p>Каждое пожертвование даёт шанс еще одному ребенку-сироте обрести семью. Меняйте мир вместе с нами!</p>
-                    <!-- <div class="select&#45;cause"> -->
-                    <!--     <label>Select Cause</label> -->
-                    <!--     <select class="select"> -->
-                    <!--         <option>Cause 1</option> -->
-                    <!--         <option>Cause 2</option> -->
-                    <!--         <option>Cause 3</option> -->
-                    <!--         <option>Cause 4</option> -->
-                    <!--     </select> -->
-                    <!-- </div> -->
-
-                    <!-- <div class="shelter&#45;skills"> -->
-                    <!--     <div class="skillbar"> -->
-                    <!--         <span>$350 of $1,000 raised </span> -->
-                    <!--         <div class="progress"> <div class="progress&#45;bar" style="width: 85%;"><span>85%</span></div> </div> -->
+                    <!-- <p>Каждое пожертвование даёт шанс еще одному ребенку&#45;сироте обрести семью. Меняйте мир вместе с нами!</p> -->
+                    <!-- <div class="your&#45;donation"> -->
+                    <!--     <strong>Сумма в рублях</strong> -->
+                    <!--     <ul class="donation&#45;figures"> -->
+                    <!--         <li><a class="wpdonation&#45;button" href="#" title="">300</a></li> -->
+                    <!--         <li><a class="wpdonation&#45;button" href="#" title="">500</a></li> -->
+                    <!--         <li><a class="wpdonation&#45;button" href="#" title="">1000</a></li> -->
+                    <!--         <li><a class="wpdonation&#45;button" href="#" title="">3000</a></li> -->
+                    <!--         <li><a class="wpdonation&#45;button" href="#" title="">5000</a></li> -->
+                    <!--         <li><a href="#" title="">Другая сумма</a></li> -->
+                    <!--     </ul> -->
+                    <!--     <div class="donation&#45;amount"> -->
+                    <!--         <textarea placeholder="Введите сумму">1000</textarea> -->
                     <!--     </div> -->
                     <!-- </div> -->
-
-                    <div class="your-donation">
-                        <strong>Сумма в рублях</strong>
-                        <ul class="donation-figures">
-                            <li><a class="wpdonation-button" href="#" title="">300</a></li>
-                            <li><a class="wpdonation-button" href="#" title="">500</a></li>
-                            <li><a class="wpdonation-button" href="#" title="">1000</a></li>
-                            <li><a class="wpdonation-button" href="#" title="">3000</a></li>
-                            <li><a class="wpdonation-button" href="#" title="">5000</a></li>
-                            <li><a href="#" title="">Другая сумма</a></li>
-                        </ul>
-                        <div class="donation-amount">
-                            <textarea placeholder="Введите сумму">1000</textarea>
-                        </div>
-                    </div>
 
                     <form id="donation_form" method="POST" action="/payment">
                         <input type="hidden" id="donation_amount" name="amount" value="0" />
@@ -212,7 +195,7 @@
                     </form>
                 </div><!-- Popup Content -->
                 <div class="popup-footer">
-                    <a class="btn" href="#" title="">Продолжить</a>
+                    <!-- <a class="btn" href="#" title="">Submit</a> -->
                 </div><!-- Popup Footer -->
             </div>
         </div><!-- Popup -->
