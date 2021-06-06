@@ -40,18 +40,18 @@
             <div class="row align-items-center">
                 <div class="col-3">
                     <div class="logo">
-                        <a href="/" title=""><img src="/static/images/logo.png" alt="Kinderdom" /></a>
+                        <a href="/en" title=""><img src="/static/images/logo_white.svg" style="max-width:57%" alt="Kinderdom" /></a>
                     </div>
                 </div>
                 <div class="col-6">
                     <nav>
                         <ul>
-                            <li><a href="/en" title="">Главная</a></li>
-                            <li><a href="/en/events" title="">События</a></li>
-                            <li><a href="/en/causes" title="">Цели</a></li>
-                            <li><a href="/en/profiles" title="">Анкеты</a></li>
-                            <li><a href="/en/reports" title="">Отчёты</a></li>
-                            <li><a href="/en/about" title="">О фонде</a></li>
+                            <li><a href="/en" title="">Home</a></li>
+                            <li><a href="/en/events" title="">Events</a></li>
+                            <li><a href="/en/causes" title="">Aims</a></li>
+                            <li><a href="/en/profiles" title="">Profiles</a></li>
+                            <li><a href="/en/reports" title="">Reports</a></li>
+                            <li><a href="/en/about" title="">About</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -72,7 +72,7 @@
 
         <div class="responsive-header">
             <div class="responsive-menubar">
-                <div class="logo"><a href="/" title=""><img src="/static/images/logo3.png" alt="" /></a></div>
+                <div class="logo"><a href="/en" title=""><img src="/static/images/logo_black.svg" alt="" /></a></div>
                 <a class="responsive-menu-btn" href="#" title=""><i class="ion-navicon"></i></a>
             </div><!-- Responsive Menubar -->
 
@@ -80,12 +80,12 @@
                 <a class="menu-btn close" href="javascript:void(0)" title=""><i class="icon-cancel"></i></a>
                 <div class="sidemenu scrollbar">
                     <ul>
-                        <li><a href="/en/" title="">Главная</a></li>
-                        <li><a href="/en/events" title="">События</a></li>
-                        <li><a href="/en/causes" title="">Цели</a></li>
-                        <li><a href="/en/profiles" title="">Анкеты</a></li>
-                        <li><a href="/en/reports" title="">Отчёты</a></li>
-                        <li><a href="/en/about" title="">О фонде</a></li>
+                        <li><a href="/en/" title="">Home</a></li>
+                        <li><a href="/en/events" title="">Events</a></li>
+                        <li><a href="/en/causes" title="">Aims</a></li>
+                        <li><a href="/en/profiles" title="">Profiles</a></li>
+                        <li><a href="/en/reports" title="">Reports</a></li>
+                        <li><a href="/en/about" title="">About</a></li>
                         <li class="lang_mobi">
                             <!-- <a href="/" title=""><img src="static/images/uk.png" alt="ENG" /></a> -->
                             <a href="/"><b>RU</b></a>
@@ -104,31 +104,31 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="widget">
                                 <div class="about-widget">
-                                    <div class="logo"><a href="/" title=""><img src="/static/images/logo2.png" alt="" /></a></div>
+                                    <div class="logo"><a href="/en" title=""><img src="/static/images/logo_white.svg" alt="" /></a></div>
                                     <p>Права на фото- и иные материалы принадлежат авторам. Любое размещение материалов на сторонних ресурсах необходимо согласовывать.</p>
                                 </div><!-- About Widget -->
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-6">
                             <div class="widget">
-                                <h3 class="widget-title">Фонд</h3>
+                                <h3 class="widget-title">Organization</h3>
                                 <ul>
-                                    <li><a href="/" title="">Главная</a></li>
-                                    <li><a href="/events" title="">События</a></li>
-                                    <li><a href="/causes" title="">Цели</a></li>
-                                    <li><a href="/profiles">Анкеты</a></li>
-                                    <li><a href="/reports" title="">Отчеты</a></li>
-                                    <li><a href="/about" title="">О фонде</a></li>
+                                    <li><a href="/en" title="">Home</a></li>
+                                    <li><a href="/en/events" title="">Events</a></li>
+                                    <li><a href="/en/causes" title="">Aims</a></li>
+                                    <li><a href="/en/profiles">Profiles</a></li>
+                                    <li><a href="/en/reports" title="">Reports</a></li>
+                                    <li><a href="/en/about" title="">About</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="widget">
-                                <h3 class="widget-title">Контакты</h3>
+                                <h3 class="widget-title">Contacts</h3>
                                 <ul>
-                                    <li>Россия, Приморский край</li>
-                                    <li>690069, г. Владивосток</li>
-                                    <li>ул. Давыдова, д. 18</li>
+                                    <li>Russia, Primoskiy region</li>
+                                    <li>690069, Vladivostok</li>
+                                    <li>Davidova, 18</li>
                                     <li>+7 (423) 231-71-21</li>
                                     <li>+7 (914) 703-01-21</li>
                                     <li>kinderdom@mail.ru</li>
@@ -138,7 +138,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="widget">
                                 <!-- <h3 class="widget&#45;title">Мы в instagram</h3> -->
-                                <h3 class="widget-title">Реквизиты</h3>
+                                <h3 class="widget-title">Deatails</h3>
                                         <ul>
                                             <li>ФАКБ «Балтийский Банк Развития»</li>
                                             <li>Р/СЧ: 40703810800010000016</li>

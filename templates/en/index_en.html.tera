@@ -8,10 +8,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="big-text style2">
-                        <span>Hi! Меняйте мир к лучшему вместе с нами</span>
-                        <h3>Путь к светлому <strong>Будущему</strong></h3>
-                        <p style="color: #f3f3f3">Мы ставим перед собой цель дать возможность детям овладеть современными, необходимыми знаниями на достойном уровне, чтобы каждый ребенок имел возможность реализоваться и добиться успеха, мы стремимся дать шанс каждому</p>
-                        <a class="btn open-popup" href="#" title="">Я хочу помочь</a>
+                        <span>Let's make our world a better place together!</span>
+                        <h3>The Path to a <strong>Brighter Future</strong></h3>
+                        <p style="color: #f3f3f3">We strive to enable the pupils of Family Placement Assistance Centers and social
+                        shelters to acquire relevant skills at a decent level, so that every child has an
+                        opportunity to self-discovery as a person and achieve success.</p>
+                        <a class="btn open-popup" href="#" title="">I want to help</a>
                     </div><!-- Big Text -->
                 </div>
             </div>
@@ -26,8 +28,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="shelter-bar">
-                        <h4>Наш девиз - <strong>«Подари тепло детям»</strong>. Присоединяйся прямо сейчас!</h4>
-                        <a class="btn style3" href="/causes" title="">Участвовать</a>
+                        <h4>Our motto is <strong>«Give warmth to children»</strong>. Join now!</h4>
+                        <a class="btn style3" href="/causes" title="">Participate</a>
                     </div><!-- Shelter Bar -->
                 </div>
             </div>
@@ -41,7 +43,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-12">
-                    <h2 class="col-title">Благотворительный Фонд <strong>«Мы и Дети»</strong> был <strong>основан в 2007 году</strong> людьми, не равнодушными к судьбам детей сирот.</h2>
+                    <h2 class="col-title">The <strong>«We and Children»</strong> Charity foundation was <strong>founded in 2007</strong> by people who are not indifferent to the fate of the orphans.</h2>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="frame-img"><img src="/static/images/kri.jpg" alt="" /></div>
@@ -66,8 +68,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>Помоги детям</span>
-                        <h2><i>СРОЧНЫЕ</i> НУЖДЫ</h2>
+                        <span>Help to children</span>
+                        <h2><i>URGENT</i> NEEDS</h2>
                     </div>
 
                     <div class="creative-causes">
@@ -86,10 +88,10 @@
                                                 {% endif %}
                                                 <div class="progress"> <div class="progress-bar" style="width: {{ width }}%;"><span>{{ collected_in_percent }}%</span></div> </div>
                                             </div>
-                                            <a class="btn open-cause-popup" href="#" title="{{ cause.name }}">Помочь</a>
+                                            <a class="btn open-cause-popup" href="#" title="{{ cause.name }}">Participate</a>
                                         </div>
                                         <div class="cause-loc"><span>{{ cause.organisation }}</span> <span>{{ cause.location }}</span></div>
-                                        <h3><a href="/causes/{{ cause.id }}" id="cause_name">{{ cause.name }}</a></h3>
+                                        <h3><a href="/en/causes/{{ cause.id }}" id="cause_name">{{ cause.name }}</a></h3>
                                     </div><!-- Creative Cause -->
                                 </div>
                             {%- endfor %}
@@ -102,6 +104,7 @@
 </section>
 
 
+
 <section>
     <div class="block no-padding dark">
         <div class="row">
@@ -110,9 +113,15 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-12">
                             <div class="video-text">
-                                <h3>Проект БФ «Мы и Дети»: <br><strong>ДОРОГА ДОМОЙ</strong></h3>
-                                <p>В рамках проекта выходят в эфир и выкладываются в интернет-сети видео-портреты детей сирот, которым присвоен статус «на опеку и усыновление», а также интервью и сюжеты о работе специалистов, работающих в сфере образования, охраны материнства и детства - сотрудников органов опеки, экспертов в сфере детской психологии и семейного устройства.</p>
-                                <a class="btn" href="/profiles">Узнать больше</a>
+                                <h3>CF "We and Children": <br><strong>THE WAY HOME.</strong></h3>
+                                <p>
+                                As part of the project, video portraits of orphans, who have been assigned the
+                                status of "custody and adoption", along with the interviews and stories about the
+                                specialists working in the field of education, protection of mothers and children,
+                                employees of the guardianship authorities, experts in the field of child psychology
+                                and family organization are broadcasted and posted on the Internet.
+                                </p>
+                                <a class="btn" href="/en/profiles">Learn more</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
@@ -133,8 +142,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>ПРОТЯНИ РУКУ ПОМОЩИ</span>
-                        <h2><i>НОВОСТИ И</i> СОБЫТИЯ</h2>
+                        <span>HELP TO CHILDREN</span>
+                        <h2><i>NEWS AND</i> EVENTS</h2>
                     </div>
 
                     <div class="shelter-blog">
@@ -147,9 +156,9 @@
                                         <ul class="meta">
                                             <li><strong>{{ event.created_at | date(format="%d.%m.%Y") }}</strong></li>
                                         </ul>
-                                        <h3><a href="/events/{{ event.id }}">{{ event.title }}</a></h3>
+                                        <h3><a href="/en/events/{{ event.id }}">{{ event.title }}</a></h3>
                                         <p>{{ event.lead }}</p>
-                                        <a class="readmore" href="/events/{{ event.id }}">Подробности</a>
+                                        <a class="readmore" href="/en/events/{{ event.id }}">More</a>
                                     </div>
                                 </div>
                             </div>
@@ -170,9 +179,11 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-12">
                     <div class="simple-parallax">
-                        <h3>Давайте вместе сделаем наш мир лучше</h3>
-                        <p>Мы уже сняли немало видеоанкет детей-сирот, но нужно снять еще больше. Каждое пожертвование даёт шанс еще одному ребенку-сироте обрести семью.</p>
-                        <a class="btn open-popup" href="#" title="">Помочь проекту</a>
+                        <h3>Let's make our world a better place together!</h3>
+                        <p>We have already filmed a lot of videos about the orphan children, but even more
+                        are to be filmed. Each donation gives another orphan child a chance to find a
+                        family.</p>
+                        <a class="btn open-popup" href="#" title="">Help the project</a>
                     </div>
                 </div>
             </div>
@@ -187,8 +198,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <span>Дети обретают семью</span>
-                        <h2><i>ИСТОРИИ</i> УСПЕХА</h2>
+                        <span>Children find a family</span>
+                        <h2><i>SUCCESS</i> STORIES</h2>
                     </div>
 
                     <div class="recent-causes">
@@ -199,10 +210,10 @@
                                     <div class="cause-inner">
                                         <img src="/static/upload/{{ event.cover }}" alt="" />
                                         <div class="cause-text">
-                                            <span>ДЕТИ ОБРЕТАЮТ СЕМЬЮ</span>
+                                            <span><Children find a family/span>
                                             <h4><i>{{ event.title }}</i></h4>
                                             <p>{{ event.lead }}</p>
-                                            <a class="btn small" href="/events/{{ event.id }}">Подробности</a>
+                                            <a class="btn small" href="/events/{{ event.id }}">More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -225,10 +236,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="shelter-logos">
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
-                        <li><a href="#" title=""><img src="http://placehold.it/179x127" alt="" /></a></li>
+                        <li><img src="/static/images/donors/01.png" alt="" /></li>
+                        <li><img src="/static/images/donors/02.png" alt="" /></li>
+                        <li><img src="/static/images/donors/04.png" alt="" /></li>
+                        <li><img src="/static/images/donors/03.png" alt="" /></li>
+                        <li><img src="/static/images/donors/05.png" alt="" /></li>
+                        <li><img src="/static/images/donors/06.png" alt="" /></li>
                     </ul>
                 </div>
             </div>

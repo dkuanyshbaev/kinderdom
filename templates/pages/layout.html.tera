@@ -49,7 +49,7 @@
                             <li><a href="/" title="">Главная</a></li>
                             <li><a href="/events" title="">События</a></li>
                             <li><a href="/causes" title="">Цели</a></li>
-                            <!-- <li><a href="/profiles" title="">Анкеты</a></li> -->
+                            <li><a href="/profiles" title="">Анкеты</a></li>
                             <li><a href="/reports" title="">Отчёты</a></li>
                             <li><a href="/about" title="">О фонде</a></li>
                         </ul>
@@ -58,8 +58,7 @@
                 <div class="col-3">
                     <div class="lang_txt">
                         <!-- <a href="/" title=""><img src="/static/images/uk.png" alt="ENG" /></a> -->
-                        <!-- <a href="/en"><b>EN</b></a> -->
-                        <a href="#"><b>EN</b></a>
+                        <a href="/en"><b>EN</b></a>
                     </div>
 
                     <div class="social-btns">
@@ -84,13 +83,12 @@
                         <li><a href="/" title="">Главная</a></li>
                         <li><a href="/events" title="">События</a></li>
                         <li><a href="/causes" title="">Цели</a></li>
-                        <!-- <li><a href="/profiles" title="">Анкеты</a></li> -->
+                        <li><a href="/profiles" title="">Анкеты</a></li>
                         <li><a href="/reports" title="">Отчёты</a></li>
                         <li><a href="/about" title="">О фонде</a></li>
                         <li class="lang_mobi">
                             <!-- <a href="/" title=""><img src="static/images/uk.png" alt="ENG" /></a> -->
-                            <!-- <a href="/en"><b>EN</b></a> -->
-                            <a href="#"><b>EN</b></a>
+                            <a href="/en"><b>EN</b></a>
                         </li>
                     </ul>
                 </div>
@@ -118,7 +116,7 @@
                                     <li><a href="/">Главная</a></li>
                                     <li><a href="/events">События</a></li>
                                     <li><a href="/causes">Цели</a></li>
-                                    <!-- <li><a href="/profiles">Анкеты</a></li> -->
+                                    <li><a href="/profiles">Анкеты</a></li>
                                     <li><a href="/reports">Отчеты</a></li>
                                     <li><a href="/about">О фонде</a></li>
                                 </ul>
