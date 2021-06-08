@@ -64,7 +64,7 @@
                             <div class="col">
                                 <div class="donation-box">
                                     <div class="box-text">
-                                        <p style="font-size:17px;">Устав благотворительного фонда<br>«Мы и дети»</p>
+                                        <p style="font-size:17px;">Articles of association of the Charity foundation <br> "We and Children"</p>
                                         <a class="btn style4 small" href="/static/docs/ustav.pdf">Download</a>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                             <div class="col">
                                 <div class="donation-box">
                                     <div class="box-text">
-                                        <p style="font-size:17px;">Свидетельство о регистрации некоммерческой организации</p>
+                                        <p style="font-size:17px;">Tax authority registration certificate</p>
                                         <a class="btn style4 small" href="/static/docs/1.pdf">Download</a>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                             <div class="col">
                                 <div class="donation-box">
                                     <div class="box-text">
-                                        <p style="font-size:17px;">Свидетельство о постановке на учёт в налоговом органе</p>
+                                        <p style="font-size:17px;">Certificate of registration of a non-profit organization</p>
                                         <a class="btn style4 small" href="/static/docs/2.pdf">Download</a>
                                     </div>
                                 </div>

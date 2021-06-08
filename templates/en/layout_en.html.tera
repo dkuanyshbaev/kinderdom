@@ -105,7 +105,7 @@
                             <div class="widget">
                                 <div class="about-widget">
                                     <div class="logo"><a href="/en" title=""><img src="/static/images/logo_white.svg" alt="" /></a></div>
-                                    <p>Права на фото- и иные материалы принадлежат авторам. Любое размещение материалов на сторонних ресурсах необходимо согласовывать.</p>
+                                    <p>All rights reserved</p>
                                 </div><!-- About Widget -->
                             </div>
                         </div>
@@ -140,12 +140,12 @@
                                 <!-- <h3 class="widget&#45;title">Мы в instagram</h3> -->
                                 <h3 class="widget-title">Deatails</h3>
                                         <ul>
-                                            <li>ФАКБ «Балтийский Банк Развития»</li>
-                                            <li>Р/СЧ: 40703810800010000016</li>
-                                            <li>К/СЧ: 30101810000000000867</li>
-                                            <li>ИНН: 2539091280</li>
-                                            <li>КПП: 253901001</li>
-                                            <li>БИК: 040507867</li>
+                                            <li>Joint Stock Company BBR Bank</li>
+                                            <li>Acc: 40703810800010000016</li>
+                                            <li>Corr acc: 30101810000000000867</li>
+                                            <li>INN: 2539091280</li>
+                                            <li>KPP: 253901001</li>
+                                            <li>RCBIC: 040507867</li>
                                         </ul>
                                 <!-- <div class="shelter&#45;gallery"> -->
                                 <!--     <div class="row"> -->
