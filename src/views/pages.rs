@@ -223,7 +223,7 @@ pub fn payment(config: State<Config>, payment_form: Form<PaymentForm>) -> Kinder
 
     let client = reqwest::blocking::Client::new();
     let res = client
-        .post("https://payment.yandex.net/api/v3/payments")
+        .post("https://api.yookassa.ru/v3/payments")
         .header("Idempotence-Key", idempotence_key.to_string())
         .header(AUTHORIZATION, format!("Basic {}", auth_credentials))
         .json(&body)
